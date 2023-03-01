@@ -1,0 +1,162 @@
+Lecture-114 and 115: Advanced Python Module Puzzle - Overview and Solution
+
+
+Advanced Modules Exercise Puzzle
+
+It's time to test your new skills, this puzzle project will combine multiple skills sets, including unzipping files with Python, using os module to automatically search through lot of files.
+
+Your Goal
+
+This is a puzzle, so we don't want to give you too much guidance and instead have you figure out things on your own.
+
+There is a .zip file called 'unzip_me_for_instructions.zip', unzip it, open the .txt file with Python, read the instructions and see if you can figure out what you need to do!
+
+If you get stuck or don't know where to start, here is a guide (docs.google.com/document/d/1JxydUr4n4fSR0EwwuwT-aHia-yPK6r-oTBuVT2sqheo/edit).
+
+
+Guide and Hints for Advanced Module Exercise
+
+Hopefully before reading this you have gone ahead and attempted to figure out this puzzle all on your own, but if you have gotten stuck, here are the steps you should take. If you are still
+
+stuck after reading this guide, please look at the solution after this section. 
+
+
+Step-1: There is a .zip file called unzip_me_for_instructions.zip. Use the shutil library to unzip this file.
+
+Step-2: After unzipping the file from step 1, open and read the "instructions.txt" file. 
+
+Step-3: After reading the instructions, you should realize you are looking for a phone number, so use regex to figure out a pattern that will find a phone number in a string. 
+
+Step-4: In order to apply this regex to multiple text files, create a function that takes in a file and your regex pattern, opens the file, searches for your pattern, and returns back any 
+
+        match.  
+
+Step-5: Use the os module to walkthrough all the folders and files and apply your function to each file. 
+
+Step-6: After running through the files, you should have gotten the phone number result 719-266-2837. Keep in mind, we put some random numbers not correctly formatted in some .txt files, 
+
+        to make sure your regex expression was looking for the correct formatting. 
+
+Still stuck? Check out the solution. Thanks!
+
+
+Solution
+
+It's time to test your new skills, this puzzle project will combine multiple skills sets, including unzipping files with Python, using os module to automatically search through lot of 
+
+files.
+
+Your Goal
+
+This is a puzzle, so we don't want to give you too much guidance and instead have you figure out things on your own.
+
+There is a .zip file called 'unzip_me_for_instructions.zip', unzip it, open the .txt file with Python, read the instructions, and see if you can figure out what you need to do!
+
+If you get stuck or don't know where to start, here is a guide/hints (docs.google.com/document/d/1JxydUr4n4fSR0EwwuwT-aHia-yPK6r-oTBuVT2sqheo/edit).
+
+
+Step-1: Unzipping the File
+
+We can easily use the shutil library to extract and unzip the contents of the .zip file. 
+
+
+In[2]: import shutil
+
+In[3]: shutil.unpack_archive('unzip_me_for_instructions.zip', '', 'zip')
+
+
+Step-2: Read the instructions file
+
+Let's figure out what we need to do, open the instructions.txt file.
+
+
+In[7]: with open ('extracted_content/Instructions.txt') as f:
+
+		content = f.read()
+
+		print(content)
+
+Out[7]: Good work on unzipping the file!
+
+
+You should now see 5 folders, each with a lot of random .txt files. 
+
+Within one of these files is a telephone number formatted ###-###-####. 
+
+Use the Python os module and regular expressions to iterate through each file, open it, and search for a telephone number. 
+
+
+Step-3: Regular Expressions to Find the Link
+
+
+There are many approaches to take here, but since we know we are looking for a phone number, there should be digits in the form ###-####-####, so we can easily create a regex expression 
+
+for this and test it. Once its tested and working, we can figure out how to run it through all the txt documents. 
+
+
+In[9]: import re
+
+In[10]: pattern = r'\d{3}-\d{3}-\d{4}'
+
+In[11]: test_string = "here is a random number 1231231234, here is a phone number formatted 123-123-1234"
+
+In[14]: re.findall(pattern, test_string)
+
+Out[14]: ['123-123-1234']
+
+
+Step-4: Create a function for regex
+
+Let's put this inside a function that applies it to the contents of a .txt file, this way we can apply this function to all the txt files in the extracted_content folder. 
+
+
+In[15]: def search(file, pattern = r'\d{3}-\d{3}-\d{4}'):
+
+		f = open(file, 'r')
+
+		text = f.read()
+
+		
+		if re.search(pattern, text):
+
+			return re.search(pattern, text)
+
+		else:
+
+			return ''
+
+
+Step-5: OS Walk through the Files to Get the Link
+
+Now that we have a basic function to search through the text of the files, let's perform an os.walk through the unzipped directory to find the links hidden somewhere in one of the text 
+
+files. 
+
+
+In[16]: import os
+
+In[17]: results = []
+
+	  for folder, sub_folders, files in os.walk(os.getcwd()+"\\extracted_content"):
+
+		for f in files:
+
+			full_path = folder + '\\' + f
+
+			
+			results.append(search(full_path))
+
+In[18]: for r in results:
+
+		if r! = '':
+
+			print(r.group())
+
+Out[18]: 719-266-2837
+
+
+Excellent work! More information on this phone number:
+
+	- www.npr.org/2011/12/21/144069758/callin-oates-the-hotline-you-dont-need-but-might-call-anyway
+
+	- twitter.com/CallinOates

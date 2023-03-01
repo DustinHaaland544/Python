@@ -1,0 +1,144 @@
+Lecture-34: If Elif and Else Statements in Python
+
+If, elif, else Statements
+
+1. Let's begin to learn about 'control flow'.
+
+2. We often only want certain code to execute when a particular condition has been met. 
+
+3. For example, "if" my dog is hungry (some condition), then I will feed the dog (some action).
+
+4. To control this flow of logic we use some keywords:
+
+	- if 
+
+	- elif
+
+	- else
+
+5. Control Flow syntax makes use of colons and indentation (whitespace).
+
+6. This indentation system is crucial to Python and is what sets it apart from other programming languages.
+
+7. Syntax of an 'if' statement
+
+	if some_condition:
+
+		# execute some code
+
+	else:
+
+		# do something else
+
+8. Syntax of an 'if/else' statement 
+
+	if some_condition:
+
+		# execute some code
+
+	elif some_other_condition:
+
+		# do something different
+
+	else:
+
+		# do something else
+
+
+Jupyter Notebook
+
+In[104]: if True:
+
+		print('ITS TRUE!')
+
+Out[104]: ITS TRUE!
+
+In[105]: if 3 > 2
+
+		print('ITS TRUE!')
+
+Out[35]: ITS TRUE
+
+In[106]: hungry = True
+
+		if hungry:
+
+			print('FEED ME!')
+
+Out[106]: FEED ME!
+
+In[107]: hungry = False
+
+		if hungry:
+
+			print('FEED ME!')
+
+Out[107]: 
+
+In[108]: hungry = False
+
+		if hungry:
+
+			print('FEED ME!')
+
+		else:
+
+			print("Im not hungry")
+
+Out[108]: Im not hungry
+
+In[109]: hungry = True
+
+		if hungry:
+
+			print('FEED ME!')
+
+		else:
+
+			print("Im not hungry")
+
+Out[109]: FEED ME!
+
+In[112]: loc = 'Bank'
+
+	   if loc == 'Auto Shop'
+
+		print("Cars are cool!")
+
+	   else:
+
+		print("I do not know much.")
+
+Out[112]: I do not know much.
+
+In[113]: loc = 'Bank'
+
+	   if loc == 'Auto Shop':
+
+		print("Cars are cool!")
+
+	   elif loc == 'Bank':
+
+		print("Money is cool!")
+
+	   else:
+
+		print("I do not know much.")
+
+Out[113]: Money is cool!
+
+In[118]: name = 'Sammy'
+
+if name = 'Frankie'
+
+	print("Hello Frankie!")
+
+elif name == 'Sammy'
+
+	print("Hello Sammy")
+
+else:
+
+	print("What is your name?")
+
+Out[118]: Hello Sammy

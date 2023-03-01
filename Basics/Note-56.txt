@@ -1,0 +1,12 @@
+Lecture-78: Modules and Packages
+
+
+Writing Your Own Modules and Packages 
+
+1. Now that we understand how to install external packages, let's explore how to create our own modules and packages.
+
+2. Modules are just .py scripts that you call in another .py script.
+
+3. Packages are a collection of modules. 
+
+4. Let's create some examples!

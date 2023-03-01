@@ -1,0 +1,80 @@
+Lecture-85: Running Tests with the Unittest Library
+
+
+Unit Testing - Part 2
+
+Sublime Text Editor
+
+cap.py
+
+def cap_text(text):
+
+	'''
+
+	Input a string
+
+	Output the capitalized string
+
+	'''
+
+	return text.capitalize()
+
+
+
+test_cap.py
+
+import unitest
+
+import cap
+
+
+class TestCap(unittest.TestCase):
+
+	def test_one_word(self):
+
+		text = 'python'
+
+		result = cap.cap_text(text)
+
+		self.assertEqual(result, 'Python')
+
+	def test_multiple_words(self):
+
+		text = 'monty python'
+
+		result = cap.cap_text(text)
+
+		self.assertEqual(result, 'Monty Python')
+
+if __name__ == '__main__':
+
+	unittest.main()
+
+
+Terminal:
+
+C:\Users\Marcial\Desktop> python test_cap.py
+
+Fail: test_multiple_words(__main__.TestCap)
+
+
+cap.py
+
+def cap_text(text):
+
+	'''
+
+	Input a string
+
+	Output the capitalize string
+
+	'''
+
+	return text.title()
+
+
+Terminal:
+
+C:\Users\Marcial\Desktop> python test_cap.py
+
+Ran 2 tests in 0.001s

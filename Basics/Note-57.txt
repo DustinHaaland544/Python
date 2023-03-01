@@ -1,0 +1,93 @@
+Lecture-79: __name__ and "__main__"
+
+__name__ and "__main__"
+
+1. An often confusing part of Python is a mysterious line of code:
+
+	- if __name__ == "__main__":
+
+2. Sometimes when you are importing from a module, you would like to know whether a module function is being used as an import, or if you are using the original .py file of that module.
+
+3. Let's explore this some more, but make sure to check out the full explanatory text file that is in this part's folder!
+
+
+Sublime Text
+
+one.py
+
+# one.py
+
+def func():
+
+	print("FUNC() IN ONE.PY")
+
+print("TOP LEVEL IN ONE.PY")
+
+if __name__ == '__main__':
+
+	print('ONE.PY is being run directly!')
+
+else:
+
+	print('ONE.PY has been imported!')
+
+two.py
+
+import one
+
+
+print("TOP LEVEL IN TWO.PY")
+
+
+one.func()
+
+if __name__ == '__main__':
+
+	print("TWO.PY is being run directly!")
+
+else:
+
+	print("TWO.PY has been imported!")
+
+
+Terminal
+
+C:\Users\Marcial\Desktop > python one.py
+
+TOP LEVEL IN ONE.PY
+
+ONE.PY is being run directly 
+
+C:\Users\Marcial\Desktop > python two.py
+
+TOP LEVEL IN ONE.PY
+
+ONE.PY has been imported!
+
+TOP LEVEL IN TWO.PY
+
+TWO.PY is being run directly!
+
+
+one.py
+
+def func():
+
+	print("FUNC() IN ONE.PY")
+
+def function():
+
+	pass
+
+def function2():
+
+	pass
+
+
+if __name__ == '__main__':
+
+	# RUN THE SCRIPT!
+
+	function2()
+
+	function() 

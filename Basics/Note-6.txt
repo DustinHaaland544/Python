@@ -1,0 +1,80 @@
+Lecture-12: Python Numbers
+
+Numbers
+
+1. There are two main number types we will work with:
+
+	- Integers which are whole numbers
+
+	- Floating Point numbers which are numbers with a decimal
+
+2. Let's explore basic math with Python!
+
+3. We will also discuss how to create variables and assign them values
+
+
+Jupyter Notebook
+
+In[18]: 2 + 1
+
+Out[18]: 3
+
+In[19]: 2 - 1
+
+Out[19]: 1
+
+In[20]: 2 * 2
+
+Out[20]: 4
+
+In[23]: 3/2
+
+Out[23]: 1.5
+
+
+Modulo or "Mod" Operator
+
+In[24]: 7/4
+
+Out[24]: 1.75
+
+In[25]: 7%4
+
+Out[25]: 3
+
+In[26]: 50%5
+
+Out[26]: 0
+
+In[27]: 23%2
+
+Out[27]: 1
+
+In[28]: 20%2
+
+Out[28]: 0
+
+In[29]: 2**3
+
+Out[29]: 8
+
+In[30]: 2 + 10 * 10 + 3
+
+Out[30]: 105
+
+In[31]: (2 + 10) * (10 + 3)
+
+Out[31]: 156
+
+
+Numbers - FAQ
+
+1. What's the diffrence between floating point and an integer?
+
+- An integer has no decimal in it, a floating point number can display digits past the decimal point. 
+
+2. Why doesn't 0.1 + 0.2 - 0.3 equal 0.0?
+
+- This has to do with floating point accuracy and computer's abilities to represent numbers in memory. For a full breakdown, check out:
+
+  https://docs.python.org/2/tutorial/floatingpoint.html

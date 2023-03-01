@@ -1,0 +1,94 @@
+Lecture-14: Variable Assignments
+
+1. We just saw how to work with numbers, but what do these numbers represent?
+
+2. It would be nice to assign these data types a variable name to easily reference them later on in our code!
+
+3. For example:
+
+	- my_dogs = 2
+
+4. "Rules for variable names"
+
+	- Names cannot start with a number.
+
+	- There can be no spaces in the name, use _ instead.
+
+	- Can't use any of these symbols: "' , <> / ? | \ () ! @ # $ % & * ~ - +
+
+5. Rules for variable names
+
+	- It's considered best practice (PEP8) that names are lowercase
+
+	- Avoid using words that have special meaning in Python like "list" and "str"
+
+6. Python uses "Dynamic Typing"
+
+7. This means you can reassign variables to different data types
+
+8. This makes Python very flexible in assigning data types, this is different than other languages that are "Statistically-Typed"
+
+	my_dogs = 2
+
+	my_dogs = ["Sammy", "Frankie"]
+
+This is okay in Python!
+
+ERROR in other languages
+
+9. Pros of Dynamic Typing:
+
+	- Very easy to work with
+
+	- Faster development time
+
+10. Cons of Dynamic Typing:
+
+	- May result in bugs for unexpected data types!
+
+	- You need to be aware of "type()"
+
+
+Jupyter Notebook
+
+In[34]: a = 5
+
+In[35]: a
+
+Out[35]: 5
+
+In[36]: a = 10
+
+In[37]: a
+
+Out[37]: 10
+
+In[38]: a + a
+
+Out[38]: 20
+
+In[40]: a = a + a
+
+In[41]: a
+
+Out[41]: 20
+
+In[50]: type(a)
+
+Out[50]: int
+
+In[51]: a = 30.1
+
+In[52]: type(a)
+
+Out[52]: float
+
+In[4]: my_income = 100
+
+	 tax_rate = 0.1
+
+	 my_taxes = my_income * tax_rate
+
+In[5]: my_taxes
+
+Out[5]: 10.0

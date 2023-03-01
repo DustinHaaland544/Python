@@ -1,0 +1,112 @@
+Lecture-142: Advanced Lists
+
+
+Jupyter Notebook
+
+Advanced Lists
+
+In[20]: l = [1, 2, 3]
+
+In[21]: l.append(4)
+
+In[22]: l
+
+Out[22]: [1, 2, 3, 4]
+
+In[23]: l.count(10)
+
+Out[23]: 0
+
+In[24]: l.count(1)
+
+Out[24]: 1
+
+In[25]: x = [1, 2, 3]
+
+        x.append([4, 5]) 
+
+        print x
+
+Out[25]: [1, 2, 3, [4, 5]]
+
+In[26]: x = [1, 2, 3]
+
+        x.extend([4, 5])
+
+        print x
+
+Out[26]: [1, 2, 3, 4, 5]
+
+In[27]: l
+
+Out[27]: [1, 2, 3, 4]
+
+In[28]: l.index(2)
+
+Out[28]: 1
+
+In[29]: l.index(10)
+
+Out[29]: ValueError: 10 is not in list
+
+In[30]: l
+
+Out[30]: [1, 2, 3, 4] 
+
+In[31]: l.insert(2, 'inserted') 	# Inserting 'inserted' on the 2nd index 
+
+In[32]: l
+
+Out[32]: [1, 2, 'inserted', 3, 4] 
+
+In[33]: l
+
+Out[33]: [1, 2, 'inserted', 3, 4] 
+
+In[34]: ele = l.pop()
+
+In[35]: ele
+
+Out[35]: 4
+
+In[36]: l
+
+Out[36]: [1, 2, 'inserted', 3] 
+
+In[37]: l.pop(0)
+
+Out[37]: 1
+
+In[38]: l
+
+Out[38]: [2, 'inserted', 3] 
+
+In[39]: l.remove('inserted')
+
+In[40]: l
+
+Out[40]: [2, 3] 
+
+In[41]: l = [1, 2, 3, 4, 3] 
+
+In[42]: l.remove(3)
+
+In[43]: l
+
+Out[43]: [1, 2, 4, 3] 
+
+In[44]: l
+
+Out[44]: [1, 2, 4, 3] 
+
+In[45]: l.reverse()
+
+In[46]: l
+
+Out[46]: [3, 4, 2, 1] 
+
+In[47]: l.sort()
+
+In[48]: l
+
+Out[48]: [1, 2, 3, 4] 

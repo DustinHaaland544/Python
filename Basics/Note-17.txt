@@ -1,0 +1,114 @@
+List-23: Dictionaries in Python
+
+1. Dictionaries are unordered mappings for storing objects. Previously, we saw how lists store objects in an ordered sequence, dictionaries use a key-value pairing instead. 
+
+2. This key-value pair allows users to quickly grab objects without needing to know an index location. 
+
+3. Dictionaries use curly braces and colons to signify the keys and their associated values. 
+
+	{'key1': 'value1', 'key2': 'value2'}
+
+4. So, when to choose a list and when to choose a dictionary?
+
+5. Dictionaries: Objects retrieved by key name.
+
+	- Unordered and cannot be sorted.
+
+6. Lists: Objects retrieved by location.
+
+	- Ordered Sequence can be indexed or sliced. 
+
+
+Jupyter Notebook
+
+In[1]: my_dict = {'key1': 'value1', 'key2': 'value2'}
+
+In[2]: my_dict
+
+Out[2]: {'key:1': 'value1', 'key2': 'value2'}
+
+In[3]: my_dict['key1']
+
+Out[3]: 'value1'
+
+In[4]: prices_lookup = {'apple': 2.99, 'oranges': 1.99, 'milk': 5.80}
+
+In[5]: prices_lookup['apple']
+
+Out[5]: 2.99
+
+In[6]: d = {'k1': 123, 'k2': [0, 1, 2], 'k3': {'insideKey': 100}}
+
+In[7]: d['k2']
+
+Out[7]: [0, 1, 2]
+
+In[8]: d['k3']
+
+Out[8]: {'insideKey': 100}
+
+In[9]: d['k3']['insideKey']
+
+Out[9]: 100
+
+In[10]: d['k2'][2]
+
+Out[10]: 2
+
+In[11]: d = {'key1': ['a', 'b', 'c']}
+
+In[12]: d
+
+Out[12]: {'key1': ['a', 'b', 'c']}
+
+In[13]: mylist = d['key1']
+
+In[14]: mylist
+
+Out[14]: ['a', 'b', 'c']
+
+In[15]: letter = mylist[2]
+
+In[16]: letter
+
+Out[16]: 'c'
+
+In[17]: letter.upper()
+
+Out[17]: 'C'
+
+In[21]: d['key1'][2].upper()
+
+Out[21]: 'C'
+
+In[22]: d = {'k1': 100, 'k2': 200}
+
+In[23]: d
+
+Out[23]: {'k1': 100, 'k2': 200}
+
+In[25]: d['k3']: 300
+
+In[26]: d
+
+Out[26]: {'k1': 100, 'k2': 200, 'k3': 300}
+
+In[27]: d['k1'] = 'NEW VALUE'
+
+In[28]: d
+
+Out[28]: {'k1': 'NEW VALUE', 'k2': 200, 'k3': 300}
+
+In[29]: d = {'k1': 100, 'k2': 200, 'k3': 300}
+
+In[30]: d.keys()
+
+Out[30]: dict_keys(['k1', 'k2', 'k3'])
+
+In[31]: d.values()
+
+Out[31]: dict_values([100, 200, 300])
+
+In[32]: d.items()
+
+Out[32]: dict_items([('k1', 100), ('k2': 200), ('k3': 300)])

@@ -1,0 +1,146 @@
+Lecture-21: Lists in Python
+
+1. Lists are ordered sequences that can hold a variety of object types. 
+
+2. They use [] brackets and commas to seperate objects in the list. 
+
+	- [1, 2, 3, 4, 5]
+
+3. Lists support indexing and slicing. Lists can be nested and also have a variety of useful methods that can be called off of them. 
+
+
+Jupyter Notebook
+
+In[2]: my_list = [1, 2, 3]
+
+In[3]: my_list = ['STRING', 100, 23.2]	# We are ok to use different types in lists
+
+In[4]: len(my_list)
+
+Out[4]: 3
+
+In[5]: my_list = ['one', 'two', 'three']
+
+In[6]: my_list[0]
+
+Out[6]: 'one'
+
+In[7]: mylist[1:]
+
+Out[7]: ['two', 'three']
+
+In[8]: mylist
+
+Out[8]: ['one', 'two', 'three']
+
+In[9]: another_list = ['four', 'five']
+
+In[10]: mylist + another_list
+
+Out[10]: ['one', 'two', 'three', 'four', 'five']
+
+In[11]: mylist
+
+Out[11]: ['one', 'two', 'three']
+
+In[12]: another_list
+
+Out[12]: ['four', 'five']
+
+In[13]: new_list = my_list + another_list
+
+In[14]: new_list
+
+Out[14]: ['one', 'two', 'three', 'four', 'five']
+
+In[15]: new_list
+
+Out[15]: ['one', 'two', 'three', 'four', 'five']
+
+In[16]: new_list[0] = 'ONE ALL CAPS'
+
+In[17]: new_list
+
+Out[17]: ['ONE ALL CAPS', 'two', 'three', 'four', 'five']
+
+In[18]: new_list.append('six')
+
+Out[19]: ['ONE ALL CAPS', 'two', 'three', 'four', 'five', 'six']
+
+In[20]: new_list.append('seven')
+
+Out[20]: ['ONE ALL CAPS', 'two', 'three', 'four', 'five', 'six', 'seven']
+
+In[23]: new_list.pop()
+
+Out[23]: 'seven'
+
+In[24]: new_list
+
+Out[24]: ['ONE ALL CAPS', 'two', 'three', 'four', 'five', 'six']
+
+In[25]: popped_item = new_list.pop()
+
+In[26]: popped_item
+
+Out[26]: 'six'
+
+In[27]: new_list
+
+Out[27]: ['ONE ALL CAPS', 'two', 'three', 'four', 'five']
+
+In[28]: new_list.pop(0)
+
+Out[28]: 'ONE ALL CAPS'
+
+In[29]: new_list
+
+Out[29]: ['two', 'three', 'four', 'five']
+
+In[30]: new_list = ['a', 'e', 'x', 'b', 'c']
+
+	  num_list = [4, 1, 8, 3]
+
+In[31]: new_list.sort()
+
+In[32]: new_list
+
+Out[32]: ['a', 'b', 'c', 'e', 'x']
+
+In[33]: my_sorted_list = new_list.sort()
+
+In[34]: my_sorted_list
+
+Out[34]: 
+
+In[35]: type(my_sorted_list)
+
+Out[35]: NoneType
+
+In[36]: None
+
+Out[36]: 
+
+In[37]: new_list.sort()
+
+	  my_sorted_list = new_List
+
+In[38]: my_sorted_list
+
+Out[38]: ['a', 'b', 'c', 'e', 'x']
+
+In[39]: num_list
+
+Out[39]: [4, 1, 8, 3]
+
+In[40]: num_list.sort()
+
+In[41]: num_list
+
+Out[41]: [1, 3, 4, 8]
+
+In[42]: num_list.reverse()
+
+In[43]: num_list
+
+Out[43]: [8, 4, 3, 1]

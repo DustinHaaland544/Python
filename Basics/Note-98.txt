@@ -1,0 +1,62 @@
+Lecture-138: Advanced Numbers
+
+
+Jupyter Notebook
+
+Advanced Numbers
+
+In[150]: hex(12)
+
+Out[150]: 'Oxc'
+
+In[151]: hex(512)		# Outputs hex-decimal of the number
+
+Out[151]: '0x200'
+
+In[152]: bin(1234)		# Outputs binary representation of the number
+
+Out[152]: '0b10011010010' 
+
+In[153]: bin(128)
+
+Out[153]: '0b100000000'
+
+In[154]: bin(512)
+
+Out[154]: '0b1000000000' 
+
+In[155]: 2**4
+
+Out[155]: 16
+
+In[156]: pow(2,4)
+
+Out[156]: 16
+
+In[157]: pow(2,4,3)	# (2**4)%3
+
+Out[157]: 1
+
+In[158]: abs(-3)		# Absolute value function which returns the absolute value 
+
+Out[158]: 3 
+
+In[159]: abs(2)
+
+Out[159]: 2
+
+In[160]: round(3.1)
+
+Out[160]: 3.0
+
+In[161]: round(3)
+
+Out[161]: 3.0
+
+In[162]: round(3.9)
+
+Out[162]: 4.0
+
+In[163]: round(3.141592,2)
+
+Out[163]: 3.14

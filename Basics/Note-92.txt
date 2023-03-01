@@ -1,0 +1,102 @@
+Lecture-131: Working with PDF Files in Python
+
+
+Working with PDF Files
+
+1. PDF stands for Portable Document Format and was developed by Adobe in the 1990s. 
+
+2. The most important thing to keep in mind is that while PDFs share the same extension and can be viewed in PDF readers, many PDFs are "not" machine readable through Python. 
+
+3. Since PDFs mainly encapsulate and display a fixed-layout flat document, there is no machine readable standard format, unlike CSV files. 
+
+4. This means that a PDF that was simply scanned is highly unlikely to be readable. 
+
+5. Additions to PDFs such as images, tables, format adjustments can also render a PDF unreadable by Python. 
+
+6. There are many paid PDF programs that can read and extract from these files, but will use the open-source and free "PyPDF2" library. 
+
+7. We have made sure that the PDF files included in this course material are readable by PyPDF2. 
+
+8. Unfortunately, we cannot offer assistance for your own personal PDF files if they are not readable by PyPDF2. 
+
+9. Let's explore working with PDF files in Python. 
+
+10. Remember you will first need to install PyPDF2 at your command line: 
+
+	- pip install PyPDF2 
+
+
+Jupyter Notebook
+
+In[40]: import PyPDF2
+
+In[41]: f = open('Working_Business_Proposal.pdf', 'rb')
+
+In[42]: pdf_reader = PyPDF2.PdfFileReader(f)
+
+In[43]: pdf_reader.numPages
+
+Out[43]: 5
+
+In[44]: page_one = pdf_reader.getPage(0)
+
+In[45]: page_one_text = page_one.extractText()
+
+In[46]: page_one_text
+
+Out[46]: 'Business Proposal \n The Revolution is coming \n leverage agile frameworks ..........
+
+In[47]: f.close()
+
+In[48]: f = open('Working_Business_Proposal.pdf', 'rb')	# read library
+
+        pdf_reader = PyPDF2.PdfFileReader(f)
+
+In[49]: first_page = pdf_reader.getPage(0)
+
+In[50]: pdf_writer = PyPDF2.PdfFileWriter()
+
+In[51]: type(first_page)
+
+Out[51]: PyPDF2.pdf.PageObject
+
+In[52]: pdf_writer.addPage(first_page)
+
+In[53]: pdf_output = open('Some_BrandNew_Doc.pdf', 'wb')
+
+In[54]: pdf_writer.write(pdf_output)
+
+In[55]: f.close()
+
+In[56]: pdf_output.close()
+
+In[57]: f = open('Working_Business_Proposal.pdf', 'rb')
+
+
+		pdf_text = []
+
+   		pdf_reader = PyPDF2.PdfFileReader(f)
+
+		for num in range(pdf_reader.numPages):
+
+			page = pdf_reader.getPage(num)
+
+			pdf_text.append(page.extractText())
+
+In[58]: pdf_text			# Outputs all the text in the PyPDF2 file 
+
+Out[58]: ['Business Proposal \n The Revolution is Coming \n Leverage agile frameworks to provide a robust ...................]
+
+In[59]: pdf_text[0]		# Outputs all the text from the 1st page of the PyPDF2 file 
+
+Out[59]: ['Business Proposal \n The Revolution is Coming \n Leverage agile frameworks to provide a robust ...................]
+
+In[60]: pdf_text[1]		# Outputs all the text from the 2nd page of the PyPDF2 file 
+
+Out[60]: 'Completely synergize resource taxing relationships via premier niche \n markets ...
+
+In[61]: print(pdf_text[1])	# Outputs with formatted new line and paragraphs  
+
+Out[61]: Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovateresource-leveling customer service for state of the art customer service. 
+
+Objectively innovate empoered manufactured products whereas parallel platforms. 

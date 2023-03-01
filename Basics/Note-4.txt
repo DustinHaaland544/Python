@@ -1,0 +1,7 @@
+Lecture-9: Getting the Notebooks and the Course Material
+
+Let's show you how to get the course notebooks!
+
+Go to the resource link: 
+
+https://github.com/Pierian-Data/Complete-Python-3-Bootcamp

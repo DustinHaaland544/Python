@@ -1,0 +1,80 @@
+Lecture-8: Running Python Code
+
+1. There are several ways to run Python code. 
+
+2. First let's discuss the various options for development environments.
+
+3. There are 3 main types of environments:
+
+	- Text Editors
+
+	- Full IDEs
+
+	- Notebook Environments
+
+4. Text Editors
+
+	- General editors for any text file
+
+	- Work with a variety of files types
+
+	- Can be customized with plugins and add-ons
+
+	- Keep in mind, most are not designed with only Python in mind 
+
+	- "Most popular: Sublime Text and Atom"
+
+5. Full IDEs
+
+	- Development Environments designed specifically for Python
+
+	- Larger programs
+
+	- Only community editions are free
+
+	- Designed specifically for Python, lots of extra functionality
+
+	- "Most popular: PyCharm and Spyder"
+
+6. Notebook Environments
+
+	- Great for learning
+
+	- See input and output next to each other
+
+	- Support in-line markdowns notes, visualizations, videos, and more
+
+	- Special file formats that are not .py
+
+	- "Most popular is Jupyter Notebook"
+
+7. Most important note:
+
+	- Development Environments are a personal choice, highly dependent on personal preference.
+
+	- "Choose whichever development environment you prefer!"
+
+
+myexample.py
+
+print('hello world')
+
+
+Running the Python file,
+
+Command Prompt
+
+C:\Users\Marcial > cd Desktop
+
+C:\Users\Marcial\Desktop > python myexample.py
+
+hello world
+
+
+Jupyter Notebook
+
+In[1]: print('hello')
+
+-> hello
+
+* Shift + Enter (or Return) to run a cell or line.

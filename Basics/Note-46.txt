@@ -1,0 +1,199 @@
+Lecture-56: Nested Statements and Scope
+
+
+Nested Statements and Scope
+
+Jupyter Notebook
+
+In[89]: x = 25
+
+	  def printer():
+
+		x = 50
+
+		return x
+
+In[90]: print(x)
+
+Out[90]: 25
+
+In[91]: print(printer())
+
+Out[91]: 50
+
+
+LEGB Rule:
+
+* L: Local - Names are assigned in any way within a function (def or lambda), and not declared global in that function. 
+
+* E: Enclosing function locals - Names in the local scope of any and all enclosing functions (def or lambda), from inner to outer.
+
+* G: Global (module) - Names assigned at the top-level of a module file, or declared global in a def within the file. 
+
+* B: Built-in (Python) - Names preassigned in the built-in names module: open, range, SyntaxError ...
+
+
+Jupyter Notebook
+
+In[93]: # lambda num: num ** 2
+
+In[94]: name = 'THIS IS A GLOBAL STRING'
+
+        def greet():
+
+		name = 'Sammy'
+
+		def hello():
+
+			print('Hello' + name)
+
+		hello()
+
+        greet()
+
+Out[94]: Hello Sammy
+
+In[96]: greet()
+
+Out[96]: Hello Sammy
+
+In[97]: name = 'THIS IS A GLOBAL STRING'
+
+	  def greet():
+
+#       name = 'Sammy'
+
+        def hello():
+
+		print('Hello ' + name)
+
+    	  hello()
+
+In[98]: greet()
+
+Out[98]: Hello THIS IS A GLOBAL STRING
+
+In[99]: # GLOBAL
+
+	  name = 'THIS IS A STRING GLOBAL STRING'
+
+        def greet():
+
+		# ENCLOSING
+
+		name = 'Sammy'
+
+		def hello():
+
+		# LOCAL 
+
+		name = 'IM A LOCAL'
+
+		print('Hello ' + name)
+
+	hello()
+
+In[100]: greet()
+
+Out[100]: Hello IM A LOCAL
+
+In[105]: len
+
+Out[105]: <function len>
+
+In[106]: help(len)
+
+Out[106]: Help on built-in function len in module built-ins:
+
+		len(obj, /)
+
+		Return the number of items in a container.
+
+In[107]: x = 50
+
+	   def func(x):
+
+		print(f'X is {x}')
+
+In[108]: func(x)
+
+Out[108]: X is 50
+
+In[109]: x = 50
+
+	   def func(x):
+
+		print(f'X is {x}')
+
+		# LOCAL REASSIGNMENT
+
+		x = 200
+
+		print(f'I JUST LOCALLY CHANGED X TO {x}')
+
+In[110]: func(x)
+
+Out[110]: X is 50
+
+          I JUST LOCALLY CHANGED X TO 200
+
+In[111]: print(x)
+
+Out[111]: 50
+
+In[112]: x = 50
+
+	   def func():
+
+		global x
+
+		print(f'X is {x}')
+
+
+		# LOCAL REASSIGNMENT ON A GLOBAL VARIABLE!
+
+		x = 'NEW VALUE'
+
+		print(f'I JUST LOCALLY CHANGED GLOBAL X to {x}')
+
+In[113]: print(x)
+
+Out[113]: 50
+
+In[114]: func()
+
+Out[114]: X is 50
+
+I JUST LOCALLY CHANGED GLOBAL X TO NEW VALUE
+
+In[115]: print(x)
+
+Out[115]: NEW VALUE
+
+In[116]: x = 50
+
+	   def func(x):
+
+		print(f'X is {x}')
+
+	   # LOCAL REASSIGNMENT ON A GLOBAL VARIABLE!
+
+	   x = 'NEW VALUE'
+
+	   print(f'I JUST LOCALLY CHANGED GLOBAL X TO {x}')
+
+	   return x
+
+In[117]: print(x)
+
+Out[117]: 50
+
+In[118]: x = func(x)
+
+Out[118]: X is 50
+
+	    I JUST LOCALLY CHANGED GLOBAL X TO NEW VALUE
+
+In[119]: x
+
+In[120]: 'NEW VALUE'

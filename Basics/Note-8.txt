@@ -1,0 +1,89 @@
+Lecture-15: Introduction To Strings
+
+Strings
+
+1. Strings are sequences of characters, using the syntax of either single quotes or double quotes:
+
+	- 'hello'
+
+	- "Hello"
+
+	- "I don't do that"
+
+2. Because strings are "ordered sequences" it means we can using "indexing" and "slicing" to grab sub-sections of the string.
+
+3. Indexing notation uses [] notation after the string (or variable assigned the string).
+
+4. Indexing allows you to grab a single character from the string...
+
+5. These actions use [] square brackets and a number index to indicate positions of what you wish to grab
+
+Character: h e l l o
+
+Index: 0 1 2 3 4
+
+Reverse Index: 0 -4 -3 -2 -1  
+
+6. Slicing allows you to grab a subsection of multiple characters, a "slice" of the string.
+
+7. This has the following syntax:
+
+	- "[start : stop : step]"
+
+8. "start" is a numerical index for the slice start
+
+9. "stop" is the index you will go up to (but not include)
+
+10. "step" is the size of the "jump" you take
+
+
+Jupyter Notebook
+
+In[6]: 'hello'
+
+Out[6]: 'hello'
+
+In[7]: "world"
+
+Out[7]: 'world'
+
+In[8]: 'this is also a string'
+
+Out[8]: 'this is also a string'
+
+In[10]: "I'm going on a run"
+
+Out[10]: "I'm going on a run"
+
+In[11]: print("hello")
+
+	  hello
+
+In[12]: "hello world one"
+
+	  "hello world two"
+
+Out[12]: 'hello world two'
+
+In[13]: print("hello world one")
+
+	  print("hello world two")
+
+        hello world one 
+
+        hello world two 
+
+In[15]: print('hello \n world')
+
+	  hello 
+
+	  world
+
+In[18]: len('hello')
+
+Out[18]: 5
+
+In[19]: len('I am')
+
+Out[19]: 4
+ 

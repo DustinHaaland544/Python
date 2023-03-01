@@ -1,0 +1,274 @@
+Lecture-70: Object Oriented Programming - Class Object Attributes
+
+
+Object Oriented Programming
+
+Part-2
+
+Jupyter Notebook
+
+In[45]: class Dog():
+
+		def __init__(self, breed, name, spots):
+
+			self.breed = breed
+
+			self.name = name
+
+In[55]: class Dog():
+
+		# CLASS OBJECT ATTRIBUTE
+
+		# SAME FOR ANY INSTANCE OF A CLASS
+
+		species = 'mammal'
+
+		
+		def __init__(self, breed, name, spots):
+
+			# Attributes
+
+			# We take in the argument
+
+			# Assign it using self.attribute_name
+
+			self.breed = breed
+
+			self.name = name
+
+			# Expect boolean True/False
+
+			self.spots = spots
+
+
+In[57]: my_dog = Dog(breed = 'Lab', name = 'Sam', spots = False)
+
+In[58]: type(my_dog)
+
+Out[58]: __main__.Dog
+
+In[59]: my_dog.species
+
+Out[59]: 'mammal'
+
+In[60]: class Dog():
+
+		# CLASS OBJECT ATTRIBUTE
+
+		# SAME FOR ANY INSTANCE OF A CLASS
+
+		species = 'mammal'
+
+		def __init__(self, breed, name):
+
+			# Attributes
+
+			# We take in the argument
+
+			# Assign it using self.attribute_name
+
+			self.breed = breed 
+
+			self.name = name
+
+		# OPERATIONS/Actions ---> Methods
+
+		def bark(self):
+
+			print("WOOF!")
+
+In[61]: my_dog = Dog('Lab', 'Frankie')
+
+In[62]: type(my_dog)
+
+Out[62]: __main__.Dog
+
+In[63]: my_dog.species
+
+Out[63]: 'mammal'
+
+In[64]: my_dog.name
+
+Out[64]: 'Frankie'
+
+In[65]: my_dog.bark
+
+Out[65]: <bound method Dog.bark of <__main__.Dog object at 0x0000015B611B12B0>>
+
+In[66]: my_dog.bark()
+
+Out[66]: WOOF!
+
+In[67]: class Dog():
+
+		# CLASS OBJECT ATTRIBUTE
+
+		# SAME FOR ANY INSTANCE OF A CLASS
+
+		species = 'mammal'
+
+
+		def __init__(self, breed, name):
+
+			# Attributes
+
+			# We take in the argument
+
+			# Assign it using self.attribute_name
+
+			self.breed = breed
+
+			self.name = name
+
+			# OPERATION/Actions --> Methods
+
+			def bark(self):
+
+				print("WOOF! My name is {}".format(self.name))
+
+In[68]: my_dog = Dog('Lab', 'Frankie')
+
+In[69]: type(my_dog)
+
+Out[69]: __main__.Dog
+
+In[70]: my_dog.species
+
+Out[70]: 'mammal'
+
+In[71]: my_dog.name
+
+Out[71]: 'Frankie'
+
+In[72]: my_dog.bark()
+
+Out[72]: WOOF! My name is Frankie
+
+In[73]: class Dog():
+
+		# CLASS OBJECT ATTRIBUTE
+
+		# SAME FOR ANY INSTANCE OF A CLASS
+
+		species = 'mammal'
+
+		
+		def __init__(self, breed, name):
+
+			# Attributes
+
+			# We take in the argument
+
+			# Assign it using self.attribute_name
+
+			self.breed = breed
+
+			self.name = name
+
+			# OPERATIONS/Actions --> Methods
+
+			def bark(self, number):
+
+				print("WOOF! My name is {} and the number is {}".format (self.name, number)
+
+In[74]: my_dog = Dog('Lab', 'Frankie')
+
+In[75]: type(my_dog)
+
+Out[75]: __main__.Dog
+
+In[76]: my_dog.species
+
+Out[76]: 'mammal'
+
+In[77]: my_dog.bark()
+
+Out[77]: TypeError	Traceback(most recent call last)
+
+	   <ipython - input - 77 - d814dcb7ae35> in <module> () -----> 1
+
+	    my_dog.bark()
+
+	    TypeError: bark() missing 1 required positional argument: 'number'
+
+In[78]: my_dog.bark(10)
+
+Out[78]: WOOF! My name is Frankie and the nuumber is 10
+
+In[79]: class Circle():
+
+		# CLASS OBJECT ATTRIBUTE
+
+		pi = 3.14
+
+
+		def __init__(self, radius = 1):
+
+			self.radius = radius
+
+
+		# METHOD 
+
+		def get_circumference(self):
+
+			return self.radius * self.pi * 2
+
+In[80]: my_circle = Circle()
+
+In[81]: my_circle.pi
+
+Out[81]: 3.14
+
+In[82]: my_circle.radius
+
+Out[82]: 1
+
+In[85]: my_circle = Circle(30)
+
+In[86]: my_circle.pi
+
+Out[86]: 3.14
+
+In[87]: my_circle.radius
+
+Out[87]: 30
+
+In[88]: my_circle.get_circumference()
+
+Out[88]: 188.4
+
+In[89]: class Circle():
+
+		# CLASS OBJECT ATTRIBUTE
+
+		pi = 3.14
+
+
+		def __init__(self, radius = 1):
+
+			self.radius = radius
+
+			self.area = radius * radius * self.pi
+
+		# METHOD
+
+		def get_circumference(self):
+
+			return self.radius * self.pi * 2
+
+In[90]: my_circle = Circle(30)
+
+In[91]: my_circle.pi
+
+Out[91]: 3.14
+
+In[92]: my_circle.radius
+
+Out[92]: 30
+
+In[93]: my_circle.area
+
+Out[93]: 2826.0
+
+
+www.udacity.com/blog/2021/11/__init__-in-python-an-overview.html

@@ -1,0 +1,286 @@
+Lecture-111: Python Regular Expressions Part Three
+
+
+Additional Regex Syntax
+
+Jupyter Notebook
+
+In[56]: re.search(r'cat', 'The cat is here')
+
+Out[56]: <_sre.SRE_Match object; span = (4, 7), match = 'cat'>
+
+In[57]: re.search(r'cat', 'The dog is here')
+
+Out[57]: 
+
+In[59]: re.search(r'cat|dog', 'The dog is here')
+
+Out[59]: <sre.SRE_Match object; span = (4, 7), match = 'dog'>
+
+In[60]: re.findall(r'at', 'The cat in the hat sat there.')
+
+Out[60]: ['at', 'at', 'at']
+
+In[61]: re.findall(r'.at', 'The cat in the hat sat there.')
+
+Out[61]: ['cat', 'hat', 'sat']
+
+In[62]: re.findall(r'...at', 'The cat in the hat went splat.')
+
+Out[62]: ['e cat', 'e hat', 'splat']
+
+In[63]: re.findall(r'^\d', '1 is a number')
+
+Out[63]: ['1']
+
+In[64]: re.findall(r'^d', 'The 2 is a number')
+
+Out[64]: []
+
+In[65]: re.findall(r'^\d', '2 is a number')
+
+Out[65]: ['2']
+
+In[66]: re.findall(r'\d$', '2 is a number')
+
+Out[66]: []
+
+In[67]: re.findall(r'\d$', 'The number is 2')
+
+Out[67]: ['2']
+
+In[68]: phrase = 'there are 3 numbers 34 inside 5 this sentence'
+
+In[69]: pattern = r'[^\d]'
+
+In[70]: re.findall(pattern, phrase)
+
+Out[70]: ['t',
+
+          'h',
+
+          'e',
+
+          'r',
+
+          'e',
+
+          ' ',
+
+	    'a', 
+
+	    'r', 
+
+          'e',
+
+          ' ',
+
+          ' ',
+
+          'n', 
+
+          'u', 
+
+          'm',
+
+          'b', 
+
+          'e',
+
+          'r',
+
+          's',
+
+          ' ',
+
+          ' ',
+
+          'i',
+
+          'n',
+
+          's', 
+
+          'i', 
+
+          'd', 
+
+          'e', 
+
+          ' ',
+
+          ' ',
+
+          't', 
+
+          'h', 
+
+          'i', 
+
+          's', 
+
+          ' ',
+
+          's', 
+
+          'e', 
+
+          'n', 
+
+          't', 
+
+          'e', 
+
+          'n', 
+
+          'c', 
+
+          'e']
+
+In[71]: phrase = 'there are 3 numbers 34 inside 5 this sentence'
+
+In[72]: pattern = r'[^\d]+'
+
+In[73]: re.findall(pattern, phrase)
+
+Out[73]: ['there are', 'numbers', 'inside', 'this sentence'] 
+
+In[74]: test_phrase = 'This is a string! But it has punctuation. How can we remove it?'
+
+In[75]: re.findall(r'[^!.?]+', test_phrase)
+
+Out[75]: ['This is a string', 'But it has punctuation', 'How can we remove it']
+
+In[76]: re.findall(r'[^!.?]+', test_phrase)
+
+Out[76]: ['This', 
+
+          'is', 
+
+          'a', 
+
+          'string', 
+
+          'But', 
+
+          'it', 
+
+          'has', 
+
+          'punctuation', 
+
+          'How', 
+
+          'can', 
+
+          'we', 
+
+          'remove', 
+
+          'it'] 
+
+In[77]: clean = re.findall(r'[^!.?]+', test_phrase)
+
+In[78]: clean
+
+Out[78]: ['This',
+
+          'is', 
+
+          'a',
+
+          'string', 
+
+          'But', 
+
+          'it', 
+
+          'has', 
+
+          'punctuation', 
+
+          'How', 
+
+          'can', 
+
+          'we', 
+
+          'remove', 
+
+          'it'] 
+
+In[79]: ' '.join(clean)
+
+Out[79]: 'This is a string But it has punctuation How can we remove it'
+
+In[80]: text = 'Only find the hypen-words in this sentence. But you do not know how long-ish they are'
+
+In[81]: pattern = r'[\w]+' 
+
+In[82]: re.findall(pattern, text)
+
+Out[82]: ['Only', 
+
+          'find', 
+
+          'the', 
+
+          'hypen', 
+
+          'words', 
+
+          'this', 
+
+          'sentence', 
+
+          'But', 
+
+          'it', 
+
+          'has', 
+
+          'punctuation', 
+
+          'How', 
+
+          'can', 
+
+          'we', 
+
+          'remove', 
+
+          'it'] 
+
+In[83]: pattern = r'[\w]+-[\w]+'
+
+In[84]: re.findall(pattern, text)
+
+Out[84]: ['hypen-words', 'long-ish']
+
+In[85]: pattern = r'\w+-\w+-'
+
+In[86]: re.findall(pattern, text)
+
+Out[86]: ['hypen-words', 'long-ish']
+
+In[87]: text = 'Hello, would you like some catfish?'
+
+        texttwo = "Hello, would you like to take a catnap?"
+
+        textthree = "Hello, have you seen this caterpillar?"
+
+In[88]: re.search(r'cat(fish|nap|claw)', text)
+
+Out[88]: <sre.SRE_Match object; span = (27, 34), match = 'catfish'>
+
+In[89]: re.search(r'cat(fish|nap|claw)', texttwo)
+
+Out[89]: <sre.SRE_Match object; span = (32, 38), match = 'catnap'>
+
+In[90]: re.search(r'cat(fish|nap|claw)', textthree)
+
+Out[90]: 
+
+In[91]: re.search(r'cat(fish|nap|erpillar)', textthree)
+
+Out[91]: <_sre.SRE_Match object; span=(26, 37), match = 'caterpillar'>     

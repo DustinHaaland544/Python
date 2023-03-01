@@ -1,0 +1,168 @@
+Lecture-49: *args and **kwargs in Python
+
+*args and **kwargs
+
+
+Jupyter Notebook
+
+In[2]: def myfunc(a, b):
+
+	     # Returns 5% of the sum of a and b
+
+		 return sum((a, b)) * 0.05
+
+In[3]: myfunc(40, 60)
+
+Out[3]: 5.0
+
+In[4]: def myfunc(a, b, c = 0, d = 0, e = 0):
+
+		# Returns 5% of the sum of a and b
+
+	 	return sum((a, b, c, d, e)) * 0.05
+
+In[5]: myfunc(40, 60)
+
+Out[5]: 5.0
+
+In[6]: myfunc(40, 60, 100)
+
+Out[6]: 10.0
+
+In[7]: myfunc(40, 60, 100, 100)
+
+Out[7]: 15.0
+
+In[8]: myfunc(40, 60, 100, 100, 3)
+
+Out[8]: 15.15
+
+In[9]: myfunc(40, 60, 100, 100, 3, 4)
+
+Out[9]: TypeError
+
+In[10]: def myfunc(*args):
+
+		return sum(args) * 0.05
+
+In[11]: myfunc(40, 60)
+
+Out[11]: 5.0
+
+In[12]: myfunc(40, 60, 100)
+
+Out[12]: 10.0
+
+In[13]: myfunc(40, 60, 100, 1)
+
+Out[13]: 10.05
+
+In[14]: myfunc(40, 60, 100, 1, 34)
+
+Out[14]: 11.75
+
+In[15]: def myfunc(*args):
+
+		print(args)
+
+In[16]: myfunc(40, 60, 100, 1, 34)
+
+Out[16]: (40, 60, 100, 1, 34)
+
+In[17]: def myfunc(*spam):
+
+		print(spam)
+
+In[18]: myfunc(40, 60, 100, 1, 34)
+
+Out[18]: (40, 60, 100, 1, 34)
+
+In[19]: def myfunc(*args):
+
+		for item in args:
+
+			print(item)
+
+In[20]: myfunc(40, 60, 100, 1, 34)
+
+Out[20]: 40
+
+	    60
+
+         100
+
+         1
+
+         34
+
+In[21]: def myfunc(**kwargs):
+
+		if 'fruit' in kwargs:
+
+			print('My fruit of choice is {}'.format(kwargs ['fruit']))
+
+		else:
+
+			print('I did not find any fruit here')
+
+In[22]: myfunc(fruit = 'apple')
+
+Out[22]: My fruit of choice is apple
+
+In[23]: myfunc(fruit = 'apple', veggie = 'lettuce')
+
+Out[23]: My fruit of choice is apple
+
+In[24]: def myfunc(**kwargs):
+
+		print(kwargs)
+
+		if 'fruit' in kwargs:
+
+			print('My fruit of choice is {}'.format (kwargs['fruit']))
+
+		else: 
+
+			print('I did not find any fruit here')
+
+In[25]: myfunc(fruit = 'apple', veggie = 'lettuce')
+
+Out[25]: {'fruit': 'apple', 'veggie': 'lettuce'}
+
+	   My fruit of choice is apple
+
+In[26]: def myfunc(**jelly):
+
+		print(jelly)
+
+In[27]: myfunc(fruit = 'apple', veggie = 'lettuce')
+
+Out[27]: {'fruit': 'apple', 'veggie': 'lettuce'}
+
+In[28]: def myfunc(*args, **kwargs):
+
+		print('I would like {} {}'.format(args[0], kwargs['food']))
+
+In[29]: myfunc(10, 20, 30, fruit = 'orange', food = 'eggs', animal = 'dog')
+
+Out[29]: I would like 10 eggs
+
+In[30]: def myfunc(*args, **kwargs):
+
+		print(args)
+
+		print(kwargs)
+
+		print('I would like {} {}'.format(args[0], kwargs['food']))
+
+In[31]: myfunc(10, 20, 30, fruit = 'orange', food = 'eggs', animal = 'dog')
+
+Out[31]: (10, 20, 30)
+
+	   {'fruit': 'orange', 'food': 'eggs', 'animal': 'dog'}
+
+	   I would like 10 eggs
+
+In[32]: myfunc(10, 20, 30, fruit = 'orange', food = 'eggs', animal = 'dog', 100)
+
+Out[32]: SyntaxError: Positional argument follows keyword argument

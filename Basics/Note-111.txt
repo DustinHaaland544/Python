@@ -1,0 +1,58 @@
+Lecture-154: Chained Comparison Operators 
+
+
+Jupyter Notebook
+
+Chained Comparison Operators 
+
+In[321]: 1 < 2
+
+Out[321]: True
+
+In[322]: 2 < 3
+
+Out[322]: True
+
+In[323]: 1 < 2 < 3
+
+Out[323]: True
+
+In[324]: 1 < 2 and 2 < 3
+
+Out[324]: True
+
+In[325]: 1 < 3
+
+Out[325]: True
+
+In[326]: 3 > 2
+
+Out[326]: True
+
+In[327]: 1 < 3 > 3
+
+Out[327]: False 
+
+In[328]: 1 < 3 > 2
+
+Out[328]: True 
+
+In[329]: 1 < 3 and 3 > 2
+
+Out[329]: True
+
+In[330]: 1 == 2
+
+Out[330]: False
+
+In[331]: 2 < 3
+
+Out[331]: True
+
+In[332]: 1 == 2 or 2 > 1
+
+Out[332]: True
+
+In[333]: 1 == 1 or 100 == 1
+
+Out[333]: True

@@ -1,0 +1,87 @@
+Lecture-17: String Properties and Methods
+
+Immutability of Strings
+
+In[3]: name = "Sam"
+
+In[4]: name[0]: 'P'
+
+	 TypeError
+
+	 Strings are "immutable"
+
+In[5]: name[1:]
+
+Out[5]: 'am'
+
+In[6]: last_letters = name[1:]
+
+In[8]: last_letters 
+
+Out[8]: 'am'
+
+In[9]: 'P' + last_letters
+
+Out[9]: 'Pam'
+
+In[10]: x = 'Hello World'
+
+In[11]: x + "it is beautiful outside!"
+
+Out[11]: 'Hello Worldit is beautiful outside!'
+
+In[12]: x + " it is beautiful outside!"
+
+Out[12]: 'Hello World it is beautiful outside!"
+
+        This is called "String Concatenation", it allows us to put strings together
+
+In[21]: letter = 'z'
+
+In[22]: letter * 10
+
+Out[22]: 'zzzzzzzzzz'
+
+In[23]: 2 + 3
+
+Out[23]: 5
+
+In[24]: '2' + '3'
+
+Out[24]: '23'
+
+In[25]: x = 'Hello World'
+
+In[26]: x.upper()
+
+Out[26]: 'HELLO WORLD' 
+
+In[27]: x
+
+Out[27]: 'Hello World'
+
+In[28]: x = x.upper()
+
+In[29]: x
+
+Out[29]: 'HELLO WORLD'
+
+In[31]: x.lower()
+
+Out[31]: 'hello world'
+
+In[32]: x = 'Hello World'
+
+In[33]: x.split()
+
+Out[33]: ['Hello', 'World']
+
+In[34]: x = 'Hi this is a string'
+
+In[35]: x.split()
+
+Out[34]: ['Hi', 'this', 'is', 'a', 'string']
+
+In[35]: x.split('i')
+
+Out[35]: ['H', 'th', 's', 's a str', 'ng'] 

@@ -1,0 +1,12 @@
+Lecture-146: Quick note about ipywidgets
+
+
+Quick note about ipywidgets 
+
+Hi everyone!
+
+Just a quick note about coloring and styling your ipywidgets, ipywidgets has actually switched over to a Bootstrap style, for more info, check out: 
+
+https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20Styling.html#Predefined-styles 
+
+Any questions? Feel free to post to the QA forums, thanks! 

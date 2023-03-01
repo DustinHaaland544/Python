@@ -1,0 +1,57 @@
+Lecture-32: Comparison Operators in Python
+
+Jupyter Notebook
+
+In[68]: 2 == 2
+
+Out[68]: True
+
+In[69]: 2 == 1
+
+Out[69]: False
+
+In[70]: 'hello' == 'bye'
+
+Out[70]: False
+
+In[71]: 'Bye' == 'bye'
+
+Out[71]: False
+
+In[72]: '2' == 2
+
+Out[72]: False
+
+In[73]: 2.0 == 2
+
+In[74]: 3 != 3
+
+Out[74]: False
+
+In[75]: 4 != 5
+
+Out[75]: True
+
+In[76]: 2 > 1
+
+Out[76]: True
+
+In[77]: 1 > 2
+
+Out[77]: False
+
+In[78]: 1 < 2
+
+Out[78]: True
+
+In[79]: 2 < 5
+
+Out[79]: True
+
+In[80]: 2 >= 2
+
+Out[80]: True
+
+In[81]: 4 <= 1
+
+Out[81]: False

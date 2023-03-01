@@ -1,0 +1,219 @@
+Lecture-130: Working with CSV Files in Python
+
+
+Working with CSV Files 
+
+1. CSV stands for comma seperated variables and is a very common output for spreadsheet programs. 
+
+2. Example: 
+
+	- Name, Hours, Rate
+
+	- David, 20, 15
+
+	- Claire, 40, 20 
+
+3. Note, that while its possible to export excel files and Google Spreadsheets to .csv files, it "only" exports the information. 
+
+4. Things like formulas, images, and macros cannot be within a .csv file. 
+
+5. Simply put, a .csv file only contains the raw data from the spreadsheet. 
+
+6. We will work with the built-in csv module for Python, which will allow us to grab columns, rows, and values from a .csv file as well as write to a .csv file. 
+
+7. Keep in mind, this is a very popular space for outside libraries, which you may want to explore. 
+
+8. Other libraries to consider:
+
+	- Pandas
+
+   		* Full data analysis library, can work with almost any tabular data type.
+
+   		* Runs visualizations and analysis. 
+
+   		* One of my personal favorites, we teach it in various data science courses. 
+
+	- Openpyxl 
+
+		* Designed specifically for Excel files. 
+		
+		* Retains a lot of Excel specific functionality.
+
+		* Supports Excel formulas. 
+
+		* python-excel.org tracks various other Excel based Python libraries. 
+
+	- Google Sheets Python API
+
+		* Direct Python interface for working with Google Spreadsheets.
+
+		* Allows you to directly make changes to the spreadsheets hosted online. 
+
+		* More complex syntax, but available in many programming languages. 
+
+9. The common factor between all of these spreadsheet programs is that they can always export to .csv. 
+
+10. Let's explore Python's built-in capabilities with the csv module!
+
+
+Jupyter Notebook
+
+In[7]: pwd
+
+Out[7]: 'C:\\Users\\Marcial\\Pierian-Data-Courses\\Complete-Python-3-Bootcamp\\15-PDFs-and-Spreadsheets'
+
+In[8]: import csv
+
+In[9]: # Open the file
+
+       data = open('example.csv')
+
+In[10]: # csv.reader
+
+        csv_data = csv.reader(data)
+
+In[11]: # reformat it into a Python object list of lists
+
+        data_lines = list(csv_data) 
+
+Out[11]: UnicodeDecodeError: 'charmap' codec can't decode byte 0x8d in position
+   
+         1835: character maps to <undefined>  
+
+In[12]: # Open the file
+
+        data = open('example.csv', encoding = 'uft-8')
+
+In[13]: # csv.reader
+
+        csv_data = csv.reader(data)
+
+In[14]: # reformat it into a Python object list of lists
+
+        data_lines = list(csv_data)
+
+In[15]: data_lines
+
+Out[15]: ['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address', 'city'],
+
+         ['1',
+
+          'Joseph',
+
+          'Zaniolini', 
+
+          'jzaniolini0@simplemachines.org', 
+
+	     'Male', 
+
+          '163.168.68.132', 
+
+          'Pedro Leopoldo'] 
+
+In[16]: data_lines[0]
+
+Out[16]: ['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address', 'city'] 
+
+In[17]: len(data_lines)
+
+Out[17]: 1001
+
+In[18]: for line in data_lines[:5]: 
+
+		print(line)
+
+Out[18]: ['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address', 'city']
+
+         ['1', 'Joseph', 'Zaniolini', 'jzaniolini0@simplemachines.org', 'Male', '163.168.68.132', 'Pedro Leopoldo']
+
+         ['2', 'Frieda', 'Drillingcourt', 'fdrillingcourt1@umich.edu', 'Female', '97.21.102.79', 'Buri']
+
+         ['3', 'Nanni', 'Herity', 'nherity2@statcounter.com', 'Female', '145.151.178.98', 'Claver']
+
+         ['4', 'Orazio', 'Frayling', 'ofrayling3@economist.com', 'Male', '25.199.143.143', 'Kungur'] 
+
+In[19]: data_lines[0]
+
+Out[19]: ['id', 'first_name', 'last_name', 'email', 'gender', 'ip_address', 'city']
+
+In[20]: data_lines[10]
+
+Out[20]: ['10', 'Hyatt', 'Gasquoine', 'hgasquoine9@google.ru', 'Male', '221.155.106.39', 'Zloty Stok']
+
+In[21]: data_lines[10][3]
+
+Out[21]: 'hgasquoine9@google.ru' 
+
+In[22]: all_emails = []
+
+In[23]: for line in data_lines[1:]:
+
+		all_emails.append(line[3])
+
+In[24]: all_emails	# Outputs the list of all the emails 
+
+Out[24]: ['jzaniolini@simplemachines.org', 
+
+          'fdrillingcourt1@umich.edu', 
+
+          'nherity2@statcounter.com',
+
+          'ofrayling3@economist.com'
+
+          ....] 
+
+In[26]: data_lines[10]
+
+Out[26]: ['10',
+
+          'Hyatt',
+
+          'Gasquoine',
+
+          'hgasquoine9@google.ru',
+
+          'Male', 
+
+          '221.155.106.39',
+
+          'Zloty Stok']
+
+In[27]: full_names = []
+
+In[28]: for line in data_lines[1:]:
+
+		full_names.append(line[1] + ' ' + line[2])
+
+In[29]: full_names	# Outputs the list of all the full_names
+
+Out[29]: ['Joseph Zaniolini',
+
+          'Frieda Drillingcourt',
+
+          'Nanni Herity', 
+
+          ..... ]
+
+In[30]: # full names
+
+In[31]: file_to_output = open('to_save_file.csv', mode = w, newline = '')
+
+In[32]: csv_writer = csv.writer(file_to_output, delimiter = ',')
+
+In[33]: csv_writer.writerow(['a', 'b', 'c'])
+
+Out[33]: 7
+
+In[34]: csv_writer.writerows([['1', '2', '3'], ['4', '5', '6']])
+
+In[35]: file_to_output.close()
+
+In[36]: f = open('to_save_file.csv', mode = 'a', newline = '')
+
+In[37]: csv_writer = csv.writer(f)
+
+In[38]: csv_writer.writerow(['1', '2', '3'])
+
+Out[38]: 7
+
+In[39]: f.close()

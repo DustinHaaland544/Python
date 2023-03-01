@@ -1,0 +1,48 @@
+Lecture-113: Zipping and Unzipping files with Python 
+
+
+Unzipping and Zipping Files
+
+Jupyter Notebook
+
+In[1]: f = open('fileone.txt', 'w+')
+
+       f.write('ONE FILE')
+
+       f.close()
+
+In[2]: f = open('filetwo.txt', 'w+')
+
+       f.write('TWO FILE')
+
+       f.close()
+
+In[3]: import zipfile
+
+In[4]: comp_file = zipfile.ZipFile('comp_file.zip', 'w')
+
+In[5]: comp_file.write('fileone.txt',compress_type = zipfile.ZIP_DEFLATED)
+
+In[6]: comp_file.write('filetwo.txt',compress_type = zipfile.ZIP_DEFLATED)
+
+In[7]: comp_file.close()
+
+In[8]: zip_obj = zipfile.ZipFile('comp_file.zip', 'r')
+
+In[9]: zip_obj.extractall('extracted_content')
+
+In[10]: pwd
+
+Out[10]: 'C:\\Users\\Marcial\\Pierian-Data-Courses\\Complete-Python-3-Bootcamp\\12-Advanced Python Modules' 
+
+In[11]: import shutil
+
+In[12]: dir_to_zip = 'C:\\Users\\Marcial\\Pierian-Data-Courses\\Complete-Python-3-Bootcamp\\12-Advanced Python Modules\\extracted-content'
+
+In[13]: output_filename = 'example'
+
+In[14]: shutil.make_archive(output_filename, 'zip', dir_to_zip) 
+
+Out[14]: 'C:\\Users\\Marcial\\Pierian-Data-Courses\\Complete-Python-3-Bootcamp\\12-Advanced Python Modules\\example.zip'
+
+In[16]: shutil.unpack_archive('example.zip', 'final_unzip', 'zip') 

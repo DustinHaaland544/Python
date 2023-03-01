@@ -1,0 +1,39 @@
+Lecture-68: Object Oriented Programming - Introduction
+
+Object Oriented Programming
+
+1. Object Oriented Programming(OOP) allows programmers to create their own objects that have methods and attributes.
+
+2. Recall that after defining a string, list, dictionary, or other objects, you were able to call methods off of them with the .method_name() syntax. 
+
+3. These methods act as functions that use information about the object, as well as the object itself to return results, or change the current object.
+
+4. For example this includes appending to a list, or counting the occurances of an element in a tuple. 
+
+5. OOP allows users to create their own objects.
+
+6. The general format is often confusing when first encountered, and its usefulness may not be completely clear at first. 
+
+7. In general, OOP allows us to create code that is repeatable and organized. 
+
+8. For much larger scripts of Python code, functions by themselves aren't enough for organization and repeatability. 
+
+9. Commonly repeated tasks and objects can be defined with OOP to create code that is more usable. 
+
+10. Let's check out the syntax. 
+
+
+class NameOfClass():
+
+	def __init__(self, param1, param2):
+
+		self.param1 = param1
+
+		self.param2 = param2
+
+	
+	def some_method(self):
+
+		# perform some action
+
+		print(self.param1)

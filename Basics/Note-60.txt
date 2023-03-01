@@ -1,0 +1,123 @@
+Lecture-84: Pylint Overview
+
+
+Unit Testing
+
+1. As you begin to expand to larger multi-file projects it becomes important to have tests in place.
+
+2. This way you make changes or update your code, you can run your test files to make sure previous code still runs as expected. 
+
+3. There are several testing tools, we will focus on two:
+
+	- pylint: This is a library that looks at your code and reports back possible issues. 
+
+	- unittest: This is a built-in library, which will allow you to test your own programs and check if you are getting desired outputs.
+
+4. We will begin by showing you how to use pylint to check your code for possible errors and styling. 
+
+5. Python as a set of style convention rules known as "PEP8". 
+
+6. Afterwards we will explore how to test our code with the built-in unittest library. 
+
+7. For this lecture we will be creating .py scripts in sublime.
+
+8. You can still use the associated notebook for code using the %%writefile magic jupyter command. 
+
+9. Let's get started!
+
+
+Terminal:
+
+C:\Users\Marcial\Desktop> pip install pylint
+
+Sublime Text Editor:
+
+simple1.py
+
+a = 1
+
+b = 2
+
+print(a)
+
+print(B)
+
+Terminal:
+
+C:\Users\Marcial\Desktop> pylint simple1.py
+
+E: 4,6: Undefined variable 'B' (undefined-variable)
+
+simple1.py
+
+'''
+
+A Very Simple Script
+
+'''
+
+
+def myfunc():
+
+	'''
+
+	A simple function
+
+	'''
+
+	first = 1
+
+	second = 2
+
+	print(first)
+
+	print(second)
+
+myfunc()
+
+Terminal:
+
+C:\Users\Marcial\Desktop> python simple1.py
+
+1
+
+2
+
+C:\Users\Marcial\Desktop> pylint simple1.py
+
+Rated: 0.00/10
+
+simple1.py
+
+'''
+
+A Very Simple Script
+
+'''
+
+
+def myfunc()
+
+	'''
+
+	A simple function
+
+	'''
+
+	first = 1
+
+	second = 2
+
+	print(first)
+
+	print(second)
+
+myfunc()
+
+
+Terminal:
+
+C:\Users\Marcial\Desktop> pylint simple1.py
+
+
+Rate: 8.33/10

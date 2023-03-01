@@ -1,0 +1,89 @@
+Lecture-46: Tuple Unpacking with Python Functions
+
+
+Functions and Tuple Unpacking
+
+Jupyter Notebook
+
+In[65]: stock_prices = [('APPL', 200), ('GOOG', 400), ('MSFT', 100)]
+
+In[66]: for item in stock_prices:
+
+		print(item)
+
+Out[66]: ('APPL', 200)
+
+	   ('GOOG', 400)
+
+         ('MSFT', 100)
+
+In[67]: for ticker, price in stock_prices:
+
+		print(ticker)
+
+Out[67]: APPL
+
+         GOOG
+
+         MSFT
+
+In[68]: for ticker, price in stock_prices:
+
+		print(price + (0.1 * price))
+
+Out[68]: 220.0
+
+         440.0
+
+         110.0
+
+In[69]: work_hours = [('Abby', 100), ('Billy', 400), ('Cassie', 800)]
+
+In[70]: def employee_check(work_hours):
+
+		current_max = 0
+
+		employee_of_month = ''
+
+
+		for employee, hours in work_hours:
+
+			if hours > current_max:
+
+				current_max = hours
+
+				employee_of_month = employee
+
+			else:
+
+				pass
+
+		# Return
+
+		return (employee_of_month, current_max)
+
+In[71]: employee_check(work_hours)
+
+Out[71]: ('Cassie', 800)
+
+In[72]: work_hours = [('Abby', 100), ('Billy', 4000), ('Cassie', 800)]
+
+In[73]: result = employee_check(work_hours)
+
+In[74]: result
+
+Out[74]: ('Billy', 4000)
+
+In[75]: name, hours = employee_check(work_hours)
+
+In[76]: result
+
+Out[76]: ('Billy', 4000)
+
+In[79]: name
+
+Out[79]: 'Billy'
+
+In[80]: hours
+
+Out[80]: 4000

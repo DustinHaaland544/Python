@@ -1,0 +1,127 @@
+Lecture-122: Python Web Scraping - Book Examples Part two 
+
+In[75]: products = soup.select("product_pod")
+
+In[76]: example = products[0]
+
+In[92]: str(example)
+
+Out[92]: '<article class= "product_pod">\n<div class= "image_container">\n<a href= "a-light-in-the-attic_1000/index.html"><img alt= "A Light in the Attic" class= "thumbnail" src= "../media/
+
+         cache/2c/da/2cdad67c44b002e7ead0cc35693c0e8b.jpg"/></a>/n</div>\n<p class= "star-rating Three">\n<i class= "icon-star"></i>\n<i class= "icon-star"></i>\n<i class="icon-star"></i>\n
+
+         <i class = "icon-star"></i>\n</p>\n<h3><a href= "a-light-in-the-attic_1000/index.html" title= "A Light in the Attic"> A Light in the ... </a></h3>\n<div class= "product-price">\n<p
+
+         class= "price-color">A£51.77</p>\n<p class= "instock availability">\n<i class= "icon-ok"></i>\n \n In stock \n \n </p> \n <form>\n<button class= "btn btn-primary btn-block" 
+
+         data-loading-text = "Adding..." type= "submit">Add to basket</button>\n</form>\n</div>\n</article>'
+
+In[93]: 'star-rating Two' in str(example)
+
+Out[93]: False
+
+In[94]: 'star-rating Three' in str (example)
+
+Out[94]: True
+
+In[95]: example 
+
+Out[95]: <article class= "product_pod">
+
+         <div class= "image_container">
+
+         <a href= "a-light-in-the-attic_1000/index.html"><img alt= "A Light in the Attic" class= "thumbnail" src= "../media/cache/2c/da/2cdad67c44b002e7ead0cc35693c0e8b.jpg"></a>
+
+         ....
+
+In[96]: example.select(".star-rating Three")
+
+Out[96]: [] 
+
+In[97]: example.select(".star-rating.Three")
+
+Out[97]: [<p class= "star-rating Three">
+
+          <i class= "icon-star"></i>
+
+          <i class= "icon-star"></i>
+
+          <i class= "icon-star"></i>
+
+          <i class= "icon-star"></i>
+
+          <i class= "icon-star"></i>
+
+          </p>]
+
+In[98]: example.select(".star-rating.Two")
+
+Out[98]: []
+
+In[99]: [] = example.select(".star-rating.Two")
+
+Out[99]: True 
+
+In[100]: example
+
+Out[100]: <artcile class= "product_pod">
+
+          <div class= "image container">
+
+          <a href= "a-light-in-the-attic_1000/index.html"><img alt= "A Light in the Attic" class= "thumbnail" src= "../media/cache/2c/da/2cdad67c44b002e7ead0cc35693c0e8b.jpg"/></a>
+
+          </div>
+
+          .....
+
+In[101]: example.select('a')
+
+Out[101]: [<a href= "a-light-in-the-attic_1000/index.html"><img alt= "A Light in the Attic" class= "thumbnail" src= "../media/cache/2c/da/2cdad67c44b002e7ead0cc3563c0e8b.jpg"/></a>, 
+
+           <a href= "a-light-in-the-attic_1000/index.html" title= "A Light in the Attic">A Light in the ...</a>] 
+
+In[102]: example.select('a')[1]
+
+Out[102]: <a href= "a-light-in-the-attic_1000/index.html" title= "A Light in the Attic">A Light in the ...</a>
+
+In[103]: type(example.select('a')[1])
+
+Out[103]: bs4.element.Tag
+
+In[104]: example.select('a')[1]
+
+Out[104]: <a href= "a-light-in-the-attic_1000/index.html" title= "A Light in the Attic">A Light in the ...</a>
+
+In[105]: example.select('a')[1]['title']
+
+Out[105]: 'A Light in the Attic' 
+
+In[106]: # We can check if something is 2 stars (string call in, example.select (rating)) 
+
+         # example.select('a')[1]['title'] to grab the book title
+
+In[110]: two_star_titles = []
+
+         for n in range(1, 51):
+
+   		scrape_url = base_url.format(n)
+
+		res = requests.get(scrape_url)
+
+
+		soup = bs4.BeautifulSoup(res.text, 'lxml')
+
+  		books = soup.select(".product_pod") 
+
+
+		for book in books:
+
+			if len(book.select('.star-rating.Two')) != 0:
+
+				book_title = book.select('a')[1]['title']
+
+				two_star_titles.append(book_title) 
+
+In[111]: two_star_titles
+
+Out[111]: ['Starving Hearts (Triangular Trade Trilogy, #1)', Libertarianism for Beginners', ...... The list of all books with 2 stars] 

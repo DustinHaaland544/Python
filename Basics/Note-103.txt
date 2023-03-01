@@ -1,0 +1,95 @@
+Lecture-143 & 144: Advanced Python Objects Test and Solutions 
+
+
+Jupyter Notebook
+
+Advanced Python Objects Test 
+
+Advanced Numbers
+
+1. Convert 1024 to binary and hexadecimal representation
+
+Ans: In[1]: print(bin(1024))
+
+            print(hex(1024))
+
+     Out[1]: 0b10000000000
+
+             0x400
+
+2. Round 5.23222 to two decimal places
+
+Ans: In[1]: round(5.23222, 2)
+
+     Out[2]: 5.23
+
+
+Advanced Strings
+
+3. Check if every letter in the string s is lower case
+
+Ans: In[3]: s = 'hello how are you Mary, are you feeling okay?' 
+
+            s.islower()
+
+     Out[3]: False
+
+4. How many times does the letter 'w' shows up in the string below?
+
+Ans: In[4]: s = 'twywywtwywbwhsjhwvwshshwuwwwjdjdid' 
+
+            s.count('w')
+
+     Out[4]: 12 
+
+
+Advanced  
+
+5. Find the elements in set1 that are not in set2:
+
+Ans: In[5]: set1 = {2, 3, 1, 5, 6, 8} 
+
+            set2 = {3, 1, 7, 5, 6, 8} 
+
+            
+            set1.difference(set2) 
+
+Out[5]: {2} 
+
+6. Find all elements that are in either set:
+
+Ans: In[6]: set1.union(set2)
+
+     Out[6]: {1, 2, 3, 5, 6, 7, 8}
+
+
+Advanced Dictionaries
+
+7. Create this dictionary: {0:0, 1:1, 2:8, 3:27, 4:64} using dictionary comprehension
+
+Ans: In[7]: {x: x**3 for x in range(5)}
+
+     Out[7]: {0:0, 1:1, 2:8, 3:27, 4:64}
+
+
+Advanced Lists 
+
+8. Reverse the list below: 
+
+Ans: In[8]: list1 = [1, 2, 3, 4]
+
+            list1.reverse()
+
+            list1
+
+     Out[8]: [4, 3, 2, 1]
+
+9. Sort the list below: 
+
+In[9]: list2 = [3, 4, 2, 5, 1] 
+
+Ans: In[10]: list2.sort()
+
+             list2
+
+     Out[10]: [1, 2, 3, 4, 5]

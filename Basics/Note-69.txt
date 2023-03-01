@@ -1,0 +1,321 @@
+Lecture-105: Opening and Reading Files and Folders (Python OS Module)
+
+
+Shutil and OS Modules
+
+
+Opening and Reading Files and Folders
+
+1. We already know how to open an individual file with Python, but we still don't know how to do a few things:
+
+	- What if we need to open every file in a directory?
+
+	- What if we want to actually move files around on our computer?
+
+2. Python's OS module and shutil allow us to easily navigate files and directories on the computer and then perform actions on them, such as moving them or deleting them. 
+
+
+Jupyter Notebook
+
+In[11]: pwd		# Current Working Directory
+
+Out[11]: 'C:\\Users\\Marcial\\Pierian-Data-Courses\\Complete-Python-3-Bootcamp\\12-Advanced Python Modules'
+
+In[12]: f = open('practice.txt', 'w+')
+
+        f.write('This is a test string')
+
+        f.close()
+
+In[13]: import OS
+
+In[14]: os.getcwd()
+
+Out[14]: 'C:\\Users\\Marcial\\Pierian-Data-Courses\\Complete-Python-3-Bootcamp\\12-Advanced Python Modules' 
+
+In[15]: os.listdir()
+
+Out[15]: ['.ipynb_checkpoints',
+
+	    '00-Collections-Module.ipynb',
+
+	    '01-Opening-and-Reading-Files-Folders.ipynb',
+
+	    '02-Datetime-Module.ipynb',
+
+	    '03-Math-and-Random-Module.ipynb',
+
+	    '04-Python Debugger(pdb).ipynb', 
+
+	    '05-Overview-of-Regular-Expressions.ipynb',
+
+	    '06-Timing your code - timeit.ipynb',
+
+	    '07-Unzipping-and-zipping-Files.ipynb',
+
+	    '08-Advanced-Python-Module-Exercise', 
+
+	    'comp_file.zip',
+
+	    'Example_Top_Level',
+
+	    'extracted_content',
+
+	    'new_file.txt'
+
+	    'new_file2.txt'
+
+	    'practice.txt'
+
+	    'Untitled.ipynb']
+
+In[16]: os.listdir('C:\\Users')
+
+Out[16]: ['admin.DESKTOP-064BPTC',
+
+	    'All Users',
+
+   	    'Default',
+
+	    'Default User', 
+
+	    'defaultuser0',
+
+	    'desktop.ini',
+
+	    'Marcial',
+
+	    'Public']
+
+In[17]: import shutil	# 'shutil' stands for 'shell utilities' 
+
+In[20]: shutil.move('practice.txt', 'C:\\Users\\Marcial')
+
+Out[20]: 'C:\\Users\\Marcial\\practice.txt'
+
+In[21]: os.listdir('C:\\Users\\Marcial')
+
+Out[21]: ['.anaconda',
+
+	    '.atom',
+
+	    '.cache',
+
+	    '.conda',
+
+	    '.condare',
+
+	    ...
+
+	    'practice.txt'	<-
+
+	    'PrintHood'
+
+	    'Recent',
+
+	    'salaries.csv' ]
+
+
+Deleting Files
+
+Note: The os module provides 3 methods for deleting files:
+
+	- os.unlink(path) which deletes a file at the path you provide.
+
+	- os.rmdir(path) which deletes a folder (folder must be empty) at the path you provide.
+
+	- os.rmtree(path) this is the most dangerous, as it will remove all files and folders contained in the path. "All of these methods cannot be reversed! Which means if you make a 
+
+	  mistake you won't be able to recover the file. Instead we will use the send2trash module. A safer alternative that sends deleted files to the trash bin instead of permanent 
+
+	  removal.'
+
+
+Jupyter Notebook
+
+In[22]: import send2trash
+
+In[23]: os.listdir()
+
+Out[23]: ['.ipynb_checkpoints',
+
+	    '00-Collections-Module.ipynb',
+
+	    '01-Opening-and-Reading-Files-Folders.ipynb',
+
+	    '02-Datetime-Module.ipynb',
+
+	    '03-Math-and-Random-Module.ipynb',
+
+	    '04-Python Debugger (pdb).ipynb',
+
+	    '05-Overview-of-Regular-Expressions.ipynb',
+
+	    '06-Timing your code - timeit.ipynb',
+
+	    '07-Unzipping-and-Zipping-Files.ipynb',
+
+	    '08-Advanced-Python-Module-Exercises',
+
+	    'comp_file.zip',
+
+	    'Example_Top_Level',
+
+	    'extracted_content',
+
+	    'new_file.txt',
+
+	    'new_file2.txt',
+
+	    'Untitled.ipynb']
+
+In[24]: shutil.move('C:\\Users\\Marcial\\practice.txt', os.getcwd())
+
+Out[24]: 'C:\\Users\\Marcial\\Pierian-Data-Courses\\Complete-Python-3-Bootcamp\\12-Advanced Python Modules\\practice.txt'
+
+In[25]: os.listdir()
+
+Out[25]: ['.ipynb_checkpoints',
+
+	    '00-Collections-Module.ipynb',
+
+	    '01-Opening-and-Reading-Files-Folders.ipynb',
+
+	    '02-Datetime-Module.ipynb',
+
+	    '03-Math-and-Random-Module.ipynb',
+
+	    '04-Python Deugger (pdb).ipynb',
+
+	    '05-Overview-of-Regular-Expressions.ipynb',
+
+	    '06-Timing your code - timeit.ipynb', 
+
+	    '07-Unzipping-and-Zipping-Files.ipynb',
+
+	    '08-Advanced-Python-Module-Exercise',
+
+	    'comp-file.zip',
+
+	    'Example_Top_Level', 
+
+	    'extracted_content',
+
+	    'new_file.txt',
+
+	    'new_file2.txt',
+
+	    'practice.txt',	<-
+
+	    'Untitled.ipynb']
+
+In[26]: send2trash.send2trash('practice.txt')
+
+In[27]: os.listdir()
+
+Out[27]: ['.ipynb_checkpoints',
+
+	    '00-Collections-Module.ipynb',
+
+	    '01-Opening-and-Reading-Files-Folders.ipynb',
+
+	    '02-Datetime-Module.ipynb',
+
+	    '03-Math-and-Random-Module.ipynb',
+
+	    '04-Python Deugger (pdb).ipynb',
+
+	    '05-Overview-of-Regular-Expressions.ipynb',
+
+	    '06-Timing your code - timeit.ipynb', 
+
+	    '07-Unzipping-and-Zipping-Files.ipynb',
+
+	    '08-Advanced-Python-Module-Exercise',
+
+	    'comp-file.zip',
+
+	    'Example_Top_Level', 
+
+	    'extracted_content',
+
+	    'new_file.txt',
+
+	    'new_file2.txt',
+
+	    'Untitled.ipynb']
+
+
+In[28]: os.getcwd()
+
+Out[28]: 'C:\\Users\\Marcial\\Pieran-Data-Courses\\Complete-Python-3-Bootcamp\\12-Advanced Python Modules'
+
+In[29]: file_path =  'C:\\Users\\Marcial\\Pierian-Data-Courses\\Complete-Python-3-Bootcamp\\Example_Top_Level'
+
+In[30]: for folder, sub_folders, files in os.walk(file_path):
+
+		print(f"Currently looking at {folder}")
+
+	      print('\n')
+
+		print('The subfolders are: ')
+
+		for sub_fold in sub_folders:
+
+			print(f"Subfolder : {sub_fold}")
+
+		print('\n')
+
+		print("the files are: ")
+
+		for f in files:
+
+			print(f"File : {f}")
+
+		print('\n')
+
+Out[30]: Currently looking at C:\Users\Marcial\Pierian-Data-Courses\Complete-Python-3-Bootcamp\12-Advanced Python Modules\Example_Top_Level
+
+	   The subfolders are:
+
+		Subfolder: Mid-Example-One
+
+		Subfolder: Mid-Example-Two
+
+	   the files are:
+
+		File: Mid-Example.txt
+
+	   Currently looking at C:\Users\Marcial\Pierian-Data-Courses\Complete-Python-3-Bootcamp\12-Advanced Python Modules\Example_Top_Level\Mid-Example-One
+
+	   The subfolders are:
+
+		Subfolder: Bottom-Level-One
+
+		Subfolder: Bottom-Level-Two
+
+		the files are:
+
+			File: Mid-Level-Doc.txt
+
+	   Currently looking at C:\Users\Marcial\Pierian-Data-Courses\Complete-Python-3-Bootcamp\12-Advanced Python Module\Example_Top_Level\Mid-Example-One\Bottom-Level-One
+
+	   The subfolders are:
+
+	   	the files are:
+
+			File: One_Text.txt
+
+	   Currently looking at C:\Users\Marcial\Pierian-Data-Courses\Complete-Python-3-Bootcamp\12-Advanced Python Module\Example_Top_Level\Mid-Example-One\Bottom-Level-Two
+
+	   The subfolders are:
+
+		the files are:
+
+			File: Bottom-Text-Two.txt
+
+	   Currently looking at C:\Users\Marcial\Pierian-Data-Courses\Complete-Python-3-Bootcamp\12-Advanced Python Modules\Example_Top_Level\Mid-Example-Two
+
+	   The subfolders are:
+
+	   The files are:

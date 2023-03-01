@@ -1,0 +1,372 @@
+Lecture-126: Working with Images with Python 
+
+
+Overview of Working with Images 
+
+1. In this lecture we will explore how to work with Images with Python. 
+
+2. We will use the Pillow library for this, which is a fork of the PIL (Python Imaging Library) with easy to use function calls. 
+
+3. We will need to install this additional library. 
+
+4. Install it at your command line with:
+
+	- pip install pillow 
+
+* You can find the official documentation for it at:
+
+	- pillow.readthedocs.io
+
+
+Jupyter Notebook
+
+In[3]: from PIL import Image
+
+In[4]: mac = Image.open('example.jpg')
+
+In[5]: type(mac)
+
+Out[5]: PIL.JpegImagePlugin.JpegImageFile
+
+In[6]: mac	# We can type mac, and it will display the image here, but in an IDE we need to type mac.show()
+
+Out[6]: 
+
+
+		IMAGE GOES HERE
+
+
+In[7]: mac.size
+
+Out[7]: (1993, 1257)
+
+In[8]: mac.filename
+
+Out[8]: 'example.jpg'
+
+In[9]: mac.format_description
+
+Out[9]: 'JPEG (ISO 10918)' 
+
+        Cropping Images
+			x
+        0-------------------->
+	  .---------.------------
+      0 |<------->		|
+	| |^	w			|
+	| ||				|
+	| ||h				| 
+	| .|				|
+	| |v				|
+	| |				|
+	| |				|
+	| |				|
+	V -----------------------
+
+In[12]: mac.crop((0, 0, 100, 100))	# h = 100, w = 100
+
+Out[12]: -----------------------
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   ------------------------
+
+In[13]: pencils = Image.open('pencils.jpg')
+
+In[14]: pencils
+
+Out[14]: ------------------------
+	   |-				  |
+         |-                     |
+         |-                     |
+         |-                     |
+         |-                     |
+         |-                     |
+         |-                     |
+         |-                     |
+         |-                     |
+         |-                     |
+         |-                     |
+         ------------------------
+
+In[15]: pencils.size
+
+Out[15]: (1950, 1300)
+
+In[16]: x = 0
+
+        y = 0
+
+        w = 1950/3
+
+        h = 1300/10
+
+In[17]: pencils.crop((x, y, w, h))
+
+Out[17]: ------------------------
+	   |-				  |
+         |-                     |
+         |-                     |
+         |-                     |
+         |-                     |
+         |-                     |
+         |-                     |
+         |-                     |
+         ------------------------
+
+In[18]: # BOTTOM PENCILS
+
+        x = 0
+
+	  y = 1100
+
+        w = 1950 / 3
+
+        h = 1300
+
+In[19]: pencils.crop((x,y,w,h))
+
+Out[19]:  ------------------------
+	   |-				  |
+         |-                     |
+         |-                     |
+         |-                     |
+         |-                     |
+	   |-                     |
+         |-                     |
+         |-                     |
+         ------------------------
+
+In[20]: mac
+
+Out[20]: ------------------------
+         |				  |
+	   |				  |
+	   |				  |
+	   |				  |
+	   |		              |
+         |	     |----|		  |
+	   |	     |    |		  |
+	   |	     |    |		  |
+         ------------------------
+
+In[21]: mac.size
+
+Out[21]: (1993, 1257) 
+
+In[22]: halfway = 1993/2
+
+In[23]: x = halfway - 200
+
+        w = halfway + 200
+
+In[24]: y = 800
+
+        h = 1257
+
+In[25]: mac.crop((x, y, w, h))
+
+Out[25]: -----------------------
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   ------------------------
+
+In[26]: computer = mac.crop((x, y, w, h))
+
+In[27]: mac.paste(im = computer, box = (0, 0))
+
+In[28]: mac
+
+Out[28]: ------------------------
+         |       |		  |
+	   |	     |		  |
+	   |-------|		  |
+	   |				  |
+	   |		              |
+         |	     |----|		  |
+	   |	     |    |		  |
+	   |	     |    |		  |
+         ------------------------
+
+In[29]: mac.paste(im = computer, box = (796, 0))
+
+In[30]: mac 
+
+Out[30]: ------------------------
+         |       |   |   |	  |
+	   |	     |   |	 |	  |
+	   |-------|   |---|	  |
+	   |				  |
+	   |		              |
+         |	     |----|		  |
+	   |	     |    |		  |
+	   |	     |    |		  |
+         ------------------------
+
+In[31]: mac.size
+
+Out[31]: (1993, 1257)
+
+In[33]: mac.resize((3000, 500))	# Image Resizing 
+
+Out[33]: ----------------------------------------
+         |       |   	|    |	  		|
+	   |	     |   	|    |	  		|    
+	   |-------|   	|----|                  |
+	   |							|
+	   |			|----|		  	|
+	   |	     		|    |		  	|
+	   |	     		|    |		  	|
+         ----------------------------------------
+
+In[34]: mac.rotate(90)	# Image Resizing by 90 deg 
+
+Out[34]: ---------------
+         |------	-----|
+	   |     |  |    |
+         |     |  |    |
+         |------  -----|
+         |             |
+         |             |
+         |------       |
+         |     |       |
+         |-------------|
+
+
+Color Transparency 
+
+RGBA - Red, Green, Blue, Alpha 
+
+In[41]: red = Image.open('red_color.jpg')
+
+In[42]: red
+
+Out[42]: -----------------------
+	   |				 |
+	   |				 |
+	   |				 |
+	   |	      RED	       |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   ------------------------
+
+In[43]: blue = Image.open('blue_color.png')
+
+In[44]: blue
+
+Out[44]: -----------------------
+	   |				 |
+	   |				 |
+	   |				 |
+	   |	     Blue		 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   ------------------------
+
+In[45]: blue.putalpha(0)		# Changing the rgba of blue.png by setting alpha(a) to 0
+
+In[46]: blue 
+
+Out[46]: -----------------------
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   -----------------------
+
+In[47]: blue.putalpha(255)
+
+In[48]: blue
+
+Out[48]: -----------------------
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   -----------------------
+
+In[49]: blue.putalpha(128)
+
+In[50]: blue 
+
+Out[50]: -----------------------
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   -----------------------
+
+In[51]: red.putalpha(128)
+
+In[52]: red
+
+Out[52]: -----------------------
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   -----------------------
+
+In[19]: blue.paste(im = red, box = (0,0), mask = red)
+
+In[20]: blue
+
+Out[20]: -----------------------
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   -----------------------
+
+In[21]: blue.save("purple.png")
+
+In[22]: purple = Image.open("purple.png")
+
+In[23]: purple
+
+Out[23]: -----------------------
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   |				 |
+	   -----------------------
+     

@@ -1,0 +1,123 @@
+Lecture-136: Receiving Emails with Python
+
+
+Receiving Emails
+
+1. To view received emails with Python we can use the built in "imaplib" and email libraries in Python. 
+
+2. The imaplib library has a special syntax for searching your Inbox. 
+
+3. Before beginning this discussion, send yourself a test email with a unique subject line that you will be able to remember and search for using Python. 
+
+4. Let's begin exploring checking received emails with Python. 
+
+
+Jupyter Notebook
+
+Viewing Emails 
+
+In[14]: import imaplib
+
+In[15]: M = imaplib.IMAP4.SSL('imap.gmail.com')
+
+In[17]: email = getpass.getpass("Email: ")
+
+        password = getpass.getpass('Password: ')
+
+        Email: .............
+
+        Password: ...............
+
+In[19]: M.login(email, password)
+
+Out[19]: ('OK', [b'johncena@gmail.com authenticated (Success)'])
+
+In[20]: M.list()
+
+Out[20]: ('OK',
+
+          [b' (\\HasNoChildren) "/" "INBOX" ', 
+
+	     b' (\\HasNoChildren) "/" "Personal" ',
+
+           b' (\\HasNoChildren) "/" "Receipts" ', 
+
+           b' (\\HasNoChildren) "/" "Sent" ', 
+
+           b' (\\HasNoChildren) "/" "Trash" ',
+
+	     b' (\\HasNoChildren) "/" "Travel" ',
+
+           b' (\\HasNoChildren) "/" "Work" ', 
+
+           b' (\\HasChildren \\Noselect) "/" "[Gmail]" ', 
+
+           b' (\\All \\HasNoChildren) "/" "[Gmail]/All Mail" ', 
+
+           b' (\\Drafts \\HasNoChildren) "/" "[Gmail]/Drafts" ', 
+
+           b' (\\HasNoChildren \\Important) "/" " [Gmail]/Important" ', 
+
+           b' (\\HasNoChildren \\Sent) "/" "[Gmail]/Sent Mail" ', 
+
+           b' (\\HasNoChildren \\Junk) "/" "[Gmail]/Spam" ', 
+
+           b' (\\Flagged \\HasNoChildren) "/" "[Gmail]/Starred" ', 
+
+           b' (\\HasNoChildren \\Trash) "/" "[Gmail]/Trash" ']) 
+
+In[21]: M.select('inbox')
+
+Out[21]: ('OK', [b'28493'])
+
+In[22]: typ, data = M.search(None, 'SUBJECT "NEW TEST PYTHON" ')
+
+In[23]: typ
+
+Out[23]: 'OK'
+
+In[24]: data
+
+Out[24]: [b'28493']
+
+In[25]: data[0]
+
+Out[25]: b'28493' 
+
+In[26]: email_id = data[0]
+
+In[27]: result, email_data = M.fetch(email_id, '(RFC822)')
+
+In[34]: email_data
+
+Out[34]: [(b'28493 (RFC822 {534}', 
+
+         ..........................................................................................
+
+	   ..........................................................................................
+
+         ..........................................................................................
+
+         subject: NEW TEST PYTHON \r\n\r\nhello this is a test\r\n'), b')']
+
+In[36]: raw_email = email_data[0][1]
+
+In[37]: raw_email_string = raw_email.decode ('utf-8')
+
+In[38]: import email
+
+In[39]: email_message = email.message_from_string(raw_email_string)
+
+In[40]: email_message
+
+Out[40]: <email.message.Message at 0x2d6a04120b8> 
+
+In[41]: for part in email_mesage.walk():
+
+		if part.get_content_type() == 'text/plain':
+
+			body = part.get_payload(decode = True)
+
+		print(body)
+
+Out[41]: b'hello this is a test \r\n' 

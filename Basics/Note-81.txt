@@ -1,0 +1,127 @@
+Lecture-118: Python Web Scraping - Grabbing a Title 
+
+
+Grabbing a Page Title 
+
+Jupyter Notebook
+
+In[14]: import requests
+
+In[15]: result = requests.get("http://www.example.com")
+
+In[16]: type(result)
+
+Out[16]: requests.models.Response
+
+In[17]: result.text
+
+Out[17]: '<!doctype html><html><head><title>Example Domain</title><meta charset="utf-8" /><meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1" /><style type="text/css">body {background-color: #f0f0f2;margin: 0;padding: 0;
+
+font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;} div {width: 600px;margin: 5em auto;padding: 2em;
+        
+background-color: #fdfdff;border-radius: 0.5em;box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);}a:link, a:visited {color: #38488f;text-decoration: none;}@media (max-width: 700px) {div {
+
+margin: 0 auto;width: auto;}}</style></head><body><div><h1>Example Domain</h1><p>This domain is for use in illustrative examples in documents. You may use this
+
+domain in literature without prior coordination or asking for permission.</p><p><a href="https://www.iana.org/domains/example">More information...</a></p></div></body></html>
+
+In[18]: import bs4
+
+In[19]: soup = bs4.BeautifulSoup(result.text, "lxml")
+
+In[20]: soup
+
+Out[20]: <!DOCTYPE html>
+<html>
+<head>
+    <title>Example Domain</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style type="text/css">
+    body {
+        background-color: #f0f0f2;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        
+    }
+    div {
+        width: 600px;
+        margin: 5em auto;
+        padding: 2em;
+        background-color: #fdfdff;
+        border-radius: 0.5em;
+        box-shadow: 2px 3px 7px 2px rgba(0,0,0,0.02);
+    }
+    a:link, a:visited {
+        color: #38488f;
+        text-decoration: none;
+    }
+    @media (max-width: 700px) {
+        div {
+            margin: 0 auto;
+            width: auto;
+        }
+    }
+
+    </style>    
+</head>
+
+<body>
+<div>
+    <h1>Example Domain</h1>
+    <p>This domain is for use in illustrative examples in documents. You may use this    domain in literature without prior coordination or asking for permission.</p>
+    <p><a href="https://www.iana.org/domains/example">More information...</a></p>
+</div>
+</body>
+</html>
+
+In[21]: soup.select('title')
+
+Out[21]: [<title>Example Domain</title>]
+
+In[22]: soup.select('p')
+
+Out[22]: [<p>This domain is for use in illustrative examples in documents. You may use this domain in literature without prior coordination or asking permission.</p>,
+
+	    <p><a href = "https://www.iana.org/domains/example">More Information...</a></p>]
+
+In[23]: soup.select('h1')
+
+Out[23]: [<h1>Example Domain</h1>]
+
+In[24]: soup.select('title')
+
+Out[24]: [<title>Example Domain</title>]
+
+In[25]: soup.select('title')[0]
+
+Out[25]: <title>Example Domain</title>
+
+In[26]: soup.select('title')[0].getText()
+
+Out[26]: 'Example Domain'
+
+In[27]: site_paragrapghs = soup.select("p")
+
+In[28]: site_paragraphs
+
+Out[28]: [<p>This domain is for use in illustrative examples in documents. You may use this domain in literature without prior coordination or asking for permission.</p>,
+
+	    <p><a href = "https://www.iana.org/domains/example">More Information...</a></p>] 
+
+In[29]: site_paragraphs[0]
+
+Out[29]: <p>This domain is for use in illustrative examples in documents. You may use this domain in literature without prior coordination or asking for permission.</p>
+
+In[30]: type(site_paragraphs[0])
+
+Out[30]: bs4.element.Tag
+
+In[31]: site_paragraph[0].getText()
+
+Out[31]: 'This domain is for use in illustrative examples in documents. You may use this \n domain in literature without prior coordination or asking for permission.'

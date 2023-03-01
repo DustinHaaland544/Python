@@ -1,0 +1,110 @@
+Lecture-108: Python Debugger
+
+
+Python Debugger
+
+1. When trying to figure out what errors there are in your code, you have probably used print() to try to track down the error. 
+
+2. Fortunately, Python comes with a built-in debugger tool that allows you to interactively explore variables within mid-operation of your Python code!
+
+
+Jupyter Notebook
+
+In[1]: x = [1, 2, 3]
+
+	 y = 2
+
+      z = 3
+
+
+       result = y + z
+
+       result2 = x + y
+
+
+Out[1]: TypeError: can only concatenate list (not "int") to list 
+
+In[2]: x = [1, 2, 3]
+
+	 y = 2
+
+      z = 3
+
+
+	 result = y + z 
+
+	 print(result)
+
+	 
+	 print(y)
+
+	 print(result2)
+
+Out[2]: 5
+
+        TypeError: can only concatenate list (not "int") to list 
+
+In[3]: x = [1, 2, 3]
+
+       y = 2
+
+       z = 3
+
+In[4]: import pdb # Python Debugger
+
+In[5]: x = [1, 2, 3]
+
+       y = 2
+
+       z = 3
+
+
+	 result_one = y + z
+
+      result_two = y + x
+
+Out[5]: TypeError: unsupported operand type(s) for +: 'int' and 'list'
+
+In[6]: x = [1, 2, 3]
+
+       y = 2
+
+       z = 3
+
+
+	 result_one = y + z
+
+       
+      pdb.set_trace()
+
+      result_two = y + x
+
+Out[6]: -- Return --
+
+        > <ipython-input-6-fe006c06b1bb>(7)<module>() -> None
+
+        -> pdb.set_trace()
+
+	  (Pdb) x
+
+        [1, 2, 3]
+
+	  (Pdb) y
+
+        2
+
+        (Pdb) result_one
+
+        5
+
+        (Pdb) y
+
+        2
+
+        (Pdb) x
+
+        [1, 2, 3]
+
+        (Pdb) q
+
+        Bdb Quit

@@ -1,0 +1,214 @@
+Lecture-28: I/O with Basic Files in Python
+
+1. Before we finish this section, let's quickly go over how to perform simple I/O with basic.txt
+
+2. We will also discuss file paths on your computer.
+
+3. Let's get started!
+
+
+Jupyter Notebook
+
+# This funtionality only works in Jupyter Notebook, it is called Magic
+
+# Functionality
+
+In[24]: %% writefile myfile.txt
+
+Hello this is a text file
+
+this is the second line
+
+this is the third line
+
+Out[24]: Writing myfile.txt
+
+In[25]: myfile = open('myfile.txt')
+
+In[26]: myfile = open('whoops_wrong.txt')		# Trying to open a file that does not exist
+
+Out[26]: FileNotFoundError
+
+In[27]: pwd							# print working directory
+
+Out[27]: 'C:\\Users\\Marcial\\Pieran-Data-Courses'
+
+
+- We need to be on the correct folder to open any file in that folder.
+
+
+In[28]: myfile = open('myfile.txt')			# Opening the text file that we made
+
+In[29]: myfile.read()					# Returns all the texts written on that file
+
+Out[29]: 'Hello this is a text file\nthis is the second line\nthis is the third line'
+
+In[30]: myfile.read()					# Try to read that file again
+
+Out[30]: ' ' 						# We get back an empty string
+
+
+- This happened because there is a cursor that read the file from the beginning to the end. Now, when we try to re-read the file it does not read any text, which is why we need to set the
+  cursor at the beginning of the file to start reading again. 
+
+
+In[31]: myfile.seek(0)
+
+Out[31]: 0 							# This resets the cursor back to the start of the file
+
+In[32]: myfile.read()
+
+Out[32]: 'Hello this is a text file\nthis is the second line\nthis is the third line'
+
+In[33]: myfile.read()
+
+Out[33]: ' '
+
+In[34]: myfile.seek(0)
+
+Out[34]: 0
+
+In[35]: contents = myfile.read()
+
+In[36]: contents
+
+Out[36]: 'Hello this is a text file\nthis is the second line\nthis is the third line'
+
+In[37]: myfile.seek(0)
+
+Out[37]: 0
+
+In[38]: myfile.readlines()
+
+Out[38]: ['Hello this is a text file\n',
+
+	    'this is the second line\n',
+
+          'this is the third line']
+
+
+- Now, we have each line as a seperate object or element in this list. 
+
+- This is convenient at times, as now we can apply lot of functionalities on it as it is a list. Like we can loop through this list. 
+
+
+4. File Locations
+
+If you want to open files at another location on your computer, simply pass in the entire file path. 
+
+For Windows, you need to use double '\' so Python does not treat the second \ as an escape character, a file path is in this form: 
+
+	myfile = open("C:\\Users\\UserName\\Folder\\test.txt")
+
+For MacOS and Linux you use slashes in the opposite direction:
+
+	myfile = open("/Users/YouUserName/Folder/myfile.txt")
+
+
+Jupyter Notebook
+
+In[40]: myfile.close()		# We need to close our files at the end in order to not get any errors
+
+In[41]: with open('myfile.txt') as my_new_file:
+
+	 	contents = my_new_file.read()
+
+In[42]: contents
+
+Out[42]: 'Hello this is a text file\nthis is the second line\nthis is the third line'
+
+In[45]: with open ('myfile.txt', mode = 'r') as myfile:
+
+		contents = myfile.read()
+
+In[46]: contents
+
+Out[46]: 'Hello this is a text file\nthis is the second line\nthis is the third line'
+
+In[47]: with open ('myfile.txt', mode = 'w') as myfile:
+
+		contents = myfile.read()
+
+Out[47]: Error: UnsupportedOperation: not readable
+
+- This is because depending on what mode we choose for opening our files, we may only choose to write to a file instead of being able to read to a file. This is basically known as
+ 
+permissions. Sometimes, you are going to want certain scripts to only have permissions to write to a file or only have permissions to read to a file and sometimes you want them to have
+ 
+both. 
+
+5. Reading, Writing, Appending Modes
+
+	- mode = 'r' is read only
+
+	- mode = 'w' is write only (will overwrite files or create new!)
+
+	- mode = 'a' is append only (will add on to files)
+
+	- mode = 'r+' is reading and writing
+
+	- mode = 'w+' is writing and reading (Overwrites existing files or creates a new file!)
+
+In[56]: %%writefile my_new_file.txt
+
+        ONE ON FIRST
+        TWO ON SECOND
+        THREE ON THIRD
+
+Out[56]: Overwriting my_new_file.txt
+
+In[57]: with open('my_new_file.txt', mode='r') as f:
+
+		print(f.read())
+
+Out[57]: ONE ON FIRST
+	   TWO ON SECOND
+	   THREE ON THIRD
+
+In[58]: with open ('my_new_file.txt', mode='a') as f:
+
+		f.write('FOUR ON FOURTH')
+
+In[59]: with open ('my_new_file.txt', mode='r') as f:
+
+		print(f.read())
+
+Out[59]: ONE ON FIRST
+
+	   TWO ON SECOND
+
+         THREE ON THIRDFOUR ON FOURTH
+
+In[60]: with open('my_file_file.txt', mode='a') as f:
+
+		f.write('\nFOUR ON FOURTH')
+
+In[61]: with open('my_new_file.txt', mode='r') as f:
+
+		print(f.read())
+
+Out[61]: ONE ON FIRST
+
+         TWO ON SECOND
+
+         THREE ON THIRD
+
+         FOUR ON FOURTH
+
+In[66]: with open('dhfjbkshfjdks.txt', mode='w') as f:
+
+		f.write('I CREATED THIS FILE!')
+
+# This file does not exist, so Python will create a file with
+
+# that name and write 'I CREATED THIS FILE' on it, if it
+
+# had existed then Python would have overwritten on that
+
+# file and write 'I CREATED THIS FILE!'
+
+In[67]: with open('dhfjbkshfjdks.txt', mode='r') as f:
+
+		print(f.read())
+
+Out[67]: I CREATED THIS FILE!

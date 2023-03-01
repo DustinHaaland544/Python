@@ -1,0 +1,87 @@
+Lecture-119: Python Web Scraping - Grabbing a Class
+
+
+Grabbing All Elements of a Class
+
+1. We previously mentioned a big part of web scraping with the BeautifulSoup library is figuring out what string syntax to pass into the soup.select() method. 
+
+2. Let's go through a table with some common examples (these make a lot of sense if you know CSS syntax).
+
+
+	Syntax				     Match Results
+
+	soup.select('div')		     All elements with 'div' tag
+
+	soup.select('#some_id')		Elements containing id = 'some_id'
+
+	soup.select('.some_class')	Elements containing class = 'some_class'
+
+	soup.select('div span')		Any elements named span within a div element
+
+	soup.select('div > span')	Any elements named span 'directly' with in a div element, with nothing in between 
+
+
+
+Jupyter Notebook 
+
+In[32]: res = requests.get('https://en.wikipedia.org/wiki/Grace_Hopper')
+
+In[33]: soup = bs4.BeautifulSoup(res.text, "lxml")
+
+In[35]: # soup # Grabs the whole content from that wikipedia page 
+
+In[36]: soup.select('.toctext')
+
+Out[36]: [<span class = "toctext">Early life and education</span>, 
+
+	    <span class = "toctext">Career</span>,
+
+	    <span class = "toctext">World War II</span>,
+
+	    <span class = "toctext">UNIVAC</span>, 
+
+	    <span class = "toctext">COBOL</span>, 
+
+	    <span class = "toctext">Standards</span>,
+
+	    <span class = "toctext">Retirement</span>, 
+
+	    ....
+
+In[37]: soup.select('.toctext')[0]
+
+Out[37]: <span class = "toctext">Early life and education</span>
+
+In[38]: type(soup.select('.toctext')[0])
+
+Out[38]: bs4.element.Tag
+
+In[39]: first_item = soup.select('.toctext')[0]
+
+In[40]: first_item
+
+Out[40]: <span class = "toctext">Early life and education</span>
+
+In[41]: first_item.text
+
+Out[41]: 'Early life and education'
+
+In[42]: for item in soup.select('.toctext'):
+
+		print(item.text)
+
+Out[42]: Early life and education
+
+         Career
+
+         World War II
+
+         UNIVAC
+
+         COBOL
+
+         Standards
+
+         Retirement
+
+         ....

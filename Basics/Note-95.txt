@@ -1,0 +1,98 @@
+Lecture-135: Sending Emails with Python
+
+
+Sending Emails 
+
+1. To send emails with Python, we need to manually go through the steps of connecting to an email server, confirming connection, setting a protocol, logging on, and sending the message.
+
+2. Fortunately the built-in smtplib library in Python makes these steps simple function calls. 
+
+3. Each major email provider has their own SMTP (Simple Mail Transfer Protocol) Server.  
+
+
+	Provider					SMTP server domain name
+
+	Gmail (will need App Password)	smtp.gmail.com
+
+	Yahoo mail					smtp.mail.yahoo.com
+
+	Outlook.com/Hotmail.com		smtp-mail.outlook.com
+
+	AT&T						smtp.mail.att.net(Use port 465)
+
+	Verizon					smtp.verizon.net(Use port 465)
+
+	Comcast 					smtp.comcast.net 
+
+
+4. We will go over this process with a Gmail account. 
+
+5. For gmail users, you will need to generate an app password instead of your normal password. 
+
+6. This let's Gmail know that the Python script attempting to access your account is authorized by you. 
+
+7. Let's explore this entire process. 
+
+
+Jupyter Notebook 
+
+Sending Emails
+
+In[1]: import smtplib
+
+In[2]: smtp_object = smtplib.SMTP('smtp.gmail.com', 587) 
+
+In[3]: smtp_object.ehlo()
+
+Out[3]: (250, 
+
+         b'smtp.gmail.com at your service, [47.143.81.4] \nSIZE 35882577\n8BITMIME\nSTARTTLS\nENHANCEDSTATUSCODES\nPIPELINING\nCHUNKING\nSMTPUTF8')
+
+In[4]: smtp_object.starttls()
+
+Out[4]: (220, b'2.0.0 Ready to start TLS')
+
+In[8]: password = input('What is your password: ')
+
+Out[8]: What is your password: visible dkd
+
+In[9]: import getpass	# Makes the password invisible 
+
+In[10]: password = getpass.getpass('Password please: ')
+
+Out[10]: Password please: ..............
+
+In[11]: email = getpass.getpass("Email: ")
+
+        password = getpass.getpass("Password: ")
+
+        smtp_object.login(email, password)
+
+        Email: ...............
+
+        Password: ..............
+
+Out[11]: (235, b'2.7.0 Accepted) 
+
+In[12]: from_address = email 
+
+	  to_address = email
+
+        subject = input("enter the subject line: ")
+
+        message = input("enter the body message: ")
+
+        msg = "Subject: "+subject+ '\n' + message 
+
+	  
+	  smtp_object.sendmail(from_address, to_address, msg)
+
+	  enter the subject line: NEW TEST PYTHON 
+
+  	  enter the body message: hello this is a test
+
+Out[12]: {}
+
+In[13]: smtp_object.quit()
+
+Out[13]: (221, b'2.0.0 closing connection i187sm5075025pfc.99 - gsmtp')

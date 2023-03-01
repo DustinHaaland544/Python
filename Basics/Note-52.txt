@@ -1,0 +1,158 @@
+Lecture-72: Object Oriented Programming - Special (Magic/Dunder) Methods
+
+
+Object Oriented Programming
+
+Part-4
+
+Jupyter Notebook
+
+In[156]: mylist = [1, 2, 3]
+
+In[157]: len(mylist)
+
+Out[157]: 3
+
+In[158]: class Simple():
+
+		pass
+
+In[159]: mysample = Sample()
+
+In[160]: len(mysample)
+
+Out[160]: TypeError
+
+In[161]: print(mysample)
+
+Out[161]: <__main__.Sample object at 0x0000015B611B9710>
+
+In[162]: print(mylist)
+
+Out[162]: [1, 2, 3]
+
+In[163]: class Book():
+
+		def __init__(self, title, author, pages):
+
+			self.title = title
+
+			self.author = author
+
+			self.pages = pages
+
+In[164]: b = Book('Python rocks', 'Jose', 200)
+
+In[165]: print(b)
+
+Out[165]: <__main__.Book object at 0x0000015B611D52E8>
+
+In[166]: str(b)
+
+Out[166]: '<__main__.Book object at 0x0000015B611D52E8>'
+
+In[167]: class Book():
+
+		def __init__(self, title, author, pages):
+
+			self.title = title 
+
+			self.author = author 
+
+			self.pages = pages 
+
+		def __str__(self):
+
+			return f"{self.title} by {self.author}"
+
+In[169]: b = Book('Python rocks', 'Jose', 200)
+
+In[170]: print(b)
+
+Out[170]: Python rocks by Jose
+
+In[171]: str(b)
+
+Out[171]: 'Python rocks by Jose'
+
+In[172]: len(b)
+
+Out[172]: TypeError
+
+In[173]: class Book():
+
+		def __init__(self, title, author, pages):
+
+			self.title = title
+
+			self.author = author
+
+			self.pages = pages
+		
+		def __str__(self):
+
+			return f"{self.title} by {self.author}"
+
+		def __len__(self):
+
+			return self.pages
+
+In[174]: b = Book('Python rocks', 'Jose', 200)
+
+In[175]: print(b)
+
+Out[175]: Python rocks by Jose
+
+In[176]: str(b)
+
+Out[176]: 'Python rocks by Jose'
+
+In[177]: len(b)
+
+Out[177]: 200
+
+In[178]: del b
+
+In[179]: b
+
+Out[179]: NameError
+
+In[190]: class Book():
+
+		def __init__(self, title, author, pages):
+
+			self.title = title
+
+			self.author = author
+
+			self.pages = pages
+
+		def __str__(self):
+
+			return f"{self.title} by {self.author}"
+
+		def __len__(self):
+
+			return self.pages
+
+		def __del__(self):
+
+			print("A book object has been deleted")
+
+In[191]: b = Book('Python rocks', 'Jose', 200)
+
+In[192]: print(b)
+
+Out[192]: Python rocks by Jose
+
+In[201]: print(b)
+
+Out[201]: Python rocks by Jose
+
+In[202]: del b
+
+Out[202]: A book object has been deleted 
+
+In[203]: b
+
+Out[203]: NameError

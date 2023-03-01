@@ -1,0 +1,74 @@
+Lecture-43: def Keyword
+
+def Keyword
+
+1. Creating a function requires a very specific syntax, including the "def" keyword, correct indentation, and proper structure.
+
+2. Let's get an overview of a Python function structure.
+
+3. def name_of_function(): 
+
+   def - keyword telling Python this is a function
+
+   name_of_function - You decide on the function name. Notice "snake_casting"
+
+   () - Parentheses at the end. Later on we can pass in arguments/parameters into the function
+
+   : - A colon indicates an upcoming indented block. Everything indented in then "inside" the function
+
+4. Snake casting is all lowercase with underscores between words
+
+5. '''
+
+   Docstring explains function.
+
+   '''
+
+Optional: Multi-line string to describe function.
+
+Note: Everything inside the function is indented. 
+
+print("Hello") - This code then goes inside the function
+
+>> name_of_function() - Function can then be executed/called to see the result
+
+>> Hello - Resulting Output
+
+def name_of_function(name): 
+
+'''
+
+Docstring explains function
+
+'''
+
+print("Hello " + name)
+
+Note: Functions can accept arguments to be passed by the user
+
+>> name_of_function("Jose") 
+
+>> Hello Jose
+
+
+6. Typically we use the "return" keyword to send back the result of the function, instead of just printing it out.
+
+7. "return" allows us to assign the output of the function to a new variable.
+
+8. We will have a deeper discussion of the "return" keyword later on in the notebook.
+
+9. def add_function(num1, num2):
+
+	return num1+num2	
+
+>> result = add_function(1,2)
+
+>>
+
+>> print(result)
+
+>> 3
+
+return - The "return" keyword allows to save the result to a variable. Most functions will use return. Rarely will a function only print().
+
+10. Let's start creating functions with Python. 

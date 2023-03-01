@@ -1,0 +1,50 @@
+Lecture-6: Command Line Basics
+
+1. Before we install anything, its important to have a very quick overview of how to work at the command line.
+
+2. This allows you to programatically move through your computer's directories.
+
+3. We will cover:
+
+	- Find your current directory 
+
+	- Listing all files in a directory 
+
+	- How to change directory
+
+	- How to clear the command line screen 
+
+* Window Command Line
+
+Command Prompt
+
+C:\Users\Marcial > cd
+
+-> C:\Users\Marcial
+
+C:\Users\Marcial cd Desktop
+
+C:\Users\Marcial\Desktop
+
+C:\Users\Marcial\Documents > cd ..
+
+C:\Users\Marcial >
+
+
+MacOS and Linux Command Line
+
+Joses-MacBook-Pro: ~ marci$ pwd
+
+/Users/marci
+
+Joses-MacBook-Pro: ~marci$ cd Desktop
+
+Joses-MacBook-Pro: Desktop marci $
+
+Joses-MacBook-Pro: Desktop marci $ pwd
+
+/Users/marci/Desktop
+
+Joses-MacBook-Pro: Desktop marci $ cd..
+
+Joses-MacBook-Pro:~ marci $

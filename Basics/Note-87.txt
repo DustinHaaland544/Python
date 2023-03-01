@@ -1,0 +1,10 @@
+Lecture-125: Introduction To Images with Python 
+
+
+Working with Images
+
+1. In this section we will focus on learning how to work with images with the Pillow library, we will install it with "pip install pillow" and then show you how to open and save image files 
+
+and interact with images. 
+
+2. Let's get started! 

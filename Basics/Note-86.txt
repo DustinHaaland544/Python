@@ -1,0 +1,543 @@
+Lecture-123 and 124: Python Web Scraping - Exercise Overview and Solutions 
+
+Complete the Tasks Below
+
+TASK: Import any libraries you think you'll need to scrape a website.
+
+In[28]: # CODE HERE
+
+In[29]: import requests
+
+        import bs4
+
+TASK: Use requests library and BeautifulSoup to connect to http://quotes.toscrape.com/ and get the HMTL text from the homepage.
+
+In[30]: # CODE HERE
+
+In[31]: res = requests.get("http://quotes.toscrape.com/")
+
+In[32]: res.text
+
+Out[32]: '\n\n\n\t\n\tQuotes to Scrape\n    \n    \n\n\n    
+\n        
+\n            
+\n                
+\n                    Quotes to Scrape\n                
+\n            
+\n            
+\n                
+\n                \n                    Login\n                \n                
+
+\n            
+\n        
+\n    \n\n
+\n    
+\n\n    
+\n        “The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”\n        by Albert Einstein\n        (about)\n        \n        
+\n            Tags:\n             \n            \n            change\n            \n            deep-thoughts\n            \n            thinking\n            \n            world\n            
+\n        
+\n    
+\n\n    
+\n        “It is our choices, Harry, that show what we truly are, far more than our abilities.”\n        by J.K. Rowling\n        (about)\n        \n        
+\n            Tags:\n             \n            \n            abilities\n            \n            choices\n            \n        
+\n    
+\n\n    
+\n        “There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”\n        by Albert Einstein\n        (about)\n        
+\n        
+\n            Tags:\n             \n            \n            inspirational\n            \n            life\n            \n            live\n            \n            miracle\n            
+\n            
+     miracles\n            \n        
+\n    
+\n\n    
+\n        “The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”\n        by Jane Austen\n        (about)\n        \n        
+\n            Tags:\n             \n            \n            aliteracy\n            \n            books\n            \n            classic\n            \n            humor\n            \n        
+\n    
+\n\n    
+\n        “Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.”\n        by Marilyn Monroe\n        (about)\n        \n        
+\n            Tags:\n             \n            \n            be-yourself\n            \n            inspirational\n            \n        
+\n    
+\n\n    
+\n        “Try not to become a man of success. Rather become a man of value.”\n        by Albert Einstein\n        (about)\n        \n        
+\n            Tags:\n             \n            \n            adulthood\n            \n            success\n            \n            value\n            \n        
+\n    
+\n\n    
+\n        “It is better to be hated for what you are than to be loved for what you are not.”\n        by André Gide\n        (about)\n        \n        
+\n            Tags:\n             \n            \n            life\n            \n            love\n            \n        
+\n    
+\n\n    
+\n        “I have not failed. I've just found 10,000 ways that won't work.”\n        by Thomas A. Edison\n        (about)\n        \n        
+\n            Tags:\n             \n            \n            edison\n            \n            failure\n            \n            inspirational\n            \n            paraphrased\n            
+\n        
+\n    
+\n\n    
+\n        “A woman is like a tea bag; you never know how strong it is until it's in hot water.”\n        by Eleanor Roosevelt\n        (about)\n        \n        
+\n            Tags:\n             \n            \n            misattributed-eleanor-roosevelt\n            \n        
+\n    
+\n\n    
+\n        “A day without sunshine is like, you know, night.”\n        by Steve Martin\n        (about)\n        \n        
+\n            Tags:\n             \n            \n            humor\n            \n            obvious\n            \n            simile\n            \n        
+\n    
+\n\n    \n        
+\n            \n            \n            
+\n                Next →\n            
+\n            \n        
+\n    \n    
+\n    
+\n        \n            
+Top Ten tags
+\n            \n            \n            love\n            \n            \n            \n            inspirational\n            \n            \n            \n            life\n           
+ \n            \n            \n            humor\n            \n            \n            \n            books\n            \n            \n            \n            reading\n            \n           
+ \n            \n            friendship\n            \n            \n            \n            friends\n            \n            \n            \n            truth\n            \n            
+\n            
+\n            simile\n            \n            \n        \n    
+\n
+\n\n    
+\n    \n        
+\n            
+\n                Quotes by: GoodReads.com\n            
+
+\n            
+\n                Made with ❤ by Scrapinghub\n            
+
+\n        
+\n    \n\n'
+
+TASK: Get the names of all the authors on the first page.
+
+In[33]: # CODE HERE
+
+In[34]: soup = bs4.BeautifulSoup(res.text,'lxml')
+
+In[35]: soup.select(".author")
+
+Out[35]: [Albert Einstein,
+
+          J.K. Rowling,
+
+          Albert Einstein,
+
+          Jane Austen,
+
+          Marilyn Monroe,
+
+          Albert Einstein,
+
+          André Gide,
+
+          Thomas A. Edison,
+
+          Eleanor Roosevelt,
+
+          Steve Martin]
+
+In[36]: # I used a set to not worry about repeat authors.
+
+        authors = set()
+ 
+        for name in soup.select(".author"):
+
+    		authors.add(name.text)
+
+In[37]: authors
+
+Out[37]: {'Albert Einstein',
+
+          'André Gide',
+
+          'Eleanor Roosevelt',
+
+          'J.K. Rowling',
+
+          'Jane Austen',
+
+          'Marilyn Monroe',
+
+          'Steve Martin',
+
+          'Thomas A. Edison'}
+
+TASK: Create a list of all the quotes on the first page.
+
+In[13]: #CODE HERE
+
+In[14]: quotes = []
+
+        for quote in soup.select(".text"):
+    
+        	quotes.append(quote.text)
+
+In[15]: quotes
+
+Out[15]: ['“The world as we have created it is a process of our thinking. It cannot be changed without changing our thinking.”',
+ 
+          '“It is our choices, Harry, that show what we truly are, far more than our abilities.”',
+ 
+          '“There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle.”',
+ 
+          '“The person, be it gentleman or lady, who has not pleasure in a good novel, must be intolerably stupid.”',
+ 
+          "“Imperfection is beauty, madness is genius and it's better to be absolutely ridiculous than absolutely boring.”",
+ 
+          '“Try not to become a man of success. Rather become a man of value.”',
+ 
+          '“It is better to be hated for what you are than to be loved for what you are not.”',
+ 
+          "“I have not failed. I've just found 10,000 ways that won't work.”",
+ 
+          "“A woman is like a tea bag; you never know how strong it is until it's in hot water.”",
+ 
+          '“A day without sunshine is like, you know, night.”']
+
+TASK: Inspect the site and use Beautiful Soup to extract the top ten tags from the requests text shown on the top right from the home page (e.g Love,Inspirational,Life, etc...). 
+
+HINT: Keep in mind there are also tags underneath each quote, try to find a class only present in the top right tags, perhaps check the span.
+
+In[16]: # CODE HERE
+
+In[17]: soup = bs4.BeautifulSoup(res.text,'lxml')
+
+In[18]: soup.select('.tag-item')
+
+Out[18]: [
+ 
+         	love
+ 
+		, 
+ 
+		inspirational
+ 
+		, 
+ 
+		life
+
+		 , 
+ 
+		humor
+ 
+		, 
+
+		books
+ 
+		, 
+ 
+		reading
+ 
+		, 
+ 
+		friendship
+ 
+		, 
+ 
+ 		friends
+ 
+		, 
+ 
+		truth
+ 
+		, 
+ 		
+		simile
+ 
+
+	]
+
+In[19]: for item in soup.select(".tag-item"):
+    
+		print(item.text)
+
+Out[19]: love
+
+
+	   inspirational
+
+
+         life
+
+
+         humor
+
+
+         books
+
+
+         reading
+
+
+         friendship
+
+
+         friends
+
+
+         truth
+
+
+         simile
+
+TASK: Notice how there is more than one page, and subsequent pages look like this http://quotes.toscrape.com/page/2/. Use what you know about for loops and string concatenation to loop 
+
+through all the pages and get all the unique authors on the website. Keep in mind there are many ways to achieve this, also note that you will need to somehow figure out how to check that 
+
+your loop is on the last page with quotes. For debugging purposes, I will let you know that there are only 10 pages, so the last page is http://quotes.toscrape.com/page/10/, but try to 
+
+create a loop that is robust enough that it wouldn't matter to know the amount of pages beforehand, perhaps use try/except for this, its up to you!
+
+In[22]: # CODE HERE
+
+Possible Solution #1 ( Assuming You Know Number of Pages)
+
+In[24]: url = 'http://quotes.toscrape.com/page/'
+
+In[40]: authors = set()
+
+        for page in range(1,10):
+
+    		# Concatenate to get new page URL
+    
+		page_url = url+str(page)
+    
+		# Obtain Request
+    
+		res = requests.get(page_url)
+    
+		# Turn into Soup
+    
+		soup = bs4.BeautifulSoup(res.text,'lxml')
+    
+		# Add Authors to our set
+    
+		for name in soup.select(".author"):
+        
+			authors.add(name.text)
+
+
+Possible Solution #2 ( Unknown Number of Pages, but knowledge of last page)
+
+Let's check what the last invalid page looks like:
+
+In[41]: # Choose some huge page number we know doesn't exist
+
+        page_url = url+str(9999999)
+
+
+        # Obtain Request
+
+        res = requests.get(page_url)
+
+
+        # Turn into Soup
+
+        soup = bs4.BeautifulSoup(res.text,'lxml')
+
+In[46]: soup
+
+Out[46]: 
+
+
+		Quotes to Scrape
+
+
+            Quotes to Scrape
+
+
+		Login
+
+
+		No quotes found!
+
+    		← Previous
+
+
+		Top Ten tags
+
+		love
+
+
+		inspirational
+
+
+		life
+
+
+		humor
+
+
+		books
+
+
+		reading
+
+
+		friendship
+
+
+		friends
+
+
+		truth
+
+
+		simile
+
+
+		Quotes by: GoodReads.com
+
+		Made with ❤ by Scrapinghub
+
+
+In[47]: # This solution requires that the string "No quotes found!" only occurs on the last page.
+
+	  # If for some reason this string was on the other pages, we would need to be more detailed.
+
+ 	  "No quotes found!" in res.text
+
+Out[47]: True
+
+In[48]:  page_still_valid = True
+
+	   authors = set()
+
+	   page = 1
+
+
+	   while page_still_valid:
+
+    
+		# Concatenate to get new page URL
+    
+		page_url = url+str(page)
+    
+    
+		# Obtain Request
+    
+		res = requests.get(page_url)
+    
+    
+		# Check to see if we're on the last page
+    
+		if "No quotes found!" in res.text:
+        	
+		break
+    
+    
+		# Turn into Soup
+    
+		soup = bs4.BeautifulSoup(res.text,'lxml')
+    
+    
+		# Add Authors to our set
+    
+		for name in soup.select(".author"):
+        
+			authors.add(name.text)
+        
+    
+		# Go to Next Page
+    
+		page += 1
+
+In[49]: authors
+
+Out[49]: {'Albert Einstein',
+ 
+	    'Alexandre Dumas fils',
+ 
+          'Alfred Tennyson',
+ 
+	    'Allen Saunders',
+ 
+	    'André Gide',
+ 
+	    'Ayn Rand',
+ 
+	    'Bob Marley',
+ 
+	    'C.S. Lewis',
+ 
+	    'Charles Bukowski',
+ 
+	    'Charles M. Schulz',
+ 
+	    'Douglas Adams',
+ 
+          'Dr. Seuss',
+ 
+          'E.E. Cummings',
+ 
+          'Eleanor Roosevelt',
+ 
+	    'Elie Wiesel',
+ 
+	    'Ernest Hemingway',
+ 
+	    'Friedrich Nietzsche',
+ 
+          'Garrison Keillor',
+ 
+	    'George Bernard Shaw',
+ 
+	    'George Carlin',
+ 
+   	    'George Eliot',
+ 
+	    'George R.R. Martin',
+ 
+	    'Harper Lee',
+ 
+	    'Haruki Murakami',
+ 
+ 	    'Helen Keller',
+ 
+	    'J.D. Salinger',
+ 
+	    'J.K. Rowling',
+ 
+	    'J.M. Barrie',
+ 
+	    'J.R.R. Tolkien',
+ 
+	    'James Baldwin',
+ 
+	    'Jane Austen',
+ 
+	    'Jim Henson',
+ 
+  	    'Jimi Hendrix',
+ 
+	    'John Lennon',
+ 
+	    'Jorge Luis Borges',
+ 
+	    'Khaled Hosseini',
+ 
+	    "Madeleine L'Engle",
+ 
+	    'Marilyn Monroe',
+ 
+	    'Mark Twain',
+ 
+	    'Martin Luther King Jr.',
+ 
+ 	    'Mother Teresa',
+ 
+	    'Pablo Neruda',
+ 
+  	    'Ralph Waldo Emerson',
+ 
+   	    'Stephenie Meyer',
+ 
+	    'Steve Martin',
+ 
+	    'Suzanne Collins',
+ 
+	    'Terry Pratchett',
+ 	
+   	    'Thomas A. Edison',
+
+	    'W.C. Fields',
+ 
+	    'William Nicholson'}
+
+There are lots of other potential solutions that are even more robust and flexible, the main idea is the same though, use a while loop to cycle through potential pages and have a 
+
+break condition based on the invalid page.

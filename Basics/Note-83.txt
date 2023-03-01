@@ -1,0 +1,136 @@
+Lecture-120: Python Web Scraping - Grabbing an Image
+
+
+Grabbing an Image
+
+1. Now that we understand how to grab text information based on tags and element names, let's explore how to grab images from a website. 
+
+2. Images on a website typically have their own URL link (ending in .jpg or .png). 
+
+3. Beautiful Soup can scan a page, locate the <img> tags and grab these URLs. 
+
+4. Then we can download the URLs as images and write them to the computer. 
+
+5. Note: You should always check copyright permission before downloading and using an image from a website. 
+
+
+Jupyter Notebook
+
+In[43]: res = requests.get("https://en.wikipedia.org/wiki/Deep_Blue_(chess_computer)")
+
+In[44]: soup = bs4.BeautifulSoup(res.text, 'lxml')
+
+In[45]: soup	# Outputs the whole HTML file of the Wikipedia page
+
+Out[45]: <!DOCTYPE html>
+
+<html class="client-nojs" lang="en" dir="ltr">
+
+<head>
+
+<meta charset="UTF-8"/>
+
+<title>Deep Blue (chess computer) - Wikipedia</title>
+
+.......
+
+In[46]: soup.select('img')	# Outputs all the content with the "img" tag in the page
+
+Out[46]: [<img alt = "This is a good article. Click here for more info....]
+
+In[47]: soup.select('img')[0]	# Outputs the first content with the "img" tag in the page 
+
+Out[47]: <img alt="This is a good article. Click here for more information." 
+
+         src="//upload.wikimedia.org/wikipedia/en/thumb/9/94/Symbol_support_vote.svg/19px-Symbol_support_vote.svg.png" 
+
+         decoding="async" width="19" height="20" 
+
+         srcset="//upload.wikimedia.org/wikipedia/en/thumb/9/94/Symbol_support_vote.svg/29px-Symbol_support_vote.svg.png 1.5x, 
+
+         //upload.wikimedia.org/wikipedia/en/thumb/9/94/Symbol_support_vote.svg/39px-Symbol_support_vote.svg.png 2x" data-file-width="180" data-file-height="185" />
+
+In[48]: soup_select('.thumbimage')
+
+Out[48]: [<img alt="" class="thumbimage" 
+
+         src="//upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Kasparov_Magath_1985_Hamburg-2.png/220px-Kasparov_Magath_1985_Hamburg-2.png" 
+
+         decoding="async" width="220" height="165" 
+
+         srcset="//upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Kasparov_Magath_1985_Hamburg-2.png/330px-Kasparov_Magath_1985_Hamburg-2.png 1.5x, 
+
+         //upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Kasparov_Magath_1985_Hamburg-2.png/440px-Kasparov_Magath_1985_Hamburg-2.png 2x" 
+
+         data-file-width="800" data-file-height="600" />, 
+
+         <img alt="" class="thumbimage" 
+
+         src="//upload.wikimedia.org/wikipedia/commons/thumb/8/83/One_of_Deep_Blue%27s_processors_%282586060990%29.jpg/220px-One_of_Deep_Blue%27s_processors_%282586060990%29.jpg" 
+
+         decoding="async" width="220" height="293" 
+
+         srcset="//upload.wikimedia.org/wikipedia/commons/thumb/8/83/One_of_Deep_Blue%27s_processors_%282586060990%29.jpg/330px-One_of_Deep_Blue%27s_processors_%282586060990%29.jpg 1.5x, 
+
+         //upload.wikimedia.org/wikipedia/commons/thumb/8/83/One_of_Deep_Blue%27s_processors_%282586060990%29.jpg/440px-One_of_Deep_Blue%27s_processors_%282586060990%29.jpg 2x" 
+
+         data-file-width="2067" data-file-height="2756" />]
+
+In[49]: computer = soup.select('.thumbimage')[0]
+
+In[50]: computer
+
+Out[50]: <img alt="" class="thumbimage" 
+
+         src="//upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Kasparov_Magath_1985_Hamburg-2.png/220px-Kasparov_Magath_1985_Hamburg-2.png" 
+
+         decoding="async" width="220" height="165" 
+
+         srcset="//upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Kasparov_Magath_1985_Hamburg-2.png/330px-Kasparov_Magath_1985_Hamburg-2.png 1.5x, 
+
+         //upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Kasparov_Magath_1985_Hamburg-2.png/440px-Kasparov_Magath_1985_Hamburg-2.png 2x" 
+
+         data-file-width="800" data-file-height="600" />
+
+In[51]: type(computer)
+
+Out[51]: bs4.element.Tag
+
+In[53]: computer['class']
+
+Out[53]: ['thumbimage']
+
+In[54]: computer['src']
+
+Out[54]: '//upload.wikimedia.org/wikipedia/commons/thumb/b/be/Deep_Blue.jpg/220px-Deep_Blue.jpg'
+
+		
+
+
+
+								Image Goes Here 
+
+		
+
+
+	     Cell -> Cell Type -> Markdown 
+
+In[55]: image_link = requests.get('https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Deep_Blue.jpg/220px-Deep_Blue.jpg')
+
+In[56]: image_link.content	# Outputs the binary file of the image
+
+Out[56]: b'\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01.......
+
+In[57]: # image_link.content
+
+In[58]: f = open('my_computer_image.jpg', 'wb')		# writebinary
+
+In[59]: f.write(image_link.content)
+
+Out[59]: 16806
+
+In[60]: f.close()
+
+In[61]: pwd
+
+Out[61]: 'C:\\Users\\Marcial\\Pierian-Data-Courses\\Complete-Python-3-Bootcamp'

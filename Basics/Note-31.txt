@@ -1,0 +1,340 @@
+Lecture-37: Useful Operators in Python
+
+Useful Operators
+
+In[17]: mylist = [1, 2, 3]
+
+In[18]: for num in range(10):
+
+		print(num)
+
+Out[18]: 0
+
+         1
+
+         2
+
+         3
+
+         4
+
+         5
+
+         6
+
+         7
+
+         8
+
+         9
+
+In[19]: for num in range(3,10):
+
+		print(num)
+
+Out[19]: 3
+
+         4
+
+         5
+
+         6
+
+         7
+
+         8
+
+         9
+
+In[20]: for num in range(0,10,2):
+
+		print(num)
+
+Out[20]: 0
+
+         2
+
+         4
+
+         6
+
+         8
+
+In[21]: for num in range (0,11,2):
+
+		print(num)
+
+Out[21]: 0
+
+         2
+
+         4
+
+         6
+
+         8
+
+         10
+
+In[22]: range(0,11,2)
+
+Out[22]: range(0,11,2)
+
+In[23]: list(range(0,11,2))
+
+Out[23]: [0, 2, 4, 6, 8, 10]
+
+In[24]: index_count = 0
+
+        for letter in 'abcde':
+
+		print('At index {} the letter is {}'.format(index_count, letter))
+
+		index_count = index_count + 1
+
+Out[24]: At index 0 the letter is a
+
+         At index 1 the letter is b
+
+         At index 2 the letter is c
+
+         At index 3 the letter is d
+
+         At index 4 the letter is e
+
+In[25]: index_count = 0
+
+        word = 'abcde'
+
+        for letter in word:
+
+		print(word[index_count])
+
+		index_count = index_count + 1
+
+Out[25]: a
+
+         b
+
+         c
+
+         d
+
+         e
+
+In[26]: word = 'abcde'
+
+        for item in enumerate(word):
+
+  		print(item)
+
+Out[26]: (0, 'a')
+
+         (1, 'b')
+
+         (2, 'c')
+
+         (3, 'd')
+
+         (4, 'e')
+
+In[27]: word = 'abcde'
+
+        for index, letter in enumerate(word):
+
+		print(index)
+
+ 		print(letter)
+
+		print('\n')
+
+Out[27]: 0
+	    a
+
+	    1
+	    b
+
+	    2
+	    c
+
+	    3
+	    d
+
+	    4
+	    e
+
+In[28]: mylist1 = [1, 2, 3]
+
+	   mylist2 = ['a', 'b', 'c']
+
+In[29]: zip(mylist1, mylist2)
+
+Out[29]: <zip at 0x2d4b64e5bc8>
+
+In[30]: for item in zip(mylist1, mylist2):
+
+		print(item)
+
+Out[30]: (1, 'a')
+
+         (2, 'b')
+
+         (3, 'c')
+
+In[34]: mylist1 = [1, 2, 3]
+
+	   mylist2 = ['a', 'b', 'c']
+
+        mylist3 = [100, 200, 300]
+
+In[35]: for item in zip (mylist1, mylist2, mylist3):
+
+		print(item)
+
+Out[35]: (1, 'a', 100)
+
+         (2, 'b', 200)
+
+         (3, 'c', 300)
+
+In[36]: mylist1 = [1, 2, 3, 4, 5, 6]
+
+        mylist2 = ['a', 'b', 'c']
+
+        mylist3 = [100, 200, 300] 
+
+In[36]: for item in zip(mylist1, mylist2, mylist3):
+
+		print(item) 
+
+Out[36]: (1, 'a', 100)
+
+         (2, 'b', 200)
+
+         (3, 'c', 300)
+
+In[36]: list(zip(mylist, mylist2))
+
+Out[36]: [(1,'a'),(2,'b'),(3,'c')]
+
+In[37]: for a, b, c in zip(mylist1, mylist2, mylist3):
+
+		print(b)
+
+Out[37]: a
+
+  	    b
+
+         c
+
+In[39]: 'x' in ['x', 'y', 'z']
+
+Out[39]: True
+
+In[41]: 'a' in 'a world'
+
+Out[41]: True
+
+In[44]: 'mykey' in {'mykey':345}
+
+Out[44]: True
+
+In[45]: d = {'mykey':345}
+
+	  345 in d.values()
+
+Out[45]: True
+
+In[46]: d = {'mykey':345}
+
+        345 in d.keys()
+
+Out[46]: False
+
+In[47]: mylist = [10, 20, 30, 40, 100]
+
+In[48]: min(mylist)
+
+Out[48]: 10
+
+In[49]: max(mylist)
+
+Out[49]: 100
+
+In[50]: from random import shuffle
+
+In[51]: mylist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+In[52]: shuffle(mylist)
+
+In[53]: mylist
+
+Out[53]: [3, 9, 7, 8, 10, 5, 1, 2, 6, 4]
+
+In[60]: from random import randint
+
+In[61]: randint(0,100)
+
+Out[61]: 79
+
+In[62]: randint (0,100)
+
+Out[62]: 99
+
+In[63]: mynum = randint(0,10)
+
+In[64]: mynum
+
+Out[64]: 3
+
+In[65]: input('Enter a number here: ')
+
+	  Enter a number here:
+
+        	  ---------------------
+            | 50                |
+            ---------------------
+
+Out[65]: '50'
+
+In[66]: result = input ('What is your name?')
+
+	  What is your name?
+
+	  	---------------------
+	      | Jose	        |
+          ---------------------
+
+Out[66]: What is your name? Jose
+
+In[67]: result
+
+Out[67]: 'Jose'
+
+In[68]: result = input ('Favourite Number: ')
+
+Out[68]: Favourite Number: 30
+
+In[69]: result
+
+Out[69]: '30'
+
+In[70]: type(result)
+
+Out[70]: str
+
+In[71]: float(result)
+
+Out[71]: 30.0
+
+In[72]: int(result)
+
+Out[72]: 30
+
+In[74]: result = int(input('Favourite Number: '))
+
+Out[74]: Favourite Number: 20
+
+In[75]: type(result)
+
+Out[75]: int

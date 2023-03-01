@@ -1,0 +1,28 @@
+Lecture-11: Introduction to Python Data Types
+
+*Basic Data Types
+
+1. In this section of the course we will cover the key data types in Python.
+
+2. These are your basic building blocks when constructing larger pieces of code.
+
+3. Let's quickly discuss all of the possible data types, then we will have lectures that go into more detail about each one!
+
+
+Name			Type		Description
+
+Integers		int		Whole numbers, such as: 3 300 200
+
+Floating point 	float		Numbers with a decimal point: 2.3 4.6 100.0
+
+Strings 		str		Ordered sequence of characters: "hello" 'Sammy' "2000"
+
+Lists			list		Ordered sequence of objects: [10, "hello", 200.3]
+
+Dictionaries  	dict		Unordered Key: Value pairs: {"myKey": "value", "name": "Frankie"}
+
+Tuples		tup		Ordered immutable sequence of objects: (10, "hello", 200.3)
+
+Sets			set		Unordered collection of unique objects: {"a", "b"}
+
+Booleans		bool		Logical value indicating True or False

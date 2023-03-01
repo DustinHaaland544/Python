@@ -1,0 +1,58 @@
+Lecture-7: Installing Python (Step by Step)
+
+1. There are many ways to run Python!
+
+2. Later on we will explore the difference between running a Python.py script or running Python code in a notebook environment.
+
+	- "Either way, we will still want to install Python!"
+
+3. Installation Lecture:
+
+	- Install Anaconda Distribution for Python
+
+	- Anaconda installs Python "and" an easy to use development environment and navigator launch tool
+
+	- Briefly run Jupyter Notebook
+
+	- Explore "no install" online options
+
+4. Quick Note:
+
+	- There are now many online "no install" Python environments that can run in the browser (as long as you have an internet connection). 
+
+	- While not officially part of the course, we will give you a brief tour of these online "no install" options at the end.
+
+5. To install Python we will use the free Individual Anaconda distribution.
+
+6. This distribution includes Python as well as many other useful libraries, including Jupyter Notebook environment.
+
+7. Anaconda can also easily be installed on to any major OS like Windows, MacOS, or Linux.
+
+	- www.anaconda.com/downloads
+
+Coding:
+
+In[1]: 1 + 1
+
+Out[1]: 2
+
+
+8. Free "No Install" Options:
+
+	- jupyter.org/try
+
+	- Google Collab Online Notebooks
+
+	- Repl.it
+
+	-> Google Search:
+
+	- "Python Interpreter Online"
+
+9. Free "No Installation" Options:
+
+	- Hard to upload your own code, data, or notebooks!
+
+	- May not save your code in the free version!
+
+	- Not officially part of this course or supported by this course

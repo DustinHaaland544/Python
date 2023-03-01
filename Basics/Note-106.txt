@@ -1,0 +1,209 @@
+Lecture-147: Interact Functionality with GUIs 
+
+
+Python GUIs With IPyWidgets
+
+1. We can build simple graphical interfaces (GUI) with Jupyter!
+
+2. Let's explore how to build out these interactive elements. 
+
+3. Keep the lecture notebooks handy, there is a lot of reference code and information there for you! 
+
+
+Jupyter Notebook
+
+In[79]: from ipywidgets import interact, interactive, fixed
+
+        import ipywidgets as widgets 
+
+In[80]: def func(x):
+
+ 		return x
+
+In[81]: interact(func, x = 10)
+
+        x        	x-------0-------10
+
+        10
+
+Out[81]: <function __main__.func>
+
+In[82]: def func(x):
+
+		return x**2
+
+In[83]: interact(func, x = 10)
+
+        x		x------0-------10
+
+        100
+
+Out[83]: <function __main__.func>
+
+In[84]: def func(x):
+
+		return x
+
+In[85]: interact(func, x = 10)
+
+ 	  x		x---------0--------19
+
+        19
+
+Out[85]: <function __main__.func> 
+
+In[86]: interact(func, x = True)
+
+	  x	x 
+
+   	  True 
+
+Out[86]: <function __main__.func> 
+
+In[87]: interact(func, x = 'Hello')
+
+	  x		x|Hello	|
+
+        'Hello' 
+
+Out[87]: <function __main__.func> 
+
+         x		x|type whatever	|
+
+         'type whatever' 
+
+	   <function __main__.func> 
+
+In[88]: @interact(x = True, y = 1.0)
+
+        def g(x, y):
+
+		return(x, y)
+
+ 	  x	x
+
+		y----------0----------1.00
+
+ 		(True, 1.0)
+
+In[89]: @interact(x = True, y = fixed(1.0))
+
+	  def g(x, y):
+
+		return (x, y)
+
+	  x		x
+
+	  (True, 1.0)
+
+In[90]: def func(x):
+
+		return x
+
+In[91]: interact(func, x = fixed('Hello'))
+
+	  x	'Hello'
+
+Out[91]: <function __main__.func>
+
+In[95]: interact(func, x = 1)
+
+	  x	x----------0---------1
+
+        1
+
+Out[95]: <function __main__.func> 
+
+In[97]: interact(func, x = widgets, IntSlider(min = -100, max = 100, step = 1, value = 0))
+
+        x	x-----------0-----------0
+
+        0
+
+Out[97]: <function __main__.func> 
+
+In[98]: interact(func, x = (-100, 100, 1))
+
+        x	x--------0----------0
+
+	  0
+
+Out[98]: <function __main__.func>
+
+In[100]: interact(func, x = (-10.0, 10.0, .1))
+
+         x	x---------0----------0.00
+
+         0.0
+
+Out[100]: <function __main__.func>
+
+In[101]: @interact(x = (0.0, 20.0, 0.5))
+
+	   def h(x = 5.0)
+
+		return x 
+
+	  x	x----------0--------5.00
+
+        5.0 
+
+In[102]: interact(func, x = 'hello')
+
+	   x	x|hello |
+
+	   'hello'
+
+Out[102]: <function __main__.func> 
+
+	   x	x|hello how are you|
+
+	   'hello how are you'
+
+	   <function __main__.func>
+
+In[103]: interact(func, x = ['hello', 'option 2', 'option 3'])
+
+	    x			x|hello v|
+
+ 	    'hello'
+
+Out[103]: <function __main__.func> 
+
+In[104]: interact(func, x = {'one': 10, 'two': 20})
+
+	   x	x|one v|
+
+	   10 
+
+Out[104]: <function __main__.func>
+
+In[105]: from IPython.display import display
+
+	   def f(a, b):
+
+		display(a + b)
+
+		return a + b
+
+In[106]: w = interactive(f, a = 10, b = 20) 
+
+In[107]: type(w)
+
+Out[107]: ipywidgets.widgets.interaction.interactive
+
+In[108]: w.children
+
+Out[108]: (<ipywidgets.widgets.widgets_int.IntSlider at 0x231d80574e0>, <ipywidgets.widgets.widget_int.IntSlider at 0x231d80577f0>, 
+
+	     <ipywidgets.widgets.widget_output.Output at 0x231d8057438>) 
+
+In[109]: display(w)
+
+	   x
+
+		a--------------0-----------10
+
+		b--------------0-----------20
+
+	  30

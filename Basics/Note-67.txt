@@ -1,0 +1,24 @@
+Lecture-103: Introduction to Advanced Python Modules
+
+
+Advanced Python Modules
+
+1. Python has several built-in modules that we haven't fully explored yet!
+
+2. In this section we will dive deeper into some useful built-in modules, explore their use cases, and then give you a puzzle exercise to solve. 
+
+3. Modules Covered:
+
+	- Collections
+
+	- OS module and Datetime
+
+	- Math and Random
+
+	- Python Debugger
+
+	- Timeit
+
+	- Regular Expressions 
+
+	- Unzipping and Zipping Modules 

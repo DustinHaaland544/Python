@@ -1,0 +1,344 @@
+Lecture-98: Decorators with Python Overview
+
+1. Let's now discuss a more advanced Python topic: Decorators
+
+2. Decorators allow you to "decorate" a function, let's discuss what that word means in this context.
+
+3. Imagine you created a function:
+
+   def simple_func():
+
+	# Do simple stuff
+
+	  return something
+
+4. Now you want to add some new capabilities to the function:
+
+   def simple_func():
+
+	# Want to do more stuff!
+
+	# Do simple stuff return something 
+
+5. You now have two options:
+
+	- Add that extra code (functionality) to your old function. 
+
+	- Create a brand new function that contains the old code, and then add new code to that.
+
+6. But what if you then want to remove that extra "functionality".
+
+7. You would need to delete it manually, or make sure to have the old function. 
+
+8. Is there a better way? Maybe an on/off switch to quickly add this functionality?
+
+9. Python has "decorators" that allow you to tack on extra functionality to an already existing function. 
+
+10. They use the @ operator and are then placed on top of the original function. 
+
+11. Now you can easily add on extra functionality with a decorator:
+
+	@ some_decorator
+
+	def simple_func():
+
+		# Do simple stuff
+
+		return something 
+
+12. This idea is pretty abstract in practice with Python syntax, so we will go through the steps of manually building out a decorator ourselves, to show that the @ operator is doing behind
+
+    the scenes.
+
+
+Jupyter Notebook:
+
+In[6]: def func():
+
+		return 1
+
+In[7]: func()
+
+Out[7]: 1
+
+In[8]: func
+
+Out[8]: <function __main__.func>
+
+In[9]: def hello():
+
+		return "Hello!"
+
+In[10]: hello()
+
+Out[10]: 'Hello!'
+
+In[11]: hello
+
+Out[11]: <function __main__.hello>
+
+In[12]: greet = hello
+
+In[13]: greet()
+
+Out[13]: 'Hello!'
+
+In[14]: hello()
+
+Out[14]: 'Hello!'
+
+In[15]: del hello
+
+In[16]: hello
+
+Out[16]: NameError
+
+In[17]: greet()
+
+Out[17]: 'Hello!'
+
+In[18]: def hello(name = 'Jose'):
+
+		print('The hello() function has been executed!')
+
+In[19]: hello()
+
+Out[19]: The hello() function has been executed!
+
+In[20]: def hello(name = 'Jose'):
+
+		print('The hello() function has been executed!')
+
+	  	
+          def greet():
+
+		  return '\t This is the greet() func inside hello!'
+
+In[21]: hello()
+
+Out[21]: The hello() function has been executed!
+
+In[22]: def hello(name = 'Jose'):
+
+		print('The hello() function has been executed!')
+
+	  	
+          def greet():
+
+			return '\t This is the greet() func inside hello!'
+
+	  	
+          print(greet())
+
+In[23]: hello()
+
+Out[23]: The hello() function has been executed!
+
+		This is the greet() func inside hello!
+
+In[24]: def hello(name = 'Jose'):
+
+		print('The hello() function has been executed!')
+
+	  	def greet():
+
+			return '\t This is the greet() func inside hello!'
+
+	  	def welcome():
+
+			return '\t This is the welcome inside hello!'
+
+			
+               print(greet())
+
+			print(welcome())
+
+In[25]: hello()
+
+Out[25]: The hello() function has been executed!
+
+		This is the greet() func inside hello!
+		
+		This is the welcome() inside hello
+
+In[26]: def hello(name = 'Jose'):
+
+		print('The hello() function has been executed!')
+
+	  	def greet():
+
+			return '\t This is the greet() func inside hello!'
+
+	  	def welcome():
+
+			return '\t This is welcome() inside hello'
+
+		
+          print(greet())
+
+		print(welcome())
+
+		print('This is the end of the hello function!')
+
+In[27]: hello()
+
+Out[27]: The hello() function has been executed!
+
+		This is the greet() func inside hello!
+
+		This is welcome() inside hello
+
+         This is the end of the hello function!
+
+In[28]: welcome()
+
+Out[28]: NameError
+
+In[29]: def hello(name = 'Jose'):
+
+		print('The hello() function has been executed!')
+
+	  	def greet():
+
+			return '\t This is the greet() func inside hello!'
+
+	   	def welcome():
+
+			return '\t This is welcome() inside hello'
+
+	   	print("I am going to return a function!!")
+
+	   	if name == 'Jose':
+
+			return greet
+
+	   	else:
+		 	
+			return welcome
+
+In[30]: my_new_func = hello('Jose')
+
+Out[30]: The hello() function has been executed!
+
+	    I am going to return a function!
+
+In[31]: my_new_func
+
+Out[31]: <function __main__.hello.<locals>.greet>
+
+In[32]: '\t This is the greet() func inside hello!'
+
+In[33]: print(my_new_func())
+
+Out[33]: This is the greet() func inside hello!
+
+In[34]: def cool():
+
+		def super_cool():
+
+			return 'I am very cool!'
+
+		
+          return super_cool
+
+In[35]: some_func = cool()
+
+In[36]: some_func
+
+Out[36]: <function __main__.cool.<locals>.super_cool>
+
+In[37]: some_func()
+
+Out[37]: 'I am very cool!'
+
+In[38]: def hello():
+
+		return 'Hi Jose!'
+
+In[39]: def other(some_def_func):
+
+		 print('Other code runs here!')
+
+		 print(some_def_func())
+
+In[40]: hello
+
+Out[40]: <function __main__.hello>
+
+In[41]: hello()
+
+Out[41]: 'Hi Jose!'
+
+In[42]: other(hello)
+
+Out[42]: Other code runs here
+
+	   Hi Jose!
+
+In[43]: def new_decorator(original_func):
+
+		def wrap_func():
+
+			print('Some extra code, before the original function')
+
+			original_func()
+
+			print('Some extra code, after the original function!')
+
+		return wrap_func
+
+In[44]: def func_needs_decorator():
+
+		print("I want to be decorated!!")
+
+In[45]: func_needs_decorator()
+
+Out[45]: I want to be decorated!!
+
+In[46]: decorated_func = new_decorated(func_needs_decorator)
+
+In[47]: decorated_func()
+
+Out[47]: Some extra code, before the original function
+
+	    I want to be decorated!!
+
+	    Some extra code, after the original function!
+
+In[48]: @new_decorator
+
+	   def func_needs_decorator():
+
+		print("I want to be decorated!!")
+
+In[49]: func_needs_decorator()
+
+Out[49]: Some extra code, before the original function
+
+	    I want to be decorated!!
+
+	    Some extra code, after the original function!
+
+In[50]: # @new_decorator
+
+	   def func_needs_decorator():
+
+		print("I want to be decorated!")
+
+In[51]: func_needs_decorator()
+
+Out[51]: I want to be decorated!!
+
+In[52]: @new_decorator
+
+	   def func_needs_decorator():
+
+		print("I want to be decorated!!!")
+
+In[53]: func_needs_decorator()
+
+Out[53]: Some extra code, before the original function
+
+	    I want to be decorated!!
+
+	    Some extra code, after the original function!	

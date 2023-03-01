@@ -1,0 +1,281 @@
+Lecture-35: For Loops in Python
+
+For Loops
+
+1. Many objects in Python are "iterable", meaning we can iterate over every element in the object.
+
+2. Such as every element in a list or every character in a string.
+
+3. We can use for loops to execute a block of code for every iteration. 
+
+4. The term 'iterable' means you can "iterate" over the object.
+
+5. For example, you can iterate over every character in a string, iterate over every item in a list, iterate over every key in a  dictionary. 
+
+6. Syntax of a for loop:
+
+	my_iterable = [1, 2, 3]
+
+	for item_name in my_iterable:
+
+		print (item_name)
+
+-> 1
+
+-> 2
+
+-> 3
+
+
+Jupyter Notebook
+
+In[1]: mylist = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+In[2]: for num in mylist:
+
+		print(num)
+
+Out[2]: 1
+
+	   2
+
+        3
+
+        4
+
+        5
+
+        6
+
+        7
+
+        8
+
+        9
+
+        10
+
+In[4]: for jelly in mylist:
+
+		print('hello')
+
+Out[4]: hello
+
+	   hello
+
+        hello
+
+        hello
+
+        hello
+
+        hello
+
+        hello
+
+        hello
+
+        hello
+
+        hello
+
+In[6]: for num in mylist:
+
+		# Check for even
+
+		if num % 2 == 0:
+
+			print(num)
+
+Out[6]: 2
+
+        4
+
+        6
+
+        8
+
+        10
+
+In[7]: for num in mylist:
+
+		# Check for even
+
+		if num % 2 == 0
+
+			print(num)
+		else:			# else print odd numbers
+
+			print(f' Odd Number: {num}')
+
+Out[7]: Odd Number: 1
+
+	  2
+
+        Odd Number: 2
+
+        4
+
+        Odd Number: 5
+
+        6
+
+        Odd Number: 7
+
+        8
+
+        Odd Number: 9
+
+        10
+
+In[8]: list_sum = 0
+
+       for num in mylist:
+
+		list_sum = list_sum + num
+
+	 print(sum)
+
+Out[8]: 55
+
+In[11]: mystring = 'Hello World'
+
+	  for letter in mystring:
+
+		print(letter)
+
+H
+e
+l
+l
+o
+
+W
+o
+r
+l
+d
+
+In[12]: for letter in 'Hello World':
+
+		print(letter):
+
+H
+e
+l
+l
+o
+
+W
+o
+r
+l
+d
+
+In[16]: tup = (1, 2, 3)
+
+for item in tup:
+
+	print(tup)
+
+Out[16]: 1
+  
+         2
+
+         3
+
+In[17]: mylist = [(1, 2), (3, 4), (7, 8)]
+
+In[18]: len(mylist)
+
+Out[18]: 4
+
+In[19]: for item in mylist:
+
+		print(item)
+
+Out[19]: (1, 2)
+
+	    (3, 4)
+
+         (5, 6)
+
+         (7, 8)
+
+In[20]: for (a, b) in mylist
+
+		print(a)
+
+		print(b)
+
+Out[20]: 1
+
+         2
+
+         3
+
+         4
+
+         5
+
+         6
+
+         7
+
+         8
+
+This is called Tuple unpacking
+
+In[24]: mylist = [(1, 2, 3), (5, 6, 7), (8, 9, 10)]
+
+In[25]: for item in mylist:
+
+		print(item)
+
+Out[25]: (1, 2, 3)
+
+	    (5, 6, 7)
+
+         (8, 9, 10)
+
+In[26]: for a, b, c in mylist:
+
+		print(b)	# Tuple Unpacking
+
+Out[26]: 2
+
+         6
+
+         9
+
+In[27]: d = {'k1' : 1, 'k2' : 2, 'k3' : 3}
+
+for item in d:
+
+	print(item)
+
+Out[27]: k1
+
+         k2
+       
+         k3
+
+for item in d.items():
+
+	print(item)
+
+Out[28]: ('k1', 1)
+
+	    ('k2', 2)
+
+         ('k3', 3)
+
+for key, value in d.items():
+
+	print(value)
+
+Out[29]: 1
+
+         2
+
+         3

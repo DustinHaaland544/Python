@@ -1,0 +1,212 @@
+Lecture-107: Python Math and Random Modules
+
+
+Math and Random Modules
+
+Jupyter Notebook
+
+In[82]: import math
+
+In[83]: help(math)
+
+Out[83]: Math Documentation
+
+In[84]: # help(math)
+
+In[85]: value = 4.35
+
+In[86]: math.floor(value)
+
+Out[86]: 4
+
+In[87]: math.ceil(value)
+
+Out[87]: 5
+
+In[88]: round(4.35)
+
+Out[88]: 4
+
+In[89]: round(4.5)
+
+Out[89]: 4
+
+In[90]: round(5.5)
+
+Out[90]: 6
+
+In[91]: math.pi
+
+Out[91]: 3.14159265358973
+
+In[92]: from math import pi
+
+In[93]: pi
+
+Out[93]: 3.141592653589793
+
+In[94]: math.e
+
+Out[94]: 2.718281828459045
+
+In[96]: math.nan
+
+Out[96]: nan
+
+In[97]: # Numpty
+
+In[98]: math.e
+
+Out[98]: 2.718281828459045
+
+In[99]: math.log(math.e)
+
+Out[99]: 1.0
+
+In[100]: math.log(100, 10)
+
+Out[100]: 2.0
+
+In[101]: 10**2
+
+Out[101]: 100
+
+In[102]: math.sin(10)
+
+Out[102]: -0.5440211108893698
+
+In[103]: math.degrees(pi/2)
+
+Out[103]: 90.0
+
+In[104]: math.radians(180)
+
+Out[104]: 3.141592653589793
+
+In[105]: import random
+
+In[106]: random.randint(0, 100)
+
+Out[106]: 22
+
+In[107]: random.randint(0, 100)
+
+Out[107]: 57
+
+In[108]: random.randint(0, 100)
+
+Out[108]: 4
+
+In[115]: random.seed(101)
+
+         random.randint(0, 100)
+
+Out[115]: 74
+
+In[116]: random.seed(101)
+
+         random.randint(0, 100)
+
+Out[116]: 74
+
+In[117]: random.seed(101)
+
+         random.randint(0, 100)
+
+Out[117]: 74
+
+In[120]: random.randint(0, 100)
+
+Out[120]: 24
+
+In[121]: random.randint(0, 100)
+
+Out[121]: 69
+
+In[122]: random.seed(101)
+
+         random.randint(0, 100)
+
+Out[122]: 74
+
+In[123]: random.randint(0, 100)
+
+Out[123]: 24
+
+In[125]: random.randint(0, 100)
+
+Out[125]: 45
+
+In[131]: random.randint(0, 100)
+
+Out[131]: 77
+
+In[132]: random.seed(101)
+
+	   print(random.randint(0, 100))	# 74
+
+	   print(random.randint(0, 100))	# 24
+
+	   print(random.randint(0, 100))	# 69
+
+	   print(random.randint(0, 100))
+
+        print(random.randint(0, 100))
+
+Out[132]: 74
+
+          24
+
+          69
+
+          45
+
+          59
+
+In[137]: mylist = list(range(0, 20))
+
+In[138]: mylist 
+
+Out[138]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
+In[139]: random.choice(mylist)
+
+Out[139]: 16
+
+In[140]: mylist
+
+Out[140]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
+In[141]: # SAMPLE WITH REPLACEMENT
+
+In[142]: random.choices(population = mylist, k = 10)
+
+Out[142]: [4, 4, 5, 13, 4, 19, 1, 3, 1, 15]
+
+In[143]: # SAMPLE WITHOUT REPLACEMENT
+
+	   random.sample(population = mylist, k =10)
+
+Out[143]: [11, 6, 15, 10, 7, 16, 12, 18, 13, 3]
+
+In[144]: mylist
+
+Out[144]: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+
+In[145]: random.shuffle(mylist)
+
+In[146]: mylist
+
+Out[146]: [12, 7, 19, 11, 0, 3, 17, 8, 15, 4, 5, 18, 16, 10, 1, 6, 9, 14, 13, 2]
+
+In[147]: random.uniform(a = 0, b = 100)
+
+Out[147]: 0.6518601416265479
+
+In[148]: random.uniform(a = 0, b = 100)
+
+Out[148]: 46.41054065279665
+
+In[149]: random.gauss(mu = 0, sigma = 1)
+
+Out[149]: -0.8984857541998804 

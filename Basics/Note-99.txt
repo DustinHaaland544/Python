@@ -1,0 +1,110 @@
+Lecture-139: Advanced Strings
+
+
+Jupyter Notebook
+
+Advanced Strings
+
+In[118]: s = 'hello world'
+
+In[119]: s.capitalize()
+
+Out[119]: 'Hello world'
+
+In[120]: s.upper()
+
+Out[120]: 'HELLO WORLD'
+
+In[121]: s.lower()
+
+Out[121]: 'hello world' 
+
+In[122]: s.count('o')
+
+Out[122]: 2
+
+In[123]: s.find('o')
+
+Out[123]: 4
+
+In[124]: s
+
+Out[124]: 'hello world'
+
+In[125]: s.center(20, 'z')
+
+Out[125]: 'zzzzhello worldzzzzz'
+
+In[126]: 'hello\thi'
+
+Out[126]: 'hello\thi'
+
+In[130]: print 'hello\thi'
+
+Out[130]: hello hi
+
+In[131]: 'hello\thi'.expandtabs()
+
+Out[131]: 'hello hi'
+
+In[133]: s.isalnum()
+
+Out[133]: True
+
+In[134]: s.isalpha()
+
+Out[134]: True
+
+In[135]: s.islower()
+
+Out[135]: True
+
+In[136]: s
+
+Out[136]: 'hello' 
+
+In[137]: s.isspace()
+
+Out[137]: False
+
+In[138]: s.istitle()
+
+Out[138]: False
+
+In[139]: s.isupper()
+
+Out[139]: False
+
+In[140]: 'HELLO'.isupper()
+
+Out[140]: True
+
+In[141]: s
+
+Out[141]: 'hello' 
+
+In[142]: s.endswith('o')
+
+Out[142]: True
+
+In[143]: s[-1] == 'o'
+
+Out[143]: True
+
+In[144]: s
+
+Out[144]: 'hello'  
+
+In[145]: s.split('e')
+
+Out[145]: ['h', 'llo']
+
+In[147]: s = 'hiihhihihihhhi' 
+
+In[148]: s.split('i') 
+
+Out[148]: ['h', '', 'hh', 'h', 'h', 'hhh', ''] 
+
+In[149]: s.partition('i') 
+
+Out[149]: ('h', 'i', 'ihhihihihhhi')

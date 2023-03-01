@@ -1,0 +1,116 @@
+Lecture-153: Comparison Operators 
+
+1. Operator: ==
+
+   Description: If the values of two operands are equal, then the condition becomes true. 
+
+   Example: (a == b) is not true 
+
+2. Operator: !=
+
+   Description: If the values of two operands are not equal, then the condition becomes true. 
+
+   Example: (a != b) is true
+
+3. Operator: <>
+
+   Description: If values of two operands are not equal, then the condition becomes true. 
+
+   Example: (a <> b) is true. This is similar to != operator
+
+4. Operator: >
+
+   Description: If the values of left operand is greater than the value of the right operand, then the condition becomes true
+
+   Example: (a > b) is not true. 
+
+5. Operator: <
+
+   Description: If the value of left operand is less than the value of the right operand, then the condition becomes true
+
+   Example: (a < b) is true
+
+6. Operator: >=
+
+   Description: If the value of the left operand is greater than or equal to the value of the right operand, then the condition becomes true
+
+   Example: (a >= b) is not true
+
+7. Operator: <=
+
+   Description: If the value of the left operand is less than or equal to the value of the right operand, then the condition becomes true
+
+   Example: (a <= b) is true
+
+
+Jupyter Notebook
+
+Comparison Operators
+
+In[303]: 2 == 2
+
+Out[303]: True
+
+In[304]: 1 == 1
+
+Out[304]: True
+
+In[305]: 1 == 0
+
+Out[305]: False
+
+In[306]: # Not Equal
+
+In[307]: 2 != 1
+
+Out[307]: True
+
+In[308]: 2 != 2
+
+Out[308]: False
+
+In[309]: 2 <> 1
+
+Out[309]: True
+
+In[310]: 2 <> 2
+
+Out[310]: False
+
+In[311]: 2 != 1
+
+Out[311]: True
+
+In[312]: # greater than
+
+In[313]: 2 > 1
+
+Out[313]: True
+
+In[314]: 2 > 4
+
+Out[314]: False
+
+In[315]: 2 < 4
+
+Out[315]: True
+
+In[316]: 2 < 1
+
+Out[316]: False 
+
+In[317] 2 >= 2
+
+Out[317]: True
+
+In[318]: 2 >= 1
+
+Out[318]: True
+
+In[319]: 2 <= 2
+
+Out[319]: True
+
+In[320]: 2 <= 10
+
+Out[320]: True 

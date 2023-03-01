@@ -1,0 +1,263 @@
+Lecture-71: Object Oriented Programming - Inheritance & Polymorphism
+
+
+Object Oriented Programming
+
+Part-3
+
+Jupyter Notebook
+
+In[103]: class Animal():
+
+		def __init__(self):
+
+			print("ANIMAL CREATED")
+
+In[104]: myanimal = Animal()
+
+Out[104]: ANIMAL CREATED
+
+In[105]: class Animal():
+
+		def __init__(self):
+
+			print("ANIMAL CREATED")
+
+
+		def who_am_i(self):
+
+			print("I am an animal")
+
+
+		def eat(self):
+
+			print("I am eating")
+
+In[106]: myanimal = Animal()
+
+Out[106]: ANIMAL CREATED
+
+In[107]: myanimal.eat()
+
+Out[107]: I am eating
+
+In[108]: myanimal.who_am_i()
+
+Out[108]: I am an animal
+
+In[110]: class Dog(Animal):	# Dog class inheriting the Animal class
+
+		def __init__(self):
+
+			Animal.__init__(self)
+
+			print("Dog Created")
+
+In[111]: mydog = Dog()
+
+Out[111]: ANIMAL CREATED
+
+	    Dog Created
+
+In[112]: mydog.eat()
+
+Out[112]: I am eating
+
+In[113]: class Dog(Animal):
+
+		def __init__(self):
+
+			Animal.__init__(self)
+
+			print("Dog Created") 
+
+		def who_am_i(self):
+
+			print("I am a dog!")
+
+In[114]: mydog = Dog()
+
+Out[114]: ANIMAL CREATED
+
+	    Dog Created
+
+In[115]: mydog.eat()
+
+Out[115]: I am eating
+
+In[116]: mydog.who_am_i()
+
+Out[116]: I am a dog!
+
+In[117]: class Dog(Animal):
+
+		def __init__(self):
+
+			Animal.__init__(self)
+
+			print("Dog Created")
+
+In[119]: mydog = Dog
+
+Out[119]: ANIMAL CREATED
+
+	    Dog Created 
+
+In[120]: mydog.eat()
+
+Out[120]: I am eating
+
+In[121]: mydog.who_am_i()
+
+Out[121]: I am an animal
+
+In[122]: class Dog(Animal):
+
+		def __init__(self):
+
+			Animal.__init__(self)
+
+			print("Dog Created")
+
+		def eat(self):
+
+			print("I am a dog and eating")
+
+		def bark(self):
+
+			print("WOOF!")
+
+In[123]: mydog = Dog()
+
+Out[123]: ANIMAL CREATED
+
+	    Dog Created
+
+In[124]: mydog.eat()
+
+Out[124]: I am a dog and eating
+
+In[125]: mydog.who_am_i()
+
+Out[125]: I am an animal
+
+In[126]: mydog.bark()
+
+Out[126]: WOOF!
+
+
+Polymorphism
+
+In[130]: class Dog():
+
+		def __init__(self, name):
+
+			self.name = name
+
+		def speak(self):
+
+			return self.name + "says woof!"
+
+In[131]: class Cat():
+
+		def __init__(self, name):
+
+			self.name = name
+
+		def speak(self):
+
+			return self.name + "says meow!"
+
+In[132]: niko = Dog("niko")
+
+	   felix = Cat("felix")
+
+In[133]: print(niko.speak())
+
+Out[133]: niko says woof!
+
+In[138]: print(felix.speak())
+
+Out[138]: felix says meow!
+
+In[139]: for pet in [niko, felix]: 	# Polymorphism
+
+		print(type(pet))
+
+		print(type(pet.speak()))
+
+Out[139]: <class '__main__.Dog'>
+
+	    <class 'str'>
+
+	    <class '__main__.Cat'>
+
+	    <class 'str'>
+
+In[140]: for pet in [niko, felix]:
+
+		print(type(pet))
+
+		print(pet.speak())
+
+Out[140]: <class '__main__.Dog'>
+
+		niko says woof!
+
+	    <class '__main__.Cat'>
+
+	      felix says meow!
+
+In[141]: def pet_speak(pet):
+
+		print(pet.speak())
+
+In[142]: pet_speak(niko)
+
+Out[142]: niko says woof!
+
+In[143]: pet_speak(felix)
+
+Out[143]: felix says meow!
+
+In[144]: class Animal():
+
+		def __init__(self, name):
+
+			self.name = name
+
+		def speak(self):
+
+			raise NotImplementedError
+
+			("Subclass must implement this abstract method")
+
+In[145]: myanimal = Animal('fred')
+
+In[146]: myanimal.speak()
+
+Out[146]: Error
+
+In[147]: class Dog(Animal):
+
+		def speak(self):
+
+			return self.name + " says woof!"
+
+In[148]: class Cat(Animal):
+
+		def speak(self):
+
+			return self.name + " says meow!"
+
+In[149]: fido = Dog("Fido")
+
+In[150]: isis = Cat("Isis")
+
+In[151]: print(fido.speak())
+
+Out[151]: Fido says woof!
+
+In[152]: print(isis.speak())
+
+Out[152]: Isis says meow!

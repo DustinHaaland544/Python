@@ -1,0 +1,70 @@
+Lecture-41: Methods and Python Documentation 
+
+
+Methods and Functions 
+
+Methods
+
+1. Built-in objects in Python have a variety of methods you can use!
+
+2. Let's explore in a bit more detail how to find methods and how to get information about them.
+
+
+Jupyter Notebook
+
+In[2]: mylist = [1, 2, 3]
+
+In[3]: mylist.append(4)
+
+In[4]: mylist
+
+Out[4]: [1, 2, 3, 4]
+
+In[5]: mylist.pop()
+
+Out[5]: 4
+
+In[6]: mylist
+
+Out[6]: [1, 2, 3]
+
+
+On Jupyter Notebook type "dot" and then press tab to get the list of all the built-in Python methods that come with Jupyter Notebook:
+
+In[]: mylist. mylist.append
+
+              mylist.clear
+
+              mylist.copy
+
+              mylist.count
+
+              mylist.extend
+
+              mylist.index
+
+              mylist.insert
+
+              mylist.pop
+
+              mylist.remove
+
+              mylist.reserve
+
+In[]: mylist.insert
+
+	Docstring: L.insert(index, object) -- insert object index
+
+     Type: builtin_function_or_method
+
+Selecting the built-in function from the menu and then pressing shift + tab opens the help window which displays the information describing the function. 
+
+In[7]: help(mylist.insert)
+
+Out[7]: Help on built-in function insert:
+
+	  insert(...) method of builtins.list instance
+
+		L.insert(index, object) - - insert object before index
+
+Python Documentation: https://docs.python.org/3

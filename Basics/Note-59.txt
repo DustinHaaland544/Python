@@ -1,0 +1,73 @@
+Lecture-81: Errors and Exceptions Homework
+
+
+Errors and Exceptions Homework
+
+1. Handle the exception thrown by the code below by using 'try' and 'except' blocks
+
+In[1]: try:
+
+		for i in ['a', 'b', 'c']:
+
+			print(i ** 2)
+
+	 except:
+
+		print("An error occured!")
+
+An error occured!
+
+2. Handle the exception thrown by the code by using 'try' and 'except' blocks. Then use a finally block to print "All Done"
+
+In[2]: x = 5
+
+	 y = 0
+
+	try:
+
+		z = x/y
+
+	except ZeroDivisionError:
+
+		print("Can't divide by Zero")
+
+	finally:
+
+		print('All Done!')
+
+Out[2]: Can't divide by Zero!
+
+	  All Done!
+
+3. Write a function that asks for an integer and prints the square of it. Use a 'while' loop with a 'try', 'except', 'else' block to account for incorrect inputs.
+
+In[3]: def ask():
+
+		while True:
+
+			try:
+
+				n = int(input('Input an integer: '))
+
+			except:
+
+				print('An error occured! Please try again!')
+
+				continue
+
+			else:
+
+				break
+
+        print('Thank you, your number squared is: ', n ** 2)
+
+In[4]: ask
+
+Out[4]: Input an integer: null
+
+	  An error occured! Please try again!
+
+        Input an integer: 2
+
+	  Thank you, your number squared is: 4
+		

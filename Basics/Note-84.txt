@@ -1,0 +1,85 @@
+Lecture-121: Python Web Scraping - Book Examples Part One 
+
+
+Working with Multiple Pages and Items
+
+1. We have seen how to grab elements one at a time, but realistically, we want to be able to grab elements, most likely across multiple pages. 
+
+2. This is where we can combine our prior python knowledge with the web scraping libraries to create powerful scripts! 
+
+3. We will use a site specifically designed to practice web scraping: https://toscrape.com
+
+4. We will practice grabing elements across multiple pages. 
+
+5. Let's get started!
+
+
+Jupyter Notebook
+
+In[62]: # GOAL: Get title of every book with a 2 star rating
+
+In[63]: import requests
+
+        import bs4
+
+In[64]: 'http://book.toscrape.com/catalogue/page-2.html' 
+
+Out[64]: 'http://books.toscrape.com/catalogue/page-2.html' 
+
+In[65]: 'http://books.toscrape.com/catalogue/page-3.html'
+
+Out[65]: 'http://books.toscrape.com/catalogue/page-3.html' 
+
+In[66]: base_url = 'http://books.toscrape.com/catalogue/page-{}.html' 
+
+In[67]: base_url.format('20')
+
+Out[67]: 'http://books.toscrape.com/catalogue/page-20.html' 
+
+In[68]: page_num = 12
+
+        base_url.format(page_num)
+
+Out[68]: 'http://books.toscrape.com/catalogue/page-12.html' 
+
+In[69]: res = requests.get(base_url.format(1))
+
+In[70]: soup = bs4.BeautifulSoup(res.text, 'lxml')
+
+In[71]: soup
+
+Out[71]: <!DOCTYPE html>
+
+         <! -- [if lt IE 7]> <html lang = "enus" class = "no-js lt - ie 9 lt - ie 8 lt - ie 7">
+
+         ........
+
+In[72]: soup.select(".product_pod")
+
+Out[72]: [<article class = "product_pod">
+
+          <div class = "image_container">
+
+          <a href = "a-light-in-the-attic_1000/index.html"><img alt = "A Light in the Attic" class = "thumbnail" src = "../media/cache/2c/da/2cdad67c44b002e7ead0cc35693c0e8b.jpg"/></a>
+
+          </div>
+
+          <p class = "star-raing Three">
+
+          <i class = "icon-star"></i>
+
+          <i class = "icon-star"></i>
+
+          <i class = "icon-star"></i>
+
+          <i class = "icon-star"></i>
+
+          <i class = "icon-star"></i>
+
+          </p>
+
+          ....
+
+In[73]: len(soup.select(".product_pod"))
+
+Out[73]: 20 

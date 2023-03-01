@@ -1,0 +1,251 @@
+Lecture-100: Generators with Python
+
+
+Generators
+
+1. We have learned how to create functions with 'def' and the 'return' statement. 
+
+2. Generator functions allow us to write a function that can send back a value and then later resume to pick up where it left off.
+
+3. This type of function is a generator in Python, allowing us to generate a sequence of values over time. 
+
+4. The main difference in syntax will be the use of a yield statement.
+
+5. When a generator function is compiled they become an object that supports an iterational protocol. 
+
+6. That means when they are called in your code they do not actually return a value and then exit. 
+
+7. Generator functions will automatically suspend and resume their execution and state around the last point of value generation. 
+
+8. The advantage is that instead of having to compute an entire series of values up front, the generator computes one value waits until the next value is called for. 
+
+9. For example, the range() function does not produce a list in memory for all values from start to stop.
+
+10. Instead, it just keeps track of the last number and the step size, to provide a flow of numbers.
+
+11. If a user do need the list, then they need to transform the generator to a list with "list(range(0, 10))".
+
+12. Let's explore how to create our own generators! 
+
+
+Jupyter Notebook
+
+In[54]: def create_cubes(n):
+
+		result = []
+
+		for x in range(n):
+
+			result.append(x ** 3)
+
+	  return result
+
+In[55]: create_cubes(10)
+
+Out[55]: [0, 1, 8, 27, 64, 125, 216, 343, 512, 729]
+
+In[56]: for x in create_cudes(10):
+
+		print(x)
+
+Out[56]: 0
+
+	    1
+
+         8
+
+         27
+
+         64
+
+         125
+
+         216
+
+         343
+
+         512
+
+         729
+
+In[57]: def create_cubes(n):
+
+		for x in range(n):
+
+			yield x ** 3
+
+In[58]: for x in create_cubes(10):
+
+		print(x)
+
+Out[58]: 0
+
+         1
+
+         8
+
+         27
+
+         64
+
+         125
+
+         216
+
+         343
+
+         512
+
+         729
+
+In[59]: create_cubes(10)
+
+Out[59]: <generator object create_cubes at 0x00000231D7F34728>
+
+In[60]: list(create_cubes(10))
+
+Out[60]: [0, 1, 8, 27, 64, 125, 216, 343, 512, 729]
+
+In[61]: def gen_fibon(n):
+
+		a = 1
+
+	     b = 1
+
+	     for i in range(n):
+
+		 yield a 
+
+	      a, b = b, a + b
+
+In[62]: for number in gen_fibon(10):
+
+		print(number)
+
+Out[62]: 1
+
+         1
+
+         2
+
+         3
+
+         5
+
+         8
+
+         13
+
+         21
+
+         34
+
+         55
+
+In[63]: def gen_fibon(n):
+
+		a = 1
+
+            b = 1
+
+            output = []
+
+	      for i in range(n):
+
+			output.append(a)
+
+			a, b = b, a + b
+
+	      return output
+
+In[64]: for number in gen_fibon(10):
+
+		print(number)
+
+Out[64]: 1
+
+         1
+
+         2
+
+         3
+
+         5
+
+         8
+
+         13
+
+         21
+
+         34
+
+         55
+
+In[65]: def simple_gen():
+
+		for x in range(3):
+
+			yield x
+
+In[66]: for number in simple_gen():
+
+		print(number)
+
+Out[66]: 0
+
+	    1
+
+         2
+
+In[67]: g = simple_gen()
+
+In[68]: g
+
+In[68]: <generator object simple_get at 0x00000231D7F34990>
+
+In[69]: print(next(g))
+
+Out[69]: 0
+
+In[70]: print(next(g))
+
+Out[70]: 1
+
+In[71]: print(next(g))
+
+Out[71]: 2
+
+In[72]: print(next(g))
+
+Out[72]: Error: StopIteration
+
+In[73]: s = 'hello'
+
+In[74]: for letter in s:
+
+		print(letter)
+
+Out[74]: h
+
+         e
+
+         l
+
+         l
+
+         o
+
+In[75]: next(s)
+
+Out[75]: TypeError: 'str' object is not an iterator
+
+In[76]: s_iter = iter(s)
+
+In[77]: next(s_iter)
+
+Out[77]: 'h'
+
+In[78]: next(s_iter)
+
+Out[78]: 'e'

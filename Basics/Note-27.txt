@@ -1,0 +1,77 @@
+Lecture-33: Chaining Comparison Operators in Python with Logical Operators
+
+1. We can use logical operators to combine comparisons:
+
+	- and
+
+	- or
+
+	- not
+
+2. Let's explore how to use these
+
+Jupyter Notebook
+
+In[83]: 1 < 2
+
+Out[83]: True
+
+In[84]: 2 < 3
+
+Out[84]: True
+
+In[85]: 1 < 2 < 3
+
+Out[85]: True
+
+In[86]: 1 < 2 > 3
+
+Out[86]: False
+
+In[87]: 1 < 2 and 2 > 3
+
+Out[87]: False
+
+In[88]: 1 < 2 and 2 < 3
+
+Out[88]: True
+
+In[89]: 'h' == 'h' and 2 == 2
+
+Out[89]: True
+
+In[90]: ('h' == 'h') and (2 == 2)
+
+Out[90]: True
+
+In[92]: 1 == 1 or 2 == 2
+
+Out[92]: True
+
+In[93]: 100 == 1 or 2 == 2
+
+Out[93]: True
+
+In[94]: 100 == 1 or 2 == 200
+
+Out[94]: False
+
+In[97]: 1 == 1
+
+Out[97]: True
+
+In[98]: not (1 == 1)
+
+Out[98]: False
+
+In[99]: not 1 = 1
+
+Out[99]: False
+
+In[100]: 400 > 5000
+
+Out[100]: False
+
+In[101]: not 400 > 5000
+
+Out[101]: True

@@ -1,0 +1,38 @@
+Lecture-27: Booleans in Python
+
+1. Booleans are operators that allow you to convey "True" or "False" statements.
+
+2. These are very important later on when we deal with control flow and logic!
+
+
+Jupyter Notebook
+
+In[15]: True
+
+Out[15]: True
+
+In[16]: true
+
+	Error: name 'true' is not defined
+
+In[17]: False
+
+Out[17]: False
+
+In[18]: type(False)
+
+Out[18]: bool
+
+In[19]: 1 > 2
+
+Out[19]: False
+
+In[20]: 1 == 1
+
+Out[20]: True
+
+In[22]: b = None
+
+In[23]: b
+
+Out[23]: 

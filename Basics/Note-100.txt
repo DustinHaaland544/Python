@@ -1,0 +1,146 @@
+Lecture-140: Advanced Sets 
+
+
+Jupyter Notebook
+
+Advanced Sets 
+
+In[74]: s = set()
+
+In[75]: s.add(1)
+
+In[76]: s.add(2)
+
+In[77]: s
+
+Out[77]: {1, 2} 
+
+In[78]: s.add(2)
+
+In[79]: s
+
+Out[79]: {1, 2}
+
+In[80]: s.clear()
+
+In[81]: s
+
+Out[81]: set()
+
+In[82]: s = {1, 2, 3}
+
+In[83]: sc = s.copy()
+
+In[84]: sc
+
+Out[84]: {1, 2, 3}
+
+In[85]: s.add(4)
+
+In[86]: s
+
+Out[86]: {1, 2, 3, 4} 
+
+In[87]: sc
+
+Out[87]: {1, 2, 3}
+
+In[88]: s.difference(sc)
+
+Out[88]: {4}
+
+In[89]: s1 = {1, 2, 3}
+
+In[90]: s2 = {1, 4, 5} 
+
+In[91]: s1.difference_update(s2)
+
+In[92]: s1
+
+Out[92]: {2, 3}
+
+In[93]: s
+
+Out[93]: {1, 2, 3, 4}
+
+In[94]: s.discard(2)
+
+In[95]: s
+
+Out[95]: {1, 3, 4}
+
+In[96]: s.discard(12)
+
+In[97]: s
+
+Out[97]: {1, 3, 4} 
+
+In[98]: s1 = {1, 2, 3}
+
+In[99]: s2 = {1, 2, 4}
+
+In[100]: s1.intersection(s2)
+
+Out[100]: {1, 2}
+
+In[101]: s1
+
+Out[101]: {1, 2, 3}
+
+In[102]: s1.intersection_update(s2)
+
+In[104]: s1
+
+Out[104]: {1, 2} 
+
+In[105]: s1 = {1, 2}
+
+	   s2 = {1, 2, 4}
+
+         s3 = {5}
+
+In[106]: s1.isdisjoint(s2)
+
+Out[106]: False 
+
+In[107]: s1.isdisjoint(s3)
+
+Out[107]: True
+
+In[108]: s1
+
+Out[108]: {1, 2}
+
+In[109]: s2
+
+Out[109]: {1, 2, 4}
+
+In[110]: s1.issubset(s2)
+
+Out[110]: True
+
+In[111]: s2.issuperset(s1)
+
+Out[111]: True
+
+In[112]: s1
+
+Out[112]: {1, 2}
+
+In[113]: s2
+
+Out[113]: {1, 2, 4}
+
+In[114]: s1.symmetric_difference(s2)
+
+Out[114]: {4}
+
+In[115]: s1.union(s2)
+
+Out[115]: {1, 2, 4}
+
+In[116]: s1.update(s2)
+
+In[117]: s1
+
+Out[117]: {1, 2, 4}

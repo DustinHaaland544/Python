@@ -1,0 +1,191 @@
+Lecture-36: While Loops in Python 
+
+While Loops
+
+1. While loops will continue to execute a block of code "while" some condition remains True. 
+
+2. For example, "while" my pool is not full, keep filling my pool with water.
+
+3. Or "while" my dogs are still hungry, keep feeding my dogs.
+
+4. Syntax of a while loop
+
+	while some_boolean_condition:
+
+		# do something
+
+	else:
+
+		# do something different
+
+
+
+Jupyter Notebook
+
+In[1]: x = 0
+
+	 while x < 5:
+
+		print(f'The current value of x is {x}')
+
+		x = x + 1
+
+Out[1]: The current value of x is 0
+
+	   The current value of x is 1
+
+        The current value of x is 2
+
+        The current value of x is 3
+
+        The current value of x is 4
+
+In[3]: x = 0
+
+	 while x < 5:
+
+		print(f'The current value of x is {x}')
+
+		x = x + 1
+
+       else:
+
+		print("X IS NOT LESS THAN 5")
+
+Out[3]: The current value of x is 0
+
+        The current value of x is 1
+
+        The current value of x is 2
+
+        The current value of x is 3
+
+        The current value of x is 4
+
+        X IS NOT LESS THAN 5
+
+In[4]: x = 50
+
+       while x < 5:
+
+        	 print(f'The current value of x is {x}')
+
+             x = x + 1
+
+      else:
+
+             print("X IS NOT LESS THAN 5")
+
+Out[4]: X IS NOT LESS THAN 5
+
+
+5. break, continue, pass
+
+   We can use break, continue, pass statements in our loops to add additional functionality for various cases. The three statements are defined by:
+
+	- break: Breaks out of the current closest enclosing loop.
+
+	- continue: Goes to the top of the closest enclosing loop.
+
+	- pass: Does nothing at all.
+
+
+In[6]: x = [1, 2, 3]
+
+       for item in x:
+
+		# comment
+
+Out[6]: File "<ipython-input-6-b7255e8c2a99>", line 4
+
+		# comment
+
+        SyntaxError: unexpected EOF while parsing
+
+In[7]: x = [1, 2, 3]
+
+	 for item in x: 
+
+		# comment
+
+		pass
+
+	 print('end of my script')
+
+Out[7]: end of my script
+
+In[10]: mystring = 'Sammy'
+
+In[11]: for letter in mystring:
+
+		print(letter)
+
+Out[11]: S
+
+         a
+
+         m
+
+         m
+
+         y
+
+In[12]: for letter in mystring:
+
+		if letter == 'a':
+
+			continue
+
+		print(letter)
+
+Out[12]: S
+
+         m
+
+         m
+
+         y
+
+In[13]: for letter in mystring:
+
+		if letter == 'a'
+
+			break
+
+		print(letter)
+
+Out[13]: S
+
+In[14]: x = 0
+
+	  while x < 5:
+
+		print(x)
+
+		x += 1
+
+Out[14]: 0
+
+	    1
+
+         2
+
+         3
+
+         4
+
+In[15]: x = 0
+
+   	  while x < 5:
+
+		if x == 2:
+
+		  break
+
+		print(x)
+
+		x += 1
+
+Out[15]: 0
+
+         1

@@ -1,0 +1,236 @@
+Lecture-104: Python Collections Module 
+
+
+Collection Module
+
+Jupyter Notebook
+
+In[4]: from collections import Counter
+
+In[5]: mylist = [1, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3]
+
+In[6]: Counter(mylist)
+
+Out[6]: Counter({1:5, 2:4, 3:7})
+
+In[7]: mylist = ['a', 'a', 10, 10, 10]
+
+In[8]: Counter(mylist)
+
+Out[8]: Counter({'a': 2, 10:3})
+
+In[9]: Counter('aaaabbbbshshsjs')
+
+Out[9]: Counter({'a': 4, 'b': 4, 'h': 2, 'j': 1, 's': 4})
+
+In[10]: sentence = "How many times does each word show up in this sentence with a word"
+
+In[11]: sentence.split()
+
+Out[11]: ['How',
+
+          'many',
+
+          'times', 
+
+          'does', 
+
+          'each',
+
+          'word',
+
+          'show',
+
+          'up',
+
+          'in',
+
+          'this',
+
+          'sentence', 
+
+          'with',
+
+          'a',
+
+          'word'] 
+
+In[12]: Counter(sentence.split())
+
+Out[12]: Counter({'How': 1,
+
+                  'a': 1, 
+
+                  'does': 1,
+
+                  'each': 1,
+
+                  'in': 1,
+
+                  'many': 1,
+
+                  'sentence': 1, 
+
+                  'show': 1,
+
+                  'this': 1, 
+
+                  'times': 1, 
+
+                  'up': 1,
+
+                  'with': 1, 
+
+                  'word': 2})
+
+In[13]: Counter(sentence.lower().split())
+
+Out[13]: Counter({'a': 1,
+
+                  'does': 1,
+
+                  'each': 1,
+
+                  'how': 1,
+
+                  'in': 1,
+
+                  'many': 1,
+
+                  'sentence': 1, 
+
+                  'show': 1, 
+
+                  'this': 1,
+
+                  'times': 1,
+
+                  'up': 1, 
+
+                  'with': 1, 
+
+                  'word': 2})
+
+In[14]: letters = 'aaabbbbccccccccddddddddddd'
+
+In[15]: c = Counter(letters)
+
+In[16]: c
+
+Out[16]: Counter({'a': 3, 'b': 4, 'c': 8, 'd': 11})
+
+In[17]: c.most_common()
+
+Out[17]: [('d': 11), ('c': 8), ('b', 4), ('a', 3)]
+
+In[18]: c.most_common(2)
+
+Out[18]: [('d', 11), ('c', 8)]
+
+In[19]: c.most_common(3)
+
+Out[19]: [('d', 11), ('c', 8), ('b', 4)]
+
+
+Common patterns when using the Counter() object 
+
+sum(c.values())		     # total of all counts
+
+c.clear()				     # reset all counts
+
+list(c)				     # list unique elements
+
+set(c)				     # convert to a set
+
+dict(c)				     # convert to a regular dictionary
+
+c.items()				     # convert to a list of (elem, cnt) pairs	
+
+Counter(dic(list_of_pairs))	# convert from a list of (elem, cnt) pairs
+
+c.most_common() [:-n-1:-1]	# n least common elements 
+
+c += Counter			     # remove zero and negative counts 
+
+
+Jupyter Notebook
+
+In[20]: c
+
+Out[20]: Counter({'a': 3, 'b': 4, 'c': 8, 'd': 11})
+
+In[21]: list(c)
+
+Out[21]: ['a', 'b', 'c', 'd']
+
+In[22]: from collections import defaultdict
+
+In[23]: d = {'a': 10}
+
+In[24]: d
+
+Out[24]: {'a': 10}
+
+In[25]: d['a']
+
+Out[25]: 10
+
+In[26]: d['WRONG']
+
+Out[26]: KeyError: 'WRONG'
+
+In[46]: d = defaultdict(lambda : 0)
+
+In[47]: d['correct'] = 100
+
+In[48]: d['correct']
+
+Out[48]: 100
+
+In[49]: d['WRONG KEY!']
+
+Out[49]: 0
+
+In[50]: d
+
+Out[50]: defaultdict(<function __main__.<lambda>>, {'WRONG KEY!' : 0, 'correct' : 100})
+
+In[54]: mytuple = (10, 20, 30)
+
+In[55]: mytuple[0]
+
+Out[55]: 10
+
+In[56]: from collections import namedtuple
+
+In[57]: Dog = namedtuple('Dog', ['age', 'breed', 'name'])
+
+In[58]: Dog
+
+Out[58]: __main__.Dog
+
+In[59]: sammy = Dog(age = 5, breed = 'Husky', name = 'Sam')
+
+In[60]: type(sammy)
+
+Out[60]: __main__.Dog
+
+In[61]: sammy 
+
+Out[61]: Dog(age = 5, breed = 'Husky', name = 'Sam')
+
+In[62]: sammy.age
+
+Out[62]: 5
+
+In[63]: sammy.breed
+
+Out[63]: 'Husky'
+
+In[64]: sammy.name
+
+Out[64]: 'Sam'
+
+In[65]: sammy[0]
+
+Out[65]: 5 

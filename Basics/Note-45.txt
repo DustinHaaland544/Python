@@ -1,0 +1,128 @@
+Lecture-55: Lambda Expressions, Map & Filter Functions
+
+
+Lambda Expressions Map and Filter
+
+Jupyter Notebook
+
+In[60]: def square(num):
+
+		return num**2
+
+In[61]: my_nums = [1, 2, 3, 4, 5]
+
+In[62]: map(square, my_nums)
+
+Out[62]: <map at 0x2a72cad8080>
+
+In[63]: for item in map(square, my_nums):
+
+		print(item)
+
+Out[63]: 1
+
+	    4
+
+         9
+
+         16
+
+         25
+
+In[64]: list(map(square, my_nums))
+
+Out[64]: [1, 4, 9, 16, 25]
+
+In[65]: def splicer(mystring):
+
+		if len(mystring) % 2 == 0:
+
+			return 'EVEN'
+
+		else:
+
+			return mystring[0]
+
+In[66]: names = ['Andy', 'Eve', 'Sally']
+
+In[67]: list(map(splicer, names))
+
+Out[67]: ['EVEN', 'E', 'S']
+
+In[70]: def check_even(num):
+
+		return num % 2 == 0
+
+In[71]: mynums = [1, 2, 3, 4, 5, 6]
+
+In[72]: filter(check_even, mynums)
+
+Out[72]: <filter at 0x2a72cad8da0>
+
+In[73]: list(filter(check_even, mynums))
+
+Out[73]: [2, 4, 6]
+
+In[74]: for n in filter(check_even, mynums):
+
+		print(n)
+
+Out[74]: 2
+
+         4
+
+         6
+
+In[75]: def square(num):
+
+		result = num ** 2
+
+		return result
+
+In[76]: square(3)
+
+Out[76]: 9
+
+In[77]: def square(num):
+
+		return num ** 2
+
+In[78]: square(3)
+
+Out[78]: 9
+
+In[79]: def square(num): return num ** 2
+
+In[80]: square(3)
+
+Out[80]: 9
+
+In[81]: square = lambda num : num ** 2
+
+In[82]: square(3)
+
+Out[82]: 9
+
+In[83]: square(5)
+
+Out[83]: 25
+
+In[84]: list(map(lambda num: num ** 2, mynums))
+
+Out[84]: [1, 4, 9, 16, 25, 36] 
+
+In[85]: list(filter(lambda num: num % 2 == 0, mynums))
+
+Out[85]: [2, 4, 6]
+
+In[86]: names
+
+Out[86]: ['Andy', 'Eve', 'Sally']
+
+In[87]: list(map(lambda x: x[0], names))
+
+Out[87]: ['A', 'E', 'S']
+
+In[88]: list(map(lambda x: x[;; -1], names))
+
+Out[88]: ['ydnA', 'evE', 'yllaS']

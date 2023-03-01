@@ -1,0 +1,411 @@
+Lecture-80: Errors and Exception Handling
+
+
+Errors and Exception Handling
+
+1. Errors are bound to happen in your code!
+
+2. Especially when someone else ends up using it in an unexpected way.
+
+3. We can use error handling to attempt to plan for possible errors. 
+
+4. For example, a user may try to write to a file that was only opened in mode = 'r'.
+
+5. Currently, if there is any type of error in your code, the entire script will stop. 
+
+6. We can use Error Handling to let the script continue with other code, even if there is an error. 
+
+7. We use three keywords for this: 
+
+	- try: This is the block of code to be attempted (may lead to an error).
+
+	- except: Block of code will execute in case there is an error in "try" block. 
+
+	- finally: A final block of code to be executed, regardless of an error. 
+
+
+Jupyter Notebook
+
+In[251]: def add(n1, n2):
+
+		print(n1 + n2)
+
+In[252]: add(10, 20)
+
+Out[252]: 30
+
+In[253]: number1 = 10
+
+In[254]: number2 = input("Please provide a number: ")
+
+	   Please provide a number: 
+
+	   Please provide a number: 20
+
+In[255]: add(number1, number2)
+
+Out[255]: TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+In[256]: add(number, number2)
+
+	   print("Something happened!")
+
+Out[256]: TypeError: unsupported operand type(s) for +: 'int' and 'str'
+
+In[257]: try:
+
+			# WANT TO ATTEMPT THIS CODE
+
+			# MAY HAVE AN ERROR
+
+			result = 10 + 10
+
+	   except:
+
+			print("Hey it looks like you aren't adding correctly!")
+
+In[258]: result
+
+Out[258]: 20 
+
+In[259]: try:
+
+			# WANT TO ATTEMPT THIS CODE
+
+			# MAY HAVE AN ERROR
+
+			result = 10 + '10'
+
+	  except:
+
+			print("Hey it looks like you aren't adding correctly!")
+
+Out[259]: Hey it looks like you aren't adding correctly!
+
+In[260]: try:
+
+			# WANT TO ATTEMPT THIS CODE:
+
+			# MAY HAVE AN ERROR
+
+			result = 10 + '10'
+
+	  except:
+
+			print("Hey it looks like you aren't adding correctly!")
+
+	  else:
+
+			print("Add went well!")
+
+			print(result)
+
+Out[260]: Hey it looks like you aren't adding correctly!
+
+In[261]: try:
+
+			# WANT TO ATTEMPT THIS CODE
+
+			# MAY HAVE AN ERROR
+
+			result = 10 + 10
+
+	   except:
+
+			print("Hey it looks like you aren't adding correctly!")
+
+	   else:
+
+			print("Add went well!")
+
+			print(result)
+
+Out[261]: Add went well!
+
+	    20 
+
+In[267]: try:
+
+			f = open('textfile', 'w')
+
+			f.write("Write a test line")
+
+	  except TypeError:
+
+			print("There was a type error!")
+
+	  except OSError:
+
+			print('Hey you have an OS Error')
+
+	  finally:
+
+			print("I always run")
+
+Out[267]: I always run
+
+In[268]: try:
+
+			f = open('testfile', 'r')
+
+			f.write("Write a test line")
+
+	   except TypeError:
+
+			print("There was a type error!")
+
+	  except OSError:
+
+			print('Hey you have an OS Error')
+
+	  finally:
+
+			print("I always run")
+
+Out[268]: Hey you have an OS Error
+
+          I always run
+
+In[269]: try:
+
+			f = open('textfile', 'r')
+
+			f.write("Write a test line")
+
+	   except TypeError:
+
+			print("There was a type error!")
+
+	   except:
+
+			print("All other exceptions!")
+
+	  finally:
+
+			print("I always run")
+
+Out[269]: All other exceptions!
+
+          I always run
+
+In[270]: try:
+
+			f = open('testfile', 'w')
+
+			f.write("Write a test line")
+
+	   except:
+
+			print("All other exceptions!")
+
+	   finally:
+
+			print("I always run")
+
+Out[270]: I always run
+
+In[271]: try:
+
+			f = open('testfile', 'r')
+
+			f.write("Write a test line")
+
+	   except:
+
+			print('All other exceptions!')
+
+	   finally:
+
+			print("I always run")
+
+Out[271]: All other exceptions!
+
+          I always run
+
+In[272]: def ask_for_int():
+
+		try:
+
+			result = int(input("Please provide number: "))
+
+		except:
+
+			print("Whoops! That is not a number")
+
+		finally:
+
+			print("End of try/except/finally")
+
+In[273]: ask_for_int()
+
+	   Please provide number:
+
+	   20
+
+Out[273]: Please provide number: 20
+
+	    End of try/except/finally
+
+In[274]: ask_for_int()
+
+	   Please provide number:
+
+	   word
+
+Out[273]: Please provide number: word
+
+	    Whoops! That is not a number 
+
+          End of try/except/finally
+
+In[281]: def ask_for_int():
+
+		while True:
+
+			try:
+
+				result = int(input("Please provide number: "))
+
+	  	except:
+
+			print("Whoops! That is not a number ")
+
+			continue
+
+		else:
+
+			print("Yes thank you")
+
+			break
+
+		finally:
+
+			print("End of try/except/finally")
+
+			print("I will always run at the end!")
+
+In[282]: ask_for_int()
+
+	   Please provide number:
+
+	   20
+
+Out[283]: Please provide number: 20
+
+          Yes thank you
+
+          End of try/excepy/finally
+
+          I will always run at the end!
+
+In[284]: ask_for_int()
+
+	   Please provide number:
+
+	   q
+
+Out[284]: Please provide number: q
+
+          Whoops! That is not a number 
+
+ 	    End of try/except/finally
+
+          I will always run at the end!
+
+          Please provide a number
+
+	    q
+
+          Whoops! That is not a number 
+
+          End of try/except/finally
+
+	     I will always run at the end!
+
+          Please provide number:
+
+	    90
+
+	    Please provide a number: 90
+
+	    Yes thank you
+
+         End of try/except/finally
+
+	    I will always run at the end!
+
+In[285]: def ask_for_int():
+
+		while True:
+
+			try:
+
+				result = int(input("Please provide number: "))
+
+			except:
+
+				print("Whoops! That is not a number")
+
+				continue
+
+			else:
+
+				print("Yes thank you")
+
+				break 
+
+			finally:
+
+				print("I'm going to ask you again! \n")
+
+In[286]: ask_for_int()
+
+	   Please provide number: a
+
+	   Whoops! That is not a number
+
+	   I'm going to ask you again!
+
+	   Please provide number:
+
+	   1
+
+Out[286]: Please provide number: 1
+
+	     Yes thank you
+
+          I'm going to ask you again!
+
+In[287]: def ask_for_int():
+
+		while True:
+
+			try:
+
+				result = int(input("Please provide number: "))
+
+		except:
+
+				print("Whoops! That is not a number ")
+
+				continue
+
+		else:
+
+				print("Yes thank you")
+
+				break
+
+In[288]: ask_for_int()
+
+	   Please provide number: q
+
+	   Whoops! That is not a number
+
+	   Please provide number:
+
+	   1
+
+Out[288]: Please provide a number: 1
+
+	    Yes thank you

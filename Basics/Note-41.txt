@@ -1,0 +1,111 @@
+Lecture-47: Interactions between Python Functions
+
+
+Interactions Between Functions
+
+1. Typically a Python script or notebook contains several functions interacting with each other. 
+
+2. Let's create a few funcions to mimic the carnival guessing game "Three Cup Monte".
+
+3. Our simple game won't actually show the cups or ball, instead we will simply mimic the effect with a Python list. 
+
+4. Our simple version will also not show the shuffle to the user, so the guess is completely random. 
+
+
+Shuffling a list:
+
+In[84]: example = [1, 2, 3, 4, 5, 6, 7]
+
+In[85]: from random import shuffle
+
+In[86]: shuffle(example)
+
+In[87]: example
+
+Out[87]: [5, 7, 1, 2, 6, 3, 4]
+
+In[88]: result = shuffle(example)
+
+In[89]: result
+
+Out[89]: 
+
+In[90]: def shuffle_list(mylist):
+
+		shuffle(mylist)
+
+		return mylist
+
+In[91]: result = shuffle_list(example)
+
+In[92]: result
+
+Out[92]: [3, 4, 1, 5, 6, 7, 2]
+
+In[97]: mylist = ['', '0', '']
+
+In[98]: shuffle_list(mylist)
+
+Out[98]: ['0', '', '']
+
+In[99]: def player_guess():
+
+		guess = ''
+
+		while guess not in ['0', '1', '2']:
+
+			guess = input("Pick a number: 0, 1, or 2")
+
+	 return int(guess)
+
+In[100]: player_guess()
+                                   ________
+         Pick a number: 0, 1, or 2 | 8     |
+                                   _________
+         Pick a number: 0, 1, or 2 | 1     |
+
+Out[100]: 1
+
+In[101]: myindex = player_guess()
+                                  __________
+         Pick a number: 0, 1 or 2 | 2      | 
+
+In[102]: myindex
+
+Out[102]: 2
+
+In[103]: def check_guess(mylist, guess):
+
+		if mylist[guess] == '0':
+
+			print("Correct!")
+
+		else:
+
+			print("Wrong guess!")
+
+			print(mylist)
+
+In[104]: # INITIAL LIST
+
+	   mylist = ['', '0', '']
+
+         # SHUFFLE LIST
+
+	     mixedup_list = shuffle_list(mylist)
+
+	   # USER GUESS
+
+           guess = player_guess()
+
+         # CHECK GUESS
+
+           check_guess(mixedup_list, guess)
+                                     ________
+           Pick a number: 0, 1, or 2 | 8     |
+                                     _________
+           Pick a number: 0, 1, or 2 | 0     |
+
+           Wrong guess!
+
+           ['', '', '0']

@@ -1,0 +1,10 @@
+Lecture-129: Introduction to PDFs and Spreadsheets with Python
+
+
+PDFs and Spreadsheets
+
+1. Python has the ability to work with PDF files and spreadsheet files. 
+
+2. In this section we will explore libraries that allow us to interact with these files. 
+
+3. Note: We highly recommend you work in the same location as the lecture notebooks since we will be referencing many files in that location. 

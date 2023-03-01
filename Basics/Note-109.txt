@@ -1,0 +1,80 @@
+Lecture-150: Widget Styling and Layouts
+
+
+Jupyter Notebook
+
+In[131]: import ipywidgets as widgets
+
+	   from IPython.display import display
+
+In[132]: w = widgets.IntSlider()
+
+	   display(w)
+
+Out[132]: x 0-------------------------0
+
+In[133]: w.layout.margin = 'auto' 
+
+	   w.layout.height = '75px' 
+
+In[134]: x = widgets.IntSlider(value = 15, description = 'New Slider')
+
+ 	   display(x)
+
+Out[134]: x New Slider --0----------------15 
+
+In[135]: x.layout = w.layout
+
+In[136]: widgets.Button(description = 'Ordinary Button', button_style = '')
+
+Out[136]: x |Ordinary Button|
+
+In[137]: widgets.Button(description = 'Ordinary Button', button_style = 'danger')
+
+Out[137]: x |Ordinary Button| 
+
+In[141]: b1 = widgets.Button(description = 'Custom Color') 
+
+         b1.style.button_color = 'lightgreen' 
+
+    	   b1
+
+Out[141]: |Custom Color| 
+
+In[142]: b1.style.keys 
+
+Out[142]: ['_model_module', '_model_module_version', '_model_name', '_view_module', '_view_module_version', 'view_name', 'button_color', 'font_weight', 'msg_throttle'] 
+
+In[143]: b2 = widgets.Button()
+
+         b2 = style = b1.style
+
+         b2 
+
+Out[143]: |         |
+
+In[144]: b2 = widgets.Button(description = 'NEW')
+
+         b2.style = b1.style
+
+         b2
+
+Out[144]: x |NEW|
+
+In[145]: s1 = widgets.IntSlider(description = 'My Handle')
+
+         s1
+
+Out[145]: x My Handle 0---------------------0
+
+In[146]: s1.style.keys
+
+Out[146]: ['_model_module', '_model_module_version', '_model_name', '_view_module', '_view_module_version', '_view_name', 'handle_color', 'msg_throttle'] 
+
+In[147]: s1 = widgets.IntSlider(description = 'My Handle') 
+
+         s1.style.handle_color = 'blue' 
+
+         s1
+
+         x My Handle 0----------------------0

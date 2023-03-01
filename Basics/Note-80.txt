@@ -1,0 +1,26 @@
+Lecture-117: Setting Up Web Scraping Libraries 
+
+
+Setting Up For Web Scraping
+
+1. Install the necessary libraries.
+
+2. Explore how to inspect elements and view source of a webpage. 
+
+3. Note - We will suggest you use Chrome so you can follow along exactly as we do, but these tools are available in all major browsers. 
+
+
+   Command Line Interface
+
+   C:\Users\Marcial> pip install requests
+
+   C:\Users\Marcial> pip install lxml
+
+   C:\Users\Marcial> pip install bs4 
+
+
+Jupyter Notebook
+
+In[12]: import requests
+
+Inp[13]: import bs4 

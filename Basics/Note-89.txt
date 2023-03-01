@@ -1,0 +1,60 @@
+Lecture-127 and 128: Python Image Exercises - Overview and Solutions 
+
+Image Exercise - Solution
+
+In the folder "Working with Images" (same folder this notebook is located in) there are two images we will be working with:
+
+	- word_matrix.png
+	- mask.png
+
+The word_matrix is a .png image that contains a spreadsheet of words with a hidden message in it.
+
+Your task is to use the mask.png image to reveal the hidden message inside the word_matrix.png. Keep in mind, you may need to resize the mask.png in order for this to work.
+
+This exercise is more open-ended, so we won't guide you with the steps, instead, letting you explore and figure things out on your own as you would in a real world situation. However, if 
+you get stuck, you can always view the solutions video or notebook for guidance. Best of luck!
+
+
+Import Images
+
+In[1]: from PIL import Image
+
+In[2]: words = Image.open('word_matrix.png')
+
+In[3]: words
+
+In[4]: mask = Image.open("mask.png")
+
+In[5]: mask
+
+
+Resize Images to Match
+
+In[6]: mask.size
+
+Out[6]: (505, 251)
+
+In[8]: words.size
+
+Out[8]: (1015, 559)
+
+In[12]: mask = mask.resize((1015,559))
+
+In[13]: mask.size
+
+Out[13]: (1015, 559)
+
+
+Add in alpha parameter
+
+Now we can't just paste them over, otherwise we won't see what is underneath, we need to add an alpha value.
+
+In[14]: mask.putalpha(200)
+
+        # links.putalpha(128)
+
+In[15]: mask
+
+In[16]: words.paste(mask,(0,0),mask)
+
+In[17]: words

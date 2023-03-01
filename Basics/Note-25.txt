@@ -1,0 +1,146 @@
+Lecture-31: Python Objects and Data Structures Assessment Test Solution
+
+1. Numbers: Store numerical information and come in two forms:
+
+	- Integers: Whole numbers
+
+	- Floating Point: Numbers with a decimal
+
+2. Strings: Ordered sequence of characters
+
+3. Lists: Ordered sequence of objects (mutable)
+
+4. Tuples: Ordered sequence of objects (immutable)
+
+5. Dictionary: Key-Value pairing that is unordered
+
+6. (60 + (10 ** 2) / 4 * 7) - 134.75
+
+7. 4 * (6 + 5) = 44
+
+8. 4 * 6 + 5 = 29
+
+9. 4 + 6 * 5 = 34
+
+10. What is the 'type' result of the expression 3 + 1.5 + 4? Floating Point Number
+
+11.	a) 100 ** 0.5 = 10.0
+
+	b) 10 ** 2 = 100
+
+12 	a) s = 'hello'
+
+	   s[1]
+
+	b) s = 'hello'
+
+	   s[::-1]
+
+	c) s = 'hello'
+
+	   s[-1]
+
+	d) s = 'hello'
+
+	   s[4]
+
+13	a) [0] * 3 = [0, 0, 0]
+
+	b) list2 = [0, 0, 0]
+
+	   list2
+
+14	a) list3 = [1, 2, [3, 4, 'hello']]
+
+	b) list3[2][2] = 'goodbye'
+
+	c) list3
+
+	   [1, 2, [3, 4, 'goodbye']]
+
+
+Sort the list below:
+
+15. list4 = [5, 3, 4, 6, 1]
+
+a) sorted(list4)
+
+[1, 3, 4, 5, 6]
+
+b) list4.sort()
+
+list4
+
+[1, 3, 4, 5, 6]
+
+16	a) d = {'simple_key' : 'hello'}
+
+	   d['simple_key']
+
+	   'hello'
+
+	b) d = {'k1' : {'k2' : 'hello'}}
+
+	   d['k1]'['k2']
+
+	   'hello'
+
+	c) d = {'k1' : [{'nest_key' : ['this is deep', ['hello']]}]} 
+
+	   d['k1'][0]['nest_key'][1][0]
+
+	   'hello'
+
+	d) d = {'k1' : [1, 2, {'k2' : ['this is tricky', {'tough' : [1, 2, ['hello']]}]}]}
+
+         d['k1'][2]['k2'][1]['tough'][2][0]
+
+         'hello'
+
+17. Can you sort a dictionary? Why or why not?
+
+Ans: No! Because normal dictionaries are mappings not a sequence.
+
+18. What is the major difference between tuples and lists?
+
+Ans: Tuples are immutable!
+
+t = (1, 2, 3)
+
+19. What is unique about a set?
+
+Ans: They don't allow for duplicate items!
+
+     list5 = [1, 2, 2, 33, 4, 4, 11, 22, 3, 3, 2]
+
+     set(list5)
+
+     {1, 2, 3, 4, 11, 22, 33}
+
+20	a) 2 > 3
+
+	   False
+
+	b) 3 <= 2
+
+	   False
+
+	c) 3 == 2.0
+
+	   False
+
+	d) 3.0 == 3
+
+	   True
+
+	e) 4 ** 0.5 != 2
+
+	   False
+
+21. 1_one = [1, 2, [3, 4]]
+
+    1_two = [1, 2, {'k1' : 4}]
+
+    1_one[2][0] >= 1_two[2]['k1']
+
+    False

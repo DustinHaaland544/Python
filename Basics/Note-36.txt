@@ -1,0 +1,25 @@
+Lecture-42: Introduction To Functions
+
+Functions
+
+1. Creating clean repeatable code is a key part of becoming an effective programmer.
+
+2. "Functions" allow us to create blocks of code that can be easily executed many times, without needing to constantly rewrite the entire block of code.
+
+3. Functions will be a huge leap forward in your capabilities as a Python programmer. 
+
+4. This means that the problems you are able to solve can also be a lot harder!
+
+5. It is very important to get practice combining everything you've learned so far (control flow, loops, etc.) with functions to become an effective programmer. 
+
+6. This may be a point in your progress where you may get discouraged or fraustrated, do not worry, this is completely normal and very common.
+
+7. We will guide you step by step, be patient with yourself and practice, practice, practice!!
+
+8. Be patient with yourself.
+
+9. Take your time to practice the material.
+
+10. Start getting excited about your new skills and start thinking about personal projects.
+
+11. Let's learn how to create functions with Python!

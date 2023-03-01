@@ -1,0 +1,16 @@
+Lecture-134: Introduction to Emails with Python 
+
+
+Emails with Python 
+
+1. In this section we will explore how to send emails with Python and how to check our inbox for received messages. 
+
+2. Please keep in mind this process is highly reliant on admin privileges on both your local computer, your internet, and your email. 
+
+3. It is highly likely that on a corporate network, work computer, or work email these methods will be blocked for security reasons. 
+
+4. If you encounter issues due to this, please contact your IT department, as it is not an issue we can fix on our end. 
+
+5. Lastly, there is no full exercise for these topics, since there is no real way we can create true self-assessments for a personal email address. 
+
+6. However, we do provide a notebook with some ideas for you to explore, we encourage you to get creative! 

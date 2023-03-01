@@ -1,0 +1,44 @@
+Lecture-26: Sets in Python
+
+1. Sets are unordered collections of "unique" elements. 
+
+2. Meaning there can only be one representative of the same object. 
+
+3. Let's see some examples!
+
+
+Jupyter Notebook
+
+In[1]: myset = set()
+
+In[2]: myset
+
+Out[2]: set()
+
+In[3]: myset.add(1)
+
+In[4]: myset
+
+Out[4]: {1}
+
+In[5]: myset.add(2)
+
+In[7]: myset
+
+Out[7]: {1, 2}
+
+In[8]: myset.add(2)
+
+In[9]: myset
+
+Out[9]: {1, 2}	# Won't add the same number second time
+
+
+- Sets only contain unique values, it won't carry same number more than one time.
+
+
+In[10]: mylist = [1, 1, 1, 1, 1, 2, 2, 2, 3, 3, 3, 3]
+
+In[11]: set(mylist)	# Casting the mylist list to set
+
+Out[11]: {1, 2, 3}	# Only the unique values remain 

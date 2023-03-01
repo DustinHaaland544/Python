@@ -1,0 +1,167 @@
+Lecture-45: Logic with Python Functions 
+
+
+Functions with Logic
+
+Jupyter Notebook
+
+In[38]: 2 % 2
+
+Out[38]: 0
+
+In[39]: 3 % 2
+
+Out[39]: 1
+
+In[40]: 41 % 40
+
+Out[40]: 1
+
+In[41]: 20 % 2
+
+Out[41]: 0
+
+In[42]: 20 % 2 == 0
+
+Out[42]: True
+
+In[43]: 21 % 2 == 0
+
+Out[43]: False
+
+In[44]: def even_check(number):
+
+		result = number % 2 == 0
+
+		return result
+
+In[45]: even_check(20)
+
+Out[45]: True
+
+In[46]: even_check(21)
+
+Out[46]: False
+
+In[47]: def even_check(number):
+
+		return number % 2 == 0
+
+In[48]: even_check(20)
+
+Out[48]: True
+
+In[49]: even_check(21)
+
+Out[49]: False
+
+In[51]: def check_even_list(num_list):
+
+		for number in num_list:
+
+			if number % 2 == 0:
+
+				return True
+
+			else:
+
+				pass	# Don't do anything
+
+In[52]: check_even_list([1, 3, 5])
+
+Out[52]: 
+
+In[53]: check_even_list([2, 4, 5])
+
+Out[53]: True 
+
+In[54]: check_even_list([2, 1, 1, 1])
+
+Out[54]: True
+
+In[55]: check_even_list([1, 1, 1, 2])
+
+Out[55]: True
+
+In[56]: def check_even_list(num_list):
+
+		for number in num_list:
+
+			if number % 2 == 0:
+
+				return True
+
+			else:
+
+				return False	# This is WRONG
+
+This is wrong because if the first number is odd then the else statement will execuete thus the loop will return False and then it will break instead of looping through the next numbers, 
+
+that is why we need to use the "pass" keyword instead of False.
+
+In[57]: check_even_list([1, 3, 5])
+
+Out[57]: False
+
+In[58]: check_even_list([1, 2, 5])
+
+Out[58]: False
+
+
+This should've returned True. To make this function fully functional we need to place the "returned False" outside of the for loop and use the "pass" inside the else statement like below,
+
+
+In[59]: def check_even_list(num_list):
+
+		for number in num_list:
+
+			if number % 2 == 0:
+
+				return True
+
+			else:
+
+				pass
+
+		return False
+
+In[60]: check_even_list([1, 2, 5])
+
+Out[60]: True
+
+In[61]: check_even_list([1, 3, 5])
+
+Out[61]: False
+
+
+Now, lets think that we want to return all the even numbers in the list,
+
+
+In[59]: def check_even_list(num_list):
+
+		# return all the even numbers in a list
+
+		# placeholder variables
+
+		even_numbers = []
+
+		
+		for number in num_list:
+
+			if number % 2 == 0:
+
+				even_numbers.append(number)
+
+			else:
+
+				pass
+
+		return even_numbers
+
+In[63]: check_even_list ([1, 2, 3, 4, 5])
+
+Out[63]: [2, 4]
+
+In[64]: check_even_list([1, 3, 5])
+
+Out[64]: []

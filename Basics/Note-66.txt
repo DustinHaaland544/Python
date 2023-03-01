@@ -1,0 +1,195 @@
+	Lecture-101 and 102: Generators Homework Overview and Solutions
+
+
+Iterators and Generators Homework - Solution
+
+1. Create a generator that generates the squares of numbers up to some number N.
+
+In[1]: def gensquares(N):
+
+		for i in range(N):
+
+			yield i ** 2
+
+In[2]: for x in gensquares(10):
+
+		print(x)
+
+Out[2]: 0
+
+        1
+
+        4
+
+        9
+
+        16
+
+        25
+
+        36
+
+        49
+
+        64
+
+        81
+
+2. Create a generator that yields "n" random numbers between a low and high number (that are inputs).
+
+   Note: Use the random library. For example:
+
+In[3]: import random
+
+	 ramdom.randint(1, 10)
+
+Out[3]: 3
+
+In[4]: def rand_num(low, high, n):
+
+		for i in range(n):
+
+			yield random.randint(low, high)
+
+In[5]: for num in rand_num(1, 10, 12):
+
+		print(num)
+
+Out[5]: 3
+
+        9
+
+        6
+
+        10
+
+        8
+
+        4
+
+        5
+
+        5
+
+        5
+
+        3
+
+        5
+
+        8
+
+3. Use the iter() function to convert the string below into an iterator:
+
+In[6]: s = 'hello'
+
+       s = iter(s)
+
+       print(next(s))
+
+Out[6]: h
+
+4. Explain a use case for a generator using a yield statement where you would not want to use a normal function with a return statement. If the output has the potential of taking up a 
+   
+   large amount of memory and you only intend to iterate through it, you would want to use a generator. (Multiple answers are acceptable here!)
+
+   Extra Credit!
+
+   Can you explain what 'gencomp' is in the code below? (Note: We never covered this in the lectures!)
+
+In[7]: my_list = [1, 2, 3, 4, 5]
+
+       gen_comp = (item for item in my_list if item > 3)
+
+      for item in gencomp:
+
+		print(item)
+
+Out[7]: 4
+
+        5
+
+        Hint: Google "generator comprehension"
+
+        www.stackoverflow.com/questions/364802/how-exactly-does-a-generator-comprehension-work
+
+        How exactly does a generator comprehension work?
+
+	  	- What does generator comprehension do? Hoe does it work? I couldn't find a tutorial on it.
+
+	  Ans: Do you understand list comprehensions? If so, a generator expression is like a list comprehension, but instead of finding all the items you're interested and packing them into
+ 
+             list, it waits, and yields each item out of the expression, one by one. 
+
+In[1]: my_list = [1, 3, 5, 9, 2, 6]
+
+In[2]: filtered_list = [item for item in my_list if item > 3]
+
+In[3]: print(filtered_list)
+
+Out[3]: [5, 9, 6]
+
+In[4]: len(filtered_list)
+
+Out[4]: 3
+
+In[5]: # compare to generator expression
+
+       filtered_gen = (item for item in my_list if item > 3)
+
+In[4]: print(filtered_gen)	# notice it's a generator object
+
+Out[4]: <generator object <genexpr> at 0x7f2ad75f89e0>
+
+In[5]: len(filtered_gen) # So technically, it has no length
+
+Out[5]: Traceback (most recent call last):
+
+		File "<stdin>", line 1, in <module>
+
+        TypeError: object of type 'generator' has no len()
+
+In[6]: # We extracted each item out individually. We'll do it manually first. 
+
+       next(filtered_gen)
+
+Out[6]: 5
+
+In[7]: next(filtered_gen)
+
+Out[7]: 9
+
+In[8]: next(filtered_gen)
+
+Out[8]: 6
+
+In[9]: next(filtered_gen) 	# Should be all out of items and give an error
+
+Out[9]: Traceback (most recent call last):
+
+		File "<stdin>", line 1, in <module>
+
+        StopIteration
+
+In[10]: # Yup, the generator is spent. No values for you!
+
+        # Let's prove it gives the same results as your list comprehension
+
+        filtered_gen = (item for item in my_list if item > 3)
+
+In[11]: gen_to_list = list(filtered_gen)
+
+In[12]: print(gen_to_list)
+
+Out[12]: [5, 9, 6]
+
+In[13]: filtered_list == gen_to_list
+
+Out[13]: True
+
+
+Because a generator expression only needs to yield one item at a time, it can lead to big savings in memory usage. Generator expressions make the most sense in scenarios where you need to
+
+take one item at a time, do a lot of calculations based on that item, and then move on to the next item. If you need more than one value, you can also use a generator expression and grab 
+
+a few at a time. If you need all the values before your program proceeds, then use a list comprehension instead.

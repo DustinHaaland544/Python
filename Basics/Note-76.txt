@@ -1,0 +1,276 @@
+Lecture-112: Timing Your Python Code
+
+
+Timing Your Code 
+
+1. As you learn more Python, you will discover multiple solutions for a single task and you may find yourself trying to figure out the most efficient approach. 
+
+2. An easy way to do this is to time your code's performance. 
+
+3. We will focus on 3 ways of doing this:
+
+	- Simply tracking time elapsed 
+
+   	- Using the timeit module
+
+	- Special %%timeit "magic" for Jupyter Notebooks 
+
+
+
+Jupyter Notebook
+
+In[9]: 10
+
+Out[9]: 10
+
+In[10]: 3
+
+Out[10]: 3
+
+In[11]: ['1', '2', '3']
+
+Out[11]: ['1', '2', '3']
+
+In[12]: def func_one(n):
+
+		return [str(num) for num in range(n)]
+
+In[13]: func_one(10)
+
+Out[13]: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+In[14]: def func_two(n):
+
+		return list(map(str, range(n)))
+
+In[15]: func_two(10):
+
+Out[15]: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'] 
+
+In[16]: import time
+
+In[17]: # CURRENT TIME BEFORE
+
+	  start_time = time.time()
+
+        # RUN CODE
+
+        result = func_one(1000000)
+
+        # CURRENT TIME AFTER RUNNING CODE
+
+        end_time = time.time()
+
+        # ELAPSED TIME 
+
+        elapsed_time = end_time - start_time 
+
+
+	  print(elapsed_time)
+
+Out[17]: 0.17982029914855957
+
+In[18]: # CURRENT TIME 
+
+        start_time = time.time()
+
+        # RUN CODE 
+
+        result = func_two(1000000)
+
+	 # CURRENT TIME AFTER RUNNING CODE
+
+       end_time = time.time()
+
+       # ELAPSED TIME 
+
+       elapsed_time = end_time - start_time 
+
+
+       print(elapsed_time)
+
+Out[18]: 0.16057276725769043
+
+In[19]: # CURRENT TIME BEFORE 
+
+        start_time = time.time()
+
+        # RUN CODE 
+
+        result = func_one(10)
+
+        # CURRENT TIME AFTER RUNNING CODE 
+
+        end_time = time.time()
+
+       # ELAPSED TIME
+
+       elapsed_time = end_time - start_time
+
+
+	 print(elapsed_time)
+
+Out[19]: 0.016924619674682617
+
+In[20]: # CURRENT TIME BEFORE 
+
+        start_time = time.time()
+
+        # RUN CODE 
+
+        result = func_two(10)
+
+        # CURRENT TIME AFTER RUNNING CODE
+
+        end_time = time.time()
+
+        # ELAPSED TIME
+
+        elapsed_time = end_time - start_time
+
+
+	 print(elapsed_time)
+
+Out[20]: 0.0
+
+In[21]: # CURRENT TIME BEFORE
+
+        start_time = time.time()
+
+        # RUN CODE 
+
+       result = func_one(1)
+
+       # CURRENT TIME AFTER RUNNING CODE 
+
+       end_time = time.time()
+
+       # ELAPSED TIME 
+
+       elapsed_time = end_time - start_time
+
+       
+       print(elapsed_time)
+
+Out[21]: 0.0
+
+In[22]: # CURRENT TIME BEFORE
+
+        start_time = time.time()
+
+        # RUN CODE 
+
+        result = func_two(1)
+
+        # CURRENT TIME AFTER RUNNING 
+
+        end_time = time.time()
+
+        # ELAPSED TIME
+
+        elapsed_time = end_time - start_time 
+
+
+        print(elapsed_time)
+
+Out[22]: 0.0
+
+In[24]: # CURRENT TIME BEFORE
+
+        start_time = time.time()
+
+        # RUN CODE
+
+        result = func_one(10000)
+
+        # CURRENT TIME AFTER RUNNING CODE 
+
+        end_time = time.time()
+
+        # ELPASED TIME 
+
+        elapsed_time = end_time - start_time 
+
+
+	  print(elapsed_time)
+
+Out[24]: 0.0019953250885009766
+
+In[25]: # CURRENT TIME BEFORE 
+
+        start_time = time.time()
+
+        # RUN CODE 
+
+        result = func_two(10000)
+
+        # CURRENT TIME AFTER RUNNING CODE 
+
+        end_time = time.time()
+
+        # ELAPSED TIME 
+
+        elapsed_time = end_time - start_time 
+
+       
+        print(elapsed_time)
+
+Out[25]: 0.0010271072387695312
+
+In[26]: import timeit
+
+In[29]: stmt = '''
+
+        func_one(100)
+
+        '''
+
+In[30]: setup = '''
+
+        def func_one(n):
+
+   		return [str(num) for num in range(n)]
+
+ 	  '''
+
+In[31]: timeit.timeit(stmt, setup, number = 100000)
+
+Out[31]: 1.5283261000000001
+
+In[32]: stmt2 = '''
+
+        func_two(100)
+
+        '''
+
+In[33]: setup2 = '''
+
+        def func_two(n):
+
+		return list(map(str, range(n)))
+
+        '''
+
+In[34]: timeit.timeit(stmt2, setup2, number = 100000)
+
+Out[34]: 1.128770099999997
+
+In[35]: timeit.timeit(stmt, setup, number = 1000000)
+
+Out[35]: 13.931542500000006
+
+In[36]: timeit.timeit(stmt2, setup2, number = 1000000)
+
+Out[36]: 11.2872208
+
+In[37]: %%timeit
+
+        func_one(100)
+
+Out[37]: 100000 loops, best of 3 : 13.7 μs per loop
+
+In[38]: %%timeit
+
+        func_two(100)
+
+Out[38]: 100000 loops, best of 3 : 11.2 μs per loop 

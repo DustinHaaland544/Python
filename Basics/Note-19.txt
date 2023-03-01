@@ -1,0 +1,72 @@
+Lecture-25: Tuples in Python
+
+1. 'Tuples' are very similar to lists. However, they have one key difference - 'immutability'. 
+
+2. Once an element is inside a tuple, it cannot be reassigned.
+
+3. Tuples use parenthesis: (1, 2, 3).
+
+
+Jupyter Notebook
+
+In[33]: t = (1, 2, 3)
+
+In[34]: mylist = [1, 2, 3]
+
+In[35]: type(t)
+
+Out[35]: tuple
+
+In[36]: type(mylist)
+
+Out[36]: list
+
+In[37]: len(t)
+
+Out[37]: 3
+
+In[38]: t
+
+Out[38]: (1, 2, 3)
+
+In[39]: t = ('one', 2)
+
+In[40]: t[0]
+
+Out[40]: 'one'
+
+In[41]: t[-1]
+
+Out[41]: 2
+
+In[42]: t = ('a', 'a', 'b')
+
+In[43]: t.count('a')
+
+Out[43]: 2
+
+In[44]: t.index('a')
+
+Out[44]: 0
+
+In[45]: t.index('b')
+
+Out[45]: 2
+
+In[46]: t
+
+Out[46]: ('a', 'a', 'b')
+
+In[47]: mylist
+
+Out[47]: [1, 2, 3]
+
+In[48]: mylist[0]: 'NEW'
+
+In[49]: mylist
+
+Out[49]: ['NEW', 2, 3]
+
+In[50]: t[0] = 'NEW'
+
+		TypeError

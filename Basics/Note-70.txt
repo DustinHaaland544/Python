@@ -1,0 +1,146 @@
+Lecture-106: Python Datetime Module
+
+
+Datetime Module
+
+Jupyter Notebook
+
+In[32]: import datetime
+
+In[33]: mytime = datetime.time(2,20)
+
+In[34]: mytime.minute
+
+Out[34]: 20
+
+In[35]: mytime.hour
+
+Out[35]: 2
+
+In[36]: print(mytime)
+
+Out[36]: 02:20:00
+
+In[37]: mytime = datetime.time(2)
+
+In[38]: mytime.minute
+
+Out[38]: 0
+
+In[39]: mytime.hour
+
+Out[39]: 2
+
+In[40]: print(mytime)
+
+Out[40]: 02:00:00
+
+In[41]: mytime.microsecond
+
+Out[41]: 0
+
+In[42]: mytime = datetime.time(13, 20, 1, 20)
+
+In[43]: mytime.minute
+
+Out[43]: 20
+
+In[44]: mytime.hour
+
+Out[44]: 13
+
+In[45]: print(mytime)
+
+Out[45]: 13:20:01.000020
+
+In[46]: type(mytime)
+
+Out[46]: datetime.time
+
+In[47]: today = datetime.date.today()
+
+In[48]: print(today)
+
+Out[48]: 2020-06-12
+
+In[49]: today.year
+
+Out[49]: 2020
+
+In[50]: today.month
+
+Out[50]: 6
+
+In[51]: today.day
+
+Out[51]: 12
+
+In[52]: today.ctime()
+
+Out[52]: 'Fri Jun 12 00:00:00 2020'
+
+In[53]: from datetime import datetime
+
+In[54]: datetime(2021, 10, 3, 14, 20, 1)
+
+Out[54]: datetime.datetime(2021, 10, 3, 14, 20, 1)
+
+In[55]: mydatetime = datetime(2021, 10, 3, 14, 20, 1)
+
+In[56]: print(mydatetime)
+
+Out[56]: 2021-10-03 14:20:01
+
+In[57]: mydatetime.replace(year = 2020)
+
+Out[57]: datetime.datetime(2020, 10, 3, 14, 20, 1)
+
+In[58]: mydatetime = mydatetime.replace(year = 2020)
+
+In[59]: print(mydatetime)
+
+Out[59]: 2020-10-03 14:20:01
+
+In[67]: # DATE
+
+In[68]: from datetime import date
+
+In[69]: date1 = date(2021, 11, 3)
+
+	  date2 = date(2020, 11, 3)
+
+In[70]: date1 - date2
+
+Out[70]: datetime.timedelta(365)
+
+In[71]: result = date1 - date2
+
+In[72]: type(result)
+
+Out[72]: datetime.timedelta
+
+In[73]: result.days
+
+Out[73]: 365
+
+In[74]: datetime1 = datetime(2021, 11, 3, 22, 0)
+
+In[75]: datetime2 = datetime(2020, 11, 3, 12, 0)
+
+In[76]: datetime1 - datetime2
+
+Out[76]: datetime.timedelta(365, 36000)
+
+In[77]: 36000/60/60
+
+Out[77]: 10.0
+
+In[78]: mydiff = datetime1 - datetime2
+
+In[79]: mydiff.seconds
+
+Out[79]: 36000
+
+In[81]: mydiff.total_seconds()
+
+Out[81]: 31572000.0

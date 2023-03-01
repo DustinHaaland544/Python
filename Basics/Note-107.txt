@@ -1,0 +1,95 @@
+Lecture-148: GUI Widget Basics
+
+
+Widget Basics
+
+Jupyter Notebook
+
+In[111]: import ipywidgets as widgets
+
+In[112]: widgets.IntSlider()
+
+         x 0--------------0
+
+In[113]: w = widgets.IntSlider()
+
+In[114]: from IPython.display import display
+
+In[115]: display(w)
+
+         x 0---------------0
+
+In[116]: display(w)
+
+         x --------------0------------60
+
+In[117]: w.close()
+
+In[119]: w = widgets.IntSlider()
+
+	   display(w)
+
+         x 0--------------------------0
+
+In[120]: w.value
+
+Out[120]: 52 
+
+In[122]: w.value = 50
+
+         x-----------------0----------50
+
+In[123]: w.keys
+
+Out[123]: ['_dom_classes', '_model_module', '_model_module_version', '_model_name', '_range', '_view_module', '_view_module_version', '_view_name', 'continuous_update', 'description', 
+
+           'disabled', 'layout', 'max', 'min', 'msg_throttle', 'orientation', 'readout', 'readout_format', 'step', 'style', 'value'] 
+
+In[124]: w.max = 2000
+
+         x-----------------0 2000
+
+In[125]: a = widgets.FloatText()
+
+In[126]: display(a)
+
+         x|0|
+
+In[127]: a = widgets.FloatText()
+
+         b = widgets.FloatSlider()
+
+	   display(a, b)
+
+In[128]: a = widgets.FloatText()
+
+         b = widgets.FloatSlider()
+
+	
+	   display(a, b)
+
+
+         mylink = widgets.jslink((a, 'value'), (b, 'value'))
+
+         |8|
+
+	   --------0------------------------------------8.00
+
+In[129]: a = widgets.FloatText()
+
+         b = widgets.FloatSlider()
+
+	   
+ 	   display(a, b)
+
+         mylink = widgets.jslink((a, 'value'), (b, 'max'))
+
+         x|1000|
+
+	   ------------------------------------------0 1000
+
+In[130]: mylink.unlink()
+
+	   x|100|
+
+	   ----------------------0---------------------29.70

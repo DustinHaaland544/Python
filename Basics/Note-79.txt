@@ -1,0 +1,192 @@
+Lecture-116: Introduction to Web Scraping
+
+
+Web Scraping
+
+1. Web Scraping is a general term for techniques involving automating the gathering of data from a website. 
+
+2. In this section we will learn how to use Python to conduct web scraping tasks, such as downloading images or information off a website. 
+
+3. In order to web scrape with Python we need to understand the basic concepts of how a website works. 
+
+4. When a browser loads a website, the user gets to see what is known as the "front-end" of the website. 
+
+5. Main things we need to understand:
+
+	- Rules of Web Scraping
+
+	- Limitations of Web Scraping
+
+	- Basic HTML and CSS
+
+6. Rules of Web Scraping:
+
+	- Always try to get permission before scraping!
+
+	- If you make too many scraping attempts or requests then your IP Address could get blocked!
+
+	- Some sites automatically block scraping software. 
+
+7. Limitations of Web Scraping:
+
+	- In general every website is unique, which means every web scraping script is unique.
+
+	- A slight change or update to a website may completely break your web scraping script. 
+
+8. When viewing a website, the browser does not show you all the source code behind the website, instead it shows you the HTML and some CSS and JS that the website sends to your browser. 
+
+9. HTML is used to create the basic structure and content of a webpage. 
+
+10. CSS is used for the design and style of a webpage, where elements are placed and how it looks. 
+
+11. JavaScript is used to define the interactive elements of a webpage. 
+
+12. For effective basic web scraping we only need to have a basic understanding of HTML and CSS. 
+
+13. Python can view these HTML and CSS elements programatically, and then extract information from the website. 
+
+14. Let's explore HTML and CSS in more detail. 
+
+15. HTML is Hypertext Markup Language and is present on every website on the internet. 
+
+16. You can right-click on a website and select "View Page Source" to get an example.
+
+17. Let's see a small example of HTML code. 
+
+    
+    <!DOCTYPE html>
+
+    <html>
+
+		<head>
+
+			<title>Title on Browser Tab</title>
+
+		</head> 
+
+		<body>
+
+			<h1>Website Header</h1>
+
+			<p>Some Paragraph</p>
+
+		</body>
+
+    </html>
+
+
+18. CSS stands for Cascading Style Sheets. 
+
+19. CSS gives "style" to a website, such as changing colors and fonts. 
+
+20. CSS uses tags to define what html elements will be styled. 
+
+    <!DOCTYPE html>
+
+    <html>
+
+		<head>
+
+			<link rel = "stylesheet" href = "styles.css">
+
+			<title>Some Title</title>
+
+		</head>
+
+		<body>
+
+			<p id = "para2">Some Text</p>
+
+		</body>
+
+   </html>
+
+   Example of the style.css file:
+
+ 	#para2 {
+
+			color: red;
+
+		 }
+
+   <!DOCTYPE html>
+
+   <html>
+
+	<head>
+
+		<link rel = "stylesheet" href = "styles.css">
+
+		<title>Some Title</title>
+
+	</head>
+
+	<body>
+
+		<p class = "cool">Some Text</p>
+
+	</body>
+
+  </html>
+
+  Example of the style.css file:
+
+	.cool {
+
+			color: red;
+
+			font-family: verdana;
+
+	      }
+
+	p {
+
+		color: red;
+
+		font-family: courier;
+
+		font-size: 160%;
+
+	   }
+
+	.someclass {
+
+				color: green;
+				
+				font-family: verdana; 
+
+				font-size: 300%;
+
+			}
+
+   	#someid {
+
+			color: blue; 
+		  }
+
+
+21. Don't worry about memorizing this!
+
+    We'll see lot of examples, main ideas to note:
+
+	- HTML contains the information.
+
+	- CSS contains the styling.
+
+	- We can use HTML and CSS tags to locate specific information on a page. 
+
+22. To web scrape with Python we can use the BeautifulSoup and requests libraries. 
+
+23. These are external libraries outside of Python so you need to install them with either conda or pip at your command line.
+
+24. Directly at your command line use:
+
+	- pip install requests 
+
+	- pip install lxml
+
+	- pip install bs4
+
+25. Or for Anaconda distributions, use conda install instead of pip install. 
+
+26. Let's work through some examples of web scraping with Python!  

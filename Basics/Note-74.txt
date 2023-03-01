@@ -1,0 +1,100 @@
+Lecture-110: Python Regular Expressions Part Two 
+
+
+Regular Expressions Part Two
+
+Regular Expressions Patterns 
+
+
+Character Identifiers
+
+Character		Description		Example Pattern Code		Example Match
+
+\d			A digit			file _ \d\d			file_25
+
+\w			Alphanumeric		\w - \w\w\w			A-b_1
+
+\s			White space		a\sb\sc				abc
+
+\D			A non digit		\D\D\D				ABC
+
+\W			Non-alphanumeric		\W\W\W\W\W				*-+=)
+
+\S			Non-whitespace		\S\S\S\S				Yoyo
+
+
+Jupyter Notebook
+
+In[24]: text = 'My phone number is 408-555-1234'
+
+In[25]: phone = re.search('408-555-1234', text)
+
+In[26]: phone
+
+Out[26]: <_sre.SRE_Match object; span = (19, 31), match = '408-555-1234'>
+
+In[27]: phone = re.search(r' \d\d\d - \d\d\d - \d\d\d\d', text)
+
+In[28]: phone
+
+Out[28]: <sre.SRE_Match object; span = (19, 31), match = '408-555-1234'>
+
+In[29]: text = 'My phone number is 408-555-7777'
+
+In[30]: phone = re.search(r'\d\d\d - \d\d\d - \d\d\d\d', text)
+
+In[31]: phone 
+
+Out[31]: <sre.SRE_Match object; span = (19, 31), match = '408-555-7777'>
+
+In[32]: phone.group()
+
+Out[32]: '408-555-7777'
+
+
+Quantifiers
+
+Character				Description					Example Pattern Code				Example Match
+
++					Occurs one or more times			Version \w - \w +				Version A-b1 _ 1
+
+{3}					Occurs exactly 3 times 			\D{3}							abc
+
+{2, 4}				Occurs 2 to 4 times 				\d{2, 4}						123
+
+{3, }					Occurs 3 times or more 			\w{3, }						anycharacters
+
+*					Occurs zero or more times 			ABC*							AAACC
+
+?					Once or more 					plurals						plural
+
+
+In[33]: phone = re.search(r'\d{3}-\d{3}-\d{4}', text)
+
+In[34]: phone
+
+Out[34]: <_sre.SRE_Match object; span = (19, 31), match = '408-555-7777'>
+
+In[35]: phone_pattern = re.compile(r'(\d{3})-(\d{3}-(\d{4}')
+
+In[36]: results = re.search(phone_pattern, text)
+
+In[37]: results.group()
+
+Out[37]: '408-555-7777'
+
+In[38]: results.group(1)
+
+Out[38]: '408'
+
+In[39]: results.group(2)
+
+Out[39]: '555'
+
+In[40]: results.group(3)
+
+Out[40]: '7777'
+
+In[41]: results.group(4)
+
+Out[41]: IndexError : no such group 

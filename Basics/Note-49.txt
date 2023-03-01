@@ -1,0 +1,137 @@
+Lecture-69: Object Oriented Programming - Attributes & Class Keyword
+
+
+Object Oriented Programming
+
+Part-1
+
+Jupyter Notebook
+
+In[23]: mylist = [1, 2, 3]
+
+In[24]: myset = set()
+
+In[25]: type(myset)
+
+Out[25]: set
+
+In[26]: type(mylist)
+
+Out[26]: list
+
+In[28]: class Sample():
+
+		pass
+
+In[29]: my_sample = Sample()
+
+In[30]: type(my_sample)
+
+Out[30]: __main__.Sample
+
+In[31]: class Dog():
+
+		def __init__(self, breed):
+
+			self.breed = breed
+
+In[32]: my_dog = Dog()
+
+		ERROR
+
+In[33]: my_dog = Dog(breed = 'Lab')
+
+In[34]: type(my_dog)
+
+Out[34]: __main__.Dog
+
+In[35]: my_dog.breed
+
+Out[35]: 'Lab'
+
+In[36]: class Dog():
+
+		def __init__(self, mybreed):
+
+			self.breed = mybreed
+
+In[37]: class Dog():
+
+		def __init__(self, mybreed):
+
+			# Attributes
+
+			# We take in the argument
+
+			# Assign it using self.attribute_name
+
+			self.breed = mybreed
+
+In[38]: my_dog = Dog(mybreed = 'Huskie')
+
+In[39]: type(my_dog)
+
+Out[39]: __main__.Dog
+
+In[40]: my_dog.breed
+
+Out[40]: 'Huskie'
+
+In[41]: class Dog():
+
+		def __init__(self, mybreed):
+
+			# Attributes
+
+			# We take in the argument
+
+			# Assign it using self.attribute_name
+
+			self.my_attribute = mybreed
+
+In[42]: my_dog = Dog(mybreed = 'Huskie')
+
+In[43]: type(my_dog)
+
+Out[43]: __main__.Dog
+
+In[44]: my_dog.my_attribute
+
+Out[44]: 'Huskie'
+
+In[45]: class Dog():
+
+		def __init__(self, breed, name, spots):
+
+			# Attributes
+
+			# We take in the argument
+
+			# Assign it using self.attribute_name
+
+			self.breed = breed
+
+			self.name = name
+
+
+			# Expect boolean True/False
+
+			self.spots = spots
+
+In[46]: my_dog = Dog(breed = 'lab', name = 'Sammy', spots = False)
+
+In[47]: type(my_dog)
+
+Out[47]: __main__.Dog
+
+In[48]: my_dog.breed
+
+Out[48]: 'lab'
+
+In[49]: my_dog.name
+
+Out[49]: 'Sammy'
+
+In[50]: my_dog.spots
+
+Out[50]: False
