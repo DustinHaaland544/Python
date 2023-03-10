@@ -97,6 +97,6 @@ Out[60]: 'Completely synergize resource taxing relationships via premier niche \
 
 In[61]: print(pdf_text[1])	# Outputs with formatted new line and paragraphs  
 
-Out[61]: Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovateresource-leveling customer service for state of the art customer service. 
+Out[61]: Completely synergize resource taxing relationships via premier niche markets. Professionally cultivate one-to-one customer service with robust ideas. Dynamically innovate resource-leveling customer service for state of the art customer service. 
 
-Objectively innovate empoered manufactured products whereas parallel platforms. 
+Objectively innovate empwoered manufactured products whereas parallel platforms. 
