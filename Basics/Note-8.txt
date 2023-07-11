@@ -10,7 +10,7 @@ Strings
 
 	- "I don't do that"
 
-2. Because strings are "ordered sequences" it means we can using "indexing" and "slicing" to grab sub-sections of the string.
+2. Because strings are "ordered sequences" it means we can use "indexing" and "slicing" to grab sub-sections of the string.
 
 3. Indexing notation uses [] notation after the string (or variable assigned the string).
 
