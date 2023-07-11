@@ -11,7 +11,7 @@ Ans: This is because once you import from the __future__ module in Python 2.7, a
 The __future__ module allows you to use Python3 functionality in a Python2 environment, but some functionalities are overwritten (such as the print statement, or classic division when you
 import division).
 
-Since, we are using Jupyter Notebooks, once you so the import, all cells will require the use if the print() function. You will need to restart Python or start a new notebook to regain the
+Since, we are using Jupyter Notebooks, once you do the import, all cells will require the use of the print() function. You will need to restart Python or start a new notebook to regain the
 old functionality back. 
 
 HERE IS AN AWESOME SOURCE FOR PRINT FORMATTING: https://pyformat.info/
