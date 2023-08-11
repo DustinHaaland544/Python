@@ -13,3 +13,31 @@ The Data Warehouse Toolkit on Amazon: www.amazon.com/Data-Warehouse-Toolkit-Defi
 The Data Warehouse ETL Toolkit on Amazon: www.amazon.com/Data-Warehouse-ETL-Toolkit-Techniques/dp/0764567578
 
 I hope this helps you in your learning journey!
+
+Data warehousing is the process of collecting, organizing, and managing large amounts of data from different sources to support business decision-making. In simple
+terms, it involves storing data from various systems in one central location, making it easier to access and analyze.
+
+The purpose of a data warehouse is to provide a single, reliable source of information that can be used to support business intelligence (BI) activities such as
+reporting, analysis, and forecasting. This information can be used by business analysts, executives, and other stakeholders to gain insights into business 
+operations, identify trends and patterns, and make informed decisions.
+
+Data warehousing involves several key steps:
+
+Data Extraction: Data is extracted from various sources such as transactional systems, customer relationship management (CRM) systems, social media, and other data 
+sources.
+
+Data Transformation: Data is transformed into a standardized format so that it can be easily integrated with other data and analyzed.
+
+Data Loading: The transformed data is loaded into the data warehouse.
+
+Data Management: Data is managed to ensure that it is accurate, consistent, and up-to-date. This involves ongoing maintenance, monitoring, and quality assurance.
+
+Data Analysis: Data is analyzed to identify patterns, trends, and insights that can be used to support business decision-making.
+
+The architecture of a data warehouse typically involves a staging area, a data warehouse database, and a presentation layer. The staging area is used to store raw
+data that has been extracted from various sources. This data is then transformed and loaded into the data warehouse database. The presentation layer provides a 
+user-friendly interface for accessing and analyzing the data.
+
+In summary, data warehousing is the process of collecting and organizing data from multiple sources into a central repository that can be used to support business
+decision-making. It involves several key steps, including data extraction, transformation, loading, management, and analysis. A well-designed data warehouse can 
+provide valuable insights into business operations and help drive strategic decision-making.
