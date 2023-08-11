@@ -1,0 +1,15 @@
+Sure! Here are the web links for the courses and resources I suggested:
+
+Data Warehousing and Business Intelligence on Coursera: https://www.coursera.org/learn/data-warehousing
+
+Data Warehousing Fundamentals on Coursera: www.coursera.org/learn/data-warehousing-fundamentals
+
+Modern Data Warehousing, ETL, and Big Data on Udemy: www.udemy.com/course/modern-data-warehousing-etl-big-data
+
+Data Lake Architecture and Design on Pluralsight: www.pluralsight.com/courses/data-lake-architecture-design
+
+The Data Warehouse Toolkit on Amazon: www.amazon.com/Data-Warehouse-Toolkit-Definitive-Dimensional/dp/0471200247
+
+The Data Warehouse ETL Toolkit on Amazon: www.amazon.com/Data-Warehouse-ETL-Toolkit-Techniques/dp/0764567578
+
+I hope this helps you in your learning journey!
