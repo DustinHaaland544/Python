@@ -1,0 +1,45 @@
+In Python, "docstrings" and "comments" are not the same thing, although they both serve distinct purposes for documenting code.
+
+
+Docstrings:
+
+Docstrings are used to provide documentation for functions, classes, and modules. They are essentially multi-line strings that 
+come immediately after the definition of the function, class, or module. Docstrings provide information about what the function 
+or class does, what arguments it takes, what it returns, and any other relevant details. They are used to generate documentation 
+automatically, can be accessed at runtime, and are particularly useful for creating user-friendly documentation.
+
+Example of a docstring for a function:
+
+def calculate_square(x):
+    """
+    This function calculates the square of a given number.
+    
+    Args:
+        x (int): The number to be squared.
+    
+    Returns:
+        int: The square of the input number.
+    """
+    return x ** 2
+
+
+Comments:
+
+Comments are used to annotate code with explanations or additional information. They are ignored by the Python interpreter and 
+don't affect the code's functionality. Comments are single-line or multi-line statements that help programmers understand the 
+logic behind the code. Comments can be used to describe the purpose of a certain block of code, provide context, or explain 
+complex algorithms.
+
+Example of comments:
+
+# This is a single-line comment
+x = 5  # Assigning a value to the variable x
+
+"""
+This is a multi-line comment.
+It can span across multiple lines.
+"""
+
+In summary, docstrings are used for generating documentation and are associated with functions, classes, and modules, while 
+comments are used solely for explaining code and providing additional context to other programmers but do not influence the 
+behavior of the program.
