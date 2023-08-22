@@ -50,4 +50,5 @@ Both sets and tuples can contain multiple elements.
 Both can store a mix of data types (e.g., numbers, strings, etc.).
 Both are iterable, meaning you can loop through their elements using loops or comprehensions.
 In summary, sets are used to store a collection of unique elements with no specific order, while tuples are used to store 
-ordered collections of elements that remain constant. The choice between using sets and tuples depends on the specific requirements of your program.
+ordered collections of elements that remain constant. The choice between using sets and tuples depends on the specific 
+requirements of your program.
