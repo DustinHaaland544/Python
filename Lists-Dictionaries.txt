@@ -57,6 +57,7 @@ Similarities between Lists and Dictionaries:
 Both can store a mix of data types (e.g., numbers, strings, etc.).
 Both are mutable, meaning you can modify their contents after creation.
 Both can be iterated over using loops or comprehensions.
+
 In summary, lists are used to store ordered sequences of elements, while dictionaries 
 are used to store key-value pairs for efficient retrieval of data using meaningful keys. 
 The choice between using lists and dictionaries depends on the specific data you need to 
