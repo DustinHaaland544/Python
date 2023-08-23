@@ -37,17 +37,17 @@ print(my_tuple[3])  # Output: 4
 Differences between Sets and Tuples:
 
 Mutability:
-
 Sets are mutable; you can add and remove elements from them.
 Tuples are immutable; their elements cannot be modified after creation.
-Order:
 
+Order:
 Sets are unordered collections; the order of elements is not guaranteed.
 Tuples are ordered collections; the order of elements is maintained.
-Similarities between Sets and Tuples:
 
+Similarities between Sets and Tuples:
 Both sets and tuples can contain multiple elements.
 Both can store a mix of data types (e.g., numbers, strings, etc.).
+
 Both are iterable, meaning you can loop through their elements using loops or comprehensions.
 In summary, sets are used to store a collection of unique elements with no specific order, while tuples are used to store 
 ordered collections of elements that remain constant. The choice between using sets and tuples depends on the specific 
