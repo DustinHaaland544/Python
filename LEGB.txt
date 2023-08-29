@@ -1,26 +1,30 @@
-In Python, the LEGB rule and the global and nonlocal statements are important concepts related to variable scope and visibility. They dictate how Python looks up and accesses variables
-in different parts of your code. Let's break down each concept:
+In Python, the LEGB rule and the global and nonlocal statements are important concepts related to variable scope and visibility. 
+They dictate how Python looks up and accesses variables in different parts of your code. Let's break down each concept:
 
 1. LEGB Rule:
-The LEGB rule stands for Local, Enclosing, Global, and Built-in. It's a sequence of scopes that Python uses to search for the value of a variable. When you use a variable in your code, 
+The LEGB rule stands for Local, Enclosing, Global, and Built-in. It's a sequence of scopes that Python uses to search for the value
+of a variable. When you use a variable in your code, 
 Python follows this order to find the variable's value:
 
-Local (L): Python first looks for the variable within the current function or method where it's being used. If the variable is defined within that function, it uses that value.
+Local (L): Python first looks for the variable within the current function or method where it's being used. If the variable is defined
+within that function, it uses that value.
 
-Enclosing (E): If the variable isn't found in the local scope, Python checks the scopes of any enclosing functions (outer functions) in which the current function is defined. It searches
-these enclosing scopes in a nested manner, going outwards.
+Enclosing (E): If the variable isn't found in the local scope, Python checks the scopes of any enclosing functions (outer functions)
+in which the current function is defined. It searches these enclosing scopes in a nested manner, going outwards.
 
-Global (G): If the variable isn't found in local or enclosing scopes, Python looks for the variable at the module level. Variables defined at the top level of a module are considered global
-variables.
+Global (G): If the variable isn't found in local or enclosing scopes, Python looks for the variable at the module level. Variables 
+defined at the top level of a module are considered global variables.
 
-Built-in (B): If the variable isn't found in any of the above scopes, Python finally checks the built-in scope, which contains all the Python's built-in functions and objects.
+Built-in (B): If the variable isn't found in any of the above scopes, Python finally checks the built-in scope, which contains all
+the Python's built-in functions and objects.
 
 If the variable isn't found in any of these scopes, Python raises a NameError indicating that the variable is not defined.
 
 2. global and nonlocal Statements:
 
-The global statement: In Python, if you want to modify a global variable from within a function, you need to use the global keyword to indicate that you're referring to the global variable and
-not creating a new local variable with the same name. This allows you to update the global variable's value.
+The global statement: In Python, if you want to modify a global variable from within a function, you need to use the global keyword
+to indicate that you're referring to the global variable and not creating a new local variable with the same name. This allows you to
+update the global variable's value.
 
 global_var = 10
 
@@ -31,8 +35,9 @@ def modify_global():
 modify_global()
 print(global_var)  # Output: 20
 
-The nonlocal statement: If you're working with nested functions and want to modify a variable from an enclosing (but not global) scope, you use the nonlocal keyword. It allows you to indicate that
-you're referring to a variable in an enclosing scope, not creating a new local variable.
+The nonlocal statement: If you're working with nested functions and want to modify a variable from an enclosing (but not global) scope,
+you use the nonlocal keyword. It allows you to indicate that you're referring to a variable in an enclosing scope, not creating a new 
+local variable.
 
 def outer_function():
     outer_var = 10
@@ -46,5 +51,7 @@ def outer_function():
 
 outer_function()
 
-In summary, the LEGB rule defines the order in which Python searches for variable values, and the global and nonlocal statements allow you to modify variables from higher-level scopes within functions. 
+In summary, the LEGB rule defines the order in which Python searches for variable values, and the global and nonlocal statements allow
+you to modify variables from higher-level scopes within functions. 
+
 Understanding these concepts is crucial for writing effective and maintainable Python code.
