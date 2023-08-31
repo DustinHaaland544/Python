@@ -1,6 +1,5 @@
 In Python, "docstrings" and "comments" are not the same thing, although they both serve distinct purposes for documenting code.
 
-
 Docstrings:
 
 Docstrings are used to provide documentation for functions, classes, and modules. They are essentially multi-line strings that 
