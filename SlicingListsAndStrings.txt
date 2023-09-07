@@ -44,7 +44,7 @@ We can specify a step value in slicing to retrieve elements at regular intervals
 
 my_list = [10, 20, 30, 40, 50]
 every_other_element = my_list[::2]  # Retrieves every second element
-print(every_other_element)  # Output: [10, 30, 50]
+print(every_other_element) # Output: [10, 30, 50]
 
 These are some common techniques for using indexing to get portions of a list in Python. Indexing is a powerful feature
 that allows us to manipulate and work with lists efficiently.
@@ -58,14 +58,14 @@ To reverse a list, we can use a negative stride of -1. This will return a new li
 
 my_list = [10, 20, 30, 40, 50]
 reversed_list = my_list[::-1]  # Reverse the list
-print(reversed_list)  # Output: [50, 40, 30, 20, 10]
+print(reversed_list)      # Output: [50, 40, 30, 20, 10]
 
 Extract Elements in Reverse Order:
 We can use a negative stride to extract elements from a list in reverse order. Here's an example:
 
 my_list = [10, 20, 30, 40, 50]
 reversed_slice = my_list[4::-1]  # Extract elements in reverse order starting from index 4
-print(reversed_slice)  # Output: [50, 40, 30, 20, 10]
+print(reversed_slice)      # Output: [50, 40, 30, 20, 10]
 
 In this example, 4 is the starting index, and -1 is the stride, which means it goes in reverse order.
 
@@ -92,7 +92,7 @@ want to retrieve.
 
 my_string = "Hello, World!"
 character = my_string[7]  # Retrieves the character at index 7 (which is 'W')
-print(character)  # Output: 'W'
+print(character)          # Output: 'W'
 
 Accessing Substrings (Slicing):
 We can use slicing to retrieve a portion of a string. Slicing is done using a colon ':' inside the square brackets
@@ -100,7 +100,7 @@ and specifies a range of indices.
 
 my_string = "Hello, World!"
 substring = my_string[0:5]  # Retrieves characters from index 0 to 4
-print(substring)  # Output: 'Hello'
+print(substring)           # Output: 'Hello'
 
 Omitting Start or End in Slicing:
 We can omit the start or end index in a slice to slice from the beginning or to the end of the string, respectively.
@@ -108,8 +108,8 @@ We can omit the start or end index in a slice to slice from the beginning or to 
 my_string = "Hello, World!"
 slice_start = my_string[:5]  # Retrieves characters from the start to index 4
 slice_end = my_string[7:]    # Retrieves characters from index 7 to the end
-print(slice_start)  # Output: 'Hello'
-print(slice_end)    # Output: 'World!'
+print(slice_start)        # Output: 'Hello'
+print(slice_end)          # Output: 'World!'
 
 Negative Indexing:
 We can also use negative indices to count from the end of the string.
@@ -123,14 +123,14 @@ We can specify a step value in slicing to retrieve characters at regular interva
 
 my_string = "Hello, World!"
 every_other_char = my_string[::2]  # Retrieves every second character
-print(every_other_char)  # Output: 'Hlo ol!'
+print(every_other_char)   # Output: 'Hlo ol!'
 
 Reverse a String:
 To reverse a string, we can use a negative stride of -1.
 
 my_string = "Hello, World!"
 reversed_string = my_string[::-1]  # Reverse the string
-print(reversed_string)  # Output: '!dlroW ,olleH'
+print(reversed_string)    # Output: '!dlroW ,olleH'
 
 Extract Substring in Reverse Order:
 We can use a negative stride to extract a substring from a string in reverse order.
@@ -148,70 +148,70 @@ my_list = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 # list[start:end:step] 
 
-print(my_list)  # Output: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] 
+print(my_list)            # Output: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] 
 
-print(my_list[0])  # Output: 0
+print(my_list[0])         # Output: 0
 
-print(my_list[5])  # Output: 5
+print(my_list[5])         # Output: 5
 
-print(my_list(-1))   # Output: 9
+print(my_list(-1))        # Output: 9
 
-print(my_list[-10])  # Output: 0
+print(my_list[-10])       # Output: 0
 
-print(my_list[0:5])  # Output: [0, 1, 2, 3, 4]
+print(my_list[0:5])       # Output: [0, 1, 2, 3, 4]
 
-print(my_list[0:6])  # Output: [0, 1, 2, 3, 4, 5, 6] 
+print(my_list[0:6])       # Output: [0, 1, 2, 3, 4, 5, 6] 
 
-print(my_list[3:8])  # Output: [3, 4, 5, 6, 7] 
+print(my_list[3:8])       # Output: [3, 4, 5, 6, 7] 
 
-print(my_list[-7:-2])  # Output: [3, 4, 5, 6, 7] 
+print(my_list[-7:-2])     # Output: [3, 4, 5, 6, 7] 
 
-print(my_list[1:-2])  # Output: [1, 2, 3, 4, 5, 6, 7] 
+print(my_list[1:-2])      # Output: [1, 2, 3, 4, 5, 6, 7] 
 
-print(my_list[1:9])  # Output: [1, 2, 3, 4, 5, 6, 7, 8] 
+print(my_list[1:9])       # Output: [1, 2, 3, 4, 5, 6, 7, 8] 
 
-print(my_list[1:])  # Output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print(my_list[1:])        # Output: [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-print(my_list[5:])  # Output: [5, 6, 7, 8, 9] 
+print(my_list[5:])        # Output: [5, 6, 7, 8, 9] 
 
-print(my_list[:-1])  # Output: [0, 1, 2, 3, 4, 5, 6, 7, 8] 
+print(my_list[:-1])       # Output: [0, 1, 2, 3, 4, 5, 6, 7, 8] 
 
-print(my_list[:])  # Output: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] 
+print(my_list[:])         # Output: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9] 
 
-print(my_list[2:-1])  # Output: [2, 3, 4, 5, 6, 7, 8]
+print(my_list[2:-1])      # Output: [2, 3, 4, 5, 6, 7, 8]
 
-print(my_list(2:-1:2])  # Output: [2, 4, 6, 8] 
+print(my_list(2:-1:2])    # Output: [2, 4, 6, 8] 
 
-print(my_list[2:-1:1])  # Output: [2, 3, 4, 5, 6, 7, 8] 
+print(my_list[2:-1:1])    # Output: [2, 3, 4, 5, 6, 7, 8] 
 
-print(my_list[2:-1:-1])  # Output: []
+print(my_list[2:-1:-1])   # Output: []
 
-print(my_list[-1:2:-1])  # Output: [9, 8, 7, 6, 5, 4, 3] 
+print(my_list[-1:2:-1])   # Output: [9, 8, 7, 6, 5, 4, 3] 
 
-print(my_list[-2:1:-1])  # Output: [8, 7, 6, 5, 4, 3, 2] 
+print(my_list[-2:1:-1])   # Output: [8, 7, 6, 5, 4, 3, 2] 
 
-print(my_list[-2:1-2])  # Output: [8, 6, 4, 2]
+print(my_list[-2:1-2])    # Output: [8, 6, 4, 2]
 
-print(my_list[::-1])  # Output: [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+print(my_list[::-1])      # Output: [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
 
 
 Slicing Strings
 
 sample_url = "https://www.google.com"
 
-print(sample_url)  # Output: https://www.google.com
+print(sample_url)         # Output: https://www.google.com
 
 # Reverse the url
 
-print(sample_url[::-1])  # Output: moc.elgoog.www//sptth
+print(sample_url[::-1])   # Output: moc.elgoog.www//sptth
 
 # Get the top-level domain
 
-print(sample_url[-4:])  # Output: .com
+print(sample_url[-4:])    # Output: .com
 
 # Print the url without the "https://"
 
-print(sample_url[8:])  # Output: www.google.com
+print(sample_url[8:])     # Output: www.google.com
 
 # Print the url without the "https://" or the top-level domain
 
