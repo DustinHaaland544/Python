@@ -1,14 +1,14 @@
-Generators in Python are a type of iterable, similar to lists or tuples, but they are defined using a special syntax and provide a way to generate values on the fly,
-one at a time, rather than creating and storing all values in memory at once. Generators are a fundamental concept in Python's support for lazy evaluation and are 
-used to create iterators efficiently. They are defined using functions or generator expressions.
+Generators in Python are a type of iterable, similar to lists or tuples, but they are defined using a special syntax and provide a way to generate values on the 
+fly, one at a time, rather than creating and storing all values in memory at once. Generators are a fundamental concept in Python's support for lazy evaluation 
+and are used to create iterators efficiently. They are defined using functions or generator expressions.
 
 Here's a basic overview of generators, their purpose, and the functionality they offer:
 
-Lazy Evaluation: Generators allow us to generate values on-the-fly as we iterate over them, rather than generating and storing all values in memory upfront. This is
-especially useful when dealing with large datasets or infinite sequences.
+Lazy Evaluation: Generators allow us to generate values on-the-fly as we iterate over them, rather than generating and storing all values in memory upfront. This 
+is especially useful when dealing with large datasets or infinite sequences.
 
-Memory Efficiency: Since generators generate values one at a time, they are memory-efficient compared to creating lists or other data structures that store all values
-in memory.
+Memory Efficiency: Since generators generate values one at a time, they are memory-efficient compared to creating lists or other data structures that store all 
+values in memory.
 
 Syntax: Generators can be defined using functions that contain one or more yield statements or using generator expressions, which have a similar syntax to list
 comprehensions but use parentheses instead of square brackets.
@@ -87,5 +87,5 @@ Filtering and transforming a list of names:
 names = ["Alice", "Bob", "Charlie", "David"]
 filtered_names = (name.upper() for name in names if len(name) > 4)
 
-Generator expressions are typically used in places where you would iterate over values one at a time, such as in for loops, function arguments that accept iterables,
-and wherever lazy evaluation is preferred to save memory and improve performance.
+Generator expressions are typically used in places where you would iterate over values one at a time, such as in for loops, function arguments that accept 
+iterables, and wherever lazy evaluation is preferred to save memory and improve performance.
