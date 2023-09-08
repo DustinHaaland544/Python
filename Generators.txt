@@ -69,7 +69,7 @@ iterable: It can be any iterable (e.g., a list, tuple, string, or another genera
 condition (optional): We can include an optional condition to filter values from the iterable. Only items that satisfy the condition will be included in the
 generator.
 
-Generator expressions are particularly useful when working with large datasets or when you want to produce values on-the-fly without storing them in memory. 
+Generator expressions are particularly useful when working with large datasets or when we want to produce values on-the-fly without storing them in memory. 
 They provide a memory-efficient alternative to list comprehensions.
 
 Here are some examples of generator expressions:
