@@ -1,0 +1,97 @@
+String formatting in Python is the process of creating formatted strings by embedding variables or values within a string. Python provides several ways
+to format strings, including the old % operator, the str.format() method, and f-strings (formatted string literals), which were introduced in Python 3.6.
+
+Let's explore each of these methods and how they can be used with various data types:
+
+1. Old-Style String Formatting using % operator:
+This method uses placeholders in the string and substitutes them with values using the % operator.
+
+Example with Numbers:
+
+num = 42
+formatted_str = "The answer is %d" % num
+print(formatted_str)  # Output: The answer is 42
+
+Example with Strings:
+
+name = "Alice"
+greeting = "Hello, %s!" % name
+print(greeting)  # Output: Hello, Alice!
+
+Example with Floating-Point Numbers:
+
+pi = 3.14159
+formatted_pi = "The value of pi is %.2f" % pi
+print(formatted_pi)  # Output: The value of pi is 3.14
+
+2. String Formatting using str.format() method:
+This method uses placeholders enclosed in curly braces {} within the string and substitutes them with values using the str.format() method.
+
+Example with Numbers:
+
+num = 42
+formatted_str = "The answer is {}".format(num)
+print(formatted_str)  # Output: The answer is 42
+
+Example with Strings:
+
+name = "Alice"
+greeting = "Hello, {}!".format(name)
+print(greeting)  # Output: Hello, Alice!
+
+Example with Floating-Point Numbers:
+
+pi = 3.14159
+formatted_pi = "The value of pi is {:.2f}".format(pi)
+print(formatted_pi)  # Output: The value of pi is 3.14
+
+3. String Formatting using f-strings (Formatted String Literals):
+F-strings are a more recent and convenient way to format strings in Python. You can directly embed expressions and variables within the string by prefixing
+it with an 'f' or 'F'.
+
+Example with Numbers:
+
+num = 42
+formatted_str = f"The answer is {num}"
+print(formatted_str)  # Output: The answer is 42
+
+Example with Strings:
+
+name = "Alice"
+greeting = f"Hello, {name}!"
+print(greeting)  # Output: Hello, Alice!
+
+Example with Floating-Point Numbers:
+
+pi = 3.14159
+formatted_pi = f"The value of pi is {pi:.2f}"
+print(formatted_pi)  # Output: The value of pi is 3.14
+
+Using String Formatting with Dictionaries and Lists:
+You can use these formatting methods to display dictionary and list values within strings.
+
+Example with Dictionaries:
+
+person = {"name": "Bob", "age": 30}
+formatted_str = f"Name: {person['name']}, Age: {person['age']}"
+print(formatted_str)  # Output: Name: Bob, Age: 30
+
+Example with Lists:
+
+fruits = ["apple", "banana", "cherry"]
+formatted_str = f"My favorite fruits are {', '.join(fruits)}"
+print(formatted_str)  # Output: My favorite fruits are apple, banana, cherry
+
+Using String Formatting with Dates:
+For date formatting, you can use the strftime method from the datetime module to format dates as strings.
+
+from datetime import datetime
+
+date_obj = datetime(2023, 9, 16)
+formatted_date = date_obj.strftime("Today is %A, %B %d, %Y")
+print(formatted_date)  # Output: Today is Saturday, September 16, 2023
+
+In this example, we use placeholders like %A, %B, and %d to represent various components of the date.
+
+String formatting in Python provides flexibility and readability when you need to create formatted strings with different data types. You can choose
+the method that best suits your needs and coding style.
