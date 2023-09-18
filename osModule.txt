@@ -6,7 +6,6 @@ various functionalities provided by the os module and how you can use them to wr
 Here's an overview of the major functionalities provided by the os module:
 
 File and Directory Operations:
-
 os.getcwd(): Returns the current working directory as a string.
 os.chdir(path): Changes the current working directory to the specified path.
 os.listdir(path='.'): Returns a list of filenames in the specified directory.
@@ -15,8 +14,8 @@ os.makedirs(path): Creates a directory and its parent directories (if they don't
 os.remove(path): Deletes the file at the specified path.
 os.rmdir(path): Removes the specified directory (it must be empty).
 os.removedirs(path): Removes a directory and its parent directories (if they become empty) recursively.
-Path Manipulation:
 
+Path Manipulation:
 os.path.join(): Joins one or more path components intelligently based on the operating system.
 os.path.abspath(path): Returns the absolute version of a path.
 os.path.basename(path): Returns the base name of the file or directory in the given path.
@@ -27,31 +26,32 @@ os.path.isdir(path): Checks if the path points to a directory.
 os.path.isabs(path): Checks if the path is an absolute path.
 os.path.split(path): Splits a path into its directory and file components.
 os.path.splitext(path): Splits a path into its root and extension.
+
 Environmental Variables:
-
 os.environ: A dictionary-like object containing the system's environment variables.
-Process Management:
 
+Process Management:
 os.system(command): Executes the given shell command in the system's shell.
 os.spawn*() and os.wait*(): Functions for process creation and management (e.g., os.spawnv(), os.waitpid()).
-Working with Permissions:
 
+Working with Permissions:
 os.chmod(path, mode): Changes the permissions of a file or directory.
 os.chown(path, uid, gid): Changes the owner and group id of a file or directory.
-File and Directory Information:
 
+File and Directory Information:
 os.stat(path): Returns information about a file or directory (e.g., size, timestamps).
 os.lstat(path): Like os.stat(), but does not follow symbolic links.
-File Operations:
 
+File Operations:
 os.rename(src, dst): Renames a file or directory.
 os.replace(src, dst): Replaces the destination file or directory with the source.
 os.link(src, dst): Creates a hard link.
 os.symlink(src, dst): Creates a symbolic (soft) link.
-Other Utilities:
 
+Other Utilities:
 os.urandom(n): Generates n random bytes suitable for cryptographic use.
 os.path.walk(path, visit, arg): Recursively walks a directory tree.
+
 Now, let's look at some examples to illustrate how these functionalities can make your code more clear and efficient:
 
 import os
