@@ -1,7 +1,7 @@
-The os module in Python provides a way to interact with the operating system, allowing you to perform various operations related to file and directory manipulation, 
-process management, and more. It provides a platform-independent interface to interact with the underlying operating system, which makes it a crucial module for tasks
-involving file handling, directory navigation, and system-related operations. In this detailed explanation, we'll cover various functionalities provided by the os 
-module and how you can use them to write more efficient and clear code.
+The os module in Python provides a way to interact with the operating system, allowing you to perform various operations related to file and directory
+manipulation, process management, and more. It provides a platform-independent interface to interact with the underlying operating system, which makes
+it a crucial module for tasks involving file handling, directory navigation, and system-related operations. In this detailed explanation, we'll cover 
+various functionalities provided by the os module and how you can use them to write more efficient and clear code.
 
 Here's an overview of the major functionalities provided by the os module:
 
@@ -85,5 +85,5 @@ os.symlink('file.txt', 'symbolic_link.txt')
 # Example 8: Other Utilities
 random_bytes = os.urandom(16)
 
-Using the os module, you can perform various system-related tasks efficiently and in a platform-independent way, making your code more clear and maintainable, especially
-when dealing with file and directory operations and system-specific tasks.
+Using the os module, you can perform various system-related tasks efficiently and in a platform-independent way, making your code more clear 
+and maintainable, especially when dealing with file and directory operations and system-specific tasks.
