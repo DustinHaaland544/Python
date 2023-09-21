@@ -1,6 +1,6 @@
-The datetime module in Python is a powerful module for working with dates and times. It provides classes and functions to manipulate, format, and perform arithmetic
-operations on dates and times. Understanding how to use the datetime module is essential for various programming tasks, such as handling timestamps, scheduling tasks,
-and performing date-based calculations.
+The datetime module in Python is a powerful module for working with dates and times. It provides classes and functions to manipulate, format, and 
+perform arithmetic operations on dates and times. Understanding how to use the datetime module is essential for various programming tasks, such as handling 
+timestamps, scheduling tasks, and performing date-based calculations.
 
 Here's a detailed explanation of the key functionalities available in the datetime module:
 
