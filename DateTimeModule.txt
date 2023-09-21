@@ -35,7 +35,8 @@ specific_time = datetime.time(14, 30)
 
 3. Formatting and Parsing Dates and Times:
 
-You can format datetime objects into strings and parse strings into datetime objects using the strftime (string format time) and strptime (string parse time) methods.
+You can format datetime objects into strings and parse strings into datetime objects using the strftime (string format time) and strptime 
+(string parse time) methods.
 
 Example:
 
