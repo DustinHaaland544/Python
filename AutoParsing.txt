@@ -1,0 +1,64 @@
+You can use Python to automatically parse through a folder and rename all the files in that folder by using the os and os.path modules to manipulate
+file names and the os.listdir() function to get a list of files in the folder. Additionally, you can use regular expressions from the re module to 
+match and replace parts of the file names.
+
+Here's a step-by-step guide with examples:
+
+Import Necessary Libraries:
+First, import the required Python libraries:
+
+import os
+import re
+
+Specify the Folder Path:
+Define the folder path where your files are located:
+
+folder_path = '/path/to/your/folder'
+
+List Files in the Folder:
+Use os.listdir() to get a list of all files in the folder:
+
+files = os.listdir(folder_path)
+
+Define a Rename Function:
+Create a function that takes a filename and returns the new name you want to assign to it. You can use regular expressions to match and replace
+parts of the filename. For example, let's say you want to replace all spaces with underscores:
+
+def rename_file(filename):
+    new_name = re.sub(r' ', '_', filename)
+    return new_name
+
+Rename the Files:
+Loop through the list of files and rename each one using the os.rename() function:
+
+for filename in files:
+    old_path = os.path.join(folder_path, filename)
+    new_name = rename_file(filename)
+    new_path = os.path.join(folder_path, new_name)
+    os.rename(old_path, new_path)
+
+In this example, we used the os.path.join() function to create full file paths for both the old and new names.
+
+Here's a complete example that renames all files in a folder by replacing spaces with underscores:
+
+import os
+import re
+
+def rename_file(filename):
+    new_name = re.sub(r' ', '_', filename)
+    return new_name
+
+folder_path = '/path/to/your/folder'
+files = os.listdir(folder_path)
+
+for filename in files:
+    old_path = os.path.join(folder_path, filename)
+    new_name = rename_file(filename)
+    new_path = os.path.join(folder_path, new_name)
+    os.rename(old_path, new_path)
+
+Make sure to replace '/path/to/your/folder' with the actual path to your folder. This script will go through all the files in the folder and replace
+spaces with underscores in their names.
+
+You can customize the rename_file function and the renaming logic based on your specific requirements. Just modify the regular expression or other string
+manipulation functions within the function to achieve the desired naming convention.
