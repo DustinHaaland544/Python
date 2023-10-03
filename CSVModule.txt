@@ -1,5 +1,5 @@
-The CSV (Comma-Separated Values) module in Python is a built-in module that allows you to work with CSV files. CSV files are commonly used for storing tabular data,
-and Python's CSV module makes it easy to read, write, and parse data in this format. Let's go through each of these operations with clear examples:
+The CSV (Comma-Separated Values) module in Python is a built-in module that allows you to work with CSV files. CSV files are commonly used for storing tabular
+data,and Python's CSV module makes it easy to read, write, and parse data in this format. Let's go through each of these operations with clear examples:
 
 Reading CSV Files:
 To read data from a CSV file, you can use the csv.reader class. Here's how you can do it:
@@ -55,8 +55,8 @@ with open('output.csv', 'w', newline='') as file:
 This code will create a new CSV file named "output.csv" with the data from the data list.
 
 Parsing CSV Data:
-When you read data from a CSV file using csv.reader, the data is returned as lists of strings. If you want to work with the data in a more structured way, you can
-convert it to dictionaries using csv.DictReader. Here's an example:
+When you read data from a CSV file using csv.reader, the data is returned as lists of strings. If you want to work with the data in a more structured way, 
+you can convert it to dictionaries using csv.DictReader. Here's an example:
 
 Suppose you have a CSV file named "data.csv" with the following content:
 
@@ -85,5 +85,5 @@ This code will output:
 
 Each row is represented as a dictionary with column names as keys and corresponding values.
 
-That's the basic usage of the CSV module in Python for reading, writing, and parsing CSV files. You can customize the delimiter (e.g., using a tab instead of a comma)
-and other options by specifying parameters in the csv.reader and csv.writer constructors.
+That's the basic usage of the CSV module in Python for reading, writing, and parsing CSV files. You can customize the delimiter (e.g., using a tab
+instead of a comma) and other options by specifying parameters in the csv.reader and csv.writer constructors.
