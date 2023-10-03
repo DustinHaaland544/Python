@@ -1,0 +1,89 @@
+The CSV (Comma-Separated Values) module in Python is a built-in module that allows you to work with CSV files. CSV files are commonly used for storing tabular data,
+and Python's CSV module makes it easy to read, write, and parse data in this format. Let's go through each of these operations with clear examples:
+
+Reading CSV Files:
+To read data from a CSV file, you can use the csv.reader class. Here's how you can do it:
+
+Suppose you have a CSV file named "data.csv" with the following content:
+
+Name,Age,Location
+Alice,28,New York
+Bob,22,Los Angeles
+Charlie,32,Chicago
+
+You can read this file as follows:
+
+import csv
+
+# Open the CSV file for reading
+with open('data.csv', 'r') as file:
+    csv_reader = csv.reader(file)
+
+    # Iterate over each row in the CSV file
+    for row in csv_reader:
+        print(row)
+
+This code will output:
+
+['Name', 'Age', 'Location']
+['Alice', '28', 'New York']
+['Bob', '22', 'Los Angeles']
+['Charlie', '32', 'Chicago']
+
+Note that each row is represented as a list of strings.
+
+Writing to CSV Files:
+To write data to a CSV file, you can use the csv.writer class. Here's an example:
+
+import csv
+
+# Data to be written to the CSV file
+data = [
+    ['Name', 'Age', 'Location'],
+    ['Alice', '28', 'New York'],
+    ['Bob', '22', 'Los Angeles'],
+    ['Charlie', '32', 'Chicago']
+]
+
+# Open the CSV file for writing
+with open('output.csv', 'w', newline='') as file:
+    csv_writer = csv.writer(file)
+
+    # Write data to the CSV file
+    csv_writer.writerows(data)
+
+This code will create a new CSV file named "output.csv" with the data from the data list.
+
+Parsing CSV Data:
+When you read data from a CSV file using csv.reader, the data is returned as lists of strings. If you want to work with the data in a more structured way, you can
+convert it to dictionaries using csv.DictReader. Here's an example:
+
+Suppose you have a CSV file named "data.csv" with the following content:
+
+Name,Age,Location
+Alice,28,New York
+Bob,22,Los Angeles
+Charlie,32,Chicago
+
+You can parse it into a list of dictionaries as follows:
+
+import csv
+
+# Open the CSV file for reading
+with open('data.csv', 'r') as file:
+    csv_reader = csv.DictReader(file)
+
+    # Iterate over each row in the CSV file
+    for row in csv_reader:
+        print(row)
+
+This code will output:
+
+{'Name': 'Alice', 'Age': '28', 'Location': 'New York'}
+{'Name': 'Bob', 'Age': '22', 'Location': 'Los Angeles'}
+{'Name': 'Charlie', 'Age': '32', 'Location': 'Chicago'}
+
+Each row is represented as a dictionary with column names as keys and corresponding values.
+
+That's the basic usage of the CSV module in Python for reading, writing, and parsing CSV files. You can customize the delimiter (e.g., using a tab instead of a comma)
+and other options by specifying parameters in the csv.reader and csv.writer constructors.
