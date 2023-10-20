@@ -1,0 +1,60 @@
+Let's break down the process of using regular expressions in Python in simpler terms.
+
+1. Import the re module:
+
+This is like telling Python that you want to use a set of tools for working with text patterns.
+
+import re
+
+2. Define a regular expression pattern:
+
+A regular expression is a kind of recipe for matching text. It's like telling Python what kind of text you're looking for. 
+For example, if you want to find the word "apple," you can define your recipe like this:
+
+pattern = r"apple"
+
+Here, r"apple" is your recipe, and it means you want to find the word "apple" in a text.
+
+3. Use re.search() for basic matching:
+
+The re.search() function helps you search for your text recipe in a larger piece of text. If it finds a match, it tells you where it found it.
+
+text = "I love apples and oranges."
+match = re.search(pattern, text)
+if match:
+    print("Match found:", match.group())
+else:
+    print("No match found.")
+
+In this example, it will say "Match found: apple" because it found the word "apple" in the text.
+
+4. Use flags for options:
+
+Sometimes, you want to be more flexible with your recipe. For instance, you might want to find "apple" whether it's written in uppercase or lowercase. 
+You can use a special option called a flag, like this:
+
+match = re.search(pattern, text, re.IGNORECASE)
+
+The re.IGNORECASE flag tells Python to be not strict about uppercase and lowercase letters.
+
+5. Use re.findall() for finding all matches:
+
+The re.findall() function finds all the places where your recipe matches in a text.
+
+text = "I love apples and applesauce, but Apple is a company."
+matches = re.findall(pattern, text, re.IGNORECASE)
+print("All matches:", matches)
+
+This will print all the places where "apple" shows up, even if it's written differently (e.g., "Apple" or "apples").
+
+6. Use other functions and methods:
+
+The re module has more tools for different tasks, like checking if your text starts with your recipe or replacing parts of your text.
+
+7. Regular expression patterns:
+
+Your recipe can be more complex than just simple words. You can use special characters to describe patterns. For example, . means any character, 
+* means zero or more repetitions, + means one or more repetitions, and so on. You can use square brackets to specify a set of characters and 
+parentheses to group patterns.
+
+That's the basic idea of how to use regular expressions in Python: create a recipe, look for it in text, and do more advanced things if needed.
