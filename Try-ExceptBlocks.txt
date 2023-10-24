@@ -17,10 +17,11 @@ Exception to catch any error. When an error occurs, Python will search for a mat
 
 **as e: (optional): You can give the error a name (e.g., e) to access its details, like the error message. This is useful for debugging.
 
-**else block (optional): This block is executed if no error occurs in the try block. It's often used for code that should run only when the try block is error-free.
+**else block (optional): This block is executed if no error occurs in the try block. It's often used for code that should run only when the try block is 
+error-free.
 
-**finally block (optional): This block is always executed, whether an error occurred or not. It's typically used for cleanup tasks, like closing files or releasing 
-resources.
+**finally block (optional): This block is always executed, whether an error occurred or not. It's typically used for cleanup tasks, like closing files or 
+releasing resources.
 
 Example 1: Handling a ZeroDivisionError
 
