@@ -8,11 +8,10 @@ Find the Python Executable Directory: First, you need to know where the Python e
 in a directory like C:\PythonXX on Windows or /usr/bin on Unix-based systems (Linux, macOS).
 
 Open System Properties on Windows:
-
 Right-click on "This PC" or "My Computer" (depending on your Windows version) and select "Properties."
 In the System Properties window, click on the "Advanced system settings" on the left.
-Open Environment Variables:
 
+Open Environment Variables:
 In the System Properties window, click the "Environment Variables" button.
 In the Environment Variables window, you'll see two sections: User variables (for your user account) and System variables (for all
 users). You can choose either, but modifying the System variables affects all users.
