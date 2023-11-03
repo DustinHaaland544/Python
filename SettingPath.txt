@@ -1,11 +1,9 @@
 Setting the PATH:
-
 The PATH is an environment variable in your operating system that tells it where to look for executable files when you run a command
 in the command prompt or terminal. To switch between different versions of Python, you'll need to update your PATH to include the 
 directories where the Python executables are located.
 
 Here's how to set the PATH in a simple way:
-
 Find the Python Executable Directory: First, you need to know where the Python executables are located. Python is usually installed 
 in a directory like C:\PythonXX on Windows or /usr/bin on Unix-based systems (Linux, macOS).
 
@@ -18,15 +16,15 @@ Open Environment Variables:
 In the System Properties window, click the "Environment Variables" button.
 In the Environment Variables window, you'll see two sections: User variables (for your user account) and System variables (for all
 users). You can choose either, but modifying the System variables affects all users.
-Edit the PATH Variable:
 
+Edit the PATH Variable:
 In the "System Variables" section, find the "Path" variable and select "Edit."
 In the "Edit Environment Variable" window, click "New" and add the path to the directory where the Python executable you want to use
 is located. For example, if you want to add Python 3.9, you would add the path to its executable folder.
 
 Click "OK" to save the changes.
-Verify the PATH:
 
+Verify the PATH:
 Open a new command prompt window and type python --version. It should display the version of Python you added to the PATH.
 Switching Between Python Versions:
 
