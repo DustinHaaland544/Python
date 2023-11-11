@@ -76,3 +76,58 @@ def infinite_sequence():
 
 In summary, generators in Python provide a memory-efficient way to work with sequences of data by producing values on-the-fly using the yield keyword. They are 
 particularly useful when dealing with large datasets or infinite sequences.
+
+Let's create a simple Python program that uses a generator function to manipulate data. In this example, we'll create a generator that generates a sequence of 
+squared numbers up to a given limit.
+
+# Define a generator function that yields squared numbers up to a given limit
+def squared_numbers_generator(limit):
+    num = 0
+    
+    # Use a while loop to generate squared numbers up to the limit
+    while num < limit:
+        # Use the yield statement to produce the squared value
+        yield num ** 2
+        
+        # Increment the number for the next iteration
+        num += 1
+
+# Set the limit for the squared numbers
+limit = 5
+
+# Create a generator object by calling the generator function
+squared_gen = squared_numbers_generator(limit)
+
+# Use a for loop to iterate over the generated squared numbers
+for squared_num in squared_gen:
+    # Print each squared number
+    print(squared_num)
+
+Explanation of the code:
+
+Generator Function Definition (def squared_numbers_generator(limit):):
+
+The function squared_numbers_generator is a generator function that takes a limit parameter.
+Initialization (num = 0):
+
+We initialize a variable num to 0. This variable will be squared and yielded in each iteration.
+While Loop (while num < limit:):
+
+The generator uses a while loop to generate squared numbers until num reaches the specified limit.
+Yield Statement (yield num ** 2):
+
+The yield statement produces the squared value of num in each iteration.
+Incrementing (num += 1):
+
+num is incremented for the next iteration.
+Generator Object Creation (squared_gen = squared_numbers_generator(limit)):
+
+We create a generator object squared_gen by calling the generator function with the specified limit.
+For Loop (for squared_num in squared_gen:):
+
+We use a for loop to iterate over the values produced by the generator.
+Printing Squared Numbers (print(squared_num)):
+
+Each squared number is printed inside the loop.
+When you run this program, it will output the squared numbers from 0 to 16 (5 squared), demonstrating how the generator function with yield statements produces
+values on-the-fly without loading the entire sequence into memory.
