@@ -13,6 +13,7 @@ There are several modes you can use when opening a file:
 'x': Exclusive creation. Opens the file for writing but fails if the file already exists.
 'b': Binary mode. Used in combination with other modes (e.g., 'rb', 'wb') to work with binary files.
 't': Text mode (default). Used in combination with other modes (e.g., 'rt', 'wt') to work with text files.
+
 Here's an example of opening a file in read mode:
 
 # Open a file in read mode
