@@ -1,0 +1,172 @@
+In Python, a decorator is a design pattern that allows you to extend or modify the behavior of callable objects (functions or methods) without changing their actual code. 
+Decorators provide a way to wrap or modify functions at the time of definition or during runtime.
+
+Here's a step-by-step explanation:
+
+Functions as First-Class Objects:
+In Python, functions are first-class objects, which means you can treat them like any other object (such as an integer or a string). This allows functions to be passed as 
+arguments to other functions and returned as values from other functions.
+
+Nested Functions:
+In Python, you can define functions inside other functions. These are called nested functions.
+
+Decorator Syntax:
+A decorator is simply a function that takes another function as an argument and returns a new function that usually extends or modifies the behavior of the original function.
+
+Here's a simple example of a decorator function:
+
+def my_decorator(func):
+    def wrapper():
+        print("Something is happening before the function is called.")
+        func()
+        print("Something is happening after the function is called.")
+    return wrapper
+
+Applying a Decorator:
+You can use the @decorator_name syntax to apply a decorator to a function. Here's an example:
+
+@my_decorator
+def say_hello():
+    print("Hello!")
+
+This is equivalent to:
+
+say_hello = my_decorator(say_hello)
+
+The say_hello function is now wrapped by the wrapper function inside my_decorator.
+
+Multiple Decorators:
+You can apply multiple decorators to a single function. Decorators are applied from the innermost to the outermost.
+
+@decorator1
+@decorator2
+def my_function():
+    # function code
+
+This is equivalent to decorator1(decorator2(my_function)).
+
+Alteration of Functionality:
+Inside the decorator, you can modify the behavior of the original function. This could involve adding functionality, changing arguments, or even preventing the original
+function from being called altogether.
+
+def uppercase_decorator(func):
+    def wrapper():
+        result = func().upper()
+        return result
+    return wrapper
+
+@uppercase_decorator
+def say_hello():
+    return "Hello!"
+
+print(say_hello())  # Output: "HELLO!"
+
+In summary, decorators in Python provide a way to modify the behavior of functions by wrapping them with additional functionality. They leverage the fact that functions are 
+first-class objects, and they use nested functions to achieve the desired modifications. Decorators are a powerful and flexible tool for extending and enhancing the 
+functionality of your code.
+
+Let's go through a few modern examples of using decorators to alter the behavior of functions.
+
+Example 1: Timing Decorator
+Here's a decorator that measures the time a function takes to execute:
+
+import time
+
+def timing_decorator(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        print(f"{func.__name__} took {end_time - start_time:.2f} seconds to run.")
+        return result
+    return wrapper
+
+@timing_decorator
+def slow_function():
+    time.sleep(2)
+    print("Function executed.")
+
+slow_function()
+
+Output:
+
+slow_function took 2.00 seconds to run.
+Function executed.
+
+In this example, the timing_decorator calculates the time taken by the decorated function to execute. This can be useful for profiling and optimizing code.
+
+Example 2: Authorization Decorator
+A decorator to check if a user is authorized to execute a certain function:
+
+def authorize(user_role):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            if user_role == "admin":
+                result = func(*args, **kwargs)
+                return result
+            else:
+                print("Unauthorized access.")
+        return wrapper
+    return decorator
+
+@authorize(user_role="admin")
+def sensitive_operation():
+    print("Sensitive operation performed.")
+
+sensitive_operation()
+
+Output:
+
+Sensitive operation performed.
+
+In this example, the authorize decorator checks if the user has the required role ("admin" in this case) to execute the sensitive operation. If not, it prints 
+an unauthorized access message.
+
+Example 3: Memoization Decorator
+A decorator to cache the results of expensive function calls:
+
+def memoize(func):
+    cache = {}
+
+    def wrapper(*args, **kwargs):
+        key = (args, frozenset(kwargs.items()))
+        if key not in cache:
+            result = func(*args, **kwargs)
+            cache[key] = result
+        return cache[key]
+
+    return wrapper
+
+@memoize
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return fibonacci(n - 1) + fibonacci(n - 2)
+
+print(fibonacci(10))  # Output: 55 (calculated only once)
+
+
+In this example, the memoize decorator caches the results of the fibonacci function to avoid redundant computations. This can significantly improve the 
+performance of recursive functions.
+
+Advantages of Decorators:
+Code Reusability:
+Decorators allow you to separate concerns and reuse functionality across multiple functions without duplicating code.
+
+Readability:
+By applying decorators, you can keep the core functionality of your functions clear and easily readable, while additional concerns are addressed separately.
+
+Modularity:
+Decorators promote modularity by encapsulating specific behavior in separate functions. This makes it easier to update or modify specific aspects of your code.
+
+Aspect-Oriented Programming:
+Decorators enable a style of programming known as aspect-oriented programming (AOP), where cross-cutting concerns (such as logging, authorization, caching)
+are separated from the main business logic.
+
+Dynamic Behavior:
+Decorators provide a way to dynamically alter the behavior of functions at runtime, which can be useful in various scenarios, such as debugging, profiling, 
+or extending functionality.
+
+In summary, decorators enhance the flexibility, readability, and modularity of your code by allowing you to add and modify functionality in a clean and 
+reusable manner.
