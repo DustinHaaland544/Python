@@ -1,17 +1,19 @@
-In Python, a decorator is a design pattern that allows you to extend or modify the behavior of callable objects (functions or methods) without changing their actual code. 
+In Python, a decorator is a design pattern that allows you to extend or modify the behavior of callable objects (functions or methods) without changing their 
+actual code. 
 Decorators provide a way to wrap or modify functions at the time of definition or during runtime.
 
 Here's a step-by-step explanation:
 
 Functions as First-Class Objects:
-In Python, functions are first-class objects, which means you can treat them like any other object (such as an integer or a string). This allows functions to be passed as 
-arguments to other functions and returned as values from other functions.
+In Python, functions are first-class objects, which means you can treat them like any other object (such as an integer or a string). This allows functions to be 
+passed as arguments to other functions and returned as values from other functions.
 
 Nested Functions:
 In Python, you can define functions inside other functions. These are called nested functions.
 
 Decorator Syntax:
-A decorator is simply a function that takes another function as an argument and returns a new function that usually extends or modifies the behavior of the original function.
+A decorator is simply a function that takes another function as an argument and returns a new function that usually extends or modifies the behavior of the 
+original function.
 
 Here's a simple example of a decorator function:
 
@@ -46,8 +48,8 @@ def my_function():
 This is equivalent to decorator1(decorator2(my_function)).
 
 Alteration of Functionality:
-Inside the decorator, you can modify the behavior of the original function. This could involve adding functionality, changing arguments, or even preventing the original
-function from being called altogether.
+Inside the decorator, you can modify the behavior of the original function. This could involve adding functionality, changing arguments, or even preventing the 
+original function from being called altogether.
 
 def uppercase_decorator(func):
     def wrapper():
@@ -61,9 +63,9 @@ def say_hello():
 
 print(say_hello())  # Output: "HELLO!"
 
-In summary, decorators in Python provide a way to modify the behavior of functions by wrapping them with additional functionality. They leverage the fact that functions are 
-first-class objects, and they use nested functions to achieve the desired modifications. Decorators are a powerful and flexible tool for extending and enhancing the 
-functionality of your code.
+In summary, decorators in Python provide a way to modify the behavior of functions by wrapping them with additional functionality. They leverage the fact that 
+functions are first-class objects, and they use nested functions to achieve the desired modifications. Decorators are a powerful and flexible tool for extending 
+and enhancing the functionality of your code.
 
 Let's go through a few modern examples of using decorators to alter the behavior of functions.
 
