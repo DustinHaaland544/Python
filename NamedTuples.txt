@@ -1,8 +1,7 @@
 Named tuples in Python are a special type of tuple that come with named fields, making it easier to access elements by name rather than relying on index positions.
 
-They are defined using the collections.namedtuple factory function from the collections module. Named tuples provide a convenient way to define simple classes without 
-
-the need for a full-fledged class definition.
+They are defined using the collections.namedtuple factory function from the collections module. Named tuples provide a convenient way to define simple classes
+without the need for a full-fledged class definition.
 
 Here's a simplified explanation of named tuples with examples:
 
@@ -27,7 +26,8 @@ point = Point(x=1, y=2)
 # Access elements by name
 print(point.x)  # Access by name
 
-In the example above, we've defined a named tuple type Point with fields x and y. We then create an instance of the named tuple with specific values for each field. 
+In the example above, we've defined a named tuple type Point with fields x and y. We then create an instance of the named tuple with specific values for each 
+field. 
 
 You can access the elements of the named tuple using the field names instead of indices.
 
@@ -53,7 +53,8 @@ point2 = Point(x=3, y=4)
 print(f"Point 1: x={point1.x}, y={point1.y}")
 print(f"Point 2: x={point2.x}, y={point2.y}")
 
-In summary, named tuples offer a convenient way to create data containers with named fields, improving code readability and reducing the likelihood of errors related to index-based access.
+In summary, named tuples offer a convenient way to create data containers with named fields, improving code readability and reducing the likelihood of errors 
+related to index-based access.
 
 
 Named tuples and regular tuples in Python share many similarities, but the key difference lies in the way you access elements. Here are the main distinctions:
@@ -104,8 +105,8 @@ Use Cases:
 
 Regular Tuple: Suitable for general-purpose collection of ordered elements where the order is significant.
 
-Named Tuple: Preferred when the elements have a clear meaning, and you want more readable and self-documenting code. Especially useful for creating lightweight data containers.
+Named Tuple: Preferred when the elements have a clear meaning, and you want more readable and self-documenting code. Especially useful for creating lightweight 
+data containers.
 
-In summary, named tuples enhance code readability and maintainability by allowing you to access elements using meaningful names instead of indices. They are a good choice
-
-when you need a simple data structure with named fields and want to avoid the verbosity of defining a full class.
+In summary, named tuples enhance code readability and maintainability by allowing you to access elements using meaningful names instead of indices. They are a 
+good choice when you need a simple data structure with named fields and want to avoid the verbosity of defining a full class.
