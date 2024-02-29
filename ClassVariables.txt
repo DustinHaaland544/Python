@@ -1,5 +1,5 @@
-In Python, class variables are variables that are shared among all instances of a class. They are defined within a class but outside of any methods. Class variables are shared by all 
-instances of the class and are typically used to store data that is common to all instances.
+In Python, class variables are variables that are shared among all instances of a class. They are defined within a class but outside of any methods. 
+Class variables are shared by all instances of the class and are typically used to store data that is common to all instances.
 
 Let's create a simple example to illustrate class variables:
 
