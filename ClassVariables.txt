@@ -1,0 +1,61 @@
+In Python, class variables are variables that are shared among all instances of a class. They are defined within a class but outside of any methods. Class variables are shared by all 
+instances of the class and are typically used to store data that is common to all instances.
+
+Let's create a simple example to illustrate class variables:
+
+class Car:
+    # Class variable
+    num_of_cars = 0
+
+    def __init__(self, make, model):
+        # Instance variables
+        self.make = make
+        self.model = model
+        # Increment the class variable when a new instance is created
+        Car.num_of_cars += 1
+
+    def display_info(self):
+        print(f"{self.make} {self.model}")
+
+# Creating instances of the Car class
+car1 = Car("Toyota", "Camry")
+car2 = Car("Honda", "Accord")
+
+# Accessing class variable
+print(f"Number of cars created: {Car.num_of_cars}")
+
+# Displaying information about each car
+car1.display_info()
+car2.display_info()
+
+
+Explanation:
+
+Class Definition:
+
+class Car:: Defines a class named Car.
+Class Variable:
+
+num_of_cars = 0: num_of_cars is a class variable initialized to 0. This variable will be shared by all instances of the class.
+Constructor (__init__ method):
+
+def __init__(self, make, model):: This method is called when a new instance of the class is created.
+self.make and self.model are instance variables specific to each object.
+Incrementing Class Variable:
+
+Car.num_of_cars += 1: In the constructor, we increment the num_of_cars class variable each time a new instance is created.
+Displaying Class Variable:
+
+print(f"Number of cars created: {Car.num_of_cars}"): Prints the total number of cars created.
+Displaying Instance Information:
+
+car1.display_info(): Calls a method to display information about the first car.
+
+Output:
+
+Number of cars created: 2
+Toyota Camry
+Honda Accord
+
+
+Here, num_of_cars is a class variable that keeps track of the total number of cars created. It is shared among all instances of the Car class.
