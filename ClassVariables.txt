@@ -57,5 +57,4 @@ Number of cars created: 2
 Toyota Camry
 Honda Accord
 
-
 Here, num_of_cars is a class variable that keeps track of the total number of cars created. It is shared among all instances of the Car class.
