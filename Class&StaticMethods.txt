@@ -47,8 +47,8 @@ print(f"Number of dogs: {Dog.get_num_of_dogs()}")
 In this example, get_num_of_dogs is a class method because it operates on the class Dog rather than an instance.
 
 Static Methods:
-Static methods don't have access to the instance or class itself. They are defined using the @staticmethod decorator and are mainly used for utility functions that 
-are related to the class but don't require access to its attributes.
+Static methods don't have access to the instance or class itself. They are defined using the @staticmethod decorator and are mainly used for utility functions 
+that are related to the class but don't require access to its attributes.
 
 class MathOperations:
     @staticmethod
@@ -66,7 +66,8 @@ result_product = MathOperations.multiply(4, 2)
 print(f"Sum: {result_sum}")
 print(f"Product: {result_product}")
 
-In this example, add and multiply are static methods. They don't have access to any instance or class variables but provide utility operations related to the class.
+In this example, add and multiply are static methods. They don't have access to any instance or class variables but provide utility operations related to the 
+class.
 
 In summary, instance methods are used for operations on instances, class methods for operations on the class itself, and static methods for utility functions not
 dependent on the instance or class state.
