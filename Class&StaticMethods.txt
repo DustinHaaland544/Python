@@ -1,0 +1,70 @@
+In Python, Object-Oriented Programming (OOP) provides three types of methods: instance methods, class methods, and static methods. Let's explore each of them with clear examples.
+
+Instance Methods:
+Instance methods are the most common type of methods in Python classes. They operate on an instance of the class and have access to the instance's attributes.
+
+class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def bark(self):
+        print(f"{self.name} is barking!")
+
+# Creating an instance of the Dog class
+my_dog = Dog("Buddy", 3)
+
+# Calling the instance method
+my_dog.bark()
+
+
+In this example, bark is an instance method because it operates on an instance of the Dog class (my_dog).
+
+Class Methods:
+Class methods are bound to the class rather than the instance. They take the class as their first parameter, conventionally named cls. Class methods are defined using the @classmethod decorator.
+
+class Dog:
+    num_of_dogs = 0  # Class variable to track the number of dogs
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        Dog.num_of_dogs += 1
+
+    @classmethod
+    def get_num_of_dogs(cls):
+        return cls.num_of_dogs
+
+# Creating instances of the Dog class
+dog1 = Dog("Buddy", 3)
+dog2 = Dog("Max", 2)
+
+# Calling the class method
+print(f"Number of dogs: {Dog.get_num_of_dogs()}")
+
+In this example, get_num_of_dogs is a class method because it operates on the class Dog rather than an instance.
+
+Static Methods:
+Static methods don't have access to the instance or class itself. They are defined using the @staticmethod decorator and are mainly used for utility functions that are related to the class 
+but don't require access to its attributes.
+
+class MathOperations:
+    @staticmethod
+    def add(x, y):
+        return x + y
+
+    @staticmethod
+    def multiply(x, y):
+        return x * y
+
+# Calling static methods without creating an instance
+result_sum = MathOperations.add(5, 3)
+result_product = MathOperations.multiply(4, 2)
+
+print(f"Sum: {result_sum}")
+print(f"Product: {result_product}")
+
+In this example, add and multiply are static methods. They don't have access to any instance or class variables but provide utility operations related to the class.
+
+In summary, instance methods are used for operations on instances, class methods for operations on the class itself, and static methods for utility functions not dependent on the instance 
+or class state.
