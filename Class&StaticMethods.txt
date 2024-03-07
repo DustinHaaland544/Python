@@ -1,4 +1,5 @@
-In Python, Object-Oriented Programming (OOP) provides three types of methods: instance methods, class methods, and static methods. Let's explore each of them with clear examples.
+In Python, Object-Oriented Programming (OOP) provides three types of methods: instance methods, class methods, and static methods. Let's explore each of them with 
+clear examples.
 
 Instance Methods:
 Instance methods are the most common type of methods in Python classes. They operate on an instance of the class and have access to the instance's attributes.
@@ -21,7 +22,8 @@ my_dog.bark()
 In this example, bark is an instance method because it operates on an instance of the Dog class (my_dog).
 
 Class Methods:
-Class methods are bound to the class rather than the instance. They take the class as their first parameter, conventionally named cls. Class methods are defined using the @classmethod decorator.
+Class methods are bound to the class rather than the instance. They take the class as their first parameter, conventionally named cls. Class methods are defined 
+using the @classmethod decorator.
 
 class Dog:
     num_of_dogs = 0  # Class variable to track the number of dogs
@@ -45,8 +47,8 @@ print(f"Number of dogs: {Dog.get_num_of_dogs()}")
 In this example, get_num_of_dogs is a class method because it operates on the class Dog rather than an instance.
 
 Static Methods:
-Static methods don't have access to the instance or class itself. They are defined using the @staticmethod decorator and are mainly used for utility functions that are related to the class 
-but don't require access to its attributes.
+Static methods don't have access to the instance or class itself. They are defined using the @staticmethod decorator and are mainly used for utility functions that 
+are related to the class but don't require access to its attributes.
 
 class MathOperations:
     @staticmethod
@@ -66,5 +68,5 @@ print(f"Product: {result_product}")
 
 In this example, add and multiply are static methods. They don't have access to any instance or class variables but provide utility operations related to the class.
 
-In summary, instance methods are used for operations on instances, class methods for operations on the class itself, and static methods for utility functions not dependent on the instance 
-or class state.
+In summary, instance methods are used for operations on instances, class methods for operations on the class itself, and static methods for utility functions not
+dependent on the instance or class state.
