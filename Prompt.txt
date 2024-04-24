@@ -1,0 +1,2 @@
+Please demonstrate for me "Inheritance - Creating Subclasses" from Object Oriented Programming in Python using simple terms and in great details with clear examples, and also can you please 
+demonstrate the super() method and how it can be related with Inheritance at OOP in Python?  
