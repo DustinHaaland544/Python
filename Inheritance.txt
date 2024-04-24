@@ -1,0 +1,63 @@
+Inheritance - Creating Subclasses:
+
+Inheritance is a fundamental concept in OOP where a new class (called a subclass or derived class) is created by inheriting the attributes and methods of an existing class (called a superclass or base class). 
+This allows us to reuse code and create a hierarchy of classes.
+
+Let's say we have a class called Animal:
+
+class Animal:
+    def __init__(self, species):
+        self.species = species
+    
+    def speak(self):
+        print("Some generic sound")
+
+Now, let's create a subclass called Dog that inherits from Animal:
+
+class Dog(Animal):  # Dog is a subclass of Animal
+    def __init__(self, name):
+        super().__init__("Dog")  # Call the superclass constructor
+        self.name = name
+    
+    def speak(self):  # Override the speak method
+        print("Woof!")
+
+
+In this example:
+
+Dog is a subclass of Animal.
+
+When we create a Dog object, it automatically has the species attribute inherited from Animal.
+
+We can override methods from the superclass, like we did with speak() in Dog.
+
+Now, let's create a Cat subclass:
+
+class Cat(Animal):  # Cat is a subclass of Animal
+    def __init__(self, name):
+        super().__init__("Cat")  # Call the superclass constructor
+        self.name = name
+    
+    def speak(self):  # Override the speak method
+        print("Meow!")
+
+
+Similarly, Cat inherits from Animal, but it has its own speak() method.
+
+2. Using super() method:
+
+The super() method is used to call methods and constructors from the superclass within a subclass. It allows us to access methods and properties of the superclass without needing to know its name explicitly. 
+
+This is useful when we want to extend the functionality of the superclass in the subclass.
+
+In our example above, we used super() to call the constructor of the superclass Animal within the Dog and Cat subclasses:
+
+super().__init__("Dog")  # Inside Dog subclass
+super().__init__("Cat")  # Inside Cat subclass
+
+
+This line calls the __init__() method of the superclass (Animal) with the specified arguments ("Dog" or "Cat") within the constructors of Dog and Cat subclasses, respectively.
+
+Using super() ensures that if the superclass's constructor changes, we don't need to modify the subclass constructor as long as the arguments remain the same.
+
+Overall, inheritance and the super() method are powerful tools in Python OOP for creating hierarchical relationships between classes and promoting code reuse.
