@@ -1,0 +1,80 @@
+The decorators are used to manage attributes of a class, providing controlled access to them.
+
+1. Getters:
+A getter is a method that retrieves the value of an attribute. In Python, we can use the @property decorator to define a getter method.
+
+class Circle:
+    def __init__(self, radius):
+        self._radius = radius
+    
+    @property
+    def radius(self):
+        return self._radius
+
+# Usage
+circle = Circle(5)
+print(circle.radius)  # Output: 5
+
+In this example, radius is a property that is accessed like an attribute, but behind the scenes, the radius() method is called.
+
+2. Setters:
+A setter is a method that sets the value of an attribute. We use the @property.setter decorator to define a setter method for a property.
+
+class Circle:
+    def __init__(self, radius):
+        self._radius = radius
+    
+    @property
+    def radius(self):
+        return self._radius
+    
+    @radius.setter
+    def radius(self, value):
+        if value <= 0:
+            raise ValueError("Radius must be positive")
+        self._radius = value
+
+# Usage
+circle = Circle(5)
+circle.radius = 7
+print(circle.radius)  # Output: 7
+
+Here, radius can be set as if it's a simple attribute. The setter method ensures that the value being set is valid.
+
+3. Deleters:
+A deleter is a method that deletes an attribute. We use the @property.deleter decorator to define a deleter method for a property.
+
+class Circle:
+    def __init__(self, radius):
+        self._radius = radius
+    
+    @property
+    def radius(self):
+        return self._radius
+    
+    @radius.setter
+    def radius(self, value):
+        if value <= 0:
+            raise ValueError("Radius must be positive")
+        self._radius = value
+    
+    @radius.deleter
+    def radius(self):
+        del self._radius
+
+# Usage
+circle = Circle(5)
+del circle.radius
+# print(circle.radius)  # This will raise an AttributeError since radius has been deleted
+
+In this example, del circle.radius calls the deleter method, which deletes the _radius attribute.
+
+Summary:
+
+Getters: @property decorator to define a method that retrieves the value of an attribute.
+
+Setters: @property.setter decorator to define a method that sets the value of an attribute, with optional validation.
+
+Deleters: @property.deleter decorator to define a method that deletes an attribute.
+
+These property decorators help in maintaining clean and controlled access to attributes in Python classes.
