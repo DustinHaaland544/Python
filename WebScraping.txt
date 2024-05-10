@@ -1,0 +1,52 @@
+Web scraping is the process of extracting information from websites. It involves fetching the HTML content of a webpage and then parsing it to extract the desired data. Python is a 
+popular choice for web scraping due to its rich ecosystem of libraries, including BeautifulSoup and Requests.
+
+Requests Library: Requests is a Python library that allows you to send HTTP requests easily. It is used to fetch the HTML content of web pages.
+BeautifulSoup Library: BeautifulSoup is a Python library for parsing HTML and XML documents. It provides functions to navigate, search, and modify the parse tree, which represents the HTML 
+structure of a webpage.
+
+Here's a step-by-step guide on how to use these libraries for web scraping:
+
+Install Libraries: First, make sure you have both Requests and BeautifulSoup installed. You can install them using pip:
+
+pip install requests
+pip install beautifulsoup4
+
+Import Libraries: Import the required libraries into your Python script:
+
+import requests
+from bs4 import BeautifulSoup
+
+Fetch HTML Content: Use the Requests library to fetch the HTML content of the webpage you want to scrape. For example, let's scrape the title of a webpage:
+
+url = 'https://example.com'
+response = requests.get(url)
+
+Parse HTML Content: Once you have the HTML content, use BeautifulSoup to parse it and extract the desired information. In this case, let's extract the title of the webpage:
+
+soup = BeautifulSoup(response.text, 'html.parser')
+title = soup.title.string
+
+Print or Use Extracted Data: You can now print or use the extracted data as needed:
+
+print("Title:", title)
+
+This will print the title of the webpage.
+Here's a complete example that scrapes the title of a webpage:
+
+import requests
+from bs4 import BeautifulSoup
+
+# Fetch HTML content
+url = 'https://example.com'
+response = requests.get(url)
+
+# Parse HTML content
+soup = BeautifulSoup(response.text, 'html.parser')
+title = soup.title.string
+
+# Print the title
+print("Title:", title)
+
+This example demonstrates how to use Requests to fetch HTML content and BeautifulSoup to parse and extract information from it. You can apply similar techniques to scrape other types of data 
+from webpages. Just identify the HTML elements containing the data you need and use BeautifulSoup's methods to extract it.
