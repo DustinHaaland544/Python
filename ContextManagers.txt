@@ -1,6 +1,7 @@
 What are Context Managers?
 
-A context manager is a construct that allows you to allocate and release resources precisely when you want to. The most common use case for context managers is the with statement.
+A context manager is a construct that allows you to allocate and release resources precisely when you want to. The most common use case for context managers is 
+the with statement.
 
 Why Use Context Managers?
 
@@ -78,7 +79,8 @@ def my_context_manager():
 with my_context_manager():
     print("Inside the context")
 
-Here, yield is used to define the point where the context switches back to the caller. Code before yield runs when entering the context, and code after yield runs when exiting.
+Here, yield is used to define the point where the context switches back to the caller. Code before yield runs when entering the context, and code after yield runs 
+when exiting.
 
 Example: Database Connection
 
