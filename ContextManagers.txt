@@ -1,0 +1,117 @@
+What are Context Managers?
+
+A context manager is a construct that allows you to allocate and release resources precisely when you want to. The most common use case for context managers is the with statement.
+
+Why Use Context Managers?
+
+1. Automatic Resource Management: They help ensure that resources are released (or cleaned up) automatically, even if an error occurs.
+
+2. Cleaner Code: They make your code more readable and concise by abstracting the setup and teardown of resources.
+
+3. Error Handling: They handle exceptions gracefully, ensuring resources are properly closed.
+
+Basic Example: File Handling
+
+When dealing with files, you often need to open and then close them. Without a context manager, you might do something like this:
+
+file = open('example.txt', 'r')
+try:
+    data = file.read()
+finally:
+    file.close()
+
+Using a context manager, you can simplify this to:
+
+with open('example.txt', 'r') as file:
+    data = file.read()
+
+Here, open('example.txt', 'r') is the context manager, and as file assigns the opened file object to the variable file. The with statement ensures that file.close() is called automatically, even if an error occurs while reading the file.
+
+How Does a Context Manager Work?
+A context manager is an object that implements two special methods:
+
+1. __enter__(self): This method is executed when the execution flow enters the context of the with statement. It usually sets up the resource.
+
+2. __exit__(self, exc_type, exc_val, exc_tb): This method is executed when the execution flow leaves the context of the with statement. It usually cleans up the resource.
+
+Creating Your Own Context Manager
+
+You can create your own context manager in two main ways:
+
+Using a Class:
+
+class MyContextManager:
+    def __enter__(self):
+        print("Entering the context")
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        print("Exiting the context")
+        if exc_type:
+            print(f"Exception type: {exc_type}")
+            print(f"Exception value: {exc_val}")
+        return True  # Suppresses the exception if it occurs
+
+# Usage
+with MyContextManager() as manager:
+    print("Inside the context")
+    # Uncomment the next line to see exception handling in action
+    # raise ValueError("An error occurred")
+
+In this example, when you enter the with block, __enter__ is called. When you exit, whether normally or via an exception, __exit__ is called.
+
+2. Using the contextlib Module:
+
+The contextlib module provides a simpler way to create context managers using the @contextmanager decorator.
+
+from contextlib import contextmanager
+
+@contextmanager
+def my_context_manager():
+    print("Entering the context")
+    try:
+        yield
+    finally:
+        print("Exiting the context")
+
+# Usage
+with my_context_manager():
+    print("Inside the context")
+
+Here, yield is used to define the point where the context switches back to the caller. Code before yield runs when entering the context, and code after yield runs when exiting.
+
+Example: Database Connection
+
+Let’s look at a practical example involving a database connection.
+
+import sqlite3
+from contextlib import contextmanager
+
+@contextmanager
+def connect_to_db(db_name):
+    conn = sqlite3.connect(db_name)
+    try:
+        yield conn
+    finally:
+        conn.close()
+
+# Usage
+with connect_to_db('example.db') as conn:
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM some_table')
+    results = cursor.fetchall()
+    print(results)
+
+In this example, the database connection is opened when entering the context and automatically closed when exiting.
+
+Summary
+
+- Context Managers: Ensure resources are properly managed.
+
+- 'with' Statement: Simplifies resource management.
+
+- Two Methods: '__enter__' and '__exit__' are key to a context manager’s operation.
+
+- Creating Context Managers: Use either a class or the @contextmanager decorator.
+
+By using context managers, you can write cleaner, more reliable, and maintainable code, especially when dealing with resource management.
