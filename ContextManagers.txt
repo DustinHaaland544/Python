@@ -26,14 +26,17 @@ Using a context manager, you can simplify this to:
 with open('example.txt', 'r') as file:
     data = file.read()
 
-Here, open('example.txt', 'r') is the context manager, and as file assigns the opened file object to the variable file. The with statement ensures that file.close() is called automatically, even if an error occurs while reading the file.
+Here, open('example.txt', 'r') is the context manager, and as file assigns the opened file object to the variable file. The with statement ensures that 
+file.close() is called automatically, even if an error occurs while reading the file.
 
 How Does a Context Manager Work?
+
 A context manager is an object that implements two special methods:
 
 1. __enter__(self): This method is executed when the execution flow enters the context of the with statement. It usually sets up the resource.
 
-2. __exit__(self, exc_type, exc_val, exc_tb): This method is executed when the execution flow leaves the context of the with statement. It usually cleans up the resource.
+2. __exit__(self, exc_type, exc_val, exc_tb): This method is executed when the execution flow leaves the context of the with statement. It usually cleans up the 
+resource.
 
 Creating Your Own Context Manager
 
