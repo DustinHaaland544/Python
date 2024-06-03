@@ -26,9 +26,7 @@ print(str(dog))  # Output: Dog named Buddy
 2. repr():
 
 - Purpose: To provide an "official" or "formal" string representation of an object that includes detailed and precise information, primarily for debugging and 
-development. The goal is to be unambiguous 
-
-and, if possible, to return a string that could be used to recreate the object.
+development. The goal is to be unambiguous and, if possible, to return a string that could be used to recreate the object.
 
 - Usage: When you use repr() on an object or when you are working in an interactive interpreter, Python calls the object's __repr__() method to get this string 
 representation.
