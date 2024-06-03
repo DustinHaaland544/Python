@@ -1,0 +1,88 @@
+In Python, both str() and repr() functions are used to get string representations of objects, but they serve different purposes and are used in different contexts. Let's break down their differences in detail:
+
+Purpose and Usage
+
+1. str():
+
+- Purpose: To provide a "nice" or "informal" string representation of an object that is meant to be readable and user-friendly. It's generally used for creating output for end users.
+
+- Usage: When you use print() or str() on an object, Python calls the object's __str__() method to get this string representation.
+
+- Example:
+
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+    def __str__(self):
+        return f"Dog named {self.name}"
+
+dog = Dog("Buddy")
+print(str(dog))  # Output: Dog named Buddy
+
+2. repr():
+
+- Purpose: To provide an "official" or "formal" string representation of an object that includes detailed and precise information, primarily for debugging and development. The goal is to be unambiguous 
+
+and, if possible, to return a string that could be used to recreate the object.
+
+- Usage: When you use repr() on an object or when you are working in an interactive interpreter, Python calls the object's __repr__() method to get this string representation.
+
+- Example:
+
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return f"Dog('{self.name}')"
+
+dog = Dog("Buddy")
+print(repr(dog))  # Output: Dog('Buddy')
+
+Comparison of Outputs
+
+To highlight the difference between str() and repr(), let's look at a side-by-side example:
+
+class Dog:
+    def __init__(self, name):
+        self.name = name
+
+    def __str__(self):
+        return f"Dog named {self.name}"
+
+    def __repr__(self):
+        return f"Dog('{self.name}')"
+
+dog = Dog("Buddy")
+
+print(str(dog))   # Output: Dog named Buddy
+print(repr(dog))  # Output: Dog('Buddy')
+
+Default Implementations
+
+If a class does not define __str__(), Python will use __repr__() as a fallback for str().
+
+If a class does not define __repr__(), Python will use a default implementation that includes the type and memory address of the object, which is not very informative.
+
+class Cat:
+    def __init__(self, name):
+        self.name = name
+
+cat = Cat("Whiskers")
+print(str(cat))   # Output: <__main__.Cat object at 0x...>
+print(repr(cat))  # Output: <__main__.Cat object at 0x...>
+
+Best Practices
+
+- Implement __repr__() for your classes to provide a clear and unambiguous representation that can help with debugging.
+
+- Implement __str__() if you need a user-friendly and readable output for end users.
+
+In Summary
+
+- str() is for creating readable representations, suitable for end-user output.
+
+- repr() is for creating unambiguous representations, suitable for debugging and development.
+
+By implementing both __str__() and __repr__() methods in your classes, you can ensure that your objects have both user-friendly and developer-friendly string representations.
