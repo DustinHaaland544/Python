@@ -1,0 +1,145 @@
+1. Setting Up SQLite in Python
+
+First, you'll need to make sure you have Python installed on your computer. SQLite comes bundled with Python, so you don't need to install anything extra for SQLite itself.
+
+2. Creating a Database
+
+You can create a database using the sqlite3 module in Python. If the database file does not exist, it will be created. If it already exists, you’ll just connect to it.
+
+Here's a step-by-step guide:
+
+import sqlite3
+
+# Connect to a database (or create one if it doesn't exist)
+connection = sqlite3.connect('example.db')
+
+# Create a cursor object to interact with the database
+cursor = connection.cursor()
+
+3. Creating a Table
+
+To create a table, you need to execute a SQL CREATE TABLE statement.
+
+Here's an example of how to create a simple table called users:
+
+# SQL command to create a table
+create_table_query = '''
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    age INTEGER,
+    email TEXT UNIQUE NOT NULL
+);
+'''
+
+# Execute the SQL command
+cursor.execute(create_table_query)
+
+# Commit the changes to the database
+connection.commit()
+
+4. Inserting Data into the Table
+
+You can insert data into the table using the INSERT INTO SQL command. Here's how you can do it:
+
+# SQL command to insert data
+insert_data_query = '''
+INSERT INTO users (name, age, email) 
+VALUES (?, ?, ?);
+'''
+
+# Data to be inserted
+user_data = ('John Doe', 28, 'john.doe@example.com')
+
+# Execute the SQL command with data
+cursor.execute(insert_data_query, user_data)
+
+# Commit the changes to the database
+connection.commit()
+
+5. Querying Data from the Table
+To retrieve data from the table, you can use the SELECT statement. Here's how:
+
+# SQL command to select data
+select_query = 'SELECT * FROM users;'
+
+# Execute the SQL command
+cursor.execute(select_query)
+
+# Fetch all rows from the executed query
+rows = cursor.fetchall()
+
+# Print the retrieved data
+for row in rows:
+    print(row)
+
+6. Updating Data in the Table
+
+To update existing data in the table, you use the UPDATE SQL command. Here's an example:
+
+# SQL command to update data
+update_query = '''
+UPDATE users
+SET age = ?
+WHERE name = ?;
+'''
+
+# Data to be updated
+update_data = (30, 'John Doe')
+
+# Execute the SQL command with data
+cursor.execute(update_query, update_data)
+
+# Commit the changes to the database
+connection.commit()
+
+7. Deleting Data from the Table
+
+To delete data from the table, you use the DELETE SQL command. Here's how:
+
+# SQL command to delete data
+delete_query = '''
+DELETE FROM users
+WHERE name = ?;
+'''
+
+# Data specifying which row to delete
+delete_data = ('John Doe',)
+
+# Execute the SQL command with data
+cursor.execute(delete_query, delete_data)
+
+# Commit the changes to the database
+connection.commit()
+
+8. Closing the Connection
+
+After you’re done working with the database, you should close the connection:
+
+# Close the cursor
+cursor.close()
+
+# Close the connection
+connection.close()
+
+Summary
+
+Here’s a summary of the steps to create a database, table, and perform basic CRUD operations using SQLite in Python:
+
+Connect to a Database: Use sqlite3.connect('database_name.db') to create or connect to a database.
+
+Create a Table: Use CREATE TABLE SQL command to create a new table.
+
+Insert Data: Use INSERT INTO SQL command to add new rows.
+
+Query Data: Use SELECT SQL command to retrieve data.
+
+Update Data: Use UPDATE SQL command to modify existing data.
+
+Delete Data: Use DELETE SQL command to remove data.
+
+Close the Connection: Use close() method on the cursor and connection objects.
+
+Using this approach, you can manage your SQLite databases and perform various operations easily with Python.
+
+www.sqlite.org/datatype3.html
