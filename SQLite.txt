@@ -62,6 +62,7 @@ cursor.execute(insert_data_query, user_data)
 connection.commit()
 
 5. Querying Data from the Table
+
 To retrieve data from the table, you can use the SELECT statement. Here's how:
 
 # SQL command to select data
