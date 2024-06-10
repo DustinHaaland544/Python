@@ -1,10 +1,14 @@
 1. Setting Up SQLite in Python
 
-First, you'll need to make sure you have Python installed on your computer. SQLite comes bundled with Python, so you don't need to install anything extra for SQLite itself.
+First, you'll need to make sure you have Python installed on your computer. SQLite comes bundled with Python, so you don't need to install anything extra for 
+
+SQLite itself.
 
 2. Creating a Database
 
-You can create a database using the sqlite3 module in Python. If the database file does not exist, it will be created. If it already exists, you’ll just connect to it.
+You can create a database using the sqlite3 module in Python. If the database file does not exist, it will be created. If it already exists, you’ll just connect 
+
+to it.
 
 Here's a step-by-step guide:
 
@@ -141,5 +145,6 @@ Delete Data: Use DELETE SQL command to remove data.
 Close the Connection: Use close() method on the cursor and connection objects.
 
 Using this approach, you can manage your SQLite databases and perform various operations easily with Python.
+
 
 www.sqlite.org/datatype3.html
