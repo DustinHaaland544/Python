@@ -1,0 +1,167 @@
+1. Introduction to Logging in Python
+
+Logging is a way to track events that happen when some software runs. The Python logging module provides a flexible framework for emitting log messages from Python programs. It is used to report 
+status, error, and informational messages.
+
+2. Basic Logging
+
+To get started with logging, you can use the logging module’s basic configuration:
+
+import logging
+
+logging.basicConfig(level=logging.DEBUG)  # Set the logging level to DEBUG
+logging.debug('This is a debug message')
+logging.info('This is an info message')
+logging.warning('This is a warning message')
+logging.error('This is an error message')
+logging.critical('This is a critical message')
+
+3. Logging to Files
+
+To log messages to a file, you can specify the filename parameter in the basicConfig method:
+
+import logging
+
+logging.basicConfig(filename='app.log', level=logging.DEBUG, 
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.debug('This message will go to the file')
+
+4. Setting Logging Levels
+
+Logging levels control the severity of messages that you want to log. The standard levels are:
+
+DEBUG: Detailed information, typically of interest only when diagnosing problems.
+
+INFO: Confirmation that things are working as expected.
+
+WARNING: An indication that something unexpected happened, or indicative of some problem in the near future (e.g., ‘disk space low’). The software is still working as expected.
+
+ERROR: Due to a more serious problem, the software has not been able to perform some function.
+
+CRITICAL: A very serious error, indicating that the program itself may be unable to continue running.
+
+5. Formatting Log Messages
+
+You can specify the format of log messages using the format parameter in the basicConfig method:
+
+import logging
+
+logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
+logging.debug('This is a debug message with a custom format')
+
+Common formatting variables include:
+
+%(asctime)s: Human-readable time when the log record was created.
+
+%(name)s: Name of the logger used.
+
+%(levelname)s: Text logging level for the message ('DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL').
+
+%(message)s: The actual log message.
+
+6. Loggers, Handlers, and Formatters
+
+The logging module is built around the concepts of loggers, handlers, and formatters.
+
+Loggers
+
+A logger is an object that you use to issue log messages. You can get a logger using logging.getLogger(name):
+
+import logging
+
+logger = logging.getLogger('my_logger')
+logger.setLevel(logging.DEBUG)
+logger.debug('This is a debug message from my_logger')
+
+Handlers
+
+Handlers are used to send the log messages to their final destination. For example, you can use StreamHandler to send logs to the console or FileHandler to send logs to a file.
+
+import logging
+
+logger = logging.getLogger('my_logger')
+logger.setLevel(logging.DEBUG)
+
+# Create handlers
+console_handler = logging.StreamHandler()
+file_handler = logging.FileHandler('my_log.log')
+
+# Set levels for handlers
+console_handler.setLevel(logging.WARNING)
+file_handler.setLevel(logging.DEBUG)
+
+# Add handlers to the logger
+logger.addHandler(console_handler)
+logger.addHandler(file_handler)
+
+logger.debug('This will be logged to the file')
+logger.warning('This will be logged to the console and the file')
+
+Formatters
+
+Formatters specify the layout of the log messages. You can create a formatter and set it to a handler:
+
+import logging
+
+logger = logging.getLogger('my_logger')
+logger.setLevel(logging.DEBUG)
+
+# Create handlers
+console_handler = logging.StreamHandler()
+file_handler = logging.FileHandler('my_log.log')
+
+# Create formatters and add them to the handlers
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(formatter)
+file_handler.setFormatter(formatter)
+
+# Add handlers to the logger
+logger.addHandler(console_handler)
+logger.addHandler(file_handler)
+
+logger.debug('This is a debug message with a custom format')
+
+7. Putting It All Together
+
+Here's a complete example that combines all the above concepts:
+
+import logging
+
+# Create a custom logger
+logger = logging.getLogger('my_logger')
+logger.setLevel(logging.DEBUG)
+
+# Create handlers
+console_handler = logging.StreamHandler()
+file_handler = logging.FileHandler('my_log.log')
+
+# Set levels for handlers
+console_handler.setLevel(logging.WARNING)
+file_handler.setLevel(logging.DEBUG)
+
+# Create formatters and add them to the handlers
+console_formatter = logging.Formatter('%(name)s - %(levelname)s - %(message)s')
+file_formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+console_handler.setFormatter(console_formatter)
+file_handler.setFormatter(file_formatter)
+
+# Add handlers to the logger
+logger.addHandler(console_handler)
+logger.addHandler(file_handler)
+
+# Log messages
+logger.debug('This is a debug message')
+logger.info('This is an info message')
+logger.warning('This is a warning message')
+logger.error('This is an error message')
+logger.critical('This is a critical message')
+
+Summary
+
+- Loggers are the main entry points of the logging system, representing an area in your application.
+
+- Handlers send the log records (created by loggers) to the appropriate destination, like the console or a file.
+
+- Formatters specify the layout of the log messages.
+
+By combining loggers, handlers, and formatters, you can configure complex logging behavior in a flexible and modular way.
