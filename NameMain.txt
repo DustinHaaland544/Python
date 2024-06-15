@@ -1,0 +1,61 @@
+The __name__ == "__main__" construct in Python is a common pattern used to ensure that certain code is only run when the script is executed directly, and not when it is imported as a 
+
+module in another script. Here's a simplified explanation:
+
+Explanation
+
+1. Special Variable __name__:
+
+- Every Python module (file) has a special built-in variable called __name__.
+
+- When a module is run directly (e.g., by running python my_script.py), the value of __name__ is set to "__main__".
+
+- When a module is imported into another module (e.g., import my_script), the value of __name__ is set to the module's name ("my_script" in this case).
+
+2. The if Statement:
+
+- The condition if __name__ == "__main__": checks whether the script is being run directly.
+
+- If the condition is true, it means the script is being executed directly, so the code inside the if block will run.
+
+- If the condition is false, it means the script has been imported, so the code inside the if block will not run.
+
+Example
+
+Consider a simple script named example.py:
+
+def main():
+    print("This is the main function.")
+
+if __name__ == "__main__":
+    main()
+
+- Running Directly:
+
+  - If you run the script directly from the command line using python example.py, the output will be:
+
+This is the main function.
+
+  - Here, __name__ is "__main__", so main() is called.
+
+- Importing as a Module:
+
+  - If you import the script in another script, like this:
+
+    import example
+
+  - Nothing will be printed, because __name__ in example.py will be "example", not "__main__", so main() will not be called automatically.
+
+Why is This Useful?
+
+- Modularity: It allows you to organize code into functions and modules, making it reusable and easier to maintain.
+
+- Testing: You can include tests or demo code within the if __name__ == "__main__": block that won't run when the module is imported elsewhere.
+
+- Separation of Concerns: It helps keep the implementation of functionality (functions, classes) separate from the execution of the program.
+
+Summary
+
+The __name__ == "__main__" construct ensures that certain parts of your code run only when the script is executed directly, and not when it is imported as a module. This helps in creating
+
+clean, modular, and reusable code.
