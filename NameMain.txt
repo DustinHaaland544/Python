@@ -1,6 +1,6 @@
-The __name__ == "__main__" construct in Python is a common pattern used to ensure that certain code is only run when the script is executed directly, and not when it is imported as a 
+The __name__ == "__main__" construct in Python is a common pattern used to ensure that certain code is only run when the script is executed directly, and not when 
 
-module in another script. Here's a simplified explanation:
+it is imported as a module in another script. Here's a simplified explanation:
 
 Explanation
 
@@ -56,6 +56,6 @@ Why is This Useful?
 
 Summary
 
-The __name__ == "__main__" construct ensures that certain parts of your code run only when the script is executed directly, and not when it is imported as a module. This helps in creating
+The __name__ == "__main__" construct ensures that certain parts of your code run only when the script is executed directly, and not when it is imported as a 
 
-clean, modular, and reusable code.
+module. This helps in creating clean, modular, and reusable code.
