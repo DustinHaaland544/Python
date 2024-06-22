@@ -1,0 +1,93 @@
+1. Know how to write code on a whiteboard or paper
+
+2. Know the basic control flow of Python
+
+  - Know how to use for loops, while loops and things like that
+
+3. Be able to discuss how you've used Python in the past
+
+  - Interview will ask you about your past projects
+
+  - If you're going for entry level interview then do talk about a project that you did on your free time
+
+  - Whatever you choose to write try to make it something that is interesting and that will be interesting to your interviewer
+
+  - Just don't tell them how you have solved a bunch of sample interview problems like fizbuzz or febonacci sequences and things like those
+
+  - For example if you need a couple of ideas for some cool programs that you can write then maybe you can play around with web-scraping and make a script that pulls weather information each day
+
+  - You can use the beautifulSoup module for that, or you can write a progam that can perform system tasks, so you can write a program that cleans up folders in your computer, removes files, displays 
+
+  - CPU and memory something alomg those lines. 
+
+4. Know how to solve common interview problems and questions
+
+5. Know basic Python data types and when to use them
+
+6. Know how to use List Comprehensions
+
+  - Knowing this will make you stand out amongst other regular canditates 
+
+7. Know how to use Generators
+
+  - You should know when to use Generators in Python and the benefits you receive for using Generators 
+
+8. Know the basics of Object Oriented Programming (OOP)
+
+  - Just have a sample file or program and write these from scratch over and over and over again until it just feels natural
+
+  - In your head you would wanna know the general template for a class, you need to remember that you will not be using a computer
+
+  - It will trip most people up if they are just writing it on the white-board because it is so easy on your computer just to hit CTRL
+
+  - SPACE or something and it will pop up and will give yu the entire init function and fill it all up for you but to do that from the 
+
+  - scratch can be a challenge so I would write these files over and over and over again until you just know how to write down a class
+
+  - What it inherits from, remember to put in your init functions and selfs and then the arguments and then initialize all of those parameters 
+
+  - You might also be asked on what certain terms mean? You might be asked what self means and what it means to make an instance of a class 
+
+  - For example: I would also make instances of the classes on my Python OOP file. You would want to know how inherit on classes 
+
+  - ALso you would want to know how to initialize based off of that base class and then how to override methods
+
+  - Write them over and over and over again until you get really comfortable writing out those templates from scratch 
+
+  - And being able to do that without a computer 
+
+9. Have Python related questions ready to ask your interviewer
+
+  - Its good to have these questions prepared because if you feel strong at a certain area in Python, then will give you a chance to bring up those areas that
+
+  - you are strong in, if they don't come up at the interview. For example: Let's say you are really studying the differences between Python 2 and Python 3
+
+  - And you port Python 2 information to Python 3, it doesn't come up at the interview. At the end they are going to ask if you have any question then just 
+
+  - bring up questions like "Hey! Do you guys Python 2 or Python 3? And also you need to be prepared for follow up questions to your questions
+
+  - Don't ask a question that you are not prepared to ask follow up questions about because if you ask Are you using Python 2 or Python 3 then your interviewer
+
+  - might ask you oh that's a good question, we moved over to Pyton 3 or we are thiking about moving over to Python 3 and what would you recommend and why? 
+
+  - Also can you please tell me some differences between those versions or things like that? 
+
+  - Maybe you were using Databases in Python then you could ask What are they using to communicate with their databases? Ask them if they are using SQL Alchemy?
+
+  - If you have been practicing unit-testing with Python? Or if they are currentky testing their Python codebase and what testing module are they are using? 
+
+10. Know the basics of other technologies when you go into your interview
+
+  - In today's technologies there are tons of technologies that programmers use in daily basis and you would want to know some of these technologies and not just Python
+
+  - So for example: It will be a huge benefit to learn version control like Git, it will be nice to know how to navigate through the command line and basic linux commands
+
+  - Understand how databases work and how to write some basic SQL codes. You don't need to be an expert in other technologies. A lot of people get caught up on that. 
+
+  - They feel like that they need to know everything on everything but atleast know what these other technologies are and know the basics of some of these technologies
+
+  - A T-shaped skill set means that you are advanced in a certain topic but also you have expose to several other technologies
+
+  - Before your job interview go through the job description and see what other technologies they list beside Python and be sure that you atleast know something 
+
+  - about everything on that list
