@@ -1,6 +1,6 @@
-The Pillow library is a powerful and easy-to-use library in Python for opening, manipulating, and saving many different image file formats. Below is a detailed, simplified, and complete overview 
+The Pillow library is a powerful and easy-to-use library in Python for opening, manipulating, and saving many different image file formats. Below is a detailed, 
 
-of how to use the Pillow library.
+simplified, and complete overview of how to use the Pillow library.
 
 Installation
 
