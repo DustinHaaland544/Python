@@ -1,0 +1,121 @@
+Setting up multiple Python build systems in Sublime Text allows you to run Python 2 or Python 3 scripts easily. Here's a step-by-step guide to do this:
+
+Step 1: Install Python
+
+Ensure that both Python 2 and Python 3 are installed on your system.
+
+Windows: Download installers from python.org and follow the instructions.
+
+Mac/Linux: You can use package managers like brew (for macOS) or apt (for Ubuntu).
+
+Step 2: Verify Installation
+
+Open a terminal or command prompt and verify the installations by running:
+
+python --version
+python3 --version
+
+You should see the respective versions of Python 2 and Python 3.
+
+Step 3: Install Sublime Text
+
+If you haven't already, download and install Sublime Text from sublimetext.com.
+
+Step 4: Create Python Build Systems in Sublime Text
+
+1. Open Sublime Text.
+
+2. Open the Build System Menu:
+
+  - Go to Tools > Build System > New Build System....
+
+3. Create Python 2 Build System:
+
+  - Replace the default content with the following configuration:
+
+{
+  "cmd": ["python", "-u", "$file"],
+  "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+  "selector": "source.python",
+  "env": {"PYTHONIOENCODING": "utf-8"}
+}
+
+  - Save this file as Python2.sublime-build in the default directory.
+
+4. Create Python 3 Build System:
+
+  - Go to Tools > Build System > New Build System... again.
+
+  - Replace the default content with the following configuration:
+
+{
+  "cmd": ["python3", "-u", "$file"],
+  "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+  "selector": "source.python",
+  "env": {"PYTHONIOENCODING": "utf-8"}
+}
+
+  - Save this file as Python3.sublime-build in the default directory.
+
+Step 5: Use the Build Systems
+
+1. Open a Python Script in Sublime Text.
+
+2. Select the Build System:
+
+  - Go to Tools > Build System and select either Python2 or Python3.
+
+3. Run the Script:
+
+  - Press Ctrl+B (Windows/Linux) or Cmd+B (Mac) to run the script with the selected Python version.
+
+Optional: Automatically Switch Build Systems Based on Shebang
+
+If your Python scripts start with a shebang (e.g., #!/usr/bin/env python2 or #!/usr/bin/env python3), you can set up Sublime Text to automatically choose the correct build system.
+
+1. Install Package Control:
+
+  - Follow the instructions from Package Control installation guide.
+
+2. Install the AutomaticPackageReloader Plugin:
+
+  - Open the Command Palette (Ctrl+Shift+P or Cmd+Shift+P), type Package Control: Install Package, and select it.
+  
+  - Search for AutomaticPackageReloader and install it.
+
+3. Configure Automatic Build Switching:
+
+  - Unfortunately, Sublime Text does not natively support automatic build switching based on shebangs. However, you can manually create a plugin to achieve this.
+
+Here is a basic example of a Sublime Text plugin to switch builds based on the shebang:
+
+  - Go to Tools > Developer > New Plugin....
+
+  - Replace the content with the following code:
+
+import sublime
+import sublime_plugin
+
+class PythonBuildSelector(sublime_plugin.EventListener):
+    def on_post_save_async(self, view):
+        if view.file_name().endswith('.py'):
+            with open(view.file_name(), 'r') as file:
+                first_line = file.readline().strip()
+                if 'python2' in first_line:
+                    view.window().run_command('set_build_system', {"file": "Packages/User/Python2.sublime-build"})
+                elif 'python3' in first_line:
+                    view.window().run_command('set_build_system', {"file": "Packages/User/Python3.sublime-build"})
+
+def plugin_loaded():
+    for window in sublime.windows():
+        for view in window.views():
+            if view.file_name() and view.file_name().endswith('.py'):
+                sublime_plugin.EventListener.on_post_save_async(None, view)
+
+  - Save this file with a .py extension in the default plugin directory.
+
+Conclusion:
+
+Now you have set up Sublime Text to work with both Python 2 and Python 3. You can easily switch between them and even automate the build system selection based on the shebang. 
+
+This setup helps you manage projects that may require different versions of Python.
