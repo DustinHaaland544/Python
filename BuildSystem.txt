@@ -71,7 +71,9 @@ Step 5: Use the Build Systems
 
 Optional: Automatically Switch Build Systems Based on Shebang
 
-If your Python scripts start with a shebang (e.g., #!/usr/bin/env python2 or #!/usr/bin/env python3), you can set up Sublime Text to automatically choose the correct build system.
+If your Python scripts start with a shebang (e.g., #!/usr/bin/env python2 or #!/usr/bin/env python3), you can set up Sublime Text to automatically choose the 
+
+correct build system.
 
 1. Install Package Control:
 
@@ -116,6 +118,8 @@ def plugin_loaded():
 
 Conclusion:
 
-Now you have set up Sublime Text to work with both Python 2 and Python 3. You can easily switch between them and even automate the build system selection based on the shebang. 
+Now you have set up Sublime Text to work with both Python 2 and Python 3. You can easily switch between them and even automate the build system selection based on 
+
+the shebang. 
 
 This setup helps you manage projects that may require different versions of Python.
