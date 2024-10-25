@@ -1,60 +1,65 @@
 What is Big O Notation?
-Big O notation is a way to describe how fast or slow a computer program (or algorithm) runs, especially as the size of the input grows. In other words, it tells us how well an algorithm scales
-when we give it more and more data to work with.
+Big O notation is a way to describe how fast or slow a computer program (or algorithm) runs, especially as the size of the input grows. In other words, it tells us 
+how well an algorithm scales when we give it more and more data to work with.
 
-Imagine you have a sorting algorithm that sorts numbers. You might be able to sort 10 numbers really quickly, but what if you had to sort 10 million numbers? Big O helps us understand what happens
-to the performance as the input size grows.
+Imagine you have a sorting algorithm that sorts numbers. You might be able to sort 10 numbers really quickly, but what if you had to sort 10 million numbers? Big O 
+helps us understand what happens to the performance as the input size grows.
 
 Why Use Big O?
 Performance: It tells us how long an algorithm might take to run. For example, will the algorithm take a few seconds or hours to finish?
-Scalability: It tells us how much slower the algorithm will get if the input gets bigger. This is important when you’re building software that will deal with large amounts of data.
+Scalability: It tells us how much slower the algorithm will get if the input gets bigger. This is important when you’re building software that will deal with large 
+amounts of data.
 Comparison: It allows us to compare different algorithms to see which one is faster and better for large inputs.
 
 How Does Big O Work?
-Big O describes the worst-case scenario for an algorithm. This means it shows the maximum amount of time (or space) an algorithm can take, no matter what the input is. Here's a breakdown of some 
-common types of Big O:
+Big O describes the worst-case scenario for an algorithm. This means it shows the maximum amount of time (or space) an algorithm can take, no matter what the input 
+is. Here's a breakdown of some common types of Big O:
 
 O(1) – Constant Time:
 No matter how big the input is, the algorithm takes the same amount of time.
-Example: Looking at a specific item in a list, like finding the 5th element in an array. It doesn’t matter if the array has 10 items or 10 million items; it always takes the same amount of time.
+Example: Looking at a specific item in a list, like finding the 5th element in an array. It doesn’t matter if the array has 10 items or 10 million items; it always 
+takes the same amount of time.
 
 O(log n) – Logarithmic Time:
 The time it takes increases, but very slowly as the input grows.
-Example: Think about looking up a name in a phone book. You don’t go through each name one by one. You start in the middle, and based on where the name should be, you cut the phone book in half until 
-you find it. This cutting in half repeatedly is a logarithmic process, meaning it gets faster and faster the bigger the input gets.
+Example: Think about looking up a name in a phone book. You don’t go through each name one by one. You start in the middle, and based on where the name should be, 
+you cut the phone book in half until you find it. This cutting in half repeatedly is a logarithmic process, meaning it gets faster and faster the bigger the input 
+gets.
 
 O(n) – Linear Time:
 The time it takes increases in direct proportion to the input size.
-Example: If you have a list of 10 numbers and it takes 1 second to go through the whole list, it will take 2 seconds to go through 20 numbers. So if the input doubles, the time doubles.
+Example: If you have a list of 10 numbers and it takes 1 second to go through the whole list, it will take 2 seconds to go through 20 numbers. So if the input 
+doubles, the time doubles.
 
 O(n log n) – Linearithmic Time:
 This is a mix of linear and logarithmic time. It's common in sorting algorithms.
-Example: Many efficient sorting methods like Merge Sort or Quick Sort use this. These algorithms are pretty fast even for large inputs, and they combine the best of both worlds (linear 
-and logarithmic).
+Example: Many efficient sorting methods like Merge Sort or Quick Sort use this. These algorithms are pretty fast even for large inputs, and they combine the best 
+of both worlds (linear and logarithmic).
 
 O(n²) – Quadratic Time:
 The time it takes grows quickly as the input gets larger.
-Example: Imagine you have two loops nested inside each other. The first loop goes over the entire input, and for every item in that loop, the second loop goes over the entire input again. 
+Example: Imagine you have two loops nested inside each other. The first loop goes over the entire input, and for every item in that loop, the second loop goes over 
+the entire input again. 
 So if you have 10 items, the algorithm does 10 x 10 = 100 steps. If you have 100 items, it does 100 x 100 = 10,000 steps.
 This is typical for simple sorting algorithms like Bubble Sort.
 
 O(2ⁿ) – Exponential Time:
 The time doubles with every new element added to the input.
-Example: Consider a problem where you have to test all possible combinations of choices, like trying to solve a puzzle. The more pieces you add, the number of possible solutions grows 
-exponentially, making it very slow as the input size grows.
+Example: Consider a problem where you have to test all possible combinations of choices, like trying to solve a puzzle. The more pieces you add, the number of 
+possible solutions grows exponentially, making it very slow as the input size grows.
 
 O(n!) – Factorial Time:
 The time grows extremely fast, even faster than exponential time.
-Example: If you're calculating all possible ways to arrange a set of items (like solving a traveling salesman problem), the number of possibilities explodes quickly. For just 10 items, 
-you would have 10! (10 factorial) or 3,628,800 possible combinations.
+Example: If you're calculating all possible ways to arrange a set of items (like solving a traveling salesman problem), the number of possibilities explodes 
+quickly. For just 10 items, you would have 10! (10 factorial) or 3,628,800 possible combinations.
 
 Why Does Big O Matter?
-Big O helps developers pick the best algorithm for their task. If you're dealing with small amounts of data, even inefficient algorithms might work fine. But if you're working with big 
-data (millions or billions of inputs), using an algorithm with a bad Big O can make your program unbearably slow.
+Big O helps developers pick the best algorithm for their task. If you're dealing with small amounts of data, even inefficient algorithms might work fine. But if 
+you're working with big data (millions or billions of inputs), using an algorithm with a bad Big O can make your program unbearably slow.
 
 For example, if you use an O(n²) algorithm on 100,000 inputs, it could take forever to finish, whereas using an O(n log n) algorithm could make it much faster.
 
 Summary
-Big O is like a tool that helps us understand and predict how an algorithm behaves as it works on bigger inputs. It’s important for ensuring that programs run quickly and efficiently, 
-especially when dealing with a lot of data. Knowing how to choose algorithms with good Big O performance can help you build software that scales well and doesn’t slow down as the input 
-grows.
+Big O is like a tool that helps us understand and predict how an algorithm behaves as it works on bigger inputs. It’s important for ensuring that programs run 
+quickly and efficiently, especially when dealing with a lot of data. Knowing how to choose algorithms with good Big O performance can help you build software that 
+scales well and doesn’t slow down as the input grows.
