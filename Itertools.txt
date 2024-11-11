@@ -1,5 +1,5 @@
-The itertools module in Python is a powerful library for creating iterators with different looping functionalities. It's especially useful for handling large data sets and creating 
-efficient loops by providing "lazy" evaluation, meaning it generates items only as they are needed.
+The itertools module in Python is a powerful library for creating iterators with different looping functionalities. It's especially useful for handling large data 
+sets and creating efficient loops by providing "lazy" evaluation, meaning it generates items only as they are needed.
 
 Here’s a breakdown of how itertools works and some of its most commonly used iterator functions.
 
@@ -13,8 +13,8 @@ iii) Combinatoric Iterators: Iterators that provide combinatorial constructs (li
 Using these iterators, you can build efficient, memory-saving loops in Python.
 
 2. Infinite Iterators
-Infinite iterators can be very useful when you need to create an unending sequence, especially when you know you'll stop looping at a certain condition. The main infinite iterators are 
-count, cycle, and repeat.
+Infinite iterators can be very useful when you need to create an unending sequence, especially when you know you'll stop looping at a certain condition. The main 
+infinite iterators are count, cycle, and repeat.
 
 itertools.count(start=0, step=1)
 Creates an iterator that generates consecutive values, starting from start and incremented by step.
@@ -134,9 +134,11 @@ print(result)
 # Output: [(1, 1), (1, 2), (1, 3), (2, 2), (2, 3), (3, 3)]
 
 5. Using Itertools for Efficient Looping
-The main advantage of itertools is memory efficiency and speed, as it generates items lazily. Instead of creating large lists in memory, you work directly with iterators, which saves resources.
+The main advantage of itertools is memory efficiency and speed, as it generates items lazily. Instead of creating large lists in memory, you work directly with 
+iterators, which saves resources.
 
-For example, if you need to loop over large combinations or products, itertools.product or itertools.combinations is much more efficient than constructing a nested loop manually.
+For example, if you need to loop over large combinations or products, itertools.product or itertools.combinations is much more efficient than constructing a 
+nested loop manually.
 
 Example: Summing Combinations
 Let's say we want to find the sum of every possible pair in a list.
