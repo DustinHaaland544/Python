@@ -1,0 +1,156 @@
+The requests library in Python is a powerful and user-friendly library that simplifies making HTTP requests to communicate with web servers. It abstracts the complexities of HTTP 
+requests, allowing you to perform many tasks, like sending data, retrieving data, and handling responses from web servers, with minimal effort. Here’s a detailed overview of the key
+functionalities of requests and how to use it for common web tasks:
+
+1. Installation
+If you don’t have requests installed, you can add it via pip:
+
+pip install requests
+
+2. Basic Usage
+The requests library is built around the concept of sessions and requests. Here are some of the most common request types:
+
+GET: Retrieve data from a server.
+POST: Send data to a server to create/update a resource.
+PUT: Update a resource.
+DELETE: Remove a resource.
+
+3. Making a Basic GET Request
+To request a web page or retrieve data, we can use requests.get():
+
+import requests
+
+response = requests.get("https://jsonplaceholder.typicode.com/posts")
+print(response.status_code)      # 200 means OK
+print(response.text)             # Full response text
+print(response.json())           # Parsed JSON response (only if JSON format)
+
+Here’s what each part of the response object provides:
+
+status_code: HTTP status code (e.g., 200 for success, 404 for not found).
+text: Raw content of the response as a string.
+json(): Parses JSON content into a Python dictionary or list if the response is in JSON format.
+
+4. Downloading Images and Other Files
+You can use requests to download any file from a URL. For example, to download an image:
+
+url = "https://example.com/image.jpg"
+response = requests.get(url)
+
+# Write the content to a file
+with open("downloaded_image.jpg", "wb") as file:
+    file.write(response.content)
+
+Here, response.content gives the raw bytes of the response, making it ideal for binary files like images or PDFs.
+
+5. Sending Data with POST Requests
+To send data to a server (e.g., form submission or creating a new resource), use requests.post():
+
+url = "https://jsonplaceholder.typicode.com/posts"
+data = {
+    "title": "My Post",
+    "body": "This is the body of the post.",
+    "userId": 1
+}
+
+response = requests.post(url, json=data)
+print(response.status_code)
+print(response.json())
+
+Here, json=data automatically converts the dictionary to JSON format.
+For form-encoded data, use data instead of json:
+
+response = requests.post(url, data={"key": "value"})
+
+6. Sending Headers and Authentication
+Sometimes, you may need to send custom headers or authenticate a request:
+
+headers = {
+    "Authorization": "Bearer YOUR_TOKEN",
+    "User-Agent": "my-app/0.0.1"
+}
+response = requests.get("https://api.example.com/data", headers=headers)
+
+Basic Authentication is also supported:
+
+response = requests.get("https://api.example.com/user", auth=('username', 'password'))
+
+7. Handling JSON Responses
+If the response is JSON, requests can automatically parse it with response.json():
+
+url = "https://jsonplaceholder.typicode.com/posts/1"
+response = requests.get(url)
+data = response.json()   # Now `data` is a Python dictionary
+print(data['title'])
+
+8. Handling Query Parameters
+To pass query parameters in a GET request, use the params argument:
+
+url = "https://jsonplaceholder.typicode.com/posts"
+params = {
+    "userId": 1,
+    "id": 2
+}
+response = requests.get(url, params=params)
+print(response.url)  # Shows the full URL with parameters
+print(response.json())
+
+9. Session Objects for Persistent Parameters
+Using a Session object allows you to persist certain parameters, such as headers or cookies, across multiple requests:
+
+session = requests.Session()
+session.headers.update({"Authorization": "Bearer YOUR_TOKEN"})
+
+# Reuse the session across requests
+response1 = session.get("https://api.example.com/resource1")
+response2 = session.get("https://api.example.com/resource2")
+
+10. Handling Timeouts and Errors
+To prevent indefinitely waiting for a response, set a timeout:
+
+try:
+    response = requests.get("https://api.example.com/slow_endpoint", timeout=5)
+except requests.Timeout:
+    print("The request timed out")
+except requests.RequestException as e:
+    print(f"An error occurred: {e}")
+
+11. File Uploads
+For uploading files, use the files parameter:
+
+url = "https://api.example.com/upload"
+files = {"file": open("example.pdf", "rb")}
+response = requests.post(url, files=files)
+print(response.status_code)
+
+12. Redirects
+Requests will automatically handle redirects, but you can disable this behavior:
+
+response = requests.get("https://example.com", allow_redirects=False)
+
+13. Cookies
+You can access or send cookies with requests:
+
+# Sending cookies
+cookies = {"session_id": "abcd1234"}
+response = requests.get("https://example.com", cookies=cookies)
+
+# Retrieving cookies from a response
+print(response.cookies)
+
+14. Streaming Large Responses
+If you’re downloading large files, use streaming to avoid loading the entire file into memory:
+
+response = requests.get("https://example.com/largefile", stream=True)
+with open("largefile.bin", "wb") as file:
+    for chunk in response.iter_content(chunk_size=8192):
+        file.write(chunk)
+
+Summary of Main Methods
+requests.get(url, params=None, **kwargs)
+requests.post(url, data=None, json=None, **kwargs)
+requests.put(url, data=None, **kwargs)
+requests.delete(url, **kwargs)
+
+The requests library is a versatile, easy-to-use HTTP client that supports nearly every aspect of making web requests. From handling JSON responses to downloading large files, 
+requests has you covered for interacting with web APIs and other resources on the internet.
