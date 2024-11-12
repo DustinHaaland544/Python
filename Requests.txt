@@ -1,6 +1,6 @@
-The requests library in Python is a powerful and user-friendly library that simplifies making HTTP requests to communicate with web servers. It abstracts the complexities of HTTP 
-requests, allowing you to perform many tasks, like sending data, retrieving data, and handling responses from web servers, with minimal effort. Here’s a detailed overview of the key
-functionalities of requests and how to use it for common web tasks:
+The requests library in Python is a powerful and user-friendly library that simplifies making HTTP requests to communicate with web servers. It abstracts the 
+complexities of HTTP requests, allowing you to perform many tasks, like sending data, retrieving data, and handling responses from web servers, with minimal 
+effort. Here’s a detailed overview of the key functionalities of requests and how to use it for common web tasks:
 
 1. Installation
 If you don’t have requests installed, you can add it via pip:
@@ -152,5 +152,5 @@ requests.post(url, data=None, json=None, **kwargs)
 requests.put(url, data=None, **kwargs)
 requests.delete(url, **kwargs)
 
-The requests library is a versatile, easy-to-use HTTP client that supports nearly every aspect of making web requests. From handling JSON responses to downloading large files, 
-requests has you covered for interacting with web APIs and other resources on the internet.
+The requests library is a versatile, easy-to-use HTTP client that supports nearly every aspect of making web requests. From handling JSON responses to downloading 
+large files, requests has you covered for interacting with web APIs and other resources on the internet.
