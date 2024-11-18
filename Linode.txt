@@ -1,0 +1,129 @@
+1. Objectives of the Script
+  i)     Monitor Website: Check if a website is online and accessible.
+  ii)   Send Alert Emails: Notify via email if the website is down.
+  iii)  Reboot Servers: Restart the server hosting the website in case of downtime.
+
+2. Tools and Libraries Needed
+-  Python: Programming language for the script.
+-  requests: To check website status.
+-  smtplib or email library: To send emails.
+-  Linode Python library: To interact with Linode's API for server reboot.
+-  schedule or time: For periodic execution of the script.
+
+Install the necessary libraries:
+
+pip install requests linode_api4
+
+3. Components of the Script
+
+a. Monitor Website
+
+This involves sending an HTTP request to the website and checking the response.
+
+import requests
+
+def check_website(url):
+    try:
+        response = requests.get(url, timeout=10)
+        if response.status_code == 200:
+            print(f"{url} is up!")
+            return True
+        else:
+            print(f"{url} is down. Status code: {response.status_code}")
+            return False
+    except requests.exceptions.RequestException as e:
+        print(f"Error accessing {url}: {e}")
+        return False
+
+b. Send Alert Emails
+
+Use Python’s smtplib to send emails via an SMTP server (e.g., Gmail).
+
+import smtplib
+from email.mime.text import MIMEText
+
+def send_email_alert(subject, message, to_email, from_email, smtp_server, smtp_port, smtp_user, smtp_pass):
+    msg = MIMEText(message)
+    msg['Subject'] = subject
+    msg['From'] = from_email
+    msg['To'] = to_email
+    
+    try:
+        with smtplib.SMTP(smtp_server, smtp_port) as server:
+            server.starttls()  # Encrypt connection
+            server.login(smtp_user, smtp_pass)
+            server.sendmail(from_email, to_email, msg.as_string())
+            print("Email alert sent successfully!")
+    except Exception as e:
+        print(f"Failed to send email: {e}")
+
+c. Reboot Server Using Linode Library
+
+Linode's Python library makes it easy to manage servers. You'll need an API token from your Linode account.
+
+from linode_api4 import LinodeClient
+
+def reboot_server(api_token, linode_id):
+    client = LinodeClient(api_token)
+    try:
+        linode = client.load(client.linode_instance, linode_id)
+        linode.reboot()
+        print("Server rebooted successfully!")
+    except Exception as e:
+        print(f"Failed to reboot server: {e}")
+
+4. Combine Everything
+
+Here’s how to tie the components together:
+
+import time
+
+# Configuration
+WEBSITE_URL = "http://example.com"
+EMAIL_CONFIG = {
+    "to_email": "alert@example.com",
+    "from_email": "youremail@example.com",
+    "smtp_server": "smtp.gmail.com",
+    "smtp_port": 587,
+    "smtp_user": "youremail@example.com",
+    "smtp_pass": "yourpassword"
+}
+LINODE_CONFIG = {
+    "api_token": "your_linode_api_token",
+    "linode_id": 12345678  # Replace with your Linode server ID
+}
+
+def monitor_and_alert():
+    if not check_website(WEBSITE_URL):
+        # Send an email alert
+        send_email_alert(
+            subject="Website Down Alert",
+            message=f"The website {WEBSITE_URL} is down.",
+            to_email=EMAIL_CONFIG["to_email"],
+            from_email=EMAIL_CONFIG["from_email"],
+            smtp_server=EMAIL_CONFIG["smtp_server"],
+            smtp_port=EMAIL_CONFIG["smtp_port"],
+            smtp_user=EMAIL_CONFIG["smtp_user"],
+            smtp_pass=EMAIL_CONFIG["smtp_pass"]
+        )
+        # Reboot the server
+        reboot_server(LINODE_CONFIG["api_token"], LINODE_CONFIG["linode_id"])
+
+# Schedule the script to run periodically
+while True:
+    monitor_and_alert()
+    time.sleep(300)  # Check every 5 minutes
+
+5. Advantages of Using Linode Library
+
+-  Simplified API Calls: The linode_api4 library abstracts away the complexities of interacting with the Linode API.
+-  Error Handling: Built-in methods for server actions (e.g., reboot) make the script more robust.
+-  Secure Access: API tokens are easier and more secure than handling API requests manually.
+-  Scalability: Managing multiple Linodes is simplified through this library.
+
+6. Enhancements
+
+-  Logging: Use the logging library to log events for debugging and monitoring.
+-  Advanced Scheduling: Use libraries like schedule or APScheduler for better time management.
+-  Health Checks: Integrate additional checks, such as DNS, SSL, or latency.
+-  This script provides a comprehensive solution to monitor, alert, and resolve server-related website downtime effectively.
