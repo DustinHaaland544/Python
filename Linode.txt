@@ -1,5 +1,5 @@
 1. Objectives of the Script
-  i)     Monitor Website: Check if a website is online and accessible.
+  i)    Monitor Website: Check if a website is online and accessible.
   ii)   Send Alert Emails: Notify via email if the website is down.
   iii)  Reboot Servers: Restart the server hosting the website in case of downtime.
 
