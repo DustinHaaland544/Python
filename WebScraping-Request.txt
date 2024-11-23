@@ -1,4 +1,5 @@
-Web scraping with the Requests-HTML library in Python is straightforward and powerful. Below is a step-by-step guide, from installation to extracting data from web pages.
+Web scraping with the Requests-HTML library in Python is straightforward and powerful. Below is a step-by-step guide, from installation to extracting data from 
+web pages.
 
 1. Install Requests-HTML
 
