@@ -1,0 +1,128 @@
+1. Install Requests-HTML
+
+First, install the library using pip:
+
+pip install requests-html
+
+
+2. Import the Library
+
+Start by importing HTMLSession from requests_html:
+
+from requests_html import HTMLSession
+
+3. Create an HTML Session
+
+The HTMLSession object is used to send HTTP requests and handle the response.
+
+session = HTMLSession()
+
+4. Send a Request
+
+Use the session to send an HTTP GET request to the desired URL:
+
+url = "https://example.com"
+response = session.get(url)
+
+If needed, handle headers or authentication by passing them as arguments to get:
+
+response = session.get(url, headers={"User-Agent": "Mozilla/5.0"})
+
+5. Render JavaScript (Optional)
+
+Some websites load content dynamically using JavaScript. Requests-HTML can render JavaScript content:
+
+response.html.render()
+
+This requires Pyppeteer (installed automatically with Requests-HTML) and may take some time as it runs a headless browser.
+
+6. Extract Data
+
+You can extract data from the HTML response using CSS selectors, XPath, or attribute searches.
+
+a. Extract Text Content
+
+titles = response.html.find("h1")  # Finds all <h1> elements
+for title in titles:
+    print(title.text)  # Extracts and prints the text inside the <h1>
+
+b. Extract Attributes
+
+images = response.html.find("img")  # Finds all <img> elements
+for img in images:
+    print(img.attrs["src"])  # Extracts and prints the 'src' attribute of each <img>
+
+c. Use XPath for Complex Queries
+
+elements = response.html.xpath('//div[@class="example-class"]/a')
+for element in elements:
+    print(element.text)
+
+7. Save HTML Content (Optional)
+
+If you need to save the HTML for offline analysis:
+
+with open("page.html", "w", encoding="utf-8") as file:
+    file.write(response.html.html)
+
+8. Handle Errors
+
+Always handle potential errors, such as failed requests or missing elements:
+
+try:
+    response = session.get(url)
+    response.raise_for_status()  # Raise an error for HTTP codes 4xx/5xx
+except Exception as e:
+    print(f"Error occurred: {e}")
+
+9. Closing the Session
+
+When done, you can close the session to release resources:
+
+session.close()
+
+Example: Scraping Article Titles
+
+Here's a full example of scraping all article titles from a news website:
+
+from requests_html import HTMLSession
+
+# Step 1: Create a session
+session = HTMLSession()
+
+# Step 2: Send a request
+url = "https://example-news-site.com"
+response = session.get(url)
+
+# Step 3: Render JavaScript (if needed)
+response.html.render()
+
+# Step 4: Extract data
+articles = response.html.find("h2.article-title")
+for article in articles:
+    print(article.text)
+
+# Step 5: Close the session
+session.close()
+
+Best Practices:
+
+1.  Respect Robots.txt: Check the website's robots.txt file to ensure scraping is allowed.
+
+2.  Use User-Agent: Identify your script as a browser to avoid blocks.
+
+3.  Throttle Requests: Use time.sleep() between requests to avoid overwhelming the server.
+
+4.  Error Handling: Handle potential issues like network failures or missing elements.
+
+When to Use Requests-HTML
+
+Requests-HTML is ideal for:
+
+1.  Simple web scraping tasks.
+
+2.  Handling JavaScript-rendered content.
+
+3.  Extracting data using CSS selectors or XPath.
+
+4.  For more complex projects, consider other tools like BeautifulSoup (for static scraping) or Selenium (for dynamic interactions).
