@@ -4,6 +4,7 @@ The concept of the circuit board traces back to Paul Eisler, an Austrian enginee
 He first used a PCB in a radio. However, PCBs did not gain widespread attention until the 1940s.
 
 Development Timeline:
+
 1936 – Paul Eisler’s Innovation:
 
 Paul Eisler developed the first printed circuit for a radio set while working in the UK. His design involved printing conductive patterns on an insulating 
