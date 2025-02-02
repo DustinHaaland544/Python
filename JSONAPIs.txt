@@ -1,6 +1,7 @@
 How to Write Python Scripts to Analyze JSON APIs and Sort Results
 
-Analyzing JSON APIs and sorting the results using Python is a common task in data processing, web scraping, and automation. I’ll break it down into simple steps with clear explanations.
+Analyzing JSON APIs and sorting the results using Python is a common task in data processing, web scraping, and automation. I’ll break it down into simple steps 
+with clear explanations.
 
 Step 1: Understanding JSON and APIs
 
