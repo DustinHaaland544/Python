@@ -1,0 +1,138 @@
+1. Basic Ways to Call External Commands
+The subprocess module provides multiple ways to execute external commands.
+
+1.1 Using subprocess.run() (Recommended for Most Cases)
+The subprocess.run() function runs a command, waits for it to complete, and returns a CompletedProcess object.
+
+import subprocess
+
+result = subprocess.run(["ls", "-l"], capture_output=True, text=True)  # Linux/macOS
+# result = subprocess.run(["dir"], shell=True, capture_output=True, text=True)  # Windows
+
+print(result.stdout)  # Print the command output
+print(result.returncode)  # Print exit status (0 means success)
+
+Explanation:
+- ["ls", "-l"] → List files in long format (on Linux/macOS).
+- capture_output=True → Captures stdout and stderr (standard output and error).
+- text=True → Converts output from bytes to string.
+- result.stdout → Captures the command output.
+- result.returncode → Shows the exit status (0 means success, nonzero means failure).
+
+1.2 Using subprocess.Popen() (For Advanced Use Cases)
+The Popen class gives more control over process execution, allowing streaming input/output.
+
+import subprocess
+
+process = subprocess.Popen(["ping", "-c", "4", "google.com"], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+for line in process.stdout:
+    print(line, end="")  # Print output in real-time
+
+process.wait()  # Wait for process to complete
+print("Return Code:", process.returncode)
+
+Explanation:
+- subprocess.PIPE → Captures standard output and error.
+- for line in process.stdout → Reads output line by line (real-time processing).
+- process.wait() → Waits for the command to finish.
+
+2. Handling Input/Output/Error Streams
+
+2.1 Capturing Standard Output (stdout)
+
+You can capture and process the output using subprocess.run().
+
+result = subprocess.run(["echo", "Hello, World!"], capture_output=True, text=True)
+print(result.stdout)  # Output: Hello, World!
+
+2.2 Capturing Standard Error (stderr)
+
+If a command fails, the error can be captured using stderr.
+
+result = subprocess.run(["ls", "non_existent_file"], capture_output=True, text=True)
+print(result.stderr)  # Displays the error message
+
+2.3 Redirecting Output to a File
+
+You can redirect the command output to a file.
+
+with open("output.txt", "w") as f:
+    subprocess.run(["ls", "-l"], stdout=f, text=True)
+
+3. Running Commands in the Shell
+
+If a command needs to be run using the shell (e.g., pipes or wildcards), set shell=True.
+
+subprocess.run("echo Hello && echo World", shell=True)  # Works on both Windows and Linux/macOS
+
+Security Warning:
+Using shell=True with untrusted input can lead to security vulnerabilities (shell injection).
+
+4. Passing Input to a Command
+
+If a command requires input, use input=.
+
+result = subprocess.run(["python3", "-c", "print(input())"], input="Hello, Python!", capture_output=True, text=True)
+print(result.stdout)  # Output: Hello, Python!
+
+5. Running Commands Asynchronously (Non-Blocking)
+
+You can run commands without waiting for them to complete.
+
+process = subprocess.Popen(["sleep", "5"])  # Run command in background
+print("Command started, doing other tasks...")
+process.wait()  # Wait for it to finish
+print("Command finished")
+
+6. Error Handling with try-except
+
+Handle errors gracefully.
+
+try:
+    result = subprocess.run(["ls", "non_existent_file"], check=True, capture_output=True, text=True)
+except subprocess.CalledProcessError as e:
+    print("Error:", e.stderr)  # Handle error
+
+- check=True raises an exception if the command fails.
+
+7. Executing Commands with Environment Variables
+
+You can modify the environment variables before running a command.
+
+import os
+
+env = os.environ.copy()
+env["MY_VAR"] = "Hello"
+
+result = subprocess.run(["printenv", "MY_VAR"], capture_output=True, text=True, env=env)
+print(result.stdout)  # Output: Hello
+
+8. Using subprocess.check_output() for Simpler Output Capture
+
+If you only need the output, use check_output().
+
+output = subprocess.check_output(["echo", "Hello"], text=True)
+print(output.strip())  # Output: Hello
+
+9. Terminating a Running Process
+
+You can terminate a running process if needed.
+
+import time
+
+process = subprocess.Popen(["ping", "google.com"], stdout=subprocess.PIPE, text=True)
+time.sleep(5)  # Let it run for 5 seconds
+process.terminate()  # Stop the process
+print("Process terminated")
+
+Summary Table:
+Method	                              Use Case
+subprocess.run()	                    Run a command and wait for it to complete (simple case)
+subprocess.Popen()	                  Run a command with more control (real-time output, non-blocking)
+capture_output=True	                  Capture command output
+stderr=subprocess.PIPE	              Capture error messages
+shell=True	                          Run command using the shell (⚠️ security risk)
+check=True	                          Raise an exception if command fails
+subprocess.check_output()	            Run a command and return only its output
+subprocess.Popen().terminate()	      Stop a running process
