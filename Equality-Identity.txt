@@ -1,0 +1,30 @@
+The difference between == and is in Python comes down to equality vs identity.
+
+== (Equality Operator):
+- Checks if two values are equal (i.e., they have the same contents).
+- It does not care whether they are the same object in memory.
+- Calls the __eq__() method of objects.
+
+a = [1, 2, 3]
+b = [1, 2, 3]
+
+print(a == b)  # ✅ True because their contents are the same
+print(a is b)  # ❌ False because they are different objects in memory
+
+is (Identity Operator):
+- Checks if two objects refer to the exact same memory location.
+- Essentially, it checks if two variables are pointing to the same object.
+- Uses Python’s internal object IDs (id(a) == id(b)).
+
+a = [1, 2, 3]
+b = a  # b now refers to the same object as a
+
+print(a == b)  # ✅ True because their contents are the same
+print(a is b)  # ✅ True because both refer to the same memory location
+
+Key Differences:
+Feature - == (Equality) - is (Identity)
+Checks for - Value equality (same contents) - Identity equality (same memory location)
+Works with - Any data types - Only objects in memory
+Calls - __eq__() method - Compares object IDs (id(a) == id(b))
+Example - "hello" == "hello" → True - [] is [] → False
