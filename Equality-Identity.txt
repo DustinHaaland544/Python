@@ -28,3 +28,25 @@ Checks for - Value equality (same contents) - Identity equality (same memory loc
 Works with - Any data types - Only objects in memory
 Calls - __eq__() method - Compares object IDs (id(a) == id(b))
 Example - "hello" == "hello" → True - [] is [] → False
+
+Special Cases:
+✅ Immutable Objects (int, str, tuple)
+- Python caches some immutable objects (like small integers and short strings). This can lead to is returning True unexpectedly.
+
+a = 1000
+b = 1000
+print(a is b)  # ❌ False (Different objects)
+
+c = 10
+d = 10
+print(c is d)  # ✅ True (Same object, cached by Python)
+
+✅ None and is
+For None, always use is because there is only one None object in Python.
+
+a = None
+print(a is None)  # ✅ True
+
+When to Use Which?
+- Use "==" when comparing values (e.g., checking if two lists have the same elements).
+- Use "is" when checking identity (e.g., checking if a variable is None or if two references point to the same object).
