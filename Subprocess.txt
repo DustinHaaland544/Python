@@ -127,12 +127,14 @@ process.terminate()  # Stop the process
 print("Process terminated")
 
 Summary Table:
-Method	                              Use Case
-subprocess.run()	                    Run a command and wait for it to complete (simple case)
-subprocess.Popen()	                  Run a command with more control (real-time output, non-blocking)
-capture_output=True	                  Capture command output
-stderr=subprocess.PIPE	              Capture error messages
-shell=True	                          Run command using the shell (⚠️ security risk)
-check=True	                          Raise an exception if command fails
-subprocess.check_output()	            Run a command and return only its output
-subprocess.Popen().terminate()	      Stop a running process
+
+Method - Use Case
+
+subprocess.run() - Run a command and wait for it to complete (simple case)
+subprocess.Popen() - Run a command with more control (real-time output, non-blocking)
+capture_output=True - Capture command output
+stderr=subprocess.PIPE - Capture error messages
+shell=True - Run command using the shell (security risk)
+check=True - Raise an exception if command fails
+subprocess.check_output() - Run a command and return only its output
+subprocess.Popen().terminate() - Stop a running process
