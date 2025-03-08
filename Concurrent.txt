@@ -1,0 +1,209 @@
+The threading module in Python allows you to run code concurrently by creating multiple threads. This can improve performance when your program is doing tasks that 
+involve waiting, such as network requests, file I/O, or database queries. However, because of Python's Global Interpreter Lock (GIL), threading is not ideal for 
+CPU-bound tasks (use multiprocessing for those).
+
+1. Basics of the threading Module
+A thread is a separate flow of execution. In Python, all threads run in the same memory space, making communication easy but also introducing the risk of race 
+conditions (when two or more threads try to modify shared data at the same time).
+
+2. Creating and Starting Threads
+You can create a thread using threading.Thread and start it with .start().
+
+Example 1: Running a Function in a Thread
+
+import threading
+import time
+
+def print_numbers():
+    for i in range(5):
+        time.sleep(1)
+        print(f"Number: {i}")
+
+# Create a thread that runs the print_numbers function
+thread = threading.Thread(target=print_numbers)
+
+# Start the thread
+thread.start()
+
+# Continue with the main program
+print("Main thread is still running...")
+
+Explanation:
+
+- The print_numbers function prints numbers with a delay.
+- We create a Thread object with target=print_numbers.
+- .start() begins execution in a separate thread.
+- The main program continues running while the thread executes in the background.
+
+3. Running Multiple Threads
+You can create multiple threads to run different functions simultaneously.
+
+Example 2: Running Multiple Threads
+
+def print_letters():
+    for letter in "ABCDE":
+        time.sleep(1)
+        print(f"Letter: {letter}")
+
+# Create threads
+thread1 = threading.Thread(target=print_numbers)
+thread2 = threading.Thread(target=print_letters)
+
+# Start threads
+thread1.start()
+thread2.start()
+
+# Wait for both threads to complete
+thread1.join()
+thread2.join()
+
+print("Both threads have finished execution.")
+
+Key Points:
+- .join() makes the main thread wait until the other threads finish execution.
+- Both print_numbers and print_letters run concurrently.
+
+4. Using Threads with Arguments
+You can pass arguments to the function using args=.
+
+Example 3: Threads with Arguments
+
+def print_message(msg, delay):
+    for _ in range(3):
+        time.sleep(delay)
+        print(msg)
+
+# Create threads with arguments
+thread1 = threading.Thread(target=print_message, args=("Hello", 1))
+thread2 = threading.Thread(target=print_message, args=("World", 2))
+
+# Start threads
+thread1.start()
+thread2.start()
+
+# Wait for completion
+thread1.join()
+thread2.join()
+
+Explanation:
+- args=("Hello", 1) passes arguments to print_message.
+- Each thread runs with different arguments.
+
+5. Using the Thread Class (Subclassing)
+Instead of passing a function to Thread, you can create a subclass of threading.Thread.
+
+Example 4: Custom Thread Class
+
+class MyThread(threading.Thread):
+    def __init__(self, name, delay):
+        super().__init__()
+        self.name = name
+        self.delay = delay
+
+    def run(self):
+        for i in range(3):
+            time.sleep(self.delay)
+            print(f"{self.name}: {i}")
+
+# Create and start threads
+thread1 = MyThread("Thread-1", 1)
+thread2 = MyThread("Thread-2", 2)
+
+thread1.start()
+thread2.start()
+
+thread1.join()
+thread2.join()
+
+print("Threads finished execution.")
+
+class MyThread(threading.Thread):
+    def __init__(self, name, delay):
+        super().__init__()
+        self.name = name
+        self.delay = delay
+
+    def run(self):
+        for i in range(3):
+            time.sleep(self.delay)
+            print(f"{self.name}: {i}")
+
+# Create and start threads
+thread1 = MyThread("Thread-1", 1)
+thread2 = MyThread("Thread-2", 2)
+
+thread1.start()
+thread2.start()
+
+thread1.join()
+thread2.join()
+
+print("Threads finished execution.")
+
+Explanation:
+- The run() method defines what the thread does.
+- We call .start() to execute run() in a new thread.
+
+6. Synchronizing Threads Using Locks
+If multiple threads modify shared data, race conditions can occur. Locks ensure only one thread modifies shared data at a time.
+
+Example 5: Using Locks to Prevent Race Conditions
+
+lock = threading.Lock()
+counter = 0
+
+def increment():
+    global counter
+    for _ in range(1000000):
+        with lock:  # Ensures only one thread modifies counter at a time
+            counter += 1
+
+# Create threads
+thread1 = threading.Thread(target=increment)
+thread2 = threading.Thread(target=increment)
+
+# Start threads
+thread1.start()
+thread2.start()
+
+# Wait for threads to finish
+thread1.join()
+thread2.join()
+
+print("Final Counter Value:", counter)
+
+Key Points:
+- lock = threading.Lock() creates a lock.
+- with lock: ensures only one thread executes the critical section at a time.
+- Without a lock, the final value of counter may be incorrect due to race conditions.
+
+7. Using ThreadPoolExecutor for Simpler Thread Management
+The concurrent.futures.ThreadPoolExecutor provides an easier way to manage multiple threads.
+
+Example 6: Using ThreadPoolExecutor
+
+from concurrent.futures import ThreadPoolExecutor
+import time
+
+def worker(n):
+    time.sleep(1)
+    print(f"Worker {n} done")
+
+# Use ThreadPoolExecutor to manage multiple threads
+with ThreadPoolExecutor(max_workers=3) as executor:
+    for i in range(5):
+        executor.submit(worker, i)
+
+print("All tasks submitted.")
+
+Key Points:
+- ThreadPoolExecutor(max_workers=3) creates a thread pool with 3 threads.
+- .submit(worker, i) runs worker(i) in a thread.
+- The executor automatically manages thread creation and completion.
+
+Conclusion
+- Use threading.Thread(target=func) to create and run threads.
+- Use .start() to begin execution and .join() to wait for completion.
+- Use locks to prevent race conditions.
+- Use ThreadPoolExecutor for simpler thread management.
+- For CPU-bound tasks, prefer multiprocessing.
