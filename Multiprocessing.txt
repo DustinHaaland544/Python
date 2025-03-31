@@ -1,0 +1,191 @@
+Running code in parallel in Python using the multiprocessing module allows you to take advantage of multiple CPU cores to execute tasks simultaneously, improving performance 
+for CPU-intensive tasks. Below is a detailed, simplified, and complete overview of how to use the multiprocessing module.
+
+Why Use the multiprocessing Module?
+
+Python’s default implementation (CPython) has a Global Interpreter Lock (GIL), which prevents multiple threads from executing Python code simultaneously. The multiprocessing 
+module overcomes this by creating separate processes, each with its own memory space, allowing true parallel execution.
+
+1. Basics of Multiprocessing
+The multiprocessing module lets you create and manage multiple processes easily. It provides various ways to execute functions in parallel.
+
+Example 1: Creating a Simple Process
+
+import multiprocessing
+
+def print_message():
+    print("Hello from a separate process!")
+
+if __name__ == "__main__":
+    process = multiprocessing.Process(target=print_message)
+    process.start()  # Start the process
+    process.join()   # Wait for the process to finish
+
+Explanation:
+- multiprocessing.Process(target=function_name): Creates a new process to run the given function.
+- .start(): Starts the process.
+- .join(): Waits for the process to finish before continuing.
+
+2. Running Multiple Processes
+You can run multiple processes by creating multiple Process objects.
+
+Example 2: Running Multiple Processes
+
+import multiprocessing
+
+def print_number(number):
+    print(f"Processing number: {number}")
+
+if __name__ == "__main__":
+    processes = []
+    for i in range(5):
+        process = multiprocessing.Process(target=print_number, args=(i,))
+        processes.append(process)
+        process.start()
+
+    for process in processes:
+        process.join()
+
+Explanation:
+- A list of processes is created and started.
+- Each process runs independently, printing a different number.
+- args=(i,): Passes arguments to the function.
+
+3. Using a Process Pool for Parallel Execution
+The multiprocessing.Pool class provides an easy way to parallelize function execution over multiple inputs.
+
+Example 3: Using a Pool
+
+import multiprocessing
+
+def square(n):
+    return n * n
+
+if __name__ == "__main__":
+    with multiprocessing.Pool(processes=4) as pool:
+        numbers = [1, 2, 3, 4, 5]
+        results = pool.map(square, numbers)
+        print(results)  # Output: [1, 4, 9, 16, 25]
+
+Explanation:
+- Pool(processes=4): Creates a pool of 4 worker processes.
+- .map(function, iterable): Applies the function to each element in the list in parallel.
+- Benefit: Automatically distributes work among available CPU cores.
+
+4. Sharing Data Between Processes
+Since each process has its own memory space, sharing data requires special mechanisms.
+
+Example 4: Using Value and Array for Shared Data
+
+import multiprocessing
+
+def increment(shared_value):
+    shared_value.value += 1
+
+if __name__ == "__main__":
+    shared_value = multiprocessing.Value('i', 0)  # 'i' means integer
+    process = multiprocessing.Process(target=increment, args=(shared_value,))
+    process.start()
+    process.join()
+    print(shared_value.value)  # Output: 1
+
+Explanation:
+- multiprocessing.Value(typecode, initial_value): Creates a shared variable.
+- typecode 'i': Represents an integer (use 'd' for double/float).
+- Limitation: Only useful for simple types (int, float, etc.).
+
+5. Using Queues for Inter-Process Communication
+For more complex data sharing, use a Queue.
+
+Example 5: Using Queue to Share Data
+
+import multiprocessing
+
+def worker(queue):
+    queue.put("Hello from worker!")
+
+if __name__ == "__main__":
+    queue = multiprocessing.Queue()
+    process = multiprocessing.Process(target=worker, args=(queue,))
+    process.start()
+    process.join()
+    print(queue.get())  # Output: Hello from worker!
+
+Explanation:
+- multiprocessing.Queue(): Creates a queue to share data.
+- .put(data): Adds data to the queue.
+- .get(): Retrieves data from the queue.
+
+6. Using Manager for Shared Objects
+For complex shared data structures like lists and dictionaries, use multiprocessing.Manager().
+
+Example 6: Using Manager for Shared List
+
+import multiprocessing
+
+def add_to_list(shared_list):
+    shared_list.append("Hello")
+
+if __name__ == "__main__":
+    with multiprocessing.Manager() as manager:
+        shared_list = manager.list()
+        process = multiprocessing.Process(target=add_to_list, args=(shared_list,))
+        process.start()
+        process.join()
+        print(shared_list)  # Output: ['Hello']
+
+Explanation:
+- multiprocessing.Manager().list(): Creates a shared list.
+- Useful for complex objects that need to be shared across processes.
+
+7. Handling Process Synchronization
+To prevent race conditions when modifying shared resources, use multiprocessing.Lock().
+
+Example 7: Using Lock to Prevent Conflicts
+
+import multiprocessing
+import time
+
+def worker(shared_value, lock):
+    with lock:
+        temp = shared_value.value
+        time.sleep(0.1)  # Simulate some processing time
+        shared_value.value = temp + 1
+
+if __name__ == "__main__":
+    shared_value = multiprocessing.Value('i', 0)
+    lock = multiprocessing.Lock()
+    
+    processes = [multiprocessing.Process(target=worker, args=(shared_value, lock)) for _ in range(5)]
+    
+    for process in processes:
+        process.start()
+    
+    for process in processes:
+        process.join()
+    
+    print(shared_value.value)  # Output: 5 (Ensured by lock)
+
+Explanation:
+- multiprocessing.Lock(): Ensures only one process modifies shared_value at a time.
+- with lock:: Acquires and releases the lock automatically.
+
+8. When to Use Multiprocessing?
+
+Good for:
+- CPU-bound tasks (e.g., mathematical computations, image processing).
+- Tasks that can run independently in parallel.
+
+Not ideal for:
+- I/O-bound tasks (e.g., downloading files, database queries) → Use multithreading instead.
+- Tasks requiring frequent inter-process communication (high overhead).
+
+Summary:
+1. Process - Creates a new process.
+2. Pool - Manages a pool of worker processes.
+3. Value & Array - Shares simple data types between processes.
+4. Queue - Shares data between processes using a queue.
+5. Manager - Shares complex objects like lists and dictionaries.
+6. Lock - Prevents race conditions in shared resources.
+
+Using the multiprocessing module, you can efficiently execute tasks in parallel, leveraging multiple CPU cores for improved performance.
