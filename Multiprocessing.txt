@@ -1,10 +1,10 @@
-Running code in parallel in Python using the multiprocessing module allows you to take advantage of multiple CPU cores to execute tasks simultaneously, improving performance 
-for CPU-intensive tasks. Below is a detailed, simplified, and complete overview of how to use the multiprocessing module.
+Running code in parallel in Python using the multiprocessing module allows you to take advantage of multiple CPU cores to execute tasks simultaneously, improving 
+performance for CPU-intensive tasks. Below is a detailed, simplified, and complete overview of how to use the multiprocessing module.
 
 Why Use the multiprocessing Module?
 
-Python’s default implementation (CPython) has a Global Interpreter Lock (GIL), which prevents multiple threads from executing Python code simultaneously. The multiprocessing 
-module overcomes this by creating separate processes, each with its own memory space, allowing true parallel execution.
+Python’s default implementation (CPython) has a Global Interpreter Lock (GIL), which prevents multiple threads from executing Python code simultaneously. The 
+multiprocessing module overcomes this by creating separate processes, each with its own memory space, allowing true parallel execution.
 
 1. Basics of Multiprocessing
 The multiprocessing module lets you create and manage multiple processes easily. It provides various ways to execute functions in parallel.
