@@ -1,4 +1,5 @@
-Here's a detailed, simplified, and complete overview of working with ZIP files in Python. We'll cover both automated (via libraries/modules) and manual methods of creating and extracting zip archives.
+Here's a detailed, simplified, and complete overview of working with ZIP files in Python. We'll cover both automated (via libraries/modules) and manual methods of 
+creating and extracting zip archives.
 
 What is a ZIP File?
 
