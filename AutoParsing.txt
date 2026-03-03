@@ -1,4 +1,4 @@
-Auto-parsing refers to Python’s ability to automatically interpret and convert data into appropriate types or structures without requiring explicit manual 
+Auto-parsing refers to Python’s ability to automatically interpret and convert data into appropriate types or structures without needing explicit manual 
 conversion in many situations.
 
 It happens when:
