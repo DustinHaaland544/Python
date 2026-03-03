@@ -1,4 +1,4 @@
-Auto-parsing refers to Python’s ability to automatically interpret and convert data into appropriate types or structures without needing explicit manual 
+1. Auto-parsing refers to Python’s ability to automatically interpret and convert data into appropriate types or structures without needing explicit manual 
 conversion in many situations.
 
 It happens when:
@@ -17,7 +17,7 @@ It happens when:
 
 Important: "Auto-parsing" is not an official Python keyword. It is a conceptual term describing automatic data interpretation.
 
-Purpose
+2. Purpose
 
 Auto-parsing exists to:
 
@@ -31,7 +31,7 @@ Auto-parsing exists to:
 
 - Enable automation in frameworks
 
-Types of Auto-Parsing in Python
+3. Types of Auto-Parsing in Python
 
 We can categorize auto-parsing into 6 major areas:
 
@@ -47,7 +47,7 @@ We can categorize auto-parsing into 6 major areas:
 
 - Framework-Level Auto Parsing (Flask / FastAPI etc.)
 
-Automatic Type Interpretation
+4. Automatic Type Interpretation
 
 Python automatically detects types during assignment.
 
@@ -68,7 +68,7 @@ Python automatically parsed:
 
 You did NOT specify types manually.
 
-JSON Auto-Parsing
+5. JSON Auto-Parsing
 
 When working with JSON, Python converts JSON strings into Python dictionaries automatically.
 
@@ -99,7 +99,7 @@ What happened?
 
 - Automatic conversion = Auto-parsing
 
-CSV Auto-Parsing
+6. CSV Auto-Parsing
 
 When reading CSV files:
 
@@ -128,7 +128,7 @@ You must manually convert:
 
 age = int(row[1])
 
-Argument Parsing (Command Line)
+7. Argument Parsing (Command Line)
 
 Using argparse, Python automatically parses command-line inputs.
 
@@ -155,7 +155,7 @@ type=int
 
 This is controlled auto-parsing.
 
-Literal Evaluation (ast.literal_eval)
+8. Literal Evaluation (ast.literal_eval)
 
 Python can automatically parse string representations of data structures.
 
@@ -174,7 +174,7 @@ String → Actual list
 
 This is safe structured parsing.
 
-Framework-Level Auto-Parsing
+9. Framework-Level Auto-Parsing
 
 Modern frameworks automatically parse incoming data.
 
@@ -200,7 +200,7 @@ FastAPI automatically:
 
 This is advanced auto-parsing using type hints.
 
-String to Number Auto-Parsing (Explicit Conversion)
+10. String to Number Auto-Parsing (Explicit Conversion)
 
 Python does NOT automatically convert user input:
 
@@ -214,7 +214,7 @@ age = int(input("Enter age: "))
 
 So auto-parsing does NOT happen for input().
 
-Comparison Table
+11. Comparison Table
 
 | Scenario            | Auto-Parsed?          | Result Type           |
 | ------------------- | --------------------- | --------------------- |
@@ -225,7 +225,7 @@ Comparison Table
 | `input()`           | No                    | Always string         |
 | `ast.literal_eval`  | Yes                   | Actual Python object  |
 
-Key Points
+12. Key Points
 
 - Auto-parsing is contextual.
 
@@ -241,7 +241,7 @@ Key Points
 
 - It increases productivity but must be handled carefully.
 
-Limitations
+13. Limitations
 
 - Not all inputs are auto-parsed.
 
@@ -251,7 +251,7 @@ Limitations
 
 - Wrong assumptions about parsing can cause bugs.
 
-Interview-Level Understanding
+14. Interview-Level Understanding
 
 If asked:
 
@@ -262,7 +262,7 @@ You can answer:
 Auto-parsing refers to Python’s ability to automatically interpret and convert data into appropriate Python data types during assignment, file parsing, JSON 
 loading, argument parsing, and framework-level request handling.
 
-Concept Summary:
+15. Concept Summary:
 
 Auto-parsing is not a single feature.
 
