@@ -1,125 +1,334 @@
-Setting up multiple Python build systems in Sublime Text allows you to run Python 2 or Python 3 scripts easily. Here's a step-by-step guide to do this:
+A Build System in Python is the set of tools, configuration files, and processes used to prepare a Python project for distribution, installation, and deployment.
 
-Step 1: Install Python
+It controls how Python projects are:
 
-Ensure that both Python 2 and Python 3 are installed on your system.
+- Packaged
 
-Windows: Download installers from python.org and follow the instructions.
+- Compiled (if needed)
 
-Mac/Linux: You can use package managers like brew (for macOS) or apt (for Ubuntu).
+- Built into distributable formats
 
-Step 2: Verify Installation
+- Installed
 
-Open a terminal or command prompt and verify the installations by running:
+- Published to package repositories
 
-python --version
-python3 --version
+In simple terms:
 
-You should see the respective versions of Python 2 and Python 3.
+A build system turns your Python project into a distributable package that others can install.
 
-Step 3: Install Sublime Text
+Example result:
 
-If you haven't already, download and install Sublime Text from sublimetext.com.
+pip install mypackage
 
-Step 4: Create Python Build Systems in Sublime Text
+Purpose of a Build System
 
-1. Open Sublime Text.
+Python build systems help developers:
 
-2. Open the Build System Menu:
+| Purpose                     | Explanation                                        |
+| --------------------------- | -------------------------------------------------- |
+| Package code                | Organize Python projects into installable packages |
+| Manage dependencies         | Specify required libraries                         |
+| Build distributable formats | Create `.whl` or `.tar.gz` packages                |
+| Publish packages            | Upload to PyPI                                     |
+| Install packages            | Allow others to install via `pip`                  |
+| Compile extensions          | Build C/C++ extensions if required                 |
 
-  - Go to Tools > Build System > New Build System....
+Why Build Systems Are Important
 
-3. Create Python 2 Build System:
+Without a build system:
 
-  - Replace the default content with the following configuration:
+- Code would be difficult to distribute
 
-{
-  "cmd": ["python", "-u", "$file"],
-  "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
-  "selector": "source.python",
-  "env": {"PYTHONIOENCODING": "utf-8"}
-}
+- Dependency management would break
 
-  - Save this file as Python2.sublime-build in the default directory.
+- Installation would be inconsistent
 
-4. Create Python 3 Build System:
+- Version control of packages would be messy
 
-  - Go to Tools > Build System > New Build System... again.
+Build systems ensure standardization across Python projects.
 
-  - Replace the default content with the following configuration:
+Main Components of Python Build System
 
-{
-  "cmd": ["python3", "-u", "$file"],
-  "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
-  "selector": "source.python",
-  "env": {"PYTHONIOENCODING": "utf-8"}
-}
+A Python build system generally includes:
 
-  - Save this file as Python3.sublime-build in the default directory.
+| Component          | Purpose                      |
+| ------------------ | ---------------------------- |
+| `pyproject.toml`   | Main configuration file      |
+| Build backend      | Tool that performs the build |
+| Build frontend     | Tool that triggers the build |
+| Package metadata   | Name, version, author, etc   |
+| Distribution files | Final package files          |
 
-Step 5: Use the Build Systems
+Important File: pyproject.toml
 
-1. Open a Python Script in Sublime Text.
+This is the modern standard configuration file for Python builds.
 
-2. Select the Build System:
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
 
-  - Go to Tools > Build System and select either Python2 or Python3.
+What it defines:
 
-3. Run the Script:
+| Field           | Meaning                      |
+| --------------- | ---------------------------- |
+| `requires`      | Required build tools         |
+| `build-backend` | Tool that performs the build |
 
-  - Press Ctrl+B (Windows/Linux) or Cmd+B (Mac) to run the script with the selected Python version.
+Build Backend
 
-Optional: Automatically Switch Build Systems Based on Shebang
+A Build Backend is the tool responsible for actually building the package.
 
-If your Python scripts start with a shebang (e.g., #!/usr/bin/env python2 or #!/usr/bin/env python3), you can set up Sublime Text to automatically choose the 
+Common backends:
 
-correct build system.
+| Backend       | Description                      |
+| ------------- | -------------------------------- |
+| `setuptools`  | Traditional and most widely used |
+| `flit`        | Lightweight packaging tool       |
+| `poetry-core` | Used by Poetry                   |
+| `hatchling`   | Modern packaging backend         |
 
-1. Install Package Control:
+Example:
 
-  - Follow the instructions from Package Control installation guide.
+build-backend = "setuptools.build_meta"
 
-2. Install the AutomaticPackageReloader Plugin:
+Build Frontend
 
-  - Open the Command Palette (Ctrl+Shift+P or Cmd+Shift+P), type Package Control: Install Package, and select it.
-  
-  - Search for AutomaticPackageReloader and install it.
+A Build Frontend is the tool that triggers the build process.
 
-3. Configure Automatic Build Switching:
+Common frontends:
 
-  - Unfortunately, Sublime Text does not natively support automatic build switching based on shebangs. However, you can manually create a plugin to achieve this.
+| Tool     | Purpose                       |
+| -------- | ----------------------------- |
+| `pip`    | Install packages              |
+| `build`  | Build packages                |
+| `poetry` | Dependency management + build |
+| `hatch`  | Modern project management     |
 
-Here is a basic example of a Sublime Text plugin to switch builds based on the shebang:
+Example build command:
 
-  - Go to Tools > Developer > New Plugin....
+python -m build
 
-  - Replace the content with the following code:
+Build Artifacts (Output Files)
 
-import sublime
-import sublime_plugin
+The build system produces distribution files.
 
-class PythonBuildSelector(sublime_plugin.EventListener):
-    def on_post_save_async(self, view):
-        if view.file_name().endswith('.py'):
-            with open(view.file_name(), 'r') as file:
-                first_line = file.readline().strip()
-                if 'python2' in first_line:
-                    view.window().run_command('set_build_system', {"file": "Packages/User/Python2.sublime-build"})
-                elif 'python3' in first_line:
-                    view.window().run_command('set_build_system', {"file": "Packages/User/Python3.sublime-build"})
+Main types:
 
-def plugin_loaded():
-    for window in sublime.windows():
-        for view in window.views():
-            if view.file_name() and view.file_name().endswith('.py'):
-                sublime_plugin.EventListener.on_post_save_async(None, view)
+| File Type | Description                        |
+| --------- | ---------------------------------- |
+| `.whl`    | Wheel (modern binary distribution) |
+| `.tar.gz` | Source distribution (sdist)        |
 
-  - Save this file with a .py extension in the default plugin directory.
+Example:
 
-Conclusion:
+dist/
+ ├── mypackage-1.0.0-py3-none-any.whl
+ └── mypackage-1.0.0.tar.gz
 
-Now you have set up Sublime Text to work with both Python 2 and Python 3. You can easily switch between them and even automate the build system selection based on 
+Example Python Project Structure
 
-the shebang. 
+myproject/
+│
+├── src/
+│   └── mypackage/
+│       ├── __init__.py
+│       └── main.py
+│
+├── tests/
+│
+├── pyproject.toml
+├── README.md
+├── LICENSE
+└── setup.cfg
 
-This setup helps you manage projects that may require different versions of Python.
+This structure is used by many professional Python projects.
+
+How the Python Build Process Works
+
+Step-by-step process:
+
+Step 1 — Developer writes Python code
+
+mypackage/
+  module.py
+
+Step 2 — Define build configuration
+
+Inside:
+
+pyproject.toml
+
+Step 3 — Run build command
+
+python -m build
+
+Step 4 — Build backend processes project
+
+The backend:
+
+- reads project files
+
+- collects metadata
+
+- prepares package structure
+
+Step 5 — Distribution files generated
+
+Inside:
+
+dist/
+
+Example:
+
+mypackage-1.0.0.whl
+
+Step 6 — Package installed or uploaded
+
+Install locally:
+
+pip install dist/mypackage.whl
+
+Upload to PyPI:
+
+twine upload dist/*
+
+Older Build System (Before pyproject.toml)
+
+Previously Python used:
+
+setup.py
+
+Example:
+
+from setuptools import setup
+
+setup(
+    name="mypackage",
+    version="1.0.0",
+    packages=["mypackage"],
+)
+
+Problems:
+
+- Harder dependency resolution
+
+- Build tools installed globally
+
+- Less standardized
+
+Modern Python prefers PEP 517 / PEP 518 build system.
+
+Important Python Packaging Standards
+
+Python packaging is governed by several PEPs (Python Enhancement Proposals).
+
+| PEP     | Purpose                        |
+| ------- | ------------------------------ |
+| PEP 517 | Defines build system interface |
+| PEP 518 | Introduced `pyproject.toml`    |
+| PEP 621 | Standard project metadata      |
+| PEP 660 | Editable installs              |
+
+Modern Python Build Workflow
+
+Typical workflow:
+
+Write Code
+     ↓
+Configure pyproject.toml
+     ↓
+Build Package
+     ↓
+Generate wheel
+     ↓
+Upload to PyPI
+     ↓
+Users install via pip
+
+Tools Used in Python Build Systems
+
+| Tool       | Purpose                    |
+| ---------- | -------------------------- |
+| setuptools | Traditional build backend  |
+| poetry     | Dependency + build manager |
+| hatch      | Modern project manager     |
+| flit       | Simple packaging           |
+| build      | Frontend build tool        |
+| twine      | Upload packages to PyPI    |
+
+Real-World Example
+
+If you create a library:
+
+fastmath
+
+Users install it with:
+
+pip install fastmath
+
+Behind the scenes:
+
+1. Package built
+
+2. Wheel uploaded to PyPI
+
+3. Pip downloads wheel
+
+4. Package installed
+
+This entire pipeline depends on the Python build system.
+
+Comparison Table
+
+| Concept          | Explanation                                |
+| ---------------- | ------------------------------------------ |
+| Build System     | System that creates distributable packages |
+| Build Backend    | Tool that builds package                   |
+| Build Frontend   | Tool that triggers build                   |
+| Wheel            | Binary distribution                        |
+| sdist            | Source distribution                        |
+| `pyproject.toml` | Main build configuration file              |
+
+Limitations
+
+- Configuration complexity for beginners
+
+- Multiple tools causing ecosystem confusion
+
+- Some older projects still rely on setup.py
+
+- Native extension builds can be complex
+
+Key Points for Interviews
+
+- Python build systems package Python projects.
+
+- Modern builds use pyproject.toml.
+
+- Build backends perform the build.
+
+- Build frontends trigger the build.
+
+- Output formats are Wheel (.whl) and Source Distribution (.tar.gz).
+
+- Packaging standards defined by PEP 517 and PEP 518.
+
+Quick Summary
+
+A Python Build System is the infrastructure that:
+
+1. Packages Python code
+
+2. Resolves dependencies
+
+3. Builds distributable files
+
+4. Allows installation through pip
+
+5. Enables publishing packages to PyPI
+
+The modern Python ecosystem relies heavily on:
+
+pyproject.toml
+
+as the central build configuration.
