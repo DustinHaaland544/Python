@@ -1,89 +1,266 @@
-The CSV (Comma-Separated Values) module in Python is a built-in module that allows you to work with CSV files. CSV files are commonly used for storing tabular
-data,and Python's CSV module makes it easy to read, write, and parse data in this format. Let's go through each of these operations with clear examples:
+1. CSV Module: The csv module in Python is a built-in library used to read, write, and manipulate CSV (Comma-Separated Values) files.
 
-Reading CSV Files:
-To read data from a CSV file, you can use the csv.reader class. Here's how you can do it:
+A CSV file stores tabular data (like spreadsheets or databases) in plain text format.
 
-Suppose you have a CSV file named "data.csv" with the following content:
+Example CSV file:
 
-Name,Age,Location
-Alice,28,New York
-Bob,22,Los Angeles
-Charlie,32,Chicago
+name,age,country
+Nasif,25,Canada
+John,30,USA
 
-You can read this file as follows:
+2. Purpose:
+
+The csv module is used to:
+
+| Purpose               | Explanation                   |
+| --------------------- | ----------------------------- |
+| Read CSV files        | Extract data row by row       |
+| Write CSV files       | Save data into CSV format     |
+| Process tabular data  | Work with rows and columns    |
+| Handle large datasets | Efficient file processing     |
+| Exchange data         | Common format between systems |
+
+3. Key Concepts
+
+| Term      | Meaning                                      |
+| --------- | -------------------------------------------- |
+| Row       | A single line in CSV                         |
+| Column    | A field in a row                             |
+| Delimiter | Character separating values (`,` by default) |
+| Header    | First row (column names)                     |
+
+4. Reading CSV Files
+
+Basic Reading (csv.reader)
 
 import csv
 
-# Open the CSV file for reading
-with open('data.csv', 'r') as file:
-    csv_reader = csv.reader(file)
-
-    # Iterate over each row in the CSV file
-    for row in csv_reader:
+with open("data.csv", "r") as file:
+    reader = csv.reader(file)
+    for row in reader:
         print(row)
 
-This code will output:
+Output:
 
-['Name', 'Age', 'Location']
-['Alice', '28', 'New York']
-['Bob', '22', 'Los Angeles']
-['Charlie', '32', 'Chicago']
+['name', 'age', 'country']
+['Nasif', '25', 'Canada']
+['John', '30', 'USA']
 
-Note that each row is represented as a list of strings.
+Key Points:
 
-Writing to CSV Files:
-To write data to a CSV file, you can use the csv.writer class. Here's an example:
+- Each row is returned as a list
+
+- All values are read as strings
+
+- Use a loop to iterate rows
+
+5. Writing CSV Files
+
+Basic Writing (csv.writer)
 
 import csv
 
-# Data to be written to the CSV file
-data = [
-    ['Name', 'Age', 'Location'],
-    ['Alice', '28', 'New York'],
-    ['Bob', '22', 'Los Angeles'],
-    ['Charlie', '32', 'Chicago']
+with open("output.csv", "w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerow(["name", "age", "country"])
+    writer.writerow(["Nasif", 25, "Canada"])
+
+Key Points:
+
+- writerow() writes one row
+
+- writerows() writes multiple rows
+
+- newline="" prevents blank lines (important on Windows)
+
+6. Reading CSV as Dictionary
+
+Using csv.DictReader
+
+import csv
+
+with open("data.csv", "r") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        print(row)
+
+Output:
+
+{'name': 'Nasif', 'age': '25', 'country': 'Canada'}
+
+Key Points:
+
+- Each row is a dictionary
+
+- Keys come from the header row
+
+- Easier to work with than lists
+
+7. Writing CSV as Dictionary
+
+Using csv.DictWriter
+
+import csv
+
+with open("output.csv", "w", newline="") as file:
+    fieldnames = ["name", "age", "country"]
+    
+    writer = csv.DictWriter(file, fieldnames=fieldnames)
+    
+    writer.writeheader()
+    writer.writerow({"name": "Nasif", "age": 25, "country": "Canada"})
+
+Key Points:
+
+- Must define fieldnames
+
+- writeheader() writes column names
+
+- Data must match keys
+
+8. Custom Delimiters
+
+CSV doesn't always use commas.
+
+Example with Semicolon ;
+
+import csv
+
+with open("data.csv", "r") as file:
+    reader = csv.reader(file, delimiter=";")
+    for row in reader:
+        print(row)
+
+9. Handling Quotes
+
+CSV files may include quoted text:
+
+name,comment
+Nasif,"Hello, world!"
+
+Python handles this automatically:
+
+reader = csv.reader(file)
+
+10. Skipping Header Row
+
+import csv
+
+with open("data.csv", "r") as file:
+    reader = csv.reader(file)
+    next(reader)  # Skip header
+    
+    for row in reader:
+        print(row)
+
+11. Writing Multiple Rows
+
+rows = [
+    ["Nasif", 25, "Canada"],
+    ["John", 30, "USA"]
 ]
 
-# Open the CSV file for writing
-with open('output.csv', 'w', newline='') as file:
-    csv_writer = csv.writer(file)
+with open("output.csv", "w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerows(rows)
 
-    # Write data to the CSV file
-    csv_writer.writerows(data)
+12. File Modes
 
-This code will create a new CSV file named "output.csv" with the data from the data list.
+| Mode  | Meaning           |
+| ----- | ----------------- |
+| `"r"` | Read              |
+| `"w"` | Write (overwrite) |
+| `"a"` | Append            |
 
-Parsing CSV Data:
-When you read data from a CSV file using csv.reader, the data is returned as lists of strings. If you want to work with the data in a more structured way, 
-you can convert it to dictionaries using csv.DictReader. Here's an example:
+13. Common Parameters
 
-Suppose you have a CSV file named "data.csv" with the following content:
+| Parameter   | Description                 |
+| ----------- | --------------------------- |
+| `delimiter` | Character separating values |
+| `quotechar` | Character used for quoting  |
+| `newline`   | Prevents extra blank lines  |
+| `encoding`  | File encoding (e.g., UTF-8) |
 
-Name,Age,Location
-Alice,28,New York
-Bob,22,Los Angeles
-Charlie,32,Chicago
+14. Real-World Example
 
-You can parse it into a list of dictionaries as follows:
+Scenario: Filter Users by Country
 
 import csv
 
-# Open the CSV file for reading
-with open('data.csv', 'r') as file:
-    csv_reader = csv.DictReader(file)
+with open("data.csv", "r") as file:
+    reader = csv.DictReader(file)
+    
+    for row in reader:
+        if row["country"] == "Canada":
+            print(row["name"])
 
-    # Iterate over each row in the CSV file
-    for row in csv_reader:
-        print(row)
+15. Limitations
 
-This code will output:
+- All data is read as strings
 
-{'Name': 'Alice', 'Age': '28', 'Location': 'New York'}
-{'Name': 'Bob', 'Age': '22', 'Location': 'Los Angeles'}
-{'Name': 'Charlie', 'Age': '32', 'Location': 'Chicago'}
+- No automatic type conversion
 
-Each row is represented as a dictionary with column names as keys and corresponding values.
+- Large files may require optimization
 
-That's the basic usage of the CSV module in Python for reading, writing, and parsing CSV files. You can customize the delimiter (e.g., using a tab
-instead of a comma) and other options by specifying parameters in the csv.reader and csv.writer constructors.
+- Not suitable for complex data (use JSON instead)
+
+16. Common Mistakes
+
+❌ Forgetting newline=""
+
+open("file.csv", "w")  # May cause blank lines
+
+❌ Not handling encoding
+
+open("file.csv", "r", encoding="utf-8")
+
+❌ Assuming numbers are integers
+
+age = int(row["age"])  # Must convert manually
+
+17. Comparison Table
+
+| Feature        | `csv.reader`     | `csv.DictReader`    |
+| -------------- | ---------------- | ------------------- |
+| Output         | List             | Dictionary          |
+| Access         | Index (`row[0]`) | Key (`row["name"]`) |
+| Ease of Use    | Moderate         | Easy                |
+| Header Support | Manual           | Automatic           |
+
+18. Key Points for Interviews:
+
+- csv is a built-in Python module
+
+- Used for reading/writing tabular data
+
+- reader → list output
+
+- DictReader → dictionary output
+
+- Always handle newline properly
+
+- Data is always read as strings
+
+- Supports custom delimiters
+
+19. Quick Summary
+
+- CSV = Comma-Separated Values
+
+- Python’s csv module simplifies file handling
+
+- Supports:
+
+    - Reading
+
+    - Writing
+
+    - Dictionary-based access
+
+- Important for:
+
+    - Data processing
+
+    - Data migration
+
+    - Reporting systems
