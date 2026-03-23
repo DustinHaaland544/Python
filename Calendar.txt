@@ -1,75 +1,259 @@
-Below is a Python program that calculates the number of days, weeks, or months required to reach specific goals. The program will prompt the user to enter the  
-type of goal (days, weeks, or months) and the amount of progress they can make per day. It will then compute and display the time needed to reach the goal.
+1. calendar Module
 
-from datetime import timedelta, date
+The calendar module in Python is a built-in library used to work with dates related to calendars, such as:
 
-def calculate_days(goal_amount, daily_progress):
-    return goal_amount / daily_progress
+- Displaying calendars
 
-def calculate_weeks(goal_amount, daily_progress):
-    return (goal_amount / daily_progress) / 7
+- Finding weekdays
 
-def calculate_months(goal_amount, daily_progress):
-    return (goal_amount / daily_progress) / 30  # Assuming 30 days per month for simplicity
+- Checking leap years
 
-def main():
-    print("Goal Time Calculator")
-    print("====================")
-    
-    goal_type = input("Enter the type of goal (days, weeks, months): ").strip().lower()
-    goal_amount = float(input("Enter the amount needed to reach the goal: "))
-    daily_progress = float(input("Enter the amount of progress per day: "))
-    
-    if goal_type == 'days':
-        time_required = calculate_days(goal_amount, daily_progress)
-        unit = 'days'
-    elif goal_type == 'weeks':
-        time_required = calculate_weeks(goal_amount, daily_progress)
-        unit = 'weeks'
-    elif goal_type == 'months':
-        time_required = calculate_months(goal_amount, daily_progress)
-        unit = 'months'
-    else:
-        print("Invalid goal type. Please enter 'days', 'weeks', or 'months'.")
-        return
-    
-    print(f"\nTo reach your goal of {goal_amount} units, it will take approximately {time_required:.2f} {unit}.")
+- Formatting months and years
 
-if __name__ == "__main__":
-    main()
+It provides functions to generate and manipulate calendar data in a readable format.
 
+2. Purpose
 
-Explanation
+The calendar module is used to:
 
-1. Functions:
+| Purpose               | Explanation                       |
+| --------------------- | --------------------------------- |
+| Display calendars     | Print month/year calendars        |
+| Work with dates       | Get weekdays, days in a month     |
+| Handle leap years     | Check leap year conditions        |
+| Build scheduling apps | Useful in real-world applications |
+| Date calculations     | Without full datetime complexity  |
 
-- calculate_days(goal_amount, daily_progress): Calculates the number of days needed to reach the goal.
+3. Importing the Module
 
-- calculate_weeks(goal_amount, daily_progress): Calculates the number of weeks needed to reach the goal.
+import calendar
 
-- calculate_months(goal_amount, daily_progress): Calculates the number of months needed to reach the goal.
+4. Displaying Calendars
 
-2. Main Program:
+Print Full Year Calendar
 
-- Prompts the user for the type of goal (days, weeks, or months).
+import calendar
 
-- Prompts the user to enter the goal amount and the daily progress they can make.
+print(calendar.calendar(2026))
 
-- Calls the appropriate function based on the goal type and calculates the time required.
+Output (simplified):
 
-- Outputs the result.
+     January 2026
+Mo Tu We Th Fr Sa Su
+...
 
-Usage
+Print Specific Month
 
-1. Run the program.
+print(calendar.month(2026, 3))
 
-2. Enter the type of goal (e.g., days, weeks, or months).
+     March 2026
+Mo Tu We Th Fr Sa Su
+                   1
+ 2  3  4  5  6  7  8
+...
 
-3. Enter the total amount needed to reach the goal.
+5. Important Functions
 
-4. Enter the amount of progress that can be made each day.
+i) calendar.month(year, month)
 
-5. The program will output the time required to reach the goal in the specified units.
+Returns a string of the month calendar.
 
-6. You can further enhance this program by adding more functionalities, such as handling invalid inputs, or using more accurate time calculations with libraries 
-like pandas for complex date manipulations.
+calendar.month(2026, 3)
+
+ii) calendar.calendar(year)
+
+Returns full year calendar as a string.
+
+calendar.calendar(2026)
+
+iii) calendar.weekday(year, month, day)
+
+Returns the day of the week.
+
+calendar.weekday(2026, 3, 23)
+
+0  # Monday
+
+iv) calendar.isleap(year)
+
+Checks if a year is a leap year.
+
+calendar.isleap(2024)
+
+Output:
+
+True
+
+v) calendar.leapdays(start, end)
+
+Counts leap years between two years.
+
+calendar.leapdays(2000, 2025)
+
+vi) calendar.monthrange(year, month)
+
+Returns:
+
+- First weekday of the month
+
+- Number of days in the month
+
+calendar.monthrange(2026, 3)
+
+Output:
+
+(6, 31)
+
+Meaning:
+
+- Month starts on Sunday (6)
+
+- Total days = 31
+
+6. Weekday Constants
+
+| Day       | Value |
+| --------- | ----- |
+| Monday    | 0     |
+| Tuesday   | 1     |
+| Wednesday | 2     |
+| Thursday  | 3     |
+| Friday    | 4     |
+| Saturday  | 5     |
+| Sunday    | 6     |
+
+7. Setting First Day of Week
+
+By default, week starts on Monday.
+
+You can change it:
+
+calendar.setfirstweekday(calendar.SUNDAY)
+
+8. Working with Calendar Objects
+
+Instead of functions, you can use classes.
+
+Example: TextCalendar
+
+cal = calendar.TextCalendar()
+
+print(cal.formatmonth(2026, 3))
+
+Example: HTMLCalendar
+
+cal = calendar.HTMLCalendar()
+html = cal.formatmonth(2026, 3)
+
+Used for web applications.
+
+9. Iterating Through Dates
+
+Example: Iterate Month Days
+
+cal = calendar.Calendar()
+
+for day in cal.itermonthdays(2026, 3):
+    print(day)
+
+Output includes:
+
+- Actual days
+
+- Zeros for padding
+
+10. Real-World Example
+
+Check if Today is Weekend
+
+import calendar
+from datetime import datetime
+
+today = datetime.today()
+
+day = calendar.weekday(today.year, today.month, today.day)
+
+if day >= 5:
+    print("Weekend")
+else:
+    print("Weekday")
+
+11. Useful Methods Summary
+
+| Function            | Purpose                    |
+| ------------------- | -------------------------- |
+| `month()`           | Get month calendar         |
+| `calendar()`        | Get full year              |
+| `weekday()`         | Get day of week            |
+| `isleap()`          | Check leap year            |
+| `monthrange()`      | Get start day + total days |
+| `setfirstweekday()` | Change week start          |
+
+12. Limitations
+
+- Does not handle time (use datetime module)
+
+- Output is mostly text-based
+
+- Limited for complex date arithmetic
+
+- Not timezone-aware
+
+13. Common Mistakes
+
+Confusing weekday numbers
+
+calendar.weekday(2026, 3, 23)
+
+Returns:
+
+0  # Monday (not Sunday)
+
+Forgetting import
+
+calendar.month(2026, 3)  # Error if not imported
+
+Expecting date objects
+
+Calendar works with numbers, not datetime objects directly.
+
+14. Comparison: calendar vs datetime
+
+| Feature           | `calendar` | `datetime` |
+| ----------------- | ---------- | ---------- |
+| Display calendars | Yes        | No         |
+| Date arithmetic   | Limited    | Powerful   |
+| Time handling     | No         | Yes        |
+| Formatting        | Basic      | Advanced   |
+
+15. Key Points for Interviews
+
+- calendar is a built-in Python module
+
+- Used for calendar-related operations
+
+- Weekdays are numbered from 0 (Monday) to 6 (Sunday)
+
+- Can generate text and HTML calendars
+
+- Works well with datetime module
+
+16. Quick Summary
+
+- The calendar module helps manage and display calendar data.
+
+- It can:
+
+    - Print months and years
+
+    - Calculate weekdays
+
+    - Detect leap years
+
+- Best used for:
+
+    - Scheduling apps
+
+    - Reports
+
+    - Date-based logic
